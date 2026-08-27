@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://756712329-commits.github.io/sitemap.xml
