@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html lang="zh-CN"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>量化情报站 · 数据自动化技术服务</title><meta name="description" content="数据管道 / 监控告警 / 自动报告三类技术服务，三大在役系统案例在线可验证，24 小时内回复。">
+<meta name="robots" content="index,follow">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+:root{
+  --bg:#0A101B; --surface:#101A29; --raised:#15223A;
+  --line:rgba(148,163,184,.14); --line-strong:rgba(148,163,184,.26);
+  --ink:#E8EEF6; --ink-2:#9AA8BC; --ink-3:#66748A;
+  --blue:#5B9DFF; --gold-1:#F0C070; --gold-2:#D99A3A;
+  --up:#3AC98A; --down:#F0655A; --neut:#8B99AD;
+}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--ink);line-height:1.75;font-size:15px;
+  font-family:-apple-system,BlinkMacSystemFont,"PingFang SC","Microsoft YaHei","Segoe UI",Roboto,sans-serif;
+  -webkit-font-smoothing:antialiased}
+.num{font-variant-numeric:tabular-nums}
+a{color:var(--blue);text-decoration:none}
+a:hover{text-decoration:underline}
+.wrap{max-width:1120px;margin:0 auto;padding:0 24px}
+/* ---------- topbar ---------- */
+.topbar{position:sticky;top:0;z-index:50;background:rgba(10,16,27,.86);backdrop-filter:blur(10px);
+  border-bottom:1px solid var(--line)}
+.topbar .in{display:flex;align-items:center;gap:28px;height:60px}
+.brand{font-size:16px;font-weight:800;letter-spacing:.04em;color:var(--ink);display:flex;align-items:center;gap:9px}
+.brand:hover{text-decoration:none}
+.brand .dot{width:9px;height:9px;border-radius:3px;background:var(--gold-2);display:inline-block}
+.nav{display:flex;gap:22px;margin-left:8px}
+.nav a{color:var(--ink-2);font-size:13.5px}
+.nav a:hover{color:var(--ink);text-decoration:none}
+.nav a.on{color:var(--ink);font-weight:600}
+.topbar .cta{margin-left:auto}
+.menutgl{display:none}
+.burger{display:none;margin-left:auto;color:var(--ink);cursor:pointer}
+@media (max-width:620px){
+  .burger{display:flex;align-items:center;justify-content:center;width:38px;height:38px;border:1px solid var(--line);border-radius:9px}
+  .topbar .cta{margin-left:0}
+  .menutgl:checked ~ .wrap .nav{display:flex}
+  .nav{display:none;position:absolute;top:60px;left:0;right:0;flex-direction:column;gap:0;
+    background:var(--bg);border-bottom:1px solid var(--line);padding:8px 24px 14px}
+  .nav a{padding:10px 0;font-size:15px;border-top:1px solid var(--line)}
+  .nav a:first-child{border-top:none}
+}
+/* ---------- buttons ---------- */
+.btn{display:inline-flex;align-items:center;gap:8px;border-radius:10px;padding:11px 22px;
+  font-size:14.5px;font-weight:700;letter-spacing:.02em;transition:transform .15s ease,filter .15s ease}
+.btn:hover{text-decoration:none;transform:translateY(-1px)}
+.btn.gold{color:#14100A;background:linear-gradient(180deg,var(--gold-1),var(--gold-2))}
+.btn.gold:hover{filter:brightness(1.06)}
+.btn.ghost{color:var(--blue);border:1px solid var(--line-strong)}
+.btn.ghost:hover{border-color:var(--blue)}
+.btn.sm{padding:8px 16px;font-size:13.5px;border-radius:8px}
+/* ---------- hero ---------- */
+.hero{position:relative;padding:96px 0 72px;overflow:hidden}
+.hero::before{content:"";position:absolute;inset:-40% -20% auto;height:130%;pointer-events:none;
+  background:radial-gradient(720px 340px at 24% 0%,rgba(91,157,255,.13),transparent 65%)}
+.hero .kick{font-size:12px;letter-spacing:.22em;color:var(--blue);font-weight:700;margin-bottom:18px}
+.hero h1{font-size:clamp(29px,4.6vw,46px);text-wrap:balance;font-weight:800;line-height:1.28;letter-spacing:.01em;max-width:820px}
+.hero h1 em{font-style:normal;color:var(--gold-1)}
+.hero .sub{color:var(--ink-2);font-size:16.5px;max-width:640px;margin-top:20px}
+.hero .acts{display:flex;gap:14px;margin-top:34px;flex-wrap:wrap}
+/* ---------- stats ---------- */
+.stats{display:grid;grid-template-columns:repeat(4,1fr);border:1px solid var(--line);border-radius:14px;
+  background:var(--surface);margin-top:56px;overflow:hidden}
+.stats .s{padding:22px 26px;border-left:1px solid var(--line)}
+.stats .s:first-child{border-left:none}
+.stats .v{font-size:28px;font-weight:800;letter-spacing:.01em}
+.stats .v small{font-size:15px;color:var(--ink-2);font-weight:600}
+.stats .l{font-size:12.5px;color:var(--ink-3);margin-top:2px}
+/* ---------- sections ---------- */
+section{padding:76px 0}
+section+.section-alt{background:var(--surface);border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+.kick{font-size:12px;letter-spacing:.2em;color:var(--blue);font-weight:700;margin-bottom:12px}
+h2{font-size:clamp(24px,3vw,30px);font-weight:800;letter-spacing:.01em;line-height:1.35;text-wrap:balance}
+.lede{color:var(--ink-2);margin-top:12px;max-width:620px;font-size:15.5px}
+/* ---------- cards ---------- */
+.grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:36px}
+.grid2{display:grid;grid-template-columns:repeat(2,1fr);gap:18px;margin-top:36px}
+.card{background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:26px;display:flex;flex-direction:column;
+  transition:border-color .18s ease,transform .18s ease}
+.card:hover{border-color:rgba(91,157,255,.42);transform:translateY(-2px)}
+.card .no{font-size:12px;color:var(--ink-3);letter-spacing:.16em;font-weight:700}
+.card .t{font-size:17.5px;font-weight:800;margin-top:8px}
+.card .d{font-size:13.5px;color:var(--ink-2);margin-top:8px}
+.card ul{list-style:none;margin-top:14px;margin-bottom:0}
+.card li{font-size:13.5px;color:var(--ink-2);padding:6px 0 6px 22px;position:relative;border-top:1px dashed var(--line)}
+.card li:first-child{border-top:none}
+.card li::before{content:"";position:absolute;left:2px;top:14px;width:10px;height:2px;background:var(--blue);border-radius:1px}
+.card .lnk{display:inline-flex;align-items:center;gap:6px;font-size:13px;font-weight:600;margin-top:16px}
+.card .push{margin-top:auto;padding-top:16px}
+/* ---------- snapshot ---------- */
+.snap{background:var(--surface);border:1px solid var(--line);border-radius:16px;margin-top:36px;overflow:hidden}
+.snap .head{display:flex;flex-wrap:wrap;gap:14px;align-items:baseline;justify-content:space-between;
+  padding:20px 26px;border-bottom:1px solid var(--line)}
+.snap .head .t{font-size:15px;font-weight:800}
+.snap .head .m{font-size:12.5px;color:var(--ink-3)}
+.snap .body{display:grid;grid-template-columns:280px 1fr;gap:0}
+.snap .score{padding:28px;border-right:1px solid var(--line)}
+.score .big{font-size:72px;font-weight:800;line-height:1;letter-spacing:-.01em}
+.pill{display:inline-block;border-radius:999px;padding:3px 12px;font-size:12.5px;font-weight:700;vertical-align:middle}
+.pill.bull{color:#8BE9C0;background:rgba(58,201,138,.12);border:1px solid rgba(58,201,138,.35)}
+.pill.bear{color:#FFA39B;background:rgba(240,101,90,.12);border:1px solid rgba(240,101,90,.35)}
+.pill.neut{color:#C4CFDD;background:rgba(139,153,173,.12);border:1px solid rgba(139,153,173,.35)}
+.score .band{margin-top:20px}
+.score .cap{display:flex;justify-content:space-between;font-size:11px;color:var(--ink-3)}
+.track{position:relative;height:6px;border-radius:3px;background:rgba(148,163,184,.16);margin:6px 0 8px}
+.track .range{position:absolute;top:0;bottom:0;background:rgba(91,157,255,.22);border-radius:3px}
+.track .mark{position:absolute;top:-4px;width:2px;height:14px;background:var(--gold-1);border-radius:1px}
+.score .hint{font-size:12px;color:var(--ink-3);margin-top:6px}
+.snap .factors{padding:20px 26px}
+.frow{display:grid;grid-template-columns:170px 1fr 92px;gap:14px;align-items:center;padding:9px 0;border-top:1px dashed var(--line)}
+.frow:first-child{border-top:none}
+.frow .n{font-size:13.5px;color:var(--ink-2)}
+.bar{height:6px;border-radius:3px;background:rgba(148,163,184,.14);overflow:hidden}
+.bar i{display:block;height:100%;border-radius:3px}
+.frow .v{font-size:13px;text-align:right;font-weight:700}
+.v.bull{color:var(--up)}.v.bear{color:var(--down)}.v.neut{color:var(--neut)}
+.snap .kpis{display:grid;grid-template-columns:repeat(3,1fr);border-top:1px solid var(--line)}
+.snap .kpis .k{padding:16px 26px;border-left:1px solid var(--line)}
+.snap .kpis .k:first-child{border-left:none}
+.kpi .l{font-size:12px;color:var(--ink-3)}
+.kpi .v{font-size:20px;font-weight:800;margin-top:2px}
+.kpi .d{font-size:12.5px;font-weight:700}
+.d.up{color:var(--up)}.d.down{color:var(--down)}
+/* ---------- features ---------- */
+.feat{display:grid;grid-template-columns:repeat(4,1fr);gap:18px;margin-top:36px}
+.feat .f{border:1px solid var(--line);border-radius:14px;padding:22px;background:transparent}
+.feat .ic{width:34px;height:34px;border-radius:9px;background:rgba(91,157,255,.12);display:flex;
+  align-items:center;justify-content:center;color:var(--blue);margin-bottom:14px}
+.feat .t{font-size:15px;font-weight:800}
+.feat .d{font-size:13px;color:var(--ink-2);margin-top:6px}
+/* ---------- pricing ---------- */
+.tiers{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:40px;align-items:stretch}
+.tier{background:var(--surface);border:1px solid var(--line);border-radius:16px;padding:28px;display:flex;flex-direction:column}
+.tier.hot{border-color:rgba(240,192,112,.5);background:linear-gradient(180deg,rgba(240,192,112,.06),var(--surface) 42%)}
+.tier .name{font-size:15px;font-weight:800;color:var(--gold-1)}
+.tier .price{font-size:38px;font-weight:800;margin:12px 0 2px;letter-spacing:-.01em}
+.tier .price small{font-size:14px;color:var(--ink-3);font-weight:500}
+.tier .for{font-size:12.5px;color:var(--ink-3)}
+.tier ul{list-style:none;margin:18px 0 22px}
+.tier li{font-size:13.5px;color:var(--ink-2);padding:7px 0 7px 24px;position:relative;border-top:1px dashed var(--line)}
+.tier li:first-child{border-top:none}
+.tier li b{color:var(--ink);font-weight:700}
+.tier li::before{content:"";position:absolute;left:2px;top:14px;width:11px;height:6px;
+  border-left:2px solid var(--up);border-bottom:2px solid var(--up);transform:rotate(-45deg)}
+.tier .btn{margin-top:auto;justify-content:center}
+/* ---------- tables ---------- */
+.tblwrap{margin-top:32px;border:1px solid var(--line);border-radius:14px;background:var(--surface);position:relative;overflow:hidden}
+.tblwrap::after{content:"";position:absolute;top:0;right:0;bottom:0;width:46px;pointer-events:none;
+  background:linear-gradient(90deg,rgba(16,26,41,0),rgba(16,26,41,.92) 78%,#101A29)}
+.scroller::-webkit-scrollbar{height:4px}
+.scroller::-webkit-scrollbar-thumb{background:var(--line-strong);border-radius:2px}
+.scroller{overflow-x:auto;-webkit-overflow-scrolling:touch}
+.tbl{width:100%;min-width:560px;border-collapse:collapse}
+.tbl th{font-size:12px;letter-spacing:.08em;color:var(--ink-3);text-align:left;font-weight:700;
+  padding:13px 18px;border-bottom:1px solid var(--line-strong);background:rgba(21,34,58,.5)}
+.tbl td{font-size:13.5px;color:var(--ink-2);padding:12px 18px;border-bottom:1px solid var(--line)}
+.tbl tr:last-child td{border-bottom:none}
+.tbl td:first-child{color:var(--ink);font-weight:600}
+.tbl .yes{color:var(--up);font-weight:700}
+.tbl .no{color:var(--ink-3)}
+/* ---------- steps ---------- */
+.steps{display:grid;grid-template-columns:repeat(4,1fr);gap:18px;margin-top:36px;counter-reset:st}
+.step{border:1px solid var(--line);border-radius:14px;padding:22px;background:var(--surface);position:relative}
+.step .n{width:30px;height:30px;border-radius:50%;border:1px solid var(--line-strong);display:flex;
+  align-items:center;justify-content:center;font-size:13px;font-weight:800;color:var(--gold-1);margin-bottom:14px}
+.step .t{font-size:15px;font-weight:800}
+.step .d{font-size:13px;color:var(--ink-2);margin-top:6px}
+/* ---------- faq ---------- */
+.faq{margin-top:32px;border:1px solid var(--line);border-radius:14px;overflow:hidden;background:var(--surface)}
+.faq details{border-top:1px solid var(--line)}
+.faq details:first-child{border-top:none}
+.faq summary{cursor:pointer;list-style:none;padding:18px 24px;font-size:14.5px;font-weight:700;display:flex;justify-content:space-between;align-items:center}
+.faq summary::after{content:"+";color:var(--ink-3);font-size:18px;font-weight:400;transition:transform .18s}
+.faq details[open] summary::after{transform:rotate(45deg)}
+.faq .a{padding:0 24px 20px;color:var(--ink-2);font-size:13.5px;max-width:760px}
+/* ---------- cta band ---------- */
+.band{border:1px solid var(--line);border-radius:18px;padding:44px 40px;text-align:center;
+  background:radial-gradient(560px 200px at 50% 0%,rgba(91,157,255,.10),transparent 70%),var(--surface)}
+.band .t{font-size:22px;font-weight:800;text-wrap:balance}
+.band .d{color:var(--ink-2);font-size:14px;margin-top:8px}
+.band .acts{display:flex;gap:14px;justify-content:center;margin-top:24px;flex-wrap:wrap}
+/* ---------- footer ---------- */
+footer{border-top:1px solid var(--line);margin-top:76px}
+footer .cols{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:24px;padding:44px 0 36px}
+footer .brand{margin-bottom:10px}
+footer p{font-size:12.5px;color:var(--ink-3);max-width:320px}
+footer .h{font-size:12px;letter-spacing:.12em;color:var(--ink-3);font-weight:700;margin-bottom:12px}
+footer .col a{display:block;color:var(--ink-2);font-size:13.5px;padding:4px 0}
+footer .base{border-top:1px solid var(--line);padding:18px 0 26px;display:flex;justify-content:space-between;
+  gap:12px;flex-wrap:wrap;font-size:12px;color:var(--ink-3)}
+/* ---------- responsive ---------- */
+@media (max-width:900px){
+  .stats{grid-template-columns:1fr 1fr}
+  .stats .s{border-top:1px solid var(--line)}
+  .stats .s:nth-child(-n+2){border-top:none}
+  .stats .s:nth-child(odd){border-left:none}
+  .grid3,.feat,.steps{grid-template-columns:1fr 1fr}
+  .snap .body{grid-template-columns:1fr}
+  .snap .score{border-right:none;border-bottom:1px solid var(--line)}
+  .snap .kpis{grid-template-columns:1fr}
+  .snap .kpis .k{border-left:none;border-top:1px solid var(--line)}
+  footer .cols{grid-template-columns:1fr 1fr}
+  .tiers{grid-template-columns:1fr}
+}
+@media (max-width:620px){
+  .nav{display:none}
+  .grid3,.grid2,.feat,.steps{grid-template-columns:1fr}
+  .frow{grid-template-columns:120px 1fr 72px}
+  .hero{padding:64px 0 52px}
+  section{padding:56px 0}
+  footer .cols{grid-template-columns:1fr}
+}
+</style></head>
+<body><div class="topbar"><input type="checkbox" id="mt" class="menutgl"><div class="wrap in">
+  <a class="brand" href="/masters/"><span class="dot"></span>量化情报站</a>
+  <nav class="nav">
+    <a href="/masters/">主页</a>
+    <a href="/masters/pricing.html">API 定价</a>
+    <a href="/masters/services.html" class="on">技术服务</a>
+    <a href="https://756712329-commits.github.io" target="_blank">数据看板 ↗</a>
+  </nav>
+  <a class="btn gold sm cta" href="mailto:756712329@qq.com?subject=%E6%8E%A5%E5%85%A5%E5%92%A8%E8%AF%A2">获取接入</a>
+  <label class="burger" for="mt"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 7h16M4 12h16M4 17h16"/></svg></label>
+</div></div>
+<header class="hero" style="padding:72px 0 40px"><div class="wrap">
+  <div class="kick">DATA ENGINEERING · 技术服务</div>
+  <h1>把重复劳动，交给机器</h1>
+  <p class="sub">数据管道、监控告警、自动报告三类标准化服务。页面下方就是在跑的交付案例——只交付自己敢长期运行的系统。</p>
+</div></header>
+
+<section style="padding-top:20px"><div class="wrap">
+  <div class="grid3">
+    <div class="card hot"><div class="no">SERVICE 01</div><div class="t">数据管道搭建</div>
+      <div class="d" style="margin-top:10px">把公开 API / 网页数据，变成稳定入库的自动化管道。</div>
+      <ul><li>多源采集 · 清洗 · 入库</li><li>断点续跑与失败重试</li><li>计划任务部署 + 运维文档</li></ul>
+      <div class="push" style="font-size:20px;font-weight:800" ><span class="num">¥3,000 <small style="font-size:12.5px;color:var(--ink-3);font-weight:400">起 / 3-7 天交付</small></span></div></div>
+    <div class="card"><div class="no">SERVICE 02</div><div class="t">监控告警系统</div>
+      <div class="d" style="margin-top:10px">价格、库存、状态类监控，触发即通知。</div>
+      <ul><li>自定义阈值 + 冷却防骚扰</li><li>邮件 / Telegram / 企微推送</li><li>触发历史入库可回溯</li></ul>
+      <div class="push" style="font-size:20px;font-weight:800"><span class="num">¥2,000 <small style="font-size:12.5px;color:var(--ink-3);font-weight:400">起 / 2-5 天交付</small></span></div></div>
+    <div class="card"><div class="no">SERVICE 03</div><div class="t">自动报告系统</div>
+      <div class="d" style="margin-top:10px">数据 → 分析 → 排版，定时产出成品报告。</div>
+      <ul><li>HTML / PDF / 邮件多形态</li><li>可选 LLM 中文精编模块</li><li>历史报告自动归档</li></ul>
+      <div class="push" style="font-size:20px;font-weight:800"><span class="num">¥5,000 <small style="font-size:12.5px;color:var(--ink-3);font-weight:400">起 / 5-10 天交付</small></span></div></div>
+  </div>
+
+  <div class="steps">
+    <div class="step"><div class="n">1</div><div class="t">说需求</div><div class="d">邮件描述目标与数据源，有样例最好，没有我们帮你找。</div></div>
+    <div class="step"><div class="n">2</div><div class="t">定方案</div><div class="d">24 小时内给出方案、报价与交付周期，不合适直说。</div></div>
+    <div class="step"><div class="n">3</div><div class="t">交付部署</div><div class="d">部署到你的服务器或本站代管，附运维文档。</div></div>
+    <div class="step"><div class="n">4</div><div class="t">售后保障</div><div class="d">上线后 14 天免费修复缺陷，后续维护按需续约。</div></div>
+  </div>
+</div></section>
+
+<section class="section-alt"><div class="wrap">
+  <div class="kick">DELIVERED & RUNNING</div>
+  <h2>交付案例：不是<span style="white-space:nowrap">演示稿</span>，是在跑的系统</h2>
+  <div class="tblwrap"><div class="scroller"><table class="tbl">
+    <tr><th>系统</th><th>能力</th><th>运行规模</th><th>在线验证</th></tr>
+    <tr><td>USMarket 指标 API</td><td>41 项指标合成 + 公网 JSON 网关</td><td class="num">每交易日 07:00 · 五源质检</td>
+      <td><a href="http://120.48.15.128/usmarket-api/docs" target="_blank">文档</a> · <a href="https://github.com/756712329-commits/usmarket" target="_blank">代码</a></td></tr>
+    <tr><td>AutoFarm 费率雷达</td><td>四所约 3,000 合约 10 分钟级扫描告警</td><td class="num">66+ 页面全自动维护</td>
+      <td><a href="https://756712329-commits.github.io" target="_blank">看板</a></td></tr>
+    <tr><td>投资大师日报引擎</td><td>19 套大师框架并行研判 + 自动对账</td><td class="num">每日邮件自动投递</td>
+      <td><a href="http://120.48.15.128/masters/" target="_blank">落地页</a></td></tr>
+  </table></div></div>
+  <p style="font-size:12.5px;color:var(--ink-3);margin-top:14px">以上系统均由本站团队构建并长期运行，交付给你的是同一标准的工程。</p>
+</div></section>
+
+<section><div class="wrap">
+  <div class="band">
+    <div class="t">描述你的需求，24 小时内给方案</div>
+    <div class="d">数据源、更新频率、输出形态——三句话说清即可，报价透明。</div>
+    <div class="acts"><a class="btn gold" href="mailto:756712329@qq.com?subject=%E6%8A%80%E6%9C%AF%E6%9C%8D%E5%8A%A1%E5%92%A8%E8%AF%A2">邮件咨询</a>
+    <a class="btn ghost" href="/masters/pricing.html">先看看 API 定价</a></div>
+  </div>
+</div></section><footer><div class="wrap">
+  <div class="cols">
+    <div>
+      <a class="brand" href="/masters/"><span class="dot"></span>量化情报站</a>
+      <p>全天候运行的量化数据与情报基础设施。所有系统在线可验证，页面数据每 10 分钟至每交易日自动更新。</p>
+    </div>
+    <div class="col"><div class="h">产品</div>
+      <a href="/masters/pricing.html">美股指标 API</a><a href="/masters/services.html">技术服务</a><a href="https://756712329-commits.github.io" target="_blank">费率数据看板</a></div>
+    <div class="col"><div class="h">数据</div>
+      <a href="https://756712329-commits.github.io/history/index.html" target="_blank">费率历史中心</a>
+      <a href="https://756712329-commits.github.io/tools/index.html" target="_blank">合约工具箱</a>
+      <a href="http://120.48.15.128/usmarket-api/docs" target="_blank">API 文档</a></div>
+    <div class="col"><div class="h">联系</div>
+      <a href="mailto:756712329@qq.com">756712329@qq.com</a><a href="/masters/">关于本站</a></div>
+  </div>
+  <div class="base">
+    <span>© 2026 量化情报站 · 本站内容为数据研究与技术研究，不构成任何投资建议</span>
+    <span class="num">更新时间 2026-08-28 07:00</span>
+  </div>
+</div></footer></body></html>
