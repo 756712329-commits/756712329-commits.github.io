@@ -2,12 +2,118 @@
 <title>合约爆仓价计算器 - 多空杠杆爆仓价在线计算 | AutoFarm</title>
 <meta name="description" content="输入开仓价、杠杆与方向，快速估算多单/空单爆仓价与爆仓距离，支持自定义维持保证金率。">
 <meta name="viewport" content="width=device-width,initial-scale=1"><meta name="robots" content="index,follow">
-<script type="application/ld+json">{"@context":"https://schema.org","@type":"WebApplication","name":"合约爆仓价计算器","applicationCategory":"FinanceApplication","operatingSystem":"Web","description":"永续合约多空杠杆爆仓价与爆仓距离在线估算工具","offers":{"@type":"Offer","price":"0","priceCurrency":"CNY"}}</script></head>
-<body style="margin:0;background:#010409;color:#e6edf3;font-family:'Microsoft YaHei',sans-serif">
-<div style="max-width:920px;margin:0 auto;padding:32px 16px">
-<div style="font-size:13px;margin-bottom:14px"><a href="/tools/index.html" style="color:#58a6ff">实用工具</a> · <a href="/" style="color:#58a6ff">费率总排行</a> · <a href="/history/index.html" style="color:#58a6ff">费率历史中心</a></div>
-<h1 style="font-size:25px">合约爆仓价计算器 <span style="font-size:13px;color:#484f58">逐仓估算 · 多空通用</span></h1>
-<p style="color:#8b949e;line-height:1.7">开仓前先算好离爆仓还有多远</p>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+:root{
+  --bg:#0A101B; --surface:#101A29; --raised:#15223A;
+  --line:rgba(148,163,184,.14); --line-strong:rgba(148,163,184,.26);
+  --ink:#E8EEF6; --ink-2:#9AA8BC; --ink-3:#66748A;
+  --blue:#5B9DFF; --gold-1:#F0C070; --gold-2:#D99A3A;
+  --up:#3AC98A; --down:#F0655A; --neut:#8B99AD;
+}
+body{background:var(--bg);color:var(--ink);line-height:1.75;font-size:15px;
+  font-family:-apple-system,BlinkMacSystemFont,"PingFang SC","Microsoft YaHei","Segoe UI",Roboto,sans-serif;
+  -webkit-font-smoothing:antialiased}
+.num{font-variant-numeric:tabular-nums}
+a{color:var(--blue);text-decoration:none}
+a:hover{text-decoration:none}
+.wrap{max-width:1120px;margin:0 auto;padding:0 24px}
+/* ---------- topbar ---------- */
+.topbar{position:sticky;top:0;z-index:50;background:rgba(10,16,27,.86);backdrop-filter:blur(10px);
+  border-bottom:1px solid var(--line)}
+.topbar .in{display:flex;align-items:center;gap:24px;height:60px}
+.brand{font-size:16px;font-weight:800;letter-spacing:.04em;color:var(--ink);display:flex;align-items:center;gap:9px;flex-shrink:0}
+.brand:hover{text-decoration:none}
+.brand .dot{width:9px;height:9px;border-radius:3px;background:var(--gold-2);display:inline-block}
+.nav{display:flex;gap:18px;margin-left:6px;flex-wrap:wrap}
+.nav a{color:var(--ink-2);font-size:13.5px;white-space:nowrap}
+.nav a:hover{color:var(--ink)}
+.nav a.on{color:var(--ink);font-weight:700;box-shadow:inset 0 -2px 0 var(--gold-2);padding-bottom:2px}
+.topbar .cta{margin-left:auto;flex-shrink:0}
+.menutgl{display:none}
+.burger{display:none;margin-left:auto;color:var(--ink);cursor:pointer}
+@media(max-width:860px){
+  .burger{display:flex;align-items:center;justify-content:center;width:38px;height:38px;border:1px solid var(--line);border-radius:9px}
+  .topbar .cta{margin-left:0}
+  .menutgl:checked ~ .wrap .nav{display:flex}
+  .nav{display:none;position:absolute;top:60px;left:0;right:0;flex-direction:column;gap:0;
+    background:var(--bg);border-bottom:1px solid var(--line);padding:8px 24px 14px}
+  .nav a{padding:11px 0;font-size:15px;border-top:1px solid var(--line)}
+  .nav a:first-child{border-top:none}
+  .nav a.on{box-shadow:none}
+}
+/* ---------- buttons ---------- */
+.btn{display:inline-flex;align-items:center;gap:8px;border-radius:10px;padding:10px 20px;
+  font-size:14px;font-weight:700;letter-spacing:.02em;transition:transform .15s ease,filter .15s ease}
+.btn:hover{transform:translateY(-1px)}
+.btn.gold{color:#14100A;background:linear-gradient(180deg,var(--gold-1),var(--gold-2))}
+.btn.gold:hover{filter:brightness(1.06)}
+.btn.ghost{color:var(--blue);border:1px solid var(--line-strong)}
+.btn.ghost:hover{border-color:var(--blue)}
+.btn.sm{padding:7px 14px;font-size:13px;border-radius:8px}
+/* ---------- page head ---------- */
+.phead{padding:44px 0 8px}
+.phead h1{font-size:clamp(25px,3.2vw,32px);font-weight:800;letter-spacing:.01em;line-height:1.3;text-wrap:balance}
+.phead .meta{color:var(--ink-3);font-size:13px;margin-top:8px}
+.phead .lede{color:var(--ink-2);font-size:15px;margin-top:10px;max-width:760px}
+/* ---------- content 图层：统一重皮肤遗留标记 ---------- */
+.content{padding-bottom:26px}
+.content h1,.content h2,.content h3{color:var(--ink);text-wrap:balance}
+.content a{color:var(--blue)!important}
+.content a:hover{text-decoration:underline}
+.content table{width:100%;border-collapse:collapse;background:transparent!important;
+  border:1px solid var(--line)!important;border-radius:12px;overflow:hidden;margin-top:20px!important;font-size:13.5px}
+.content th{background:rgba(21,34,58,.62)!important;color:var(--ink-3)!important;
+  padding:11px 14px!important;border-bottom:1px solid var(--line-strong)!important;
+  font-size:12px;letter-spacing:.05em;font-weight:700}
+.content td{padding:10px 14px!important;border-bottom:1px solid var(--line)!important;color:var(--ink-2);background:transparent!important}
+.content h2,.content h3{color:var(--ink)!important}
+.content th{white-space:nowrap}
+.content tr:last-child td{border-bottom:none!important}
+.content tr:hover td{background:rgba(91,157,255,.045)!important}
+.content .cardbox{background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:22px 24px;margin-top:26px}
+.content .cardbox h3{font-size:15.5px;margin-bottom:8px}
+.content .cardbox p{font-size:13.5px;color:var(--ink-2);margin:6px 0}
+
+/* ---------- sparks / tool grid / table scroll ---------- */
+.sparks{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:12px;margin-top:20px}
+.spark{background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:14px 16px;font-size:13px}
+.spark b{font-size:14px}
+.spark svg{display:block;margin-top:6px}
+.spark .cap{color:var(--ink-3);font-size:11px;margin-top:4px}
+.tgrid{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:8px}
+@media(max-width:680px){.tgrid{grid-template-columns:1fr}
+  .content table{display:block;overflow-x:auto;min-width:600px;-webkit-overflow-scrolling:touch}
+  .content table::-webkit-scrollbar{height:4px}
+  .content table::-webkit-scrollbar-thumb{background:var(--line-strong);border-radius:2px}}
+/* ---------- cta band ---------- */
+.band{border:1px solid var(--line);border-radius:16px;padding:30px 32px;text-align:center;
+  background:radial-gradient(520px 180px at 50% 0%,rgba(91,157,255,.10),transparent 70%),var(--surface);margin-top:30px}
+.band .t{font-size:19px;font-weight:800;text-wrap:balance}
+.band .d{color:var(--ink-2);font-size:13.5px;margin-top:6px}
+.band .acts{display:flex;gap:12px;justify-content:center;margin-top:18px;flex-wrap:wrap}
+/* ---------- footer ---------- */
+footer{border-top:1px solid var(--line);margin-top:64px}
+footer .in{padding:26px 0 30px;display:flex;justify-content:space-between;gap:14px;flex-wrap:wrap;font-size:12.5px;color:var(--ink-3)}
+footer .in a{color:var(--ink-2)}
+/* ---------- responsive ---------- */
+@media (max-width:860px){
+  .nav{display:none}
+  .topbar .cta{margin-left:0}
+  .phead{padding:32px 0 4px}
+  .content .cardbox{padding:18px}
+}
+</style></head>
+<body><div class="topbar"><input type="checkbox" id="mt" class="menutgl"><div class="wrap in">
+  <a class="brand" href="/"><span class="dot"></span>量化情报站</a>
+  <nav class="nav"><a href="/">费率看板</a><a href="/history/">历史中心</a><a href="/tools/" class="on">工具箱</a><a href="/deals.html">游戏折扣</a><a href="/ai/">AI 榜</a><a href="/brief/latest.html">情报日报</a><a href="/about.html">关于</a></nav>
+  <a class="btn gold sm cta" href="https://756712329-commits.github.io/masters/" target="_blank" rel="noopener">API 与服务 ↗</a>
+  <label class="burger" for="mt"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 7h16M4 12h16M4 17h16"/></svg></label>
+</div></div>
+<div class="wrap"><div class="content">
+<div class="phead"><h1>合约爆仓价计算器</h1>
+<p class="meta">逐仓估算 · 多空通用 · 免费 · 浏览器本地计算，无需注册</p>
+<p class="lede">开仓前先算好离爆仓还有多远</p></div>
 
 <div style="display:grid;grid-template-columns:1fr 1fr;gap:0 18px">
   <div><p style="font-size:13px;color:#8b949e;margin:10px 0 4px">开仓价格（USDT）</p><input style="width:100%;box-sizing:border-box;background:#0d1117;border:1px solid #30363d;border-radius:6px;color:#e6edf3;padding:8px 10px;font-size:15px" oninput="calc()" onkeyup="calc()" id="entry" type="number" step="any" value="50000"></div>
@@ -34,11 +140,14 @@ function calc(){
 }
 calc();
 </script>
-<div style="margin-top:28px;padding-top:16px;border-top:1px solid #21262d;color:#8b949e;font-size:12.5px;line-height:1.8">
-<b>爆仓价估算公式</b>（逐仓近似）：做多爆仓价 = 开仓价 × (1 − 1/杠杆 + 维持保证金率)；做空相反。
+<div class="cardbox"><h3>公式与说明</h3><p><b>爆仓价估算公式</b>（逐仓近似）：做多爆仓价 = 开仓价 × (1 − 1/杠杆 + 维持保证金率)；做空相反。
 杠杆越高，爆仓距离越近：10 倍杠杆只能容忍约 9.5% 的反向波动，25 倍约 3.5%，100 倍不到 0.5%。
 资金费率会持续增减保证金，实际爆仓价会随持仓时间漂移——收资金费的一方可 tolerate 更大波动。
-本站<a href="/history/index.html" style="color:#58a6ff">费率历史中心</a>可查各币种年化，配合使用更稳。</div>
-<div style="margin-top:16px;font-size:13px;color:#484f58">相关工具：<a href="/tools/funding-converter.html" style="color:#58a6ff">费率换算器</a> · <a href="/tools/liquidation-calc.html" style="color:#58a6ff">爆仓价计算器</a> · <a href="/tools/funding-arb-calc.html" style="color:#58a6ff">套利收益计算器</a> ｜ <a href="/" style="color:#58a6ff">实时四所费率看板</a></div>
-<p style="color:#484f58;font-size:12px;margin-top:14px">公开数据与公开公式，仅供参考，不构成投资建议。</p>
-</div></body></html>
+本站<a href="/history/index.html" style="color:#58a6ff">费率历史中心</a>可查各币种年化，配合使用更稳。</p></div>
+<div class="cardbox"><h3>相关工具</h3><p><a href="/tools/funding-converter.html">费率换算器</a> · <a href="/tools/liquidation-calc.html">爆仓价计算器</a> · <a href="/tools/funding-arb-calc.html">套利收益计算器</a> ｜ <a href="/">实时四所费率看板</a> · <a href="/history/index.html">费率历史中心</a></p>
+<p style="color:var(--ink-3);font-size:12px">公开数据与公开公式，仅供参考，不构成投资建议。</p></div>
+</div><footer><div class="wrap in">
+  <span>© 2026 量化情报站 · 数据每 10 分钟至每交易日自动更新 · 公开数据聚合，不构成投资建议</span>
+  <span><a href="https://756712329-commits.github.io/masters/" target="_blank" rel="noopener">API 与技术服务</a> ·
+  <a href="/about.html">推广模式说明</a> · <a href="/privacy.html">隐私</a></span>
+</div></footer></div></body></html>

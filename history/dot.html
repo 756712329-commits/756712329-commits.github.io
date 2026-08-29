@@ -1,17 +1,126 @@
 <!doctype html><html lang="zh-CN"><head><meta charset="utf-8">
-<title>DOT 资金费率历史走势 | 币安/OKX/Bybit/Gate 实时对比·每10分钟更新</title>
-<meta name="description" content="DOT 永续合约资金费率实时与历史数据：四大交易所费率对比、年化走势图、Delta中性套利时机。每10分钟自动更新。">
-<meta name="keywords" content="DOT资金费率,DOT费率历史,DOT funding rate,DOT永续合约,费率套利">
-<meta name="viewport" content="width=device-width,initial-scale=1"><meta name="robots" content="index,follow"></head>
-<body style="margin:0;background:#010409;color:#e6edf3;font-family:'Microsoft YaHei',sans-serif">
-<div style="max-width:920px;margin:0 auto;padding:32px 16px">
-<h1 style="font-size:25px">📊 DOT 资金费率 <span style="font-size:14px;color:#484f58">实时四所对比 + 历史走势</span></h1>
-<table style="border-collapse:collapse;width:100%;margin-top:18px;font-size:14px;background:#0d1117">
-<tr style="background:#161b22;color:#8b949e"><th align=left>交易所</th><th>当前费率/8h</th><th>折合年化</th><th>下次结算</th><th>直达</th></tr>
+<title>{coin} 资金费率历史走势 | 币安/OKX/Bybit/Gate 实时对比·每10分钟更新</title>
+<meta name="description" content="{coin} 永续合约资金费率实时与历史数据：四大交易所费率对比、年化走势图、Delta中性套利时机。每10分钟自动更新。">
+<meta name="viewport" content="width=device-width,initial-scale=1"><meta name="robots" content="index,follow">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+:root{
+  --bg:#0A101B; --surface:#101A29; --raised:#15223A;
+  --line:rgba(148,163,184,.14); --line-strong:rgba(148,163,184,.26);
+  --ink:#E8EEF6; --ink-2:#9AA8BC; --ink-3:#66748A;
+  --blue:#5B9DFF; --gold-1:#F0C070; --gold-2:#D99A3A;
+  --up:#3AC98A; --down:#F0655A; --neut:#8B99AD;
+}
+body{background:var(--bg);color:var(--ink);line-height:1.75;font-size:15px;
+  font-family:-apple-system,BlinkMacSystemFont,"PingFang SC","Microsoft YaHei","Segoe UI",Roboto,sans-serif;
+  -webkit-font-smoothing:antialiased}
+.num{font-variant-numeric:tabular-nums}
+a{color:var(--blue);text-decoration:none}
+a:hover{text-decoration:none}
+.wrap{max-width:1120px;margin:0 auto;padding:0 24px}
+/* ---------- topbar ---------- */
+.topbar{position:sticky;top:0;z-index:50;background:rgba(10,16,27,.86);backdrop-filter:blur(10px);
+  border-bottom:1px solid var(--line)}
+.topbar .in{display:flex;align-items:center;gap:24px;height:60px}
+.brand{font-size:16px;font-weight:800;letter-spacing:.04em;color:var(--ink);display:flex;align-items:center;gap:9px;flex-shrink:0}
+.brand:hover{text-decoration:none}
+.brand .dot{width:9px;height:9px;border-radius:3px;background:var(--gold-2);display:inline-block}
+.nav{display:flex;gap:18px;margin-left:6px;flex-wrap:wrap}
+.nav a{color:var(--ink-2);font-size:13.5px;white-space:nowrap}
+.nav a:hover{color:var(--ink)}
+.nav a.on{color:var(--ink);font-weight:700;box-shadow:inset 0 -2px 0 var(--gold-2);padding-bottom:2px}
+.topbar .cta{margin-left:auto;flex-shrink:0}
+.menutgl{display:none}
+.burger{display:none;margin-left:auto;color:var(--ink);cursor:pointer}
+@media(max-width:860px){
+  .burger{display:flex;align-items:center;justify-content:center;width:38px;height:38px;border:1px solid var(--line);border-radius:9px}
+  .topbar .cta{margin-left:0}
+  .menutgl:checked ~ .wrap .nav{display:flex}
+  .nav{display:none;position:absolute;top:60px;left:0;right:0;flex-direction:column;gap:0;
+    background:var(--bg);border-bottom:1px solid var(--line);padding:8px 24px 14px}
+  .nav a{padding:11px 0;font-size:15px;border-top:1px solid var(--line)}
+  .nav a:first-child{border-top:none}
+  .nav a.on{box-shadow:none}
+}
+/* ---------- buttons ---------- */
+.btn{display:inline-flex;align-items:center;gap:8px;border-radius:10px;padding:10px 20px;
+  font-size:14px;font-weight:700;letter-spacing:.02em;transition:transform .15s ease,filter .15s ease}
+.btn:hover{transform:translateY(-1px)}
+.btn.gold{color:#14100A;background:linear-gradient(180deg,var(--gold-1),var(--gold-2))}
+.btn.gold:hover{filter:brightness(1.06)}
+.btn.ghost{color:var(--blue);border:1px solid var(--line-strong)}
+.btn.ghost:hover{border-color:var(--blue)}
+.btn.sm{padding:7px 14px;font-size:13px;border-radius:8px}
+/* ---------- page head ---------- */
+.phead{padding:44px 0 8px}
+.phead h1{font-size:clamp(25px,3.2vw,32px);font-weight:800;letter-spacing:.01em;line-height:1.3;text-wrap:balance}
+.phead .meta{color:var(--ink-3);font-size:13px;margin-top:8px}
+.phead .lede{color:var(--ink-2);font-size:15px;margin-top:10px;max-width:760px}
+/* ---------- content 图层：统一重皮肤遗留标记 ---------- */
+.content{padding-bottom:26px}
+.content h1,.content h2,.content h3{color:var(--ink);text-wrap:balance}
+.content a{color:var(--blue)!important}
+.content a:hover{text-decoration:underline}
+.content table{width:100%;border-collapse:collapse;background:transparent!important;
+  border:1px solid var(--line)!important;border-radius:12px;overflow:hidden;margin-top:20px!important;font-size:13.5px}
+.content th{background:rgba(21,34,58,.62)!important;color:var(--ink-3)!important;
+  padding:11px 14px!important;border-bottom:1px solid var(--line-strong)!important;
+  font-size:12px;letter-spacing:.05em;font-weight:700}
+.content td{padding:10px 14px!important;border-bottom:1px solid var(--line)!important;color:var(--ink-2);background:transparent!important}
+.content h2,.content h3{color:var(--ink)!important}
+.content th{white-space:nowrap}
+.content tr:last-child td{border-bottom:none!important}
+.content tr:hover td{background:rgba(91,157,255,.045)!important}
+.content .cardbox{background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:22px 24px;margin-top:26px}
+.content .cardbox h3{font-size:15.5px;margin-bottom:8px}
+.content .cardbox p{font-size:13.5px;color:var(--ink-2);margin:6px 0}
+
+/* ---------- sparks / tool grid / table scroll ---------- */
+.sparks{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:12px;margin-top:20px}
+.spark{background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:14px 16px;font-size:13px}
+.spark b{font-size:14px}
+.spark svg{display:block;margin-top:6px}
+.spark .cap{color:var(--ink-3);font-size:11px;margin-top:4px}
+.tgrid{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:8px}
+@media(max-width:680px){.tgrid{grid-template-columns:1fr}
+  .content table{display:block;overflow-x:auto;min-width:600px;-webkit-overflow-scrolling:touch}
+  .content table::-webkit-scrollbar{height:4px}
+  .content table::-webkit-scrollbar-thumb{background:var(--line-strong);border-radius:2px}}
+/* ---------- cta band ---------- */
+.band{border:1px solid var(--line);border-radius:16px;padding:30px 32px;text-align:center;
+  background:radial-gradient(520px 180px at 50% 0%,rgba(91,157,255,.10),transparent 70%),var(--surface);margin-top:30px}
+.band .t{font-size:19px;font-weight:800;text-wrap:balance}
+.band .d{color:var(--ink-2);font-size:13.5px;margin-top:6px}
+.band .acts{display:flex;gap:12px;justify-content:center;margin-top:18px;flex-wrap:wrap}
+/* ---------- footer ---------- */
+footer{border-top:1px solid var(--line);margin-top:64px}
+footer .in{padding:26px 0 30px;display:flex;justify-content:space-between;gap:14px;flex-wrap:wrap;font-size:12.5px;color:var(--ink-3)}
+footer .in a{color:var(--ink-2)}
+/* ---------- responsive ---------- */
+@media (max-width:860px){
+  .nav{display:none}
+  .topbar .cta{margin-left:0}
+  .phead{padding:32px 0 4px}
+  .content .cardbox{padding:18px}
+}
+</style></head>
+<body><div class="topbar"><input type="checkbox" id="mt" class="menutgl"><div class="wrap in">
+  <a class="brand" href="/"><span class="dot"></span>量化情报站</a>
+  <nav class="nav"><a href="/">费率看板</a><a href="/history/" class="on">历史中心</a><a href="/tools/">工具箱</a><a href="/deals.html">游戏折扣</a><a href="/ai/">AI 榜</a><a href="/brief/latest.html">情报日报</a><a href="/about.html">关于</a></nav>
+  <a class="btn gold sm cta" href="https://756712329-commits.github.io/masters/" target="_blank" rel="noopener">API 与服务 ↗</a>
+  <label class="burger" for="mt"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 7h16M4 12h16M4 17h16"/></svg></label>
+</div></div>
+<div class="wrap"><div class="content">
+
+<div class="phead"><h1>DOT 资金费率历史走势</h1>
+<p class="meta num">1 所实时对比 + 历史年化走势 · 每 10 分钟更新</p>
+<p class="lede">该合约当前仅此所上线，费率与年化走势持续跟踪。</p></div>
+<table>
+<tr><th style="text-align:left">交易所</th><th>当前费率/8h</th><th>折合年化</th><th>下次结算</th><th>直达</th></tr>
 <tr><td><span style='color:#3fb950'>●</span> Gate</td><td>+0.0100%</td><td style='color:#3fb950;font-weight:700'>+10.9% 年化</td><td>08:00</td><td><a href='https://www.gate.com/referral/invite/VFKSU11ZBA' rel='nofollow sponsored' style='color:#58a6ff'>开户/交易</a></td></tr></table>
-<div style='display:flex;gap:22px;flex-wrap:wrap;font-size:14px;margin:14px 0'><span>最高 <b style='color:#3fb950'>+10.9%</b></span><span>最低 <b style='color:#f85149'>-33.4%</b></span><span>均值 <b>-0.7%</b></span><span>正费率占比 <b>61%</b></span><span>已跟踪 <b>64 小时</b> · 228 个采样点</span></div>
-<div style="margin-top:10px"><svg viewBox="0 0 860 300" style="width:100%;background:#0d1117;border-radius:12px"><line x1="48" y1="48.0" x2="812" y2="48.0" stroke="#161b22"/><text x="42" y="52.0" fill="#8b949e" font-size="11" text-anchor="end">+11%</text><line x1="48" y1="150.0" x2="812" y2="150.0" stroke="#161b22"/><text x="42" y="154.0" fill="#8b949e" font-size="11" text-anchor="end">-11%</text><line x1="48" y1="252.0" x2="812" y2="252.0" stroke="#161b22"/><text x="42" y="256.0" fill="#8b949e" font-size="11" text-anchor="end">-33%</text><line x1="48" y1="98.4" x2="812" y2="98.4" stroke="#30363d" stroke-dasharray="4 4"/><text x="48" y="288" fill="#8b949e" font-size="11">08-27 14:39</text><text x="812" y="288" fill="#8b949e" font-size="11" text-anchor="end">08-30 06:05</text><polyline points="48.0,119.5 50.1,117.5 53.1,113.5 56.1,113.5 59.1,114.5 62.1,105.4 65.1,48.0 68.2,88.3 71.2,48.0 74.2,48.0 77.2,48.0 80.2,48.0 83.2,48.0 86.2,48.0 89.2,48.0 92.2,48.0 95.3,48.0 98.3,48.0 101.3,48.0 104.3,61.6 107.3,73.7 109.4,75.2 112.3,70.2 115.3,64.1 118.3,50.0 121.4,65.6 124.4,76.7 127.4,68.7 130.4,72.7 133.4,75.2 136.4,78.7 139.4,78.7 142.5,79.2 145.5,80.2 148.5,98.4 152.5,104.9 155.5,107.9 158.5,110.0 161.5,48.0 164.5,48.0 167.5,134.1 170.6,111.0 173.6,137.7 176.6,100.9 179.6,96.9 182.6,101.4 185.6,102.9 188.6,92.8 191.6,83.3 194.6,63.1 197.6,48.0 200.6,48.0 203.7,48.0 206.7,48.0 209.7,48.0 212.7,48.0 215.7,48.0 218.7,48.0 221.7,48.0 224.7,48.0 227.8,48.0 230.8,48.0 233.8,48.0 236.8,48.0 239.8,48.0 242.8,48.0 245.8,48.0 248.8,48.0 251.8,48.0 254.9,48.0 257.9,69.2 260.9,48.0 263.9,48.0 266.9,48.0 269.9,48.0 272.9,48.0 275.9,48.0 278.9,48.0 282.0,48.0 285.0,48.0 288.0,48.0 292.3,48.0 295.1,48.0 298.1,48.0 301.1,48.0 304.0,48.0 307.0,48.5 310.1,54.5 313.1,62.1 316.1,75.2 319.1,81.7 322.1,81.7 325.1,83.3 328.1,82.8 331.1,77.7 334.2,78.7 337.2,80.2 340.2,77.2 343.2,77.2 346.2,71.7 349.2,79.2 352.2,86.3 355.2,226.8 358.3,85.3 361.3,187.0 364.3,143.7 367.3,167.9 370.3,176.4 372.4,195.1 375.3,234.4 380.7,232.9 383.4,203.1 386.4,193.1 389.4,181.5 392.4,179.0 395.4,180.0 398.5,179.0 401.4,174.9 404.4,176.4 409.4,191.1 414.6,192.6 419.7,209.7 424.7,195.6 427.5,200.1 430.5,191.1 433.5,181.5 436.6,175.4 439.6,172.4 442.6,156.3 445.6,147.2 448.6,148.7 451.6,121.5 454.6,227.8 457.6,173.9 460.6,166.9 463.6,189.5 466.7,211.7 469.7,252.0 472.7,215.7 475.7,222.8 478.7,240.9 481.7,243.9 484.7,244.4 487.7,226.3 490.7,237.9 493.8,229.3 496.8,230.8 499.8,221.3 502.8,207.7 505.8,213.7 508.8,210.2 511.8,202.6 514.8,197.6 517.8,189.5 520.8,192.1 523.9,178.5 526.9,165.4 529.9,156.3 532.9,148.2 535.9,146.2 538.9,135.1 541.9,132.1 544.9,127.6 548.0,48.0 551.0,48.0 554.0,48.0 557.0,48.0 560.0,48.0 563.0,48.5 566.0,74.2 569.0,76.7 572.0,74.7 575.1,102.4 578.1,117.0 581.1,112.0 584.1,89.8 587.1,88.3 590.1,95.8 593.1,104.9 596.1,107.4 599.1,92.8 602.2,69.7 605.2,65.6 608.2,62.1 611.2,63.1 614.2,67.6 617.2,75.7 620.2,71.2 623.2,77.7 626.2,71.2 629.3,65.6 632.3,60.1 635.3,65.1 638.3,60.1 641.3,62.6 644.3,108.9 649.3,48.0 653.6,96.9 659.6,106.4 664.6,89.3 669.6,76.7 676.5,98.9 681.7,97.4 686.7,129.6 692.6,114.0 697.7,113.0 702.9,106.9 709.8,84.3 714.7,69.7 719.9,59.6 725.9,48.0 730.9,48.0 735.8,48.0 741.8,48.0 746.8,52.0 751.9,67.1 756.8,89.8 761.9,75.7 767.0,57.1 771.9,48.0 776.9,48.0 782.0,48.0 786.9,48.0 792.0,48.0 796.9,48.0 801.9,48.0 806.9,48.0 812.0,48.0" fill="none" stroke="#3fb950" stroke-width="1.8"/></svg><div style="margin-top:8px"><span style="color:#3fb950;font-size:12px;margin-right:16px">— Gate</span></div></div>
-<div style="background:#0d1117;border-radius:12px;padding:20px;margin-top:26px;line-height:1.8"><h2 style="color:#58a6ff">DOT 资金费率是什么？</h2>
+<div style='display:flex;gap:22px;flex-wrap:wrap;font-size:14px;margin:14px 0'><span>最高 <b style='color:#3fb950'>+10.9%</b></span><span>最低 <b style='color:#f85149'>-33.4%</b></span><span>均值 <b>-0.6%</b></span><span>正费率占比 <b>61%</b></span><span>已跟踪 <b>65 小时</b> · 230 个采样点</span></div>
+<div style="margin-top:10px"><svg viewBox="0 0 860 300" style="width:100%;background:#0d1117;border-radius:12px"><line x1="48" y1="48.0" x2="812" y2="48.0" stroke="#161b22"/><text x="42" y="52.0" fill="#8b949e" font-size="11" text-anchor="end">+11%</text><line x1="48" y1="150.0" x2="812" y2="150.0" stroke="#161b22"/><text x="42" y="154.0" fill="#8b949e" font-size="11" text-anchor="end">-11%</text><line x1="48" y1="252.0" x2="812" y2="252.0" stroke="#161b22"/><text x="42" y="256.0" fill="#8b949e" font-size="11" text-anchor="end">-33%</text><line x1="48" y1="98.4" x2="812" y2="98.4" stroke="#30363d" stroke-dasharray="4 4"/><text x="48" y="288" fill="#8b949e" font-size="11">08-27 14:39</text><text x="812" y="288" fill="#8b949e" font-size="11" text-anchor="end">08-30 06:55</text><polyline points="48.0,119.5 50.1,117.5 53.0,113.5 56.0,113.5 59.0,114.5 62.0,105.4 64.9,48.0 67.9,88.3 70.9,48.0 73.8,48.0 76.8,48.0 79.8,48.0 82.8,48.0 85.7,48.0 88.7,48.0 91.7,48.0 94.6,48.0 97.6,48.0 100.6,48.0 103.6,61.6 106.5,73.7 108.6,75.2 111.5,70.2 114.5,64.1 117.4,50.0 120.4,65.6 123.4,76.7 126.4,68.7 129.3,72.7 132.3,75.2 135.3,78.7 138.2,78.7 141.3,79.2 144.2,80.2 147.2,98.4 151.1,104.9 154.1,107.9 157.1,110.0 160.0,48.0 163.0,48.0 166.0,134.1 169.0,111.0 172.0,137.7 174.9,100.9 177.9,96.9 180.9,101.4 183.8,102.9 186.8,92.8 189.8,83.3 192.7,63.1 195.7,48.0 198.7,48.0 201.6,48.0 204.6,48.0 207.6,48.0 210.6,48.0 213.5,48.0 216.5,48.0 219.5,48.0 222.5,48.0 225.4,48.0 228.4,48.0 231.4,48.0 234.3,48.0 237.3,48.0 240.3,48.0 243.3,48.0 246.2,48.0 249.2,48.0 252.2,48.0 255.2,69.2 258.1,48.0 261.1,48.0 264.1,48.0 267.0,48.0 270.0,48.0 273.0,48.0 276.0,48.0 278.9,48.0 281.9,48.0 284.9,48.0 289.1,48.0 291.9,48.0 294.9,48.0 297.8,48.0 300.7,48.0 303.7,48.5 306.7,54.5 309.6,62.1 312.6,75.2 315.6,81.7 318.6,81.7 321.6,83.3 324.5,82.8 327.5,77.7 330.5,78.7 333.4,80.2 336.4,77.2 339.4,77.2 342.3,71.7 345.3,79.2 348.3,86.3 351.3,226.8 354.2,85.3 357.2,187.0 360.2,143.7 363.2,167.9 366.1,176.4 368.2,195.1 371.1,234.4 376.4,232.9 379.1,203.1 382.0,193.1 385.0,181.5 388.0,179.0 391.0,180.0 393.9,179.0 396.8,174.9 399.8,176.4 404.8,191.1 409.9,192.6 414.9,209.7 419.9,195.6 422.6,200.1 425.6,191.1 428.5,181.5 431.5,175.4 434.5,172.4 437.5,156.3 440.4,147.2 443.4,148.7 446.4,121.5 449.4,227.8 452.3,173.9 455.3,166.9 458.3,189.5 461.2,211.7 464.2,252.0 467.2,215.7 470.2,222.8 473.1,240.9 476.1,243.9 479.1,244.4 482.0,226.3 485.0,237.9 488.0,229.3 491.0,230.8 493.9,221.3 496.9,207.7 499.9,213.7 502.8,210.2 505.8,202.6 508.8,197.6 511.8,189.5 514.7,192.1 517.7,178.5 520.7,165.4 523.7,156.3 526.6,148.2 529.6,146.2 532.6,135.1 535.5,132.1 538.5,127.6 541.5,48.0 544.5,48.0 547.4,48.0 550.4,48.0 553.4,48.0 556.4,48.5 559.3,74.2 562.3,76.7 565.3,74.7 568.2,102.4 571.2,117.0 574.2,112.0 577.2,89.8 580.1,88.3 583.1,95.8 586.1,104.9 589.0,107.4 592.0,92.8 595.0,69.7 598.0,65.6 600.9,62.1 603.9,63.1 606.9,67.6 609.9,75.7 612.8,71.2 615.8,77.7 618.8,71.2 621.7,65.6 624.7,60.1 627.7,65.1 630.7,60.1 633.6,62.6 636.6,108.9 641.5,48.0 645.7,96.9 651.7,106.4 656.7,89.3 661.6,76.7 668.4,98.9 673.5,97.4 678.4,129.6 684.3,114.0 689.3,113.0 694.4,106.9 701.3,84.3 706.0,69.7 711.2,59.6 717.1,48.0 722.1,48.0 726.9,48.0 732.8,48.0 737.8,52.0 742.8,67.1 747.7,89.8 752.6,75.7 757.7,57.1 762.5,48.0 767.5,48.0 772.5,48.0 777.3,48.0 782.4,48.0 787.2,48.0 792.2,48.0 797.1,48.0 802.1,48.0 807.1,48.0 812.0,48.0" fill="none" stroke="#3fb950" stroke-width="1.8"/></svg><div style="margin-top:8px"><span style="color:#3fb950;font-size:12px;margin-right:16px">— Gate</span></div></div>
+<div class="cardbox"><h2 style="color:#58a6ff">DOT 资金费率是什么？</h2>
 <p style="color:#c9d1d9;line-height:1.8">DOT 永续合约没有交割日，交易所通过<b>资金费率</b>(Funding Rate)让合约价锚定现货价：
 费率为正时多头付给空头，为负时空头付给多头，通常每8小时结算一次。本页聚合币安/Bybit/OKX/Gate
 四大交易所 DOT USDT 永续的<b>实时费率与历史走势</b>，每10分钟自动更新。</p>
@@ -19,9 +128,9 @@
 买入 DOT 现货 + 做空等额永续，价格涨跌对冲掉，稳收资金费；费率持续为负时反向同理。
 跨所费率差也是信号--某所显著偏离均值往往伴随短期行情或资金流异动。</p>
 <p style="color:#8b949e;line-height:1.7">⚠️ 高费率常伴随高波动与流动性风险；本页为公开数据聚合，不构成投资建议。</p></div>
-<div style="margin-top:18px;font-size:13px">
-<a href="/" style="color:#58a6ff">← 全部币种费率排行</a> ·
-<a href="/history/" style="color:#58a6ff">费率历史中心</a> ·
-<a href="/about.html" style="color:#58a6ff">About</a></div>
-<div style="color:#388bfd;font-size:12px;margin-top:20px">数据来源:各交易所公开API · AutoFarm 自动维护 · 不构成投资建议</div>
-</div></body></html>
+<p style="font-size:12px;color:var(--ink-3);margin-top:20px">数据来源：各交易所公开 API · 自动维护 · 不构成投资建议</p>
+</div><footer><div class="wrap in">
+  <span>© 2026 量化情报站 · 数据每 10 分钟至每交易日自动更新 · 公开数据聚合，不构成投资建议</span>
+  <span><a href="https://756712329-commits.github.io/masters/" target="_blank" rel="noopener">API 与技术服务</a> ·
+  <a href="/about.html">推广模式说明</a> · <a href="/privacy.html">隐私</a></span>
+</div></footer></div></body></html>
