@@ -1,0 +1,44 @@
+<!doctype html><html lang="zh-CN"><head><meta charset="utf-8">
+<title>资金费率换算器 - 费率/年化APR/APY在线计算 | AutoFarm</title>
+<meta name="description" content="输入每期资金费率与结算间隔，一键换算年化APR与复利APY，支持1/2/4/8小时结算间隔与本金收益计算。">
+<meta name="viewport" content="width=device-width,initial-scale=1"><meta name="robots" content="index,follow">
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"WebApplication","name":"资金费率换算器","applicationCategory":"FinanceApplication","operatingSystem":"Web","description":"永续合约资金费率与年化APR/APY在线换算工具","offers":{"@type":"Offer","price":"0","priceCurrency":"CNY"}}</script></head>
+<body style="margin:0;background:#010409;color:#e6edf3;font-family:'Microsoft YaHei',sans-serif">
+<div style="max-width:920px;margin:0 auto;padding:32px 16px">
+<div style="font-size:13px;margin-bottom:14px"><a href="/tools/index.html" style="color:#58a6ff">实用工具</a> · <a href="/" style="color:#58a6ff">费率总排行</a> · <a href="/history/index.html" style="color:#58a6ff">费率历史中心</a></div>
+<h1 style="font-size:25px">资金费率换算器 <span style="font-size:13px;color:#484f58">在线计算 · 免费</span></h1>
+<p style="color:#8b949e;line-height:1.7">把交易所的「每期费率」换算成年化口径</p>
+
+<div style="display:grid;grid-template-columns:1fr 1fr;gap:0 18px">
+  <div><p style="font-size:13px;color:#8b949e;margin:10px 0 4px">每期资金费率（%）</p><input style="width:100%;box-sizing:border-box;background:#0d1117;border:1px solid #30363d;border-radius:6px;color:#e6edf3;padding:8px 10px;font-size:15px" oninput="calc()" onkeyup="calc()" id="rate" type="number" step="any" value="0.01"></div>
+  <div><p style="font-size:13px;color:#8b949e;margin:10px 0 4px">结算间隔</p><select style="width:100%;background:#0d1117;border:1px solid #30363d;border-radius:6px;color:#e6edf3;padding:8px 6px;font-size:15px" id="interval" onchange="calc()">
+    <option value="1">1 小时</option><option value="2">2 小时</option>
+    <option value="4">4 小时</option><option value="8" selected>8 小时</option></select></div>
+  <div><p style="font-size:13px;color:#8b949e;margin:10px 0 4px">名义本金（USDT，选填）</p><input style="width:100%;box-sizing:border-box;background:#0d1117;border:1px solid #30363d;border-radius:6px;color:#e6edf3;padding:8px 10px;font-size:15px" oninput="calc()" onkeyup="calc()" id="notional" type="number" step="any" value="1000"></div>
+</div>
+<button style="background:#238636;border:none;border-radius:6px;color:#fff;padding:9px 22px;font-size:15px;cursor:pointer" onclick="calc()" style="margin-top:16px">计算</button>
+<div style="margin-top:14px;background:#0d1117;border:1px solid #30363d;border-radius:8px;padding:14px 16px;font-size:15px;line-height:2" id="out">填写上方数值自动计算</div>
+<script>
+function calc(){
+  var r=parseFloat(document.getElementById('rate').value)/100;
+  var iv=parseFloat(document.getElementById('interval').value);
+  var n=parseFloat(document.getElementById('notional').value)||0;
+  if(isNaN(r)||isNaN(iv)||r<=0&&n<=0){document.getElementById('out').textContent='填写上方数值自动计算';return;}
+  var perDay=24/iv, apr=r*perDay*365*100;
+  var apy=(Math.pow(1+r,perDay*365)-1)*100;
+  var per=n*r, day=n*r*perDay;
+  var h=(t,v)=>'<div><span style="color:#8b949e">'+t+'</span>　<b style="font-size:17px;color:'+(v>=0?'#3fb950':'#f85149')+'">'+v+'</b></div>';
+  document.getElementById('out').innerHTML=
+    h('年化（单利 APR）', apr.toFixed(2)+'%')+h('年化（复利 APY）', apy.toFixed(2)+'%')
+    +(n>0?h('每期收益', per.toFixed(4)+' USDT')+h('每日收益', day.toFixed(4)+' USDT'):'');
+}
+calc();
+</script>
+<div style="margin-top:28px;padding-top:16px;border-top:1px solid #21262d;color:#8b949e;font-size:12.5px;line-height:1.8">
+<b>资金费率换算公式</b>：交易所展示的费率是「每期费率」，结算间隔可以是 1/2/4/8 小时。
+年化（单利 APR）= 每期费率 × 每天/间隔 × 每期间隔数 × 365；复利 APY 按每期滚仓计算：(1+每期费率)^每年期数 − 1。
+例：费率 0.01%/8h ≈ 年化 10.95%；而 0.01%/1h 的年化高达 87.6%——<b>同样是 0.01%，结算越快年化越高</b>，
+对比两个币种时务必换算到同一年化口径。本站<a href="/" style="color:#58a6ff">费率总排行</a>已自动折算成年化，可直接对比。</div>
+<div style="margin-top:16px;font-size:13px;color:#484f58">相关工具：<a href="/tools/funding-converter.html" style="color:#58a6ff">费率换算器</a> · <a href="/tools/liquidation-calc.html" style="color:#58a6ff">爆仓价计算器</a> · <a href="/tools/funding-arb-calc.html" style="color:#58a6ff">套利收益计算器</a> ｜ <a href="/" style="color:#58a6ff">实时四所费率看板</a></div>
+<p style="color:#484f58;font-size:12px;margin-top:14px">公开数据与公开公式，仅供参考，不构成投资建议。</p>
+</div></body></html>

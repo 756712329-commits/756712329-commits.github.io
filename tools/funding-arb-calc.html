@@ -1,0 +1,49 @@
+<!doctype html><html lang="zh-CN"><head><meta charset="utf-8">
+<title>资金费率套利收益计算器 - Delta中性年化计算 | AutoFarm</title>
+<meta name="description" content="输入本金、每期费率、结算间隔与持有天数，计算Delta中性资金费套利的毛收益、手续费与净年化。">
+<meta name="viewport" content="width=device-width,initial-scale=1"><meta name="robots" content="index,follow">
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"WebApplication","name":"资金费率套利收益计算器","applicationCategory":"FinanceApplication","operatingSystem":"Web","description":"Delta中性资金费率套利净收益与年化在线计算工具","offers":{"@type":"Offer","price":"0","priceCurrency":"CNY"}}</script></head>
+<body style="margin:0;background:#010409;color:#e6edf3;font-family:'Microsoft YaHei',sans-serif">
+<div style="max-width:920px;margin:0 auto;padding:32px 16px">
+<div style="font-size:13px;margin-bottom:14px"><a href="/tools/index.html" style="color:#58a6ff">实用工具</a> · <a href="/" style="color:#58a6ff">费率总排行</a> · <a href="/history/index.html" style="color:#58a6ff">费率历史中心</a></div>
+<h1 style="font-size:25px">资金费率套利收益计算器 <span style="font-size:13px;color:#484f58">Delta 中性 · 含手续费</span></h1>
+<p style="color:#8b949e;line-height:1.7">算清资金费套利扣完手续费还剩多少</p>
+
+<div style="display:grid;grid-template-columns:1fr 1fr;gap:0 18px">
+  <div><p style="font-size:13px;color:#8b949e;margin:10px 0 4px">投入本金（USDT）</p><input style="width:100%;box-sizing:border-box;background:#0d1117;border:1px solid #30363d;border-radius:6px;color:#e6edf3;padding:8px 10px;font-size:15px" oninput="calc()" onkeyup="calc()" id="notional" type="number" step="any" value="1000"></div>
+  <div><p style="font-size:13px;color:#8b949e;margin:10px 0 4px">每期资金费率（%，收方视角）</p><input style="width:100%;box-sizing:border-box;background:#0d1117;border:1px solid #30363d;border-radius:6px;color:#e6edf3;padding:8px 10px;font-size:15px" oninput="calc()" onkeyup="calc()" id="rate" type="number" step="any" value="0.05"></div>
+  <div><p style="font-size:13px;color:#8b949e;margin:10px 0 4px">结算间隔</p><select style="width:100%;background:#0d1117;border:1px solid #30363d;border-radius:6px;color:#e6edf3;padding:8px 6px;font-size:15px" id="interval"><option value="1">1 小时</option><option value="2">2 小时</option><option value="4">4 小时</option><option value="8" selected>8 小时</option></select></div>
+  <div><p style="font-size:13px;color:#8b949e;margin:10px 0 4px">预计持有（天）</p><input style="width:100%;box-sizing:border-box;background:#0d1117;border:1px solid #30363d;border-radius:6px;color:#e6edf3;padding:8px 10px;font-size:15px" oninput="calc()" onkeyup="calc()" id="days" type="number" step="any" value="7"></div>
+  <div><p style="font-size:13px;color:#8b949e;margin:10px 0 4px">双腿来回手续费合计（%）</p><input style="width:100%;box-sizing:border-box;background:#0d1117;border:1px solid #30363d;border-radius:6px;color:#e6edf3;padding:8px 10px;font-size:15px" oninput="calc()" onkeyup="calc()" id="fee" type="number" step="any" value="0.14"></div>
+</div>
+<button style="background:#238636;border:none;border-radius:6px;color:#fff;padding:9px 22px;font-size:15px;cursor:pointer" onclick="calc()" style="margin-top:16px">计算</button>
+<div style="margin-top:14px;background:#0d1117;border:1px solid #30363d;border-radius:8px;padding:14px 16px;font-size:15px;line-height:2" id="out">填写上方数值自动计算</div>
+<script>
+function calc(){
+  var n=parseFloat(document.getElementById('notional').value)||0;
+  var r=parseFloat(document.getElementById('rate').value)/100;
+  var iv=parseFloat(document.getElementById('interval').value);
+  var d=parseFloat(document.getElementById('days').value)||0;
+  var f=(parseFloat(document.getElementById('fee').value)||0)/100;
+  if(!(n>0)){document.getElementById('out').textContent='填写上方数值自动计算';return;}
+  var perDay=24/iv, periods=perDay*d;
+  var gross=n*r*periods, feeCost=n*f, net=gross-feeCost;
+  var apr=net/n/d*365*100;
+  var mark=v=>'<b style="font-size:17px;color:'+(v>=0?'#3fb950':'#f85149')+'">'+v.toFixed(2)+'</b>';
+  document.getElementById('out').innerHTML=
+    '<div><span style="color:#8b949e">持有 '+d+' 天资金费毛收益</span>　'+mark(gross)+' USDT</div>'
+    +'<div><span style="color:#8b949e">开平仓手续费</span>　'+mark(-feeCost)+' USDT</div>'
+    +'<div><span style="color:#8b949e">净收益</span>　'+mark(net)+' USDT（'+mark(apr)+'% 年化）</div>'
+    +'<div style="color:#8b949e;font-size:13px">Delta 中性：现货多 + 合约空（或两所对锁），价格涨跌互相抵消，赚的是资金费差。</div>';
+}
+calc();
+</script>
+<div style="margin-top:28px;padding-top:16px;border-top:1px solid #21262d;color:#8b949e;font-size:12.5px;line-height:1.8">
+<b>Delta 中性套利怎么算</b>：收资金费的一腿每期入账 = 本金 × 每期费率；
+净收益 = 毛收益 − 双腿来回手续费（吃资金费的一方通常付方，正费率下做空收费）。
+判断标准：持有期间累计资金费必须盖过手续费，年化才为正。正费率环境里年化 ≥20% 的机会在本站
+<a href="/" style="color:#58a6ff">费率总排行</a>实时刷新（≥20% 自动标记），历史机会见
+<a href="/history/index.html" style="color:#58a6ff">费率历史中心</a>。注意：极端行情两腿滑点可能吞噬全部收益，仓位管理优于收益最大化。</div>
+<div style="margin-top:16px;font-size:13px;color:#484f58">相关工具：<a href="/tools/funding-converter.html" style="color:#58a6ff">费率换算器</a> · <a href="/tools/liquidation-calc.html" style="color:#58a6ff">爆仓价计算器</a> · <a href="/tools/funding-arb-calc.html" style="color:#58a6ff">套利收益计算器</a> ｜ <a href="/" style="color:#58a6ff">实时四所费率看板</a></div>
+<p style="color:#484f58;font-size:12px;margin-top:14px">公开数据与公开公式，仅供参考，不构成投资建议。</p>
+</div></body></html>

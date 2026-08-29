@@ -1,0 +1,44 @@
+<!doctype html><html lang="zh-CN"><head><meta charset="utf-8">
+<title>合约爆仓价计算器 - 多空杠杆爆仓价在线计算 | AutoFarm</title>
+<meta name="description" content="输入开仓价、杠杆与方向，快速估算多单/空单爆仓价与爆仓距离，支持自定义维持保证金率。">
+<meta name="viewport" content="width=device-width,initial-scale=1"><meta name="robots" content="index,follow">
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"WebApplication","name":"合约爆仓价计算器","applicationCategory":"FinanceApplication","operatingSystem":"Web","description":"永续合约多空杠杆爆仓价与爆仓距离在线估算工具","offers":{"@type":"Offer","price":"0","priceCurrency":"CNY"}}</script></head>
+<body style="margin:0;background:#010409;color:#e6edf3;font-family:'Microsoft YaHei',sans-serif">
+<div style="max-width:920px;margin:0 auto;padding:32px 16px">
+<div style="font-size:13px;margin-bottom:14px"><a href="/tools/index.html" style="color:#58a6ff">实用工具</a> · <a href="/" style="color:#58a6ff">费率总排行</a> · <a href="/history/index.html" style="color:#58a6ff">费率历史中心</a></div>
+<h1 style="font-size:25px">合约爆仓价计算器 <span style="font-size:13px;color:#484f58">逐仓估算 · 多空通用</span></h1>
+<p style="color:#8b949e;line-height:1.7">开仓前先算好离爆仓还有多远</p>
+
+<div style="display:grid;grid-template-columns:1fr 1fr;gap:0 18px">
+  <div><p style="font-size:13px;color:#8b949e;margin:10px 0 4px">开仓价格（USDT）</p><input style="width:100%;box-sizing:border-box;background:#0d1117;border:1px solid #30363d;border-radius:6px;color:#e6edf3;padding:8px 10px;font-size:15px" oninput="calc()" onkeyup="calc()" id="entry" type="number" step="any" value="50000"></div>
+  <div><p style="font-size:13px;color:#8b949e;margin:10px 0 4px">杠杆倍数</p><input style="width:100%;box-sizing:border-box;background:#0d1117;border:1px solid #30363d;border-radius:6px;color:#e6edf3;padding:8px 10px;font-size:15px" oninput="calc()" onkeyup="calc()" id="lev" type="number" step="any" value="10"></div>
+  <div><p style="font-size:13px;color:#8b949e;margin:10px 0 4px">方向</p><select style="width:100%;background:#0d1117;border:1px solid #30363d;border-radius:6px;color:#e6edf3;padding:8px 6px;font-size:15px" id="side"><option value="long">做多（Long）</option><option value="short">做空（Short）</option></select></div>
+  <div><p style="font-size:13px;color:#8b949e;margin:10px 0 4px">维持保证金率（%，默认 0.5）</p><input style="width:100%;box-sizing:border-box;background:#0d1117;border:1px solid #30363d;border-radius:6px;color:#e6edf3;padding:8px 10px;font-size:15px" oninput="calc()" onkeyup="calc()" id="mmr" type="number" step="any" value="0.5"></div>
+</div>
+<button style="background:#238636;border:none;border-radius:6px;color:#fff;padding:9px 22px;font-size:15px;cursor:pointer" onclick="calc()" style="margin-top:16px">计算</button>
+<div style="margin-top:14px;background:#0d1117;border:1px solid #30363d;border-radius:8px;padding:14px 16px;font-size:15px;line-height:2" id="out">填写上方数值自动计算</div>
+<script>
+function calc(){
+  var e=parseFloat(document.getElementById('entry').value);
+  var l=parseFloat(document.getElementById('lev').value);
+  var s=document.getElementById('side').value;
+  var m=(parseFloat(document.getElementById('mmr').value)||0)/100;
+  if(!(e>0)||!(l>0)){document.getElementById('out').textContent='填写上方数值自动计算';return;}
+  var px,dist;
+  if(s==='long'){ px=e*(1-1/l+m); dist=(1-px/e)*100; }
+  else { px=e*(1+1/l-m); dist=(px/e-1)*100; }
+  document.getElementById('out').innerHTML=
+    '<div><span style="color:#8b949e">预估爆仓价</span>　<b style="font-size:20px;color:#f85149">'+px.toFixed(4)+' USDT</b></div>'
+    +'<div><span style="color:#8b949e">距离爆仓还有</span>　<b style="font-size:17px;color:#e6edf3">'+dist.toFixed(2)+'%</b> 的反向波动</div>'
+    +'<div style="color:#8b949e;font-size:13px">保证金 '+ (100/l).toFixed(2) +'%，维持保证金率 '+ (m*100).toFixed(2) +'%（逐仓估算，未含手续费与资金费）</div>';
+}
+calc();
+</script>
+<div style="margin-top:28px;padding-top:16px;border-top:1px solid #21262d;color:#8b949e;font-size:12.5px;line-height:1.8">
+<b>爆仓价估算公式</b>（逐仓近似）：做多爆仓价 = 开仓价 × (1 − 1/杠杆 + 维持保证金率)；做空相反。
+杠杆越高，爆仓距离越近：10 倍杠杆只能容忍约 9.5% 的反向波动，25 倍约 3.5%，100 倍不到 0.5%。
+资金费率会持续增减保证金，实际爆仓价会随持仓时间漂移——收资金费的一方可 tolerate 更大波动。
+本站<a href="/history/index.html" style="color:#58a6ff">费率历史中心</a>可查各币种年化，配合使用更稳。</div>
+<div style="margin-top:16px;font-size:13px;color:#484f58">相关工具：<a href="/tools/funding-converter.html" style="color:#58a6ff">费率换算器</a> · <a href="/tools/liquidation-calc.html" style="color:#58a6ff">爆仓价计算器</a> · <a href="/tools/funding-arb-calc.html" style="color:#58a6ff">套利收益计算器</a> ｜ <a href="/" style="color:#58a6ff">实时四所费率看板</a></div>
+<p style="color:#484f58;font-size:12px;margin-top:14px">公开数据与公开公式，仅供参考，不构成投资建议。</p>
+</div></body></html>
