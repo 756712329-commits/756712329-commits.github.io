@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+<<<<<<< HEAD
 <html lang="zh-CN"><head><meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <title>美股指标 API · 定价 - 量化情报站</title><meta name="description" content="41 项美股指标 JSON API 定价：免费体验 / 标准版 ¥199 每月 / 专业版 ¥499 每月，每交易日自动更新。">
@@ -297,3 +298,132 @@ footer .base{border-top:1px solid var(--line);padding:18px 0 26px;display:flex;j
     <span class="num">更新时间 2026-08-28 07:00</span>
   </div>
 </div></footer></body></html>
+=======
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>美股指标 API · 定价</title>
+<style>
+  * { margin:0; padding:0; box-sizing:border-box; }
+  body { font-family:-apple-system,"PingFang SC","Microsoft YaHei",sans-serif;
+    background:radial-gradient(1200px 600px at 20% -10%, #123 0%, #0a1622 55%, #060d16 100%);
+    color:#e8edf3; line-height:1.7; }
+  .wrap { max-width:900px; margin:0 auto; padding:36px 20px 60px; }
+  header { text-align:center; padding:20px 0 8px; }
+  header .tag { display:inline-block; font-size:12px; letter-spacing:2px; color:#8ab4e8;
+    border:1px solid #274b6d; border-radius:20px; padding:4px 14px; margin-bottom:14px; }
+  header h1 { font-size:26px; font-weight:800; letter-spacing:1px;
+    background:linear-gradient(90deg,#ffd27a,#ff9a3c); -webkit-background-clip:text;
+    -webkit-text-fill-color:transparent; }
+  header .sub { color:#7f95ad; font-size:13px; margin-top:6px; }
+  .cards { display:grid; grid-template-columns:repeat(auto-fit,minmax(240px,1fr)); gap:16px; margin-top:28px; }
+  .card { border:1px solid #23455f; border-radius:16px; padding:22px; background:#0d1b2a;
+    display:flex; flex-direction:column; }
+  .card.hot { border:1px solid #ff9a3c88; background:linear-gradient(180deg,#1a2c1f,#0d1b12); }
+  .card .name { font-size:16px; font-weight:800; color:#ffd27a; }
+  .card .price { font-size:32px; font-weight:900; margin:12px 0 4px; color:#fff; }
+  .card .price small { font-size:14px; color:#7f95ad; font-weight:400; }
+  .card .desc { font-size:12.5px; color:#9db2c7; min-height:40px; }
+  .card ul { list-style:none; margin:14px 0; }
+  .card li { font-size:13px; color:#c2d0df; padding:5px 0; border-bottom:1px solid #16283a; }
+  .card li:last-child { border-bottom:none; }
+  .card .btn { display:block; text-align:center; padding:11px; border-radius:22px; font-weight:800;
+    font-size:14px; text-decoration:none; margin-top:auto; }
+  .card .btn.free { color:#8ab4e8; border:1px solid #274b6d; }
+  .card .btn.pay { color:#0a1622; background:linear-gradient(90deg,#ffd27a,#ff9a3c); }
+  h2 { margin:38px 0 12px; font-size:18px; color:#ffd27a; letter-spacing:1px; }
+  .flow { background:#0d1b2a; border:1px solid #1e3a52; border-radius:12px; padding:18px 22px; }
+  .flow ol { margin-left:18px; }
+  .flow li { font-size:13.5px; color:#c2d0df; padding:5px 0; }
+  .flow code { background:#12283d; color:#8ab4e8; padding:1px 6px; border-radius:4px; font-size:12.5px; }
+  table { width:100%; border-collapse:collapse; font-size:13px; margin-top:12px; }
+  th { color:#7f95ad; text-align:left; padding:8px 10px; border-bottom:1px solid #23455f; }
+  td { padding:9px 10px; border-bottom:1px solid #16283a; color:#c2d0df; }
+  .cta { margin-top:38px; border:1px solid #ff9a3c55; border-radius:16px; padding:26px; text-align:center;
+    background:linear-gradient(180deg,#1a2c1f,#0d1b12); }
+  .cta .btn { display:inline-block; padding:12px 30px; border-radius:24px; font-weight:800; color:#0a1622;
+    background:linear-gradient(90deg,#ffd27a,#ff9a3c); text-decoration:none; font-size:15px; margin-top:10px; }
+  footer { margin-top:40px; text-align:center; font-size:11px; color:#5d738a; }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <span class="tag">美股指标 API · 41 项指标 · 每交易日自动更新</span>
+    <h1>美股指标 API · 定价</h1>
+    <div class="sub">覆盖估值 / 情绪 / 趋势 / 利率信用 / 跨资产，JSON 接口，一键接入你的策略</div>
+  </header>
+
+  <div class="cards">
+    <div class="card">
+      <div class="name">免费体验</div>
+      <div class="price">¥0<small> / 永久</small></div>
+      <div class="desc">评估指标价值，本地联调</div>
+      <ul>
+        <li>demo key 直接可用</li>
+        <li>10 次 / 分钟限流</li>
+        <li>全部端点可访问</li>
+        <li>含 41 项指标与历史信号</li>
+      </ul>
+      <a class="btn free" href="#free">立即体验</a>
+    </div>
+    <div class="card hot">
+      <div class="name">标准版</div>
+      <div class="price">¥199<small> / 月</small></div>
+      <div class="desc">个人量化策略 / 自媒体取数</div>
+      <ul>
+        <li>独立 API Key，不限流</li>
+        <li>全部端点 + 快照</li>
+        <li>30 天历史信号</li>
+        <li>每交易日自动更新</li>
+      </ul>
+      <a class="btn pay" href="mailto:756712329@qq.com?subject=API%E6%A0%87%E5%87%86%E7%89%88%E5%AE%9A%E8%B4%AD">联系开通</a>
+    </div>
+    <div class="card">
+      <div class="name">专业版</div>
+      <div class="price">¥499<small> / 月</small></div>
+      <div class="desc">机构 / 高频取数 / 定制</div>
+      <ul>
+        <li>不限流 + 优先响应</li>
+        <li>全年历史序列</li>
+        <li>定制指标 / 私有部署</li>
+        <li>技术支持</li>
+      </ul>
+      <a class="btn pay" href="mailto:756712329@qq.com?subject=API%E4%B8%93%E4%B8%9A%E7%89%88%E5%AE%9A%E8%B4%AD">洽谈定制</a>
+    </div>
+  </div>
+
+  <h2>接入流程</h2>
+  <div class="flow">
+    <ol>
+      <li>先用 <code>demo</code> key 免费体验：<code>GET /v1/snapshot</code>，请求头 <code>X-API-Key: demo</code></li>
+      <li>确定套餐后，邮件联系我们（主题注明套餐名）</li>
+      <li>我们开通专属 Key 并回复你的付费方式（微信 / 支付宝）</li>
+      <li>付款到账即生效，Key 立即可用</li>
+    </ol>
+  </div>
+
+  <h2>数据内容</h2>
+  <table>
+    <tr><th>类别</th><th>示例指标</th><th>说明</th></tr>
+    <tr><td>估值</td><td>TTM 市盈率 / Shiller CAPE / PE 十年分位</td><td>贵贱判断</td></tr>
+    <tr><td>情绪</td><td>CNN 恐贪指数 / VIX / 看跌看涨比</td><td>极端情绪识别</td></tr>
+    <tr><td>趋势</td><td>距 200 日线 / 距 52 周高点 / RSI(14)</td><td>趋势与超买超卖</td></tr>
+    <tr><td>利率信用</td><td>10Y-2Y 利差 / HYG-SPX 比</td><td>流动性环境</td></tr>
+    <tr><td>跨资产</td><td>铜金比 / 美元指数</td><td>增长与避险</td></tr>
+  </table>
+
+  <div class="cta" id="free">
+    <h2>免费体验 · demo key 立即可用</h2>
+    <p>请求头 <code>X-API-Key: demo</code>，无需注册，先看数据质量再决定。</p>
+    <a class="btn" href="mailto:756712329@qq.com?subject=API%E5%90%88%E4%BD%9C%E5%92%A8%E8%AF%A2">API 合作咨询</a>
+  </div>
+
+  <footer>
+    数据为投研参考，不构成投资建议，不保证收益。市场有风险，入市需谨慎。<br><a href="/masters/services.html" style="color:#8ab4e8">需要定制数据管道/监控/报告？看技术服务 →</a>
+  </footer>
+</div>
+</body>
+</html>
+>>>>>>> 44f2e48 (auto-publish 2026-08-29 22:35: 3 file(s))
