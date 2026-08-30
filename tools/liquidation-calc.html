@@ -2,6 +2,7 @@
 <title>合约爆仓价计算器 - 多空杠杆爆仓价在线计算 | AutoFarm</title>
 <meta name="description" content="输入开仓价、杠杆与方向，快速估算多单/空单爆仓价与爆仓距离，支持自定义维持保证金率。">
 <meta name="viewport" content="width=device-width,initial-scale=1"><meta name="robots" content="index,follow">
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"WebApplication","name":"合约爆仓价计算器","applicationCategory":"FinanceApplication","operatingSystem":"Web","description":"永续合约多空杠杆爆仓价与爆仓距离在线估算工具","offers":{"@type":"Offer","price":"0","priceCurrency":"CNY"}}</script>
 <style>
 *{margin:0;padding:0;box-sizing:border-box}
 :root{
@@ -88,6 +89,21 @@ a:hover{text-decoration:none}
   .content table::-webkit-scrollbar-thumb{background:var(--line-strong);border-radius:2px}}
 .scroller{overflow-x:auto;-webkit-overflow-scrolling:touch}
 .scroller svg{min-width:820px;height:auto;display:block}
+/* ---------- 移动端卡片视图（deals 等） ---------- */
+.m-cards{display:none}
+.m-card{background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:14px 16px;margin-top:12px}
+.m-card .t{font-weight:800;font-size:14.5px;line-height:1.5}
+.m-card .meta{color:var(--ink-3);font-size:12px;margin-top:2px}
+.m-card .prow{display:flex;align-items:baseline;gap:10px;margin-top:8px}
+.m-card .orig{color:var(--ink-3);text-decoration:line-through;font-size:13px}
+.m-card .now{font-size:19px;font-weight:800}
+.m-card .off{color:var(--up);font-weight:800;font-size:14px;margin-left:auto}
+.m-card .cn{font-size:12.5px;color:var(--gold-1);margin-top:4px}
+.m-card .buy{display:inline-block;margin-top:8px;font-size:13px;font-weight:700}
+@media(max-width:680px){
+  .dtable-d{display:none}
+  .m-cards{display:block}
+}
 /* ---------- cta band ---------- */
 .band{border:1px solid var(--line);border-radius:16px;padding:30px 32px;text-align:center;
   background:radial-gradient(520px 180px at 50% 0%,rgba(91,157,255,.10),transparent 70%),var(--surface);margin-top:30px}
