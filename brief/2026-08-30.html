@@ -31,6 +31,17 @@ a:hover{text-decoration:none}
 .nav a.on{color:var(--ink);font-weight:700;box-shadow:inset 0 -2px 0 var(--gold-2);padding-bottom:2px}
 .topbar .cta{margin-left:auto;flex-shrink:0}
 .menutgl{display:none}
+.burger{display:none;margin-left:auto;color:var(--ink);cursor:pointer}
+@media(max-width:860px){
+  .burger{display:flex;align-items:center;justify-content:center;width:38px;height:38px;border:1px solid var(--line);border-radius:9px}
+  .topbar .cta{margin-left:0}
+  .menutgl:checked ~ .wrap .nav{display:flex}
+  .nav{display:none;position:absolute;top:60px;left:0;right:0;flex-direction:column;gap:0;
+    background:var(--bg);border-bottom:1px solid var(--line);padding:8px 24px 14px}
+  .nav a{padding:11px 0;font-size:15px;border-top:1px solid var(--line)}
+  .nav a:first-child{border-top:none}
+  .nav a.on{box-shadow:none}
+}
 /* ---------- buttons ---------- */
 .btn{display:inline-flex;align-items:center;gap:8px;border-radius:10px;padding:10px 20px;
   font-size:14px;font-weight:700;letter-spacing:.02em;transition:transform .15s ease,filter .15s ease}
@@ -55,12 +66,28 @@ a:hover{text-decoration:none}
 .content th{background:rgba(21,34,58,.62)!important;color:var(--ink-3)!important;
   padding:11px 14px!important;border-bottom:1px solid var(--line-strong)!important;
   font-size:12px;letter-spacing:.05em;font-weight:700}
-.content td{padding:10px 14px!important;border-bottom:1px solid var(--line)!important;color:var(--ink-2)!important;background:transparent!important}
+.content td{padding:10px 14px!important;border-bottom:1px solid var(--line)!important;color:var(--ink-2);background:transparent!important}
+.content h2,.content h3{color:var(--ink)!important}
+.content th{white-space:nowrap}
 .content tr:last-child td{border-bottom:none!important}
 .content tr:hover td{background:rgba(91,157,255,.045)!important}
 .content .cardbox{background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:22px 24px;margin-top:26px}
 .content .cardbox h3{font-size:15.5px;margin-bottom:8px}
 .content .cardbox p{font-size:13.5px;color:var(--ink-2);margin:6px 0}
+
+/* ---------- sparks / tool grid / table scroll ---------- */
+.sparks{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:12px;margin-top:20px}
+.spark{background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:14px 16px;font-size:13px}
+.spark b{font-size:14px}
+.spark svg{display:block;margin-top:6px}
+.spark .cap{color:var(--ink-3);font-size:11px;margin-top:4px}
+.tgrid{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:8px}
+@media(max-width:680px){.tgrid{grid-template-columns:1fr}
+  .content table{display:block;overflow-x:auto;min-width:600px;-webkit-overflow-scrolling:touch}
+  .content table::-webkit-scrollbar{height:4px}
+  .content table::-webkit-scrollbar-thumb{background:var(--line-strong);border-radius:2px}}
+.scroller{overflow-x:auto;-webkit-overflow-scrolling:touch}
+.scroller svg{min-width:820px;height:auto;display:block}
 /* ---------- cta band ---------- */
 .band{border:1px solid var(--line);border-radius:16px;padding:30px 32px;text-align:center;
   background:radial-gradient(520px 180px at 50% 0%,rgba(91,157,255,.10),transparent 70%),var(--surface);margin-top:30px}
@@ -79,10 +106,11 @@ footer .in a{color:var(--ink-2)}
   .content .cardbox{padding:18px}
 }
 </style></head>
-<body><div class="topbar"><div class="wrap in">
+<body><div class="topbar"><input type="checkbox" id="mt" class="menutgl"><div class="wrap in">
   <a class="brand" href="/"><span class="dot"></span>量化情报站</a>
   <nav class="nav"><a href="/">费率看板</a><a href="/history/">历史中心</a><a href="/tools/">工具箱</a><a href="/deals.html">游戏折扣</a><a href="/ai/">AI 榜</a><a href="/brief/latest.html" class="on">情报日报</a><a href="/about.html">关于</a></nav>
   <a class="btn gold sm cta" href="https://756712329-commits.github.io/masters/" target="_blank" rel="noopener">API 与服务 ↗</a>
+  <label class="burger" for="mt"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 7h16M4 12h16M4 17h16"/></svg></label>
 </div></div>
 <div class="wrap"><div class="content">
 
@@ -90,48 +118,28 @@ footer .in a{color:var(--ink-2)}
 <p class="meta num">2026-08-30 · 自动生成</p>
 <p class="lede">由数据引擎自动抓取 HackerNews / 一线科技媒体 / GitHub 周趋势并经 AI 编辑加工——帮你省掉每天刷英文圈的 2 小时。</p></div>
 <div style="background:#161b22;border-radius:12px;padding:18px 20px;margin-bottom:14px;border-left:3px solid #58a6ff">
-<div style="font-size:17px;font-weight:700;margin-bottom:8px">1. GLM-5.3 开放权重发布</div>
-<div style="color:#8b949e;font-size:12px;margin-bottom:10px">来源 HN(390分) · <a href="https://huggingface.co/zai-org/GLM-5.3" style="color:#58a6ff">原文</a></div>
-<div style="margin-bottom:6px"><span style="color:#79c0ff">▸ 发生了什么</span><br><span style="line-height:1.7">智谱 AI 释出 GLM-5.3 基座模型权重，Hugging Face 可直接下载，参数量未公开但推理速度、中文基准均对标 GPT-4o 级别。</span></div>
-<div style="margin-bottom:6px"><span style="color:#d2a8ff">▸ 为什么重要</span><br><span style="line-height:1.7">首个国产顶流模型真开放权重，打破闭源垄断，开发者可自建、微调、商用零门槛，直接降低大模型落地成本。</span></div>
-<div><span style="color:#7ee787">▸ 你可以怎么做</span><br><span style="line-height:1.7">立即拉取权重跑基准，对比自家业务场景；若达标，替换闭源 API 省 80% 算力费；关注后续量化版、MoE 变体。</span></div></div><div style="background:#161b22;border-radius:12px;padding:18px 20px;margin-bottom:14px;border-left:3px solid #58a6ff">
-<div style="font-size:17px;font-weight:700;margin-bottom:8px">2. Debian 通过生成式 AI 负责任使用决议</div>
-<div style="color:#8b949e;font-size:12px;margin-bottom:10px">来源 HN(192分) · <a href="https://lwn.net/Articles/1091231/" style="color:#58a6ff">原文</a></div>
-<div style="margin-bottom:6px"><span style="color:#79c0ff">▸ 发生了什么</span><br><span style="line-height:1.7">Debian 社区投票通过决议，允许在包维护、文档、翻译等非核心代码环节引入 LLM，但需人工审核、标注来源、禁用训练数据污染。</span></div>
-<div style="margin-bottom:6px"><span style="color:#d2a8ff">▸ 为什么重要</span><br><span style="line-height:1.7">Linux 发行版上游放行 AI 辅助贡献，信号极强：开源工业标准开始接纳 AI 产出，后续内核、系统工具链将加速 AI 化。</span></div>
-<div><span style="color:#7ee787">▸ 你可以怎么做</span><br><span style="line-height:1.7">若维护开源包，立即建立 AI 贡献审核 SOP；投资合规工具链（来源水印、License 扫描），抢占合规外包红利。</span></div></div><div style="background:#161b22;border-radius:12px;padding:18px 20px;margin-bottom:14px;border-left:3px solid #58a6ff">
-<div style="font-size:17px;font-weight:700;margin-bottom:8px">3. 美法院裁定五角大楼拉黑 Anthropic 违法</div>
-<div style="color:#8b949e;font-size:12px;margin-bottom:10px">来源 HN(192分) · <a href="https://www.reuters.com/legal/government/us-judge-blocks-pentagons-anthropic-blacklisting-2026-08-28/" style="color:#58a6ff">原文</a></div>
-<div style="margin-bottom:6px"><span style="color:#79c0ff">▸ 发生了什么</span><br><span style="line-height:1.7">联邦法官叫停国防部将 Anthropic 列入“中国军企清单”并禁止合同，认定程序违宪、证据不足，Anthropic 可恢复竞标军方订单。</span></div>
-<div style="margin-bottom:6px"><span style="color:#d2a8ff">▸ 为什么重要</span><br><span style="line-height:1.7">军方采购对 AI 厂商合规背书含金量极高；判例确立“算法公司≠军企”界限，利好全美 AI 初创拿政府大单、估值重估。</span></div>
-<div><span style="color:#7ee787">▸ 你可以怎么做</span><br><span style="line-height:1.7">关注 Anthropic 后续军方合同进展；若做 ToG 业务，立即自查出口管制、实体清单风险，准备合规白皮书抢单。</span></div></div><div style="background:#161b22;border-radius:12px;padding:18px 20px;margin-bottom:14px;border-left:3px solid #58a6ff">
-<div style="font-size:17px;font-weight:700;margin-bottom:8px">4. Google App 生态“能用但难用”实锤</div>
-<div style="color:#8b949e;font-size:12px;margin-bottom:10px">来源 HN(166分) · <a href="https://shkspr.mobi/blog/2026/08/it-works-better-in-the-app/" style="color:#58a6ff">原文</a></div>
-<div style="margin-bottom:6px"><span style="color:#79c0ff">▸ 发生了什么</span><br><span style="line-height:1.7">博主实测 Google 系列 App（日历、地图、钱包等）在自家 Pixel 最新 Android 上仍存断链、同步失败、深色模式崩坏等低级 Bug。</span></div>
-<div style="margin-bottom:6px"><span style="color:#d2a8ff">▸ 为什么重要</span><br><span style="line-height:1.7">自家软硬结合尚且交付烂尾，暴露大厂“只造新不修旧”技术债；第三方开发者若依赖 Google 服务，风险极高。</span></div>
-<div><span style="color:#7ee787">▸ 你可以怎么做</span><br><span style="line-height:1.7">自建关键路径（日历订阅、地图离线包、支付回调）做兜底；评估去 Google 化方案，把用户数据握在自己手里。</span></div></div><div style="background:#161b22;border-radius:12px;padding:18px 20px;margin-bottom:14px;border-left:3px solid #58a6ff">
-<div style="font-size:17px;font-weight:700;margin-bottom:8px">5. Luanti被AI版权工具误杀下架Google Play</div>
-<div style="color:#8b949e;font-size:12px;margin-bottom:10px">来源 HN(158分) · <a href="https://blog.luanti.org/2026/08/27/luanti-dmca-tracer-ai/" style="color:#58a6ff">原文</a></div>
-<div style="margin-bottom:6px"><span style="color:#79c0ff">▸ 发生了什么</span><br><span style="line-height:1.7">开源游戏引擎Luanti遭Tracer.AI发DMCA通知下架，官方称指控毫无依据已提交反通知，非首次遇此类AI滥用版权打击。</span></div>
-<div style="margin-bottom:6px"><span style="color:#d2a8ff">▸ 为什么重要</span><br><span style="line-height:1.7">AI版权爬虫正成开源应用分发死穴，误杀成本极低、申诉周期长，直接切断变现与用户获取渠道。</span></div>
-<div><span style="color:#7ee787">▸ 你可以怎么做</span><br><span style="line-height:1.7">开源项目必配反DMCA自动化监控；分发多渠道化（F-Droid/官网/第三方商店）；保留证据链随时提起反诉索赔。</span></div></div><div style="background:#161b22;border-radius:12px;padding:18px 20px;margin-bottom:14px;border-left:3px solid #58a6ff">
-<div style="font-size:17px;font-weight:700;margin-bottom:8px">6. 激进托管商Autistici域名被美以反恐名义查封</div>
-<div style="color:#8b949e;font-size:12px;margin-bottom:10px">来源 HN(116分) · <a href="https://mastodon.bida.im/@cavallette/117172989300228024" style="color:#58a6ff">原文</a></div>
-<div style="margin-bottom:6px"><span style="color:#79c0ff">▸ 发生了什么</span><br><span style="line-height:1.7">意大利活动家托管集体Autistici/Inventati主域名autistici.org因美方反恐定性被注册局强制下线，服务中断。</span></div>
-<div style="margin-bottom:6px"><span style="color:#d2a8ff">▸ 为什么重要</span><br><span style="line-height:1.7">政治审查可绕过司法直达域名基础设施，任何依赖单一顶级域的抗审查服务皆为单点故障。</span></div>
-<div><span style="color:#7ee787">▸ 你可以怎么做</span><br><span style="line-height:1.7">关键服务同时部署.onion/.i2p/多TLD镜像；域名注册选非美管辖注册商；建立离线联系渠道预案。</span></div></div><div style="background:#161b22;border-radius:12px;padding:18px 20px;margin-bottom:14px;border-left:3px solid #58a6ff">
-<div style="font-size:17px;font-weight:700;margin-bottom:8px">7. 冰岛公投重启欧盟入盟谈判</div>
-<div style="color:#8b949e;font-size:12px;margin-bottom:10px">来源 HN(104分) · <a href="https://www.bbc.com/news/articles/cn45vdxyvvlo" style="color:#58a6ff">原文</a></div>
-<div style="margin-bottom:6px"><span style="color:#79c0ff">▸ 发生了什么</span><br><span style="line-height:1.7">冰岛举行全民公投决定是否重启加入欧盟谈判，若通过将恢复2013年冻结的入盟进程。</span></div>
-<div style="margin-bottom:6px"><span style="color:#d2a8ff">▸ 为什么重要</span><br><span style="line-height:1.7">北极战略节点入盟将重塑北大西洋地缘与单一市场准入，利好数据主权、绿色能源与金融科技跨境合规。</span></div>
-<div><span style="color:#7ee787">▸ 你可以怎么做</span><br><span style="line-height:1.7">关注冰岛数据本地化法变动；布局北欧合规云/金融牌照；评估北极航道/绿电供应链红利。</span></div></div><div style="background:#161b22;border-radius:12px;padding:18px 20px;margin-bottom:14px;border-left:3px solid #58a6ff">
-<div style="font-size:17px;font-weight:700;margin-bottom:8px">8. GrapheneOS证实Pixel 11取消硬件内存标记MTE</div>
-<div style="color:#8b949e;font-size:12px;margin-bottom:10px">来源 HN(104分) · <a href="https://bsky.app/profile/grapheneos.org/post/3mua32q4ds22e" style="color:#58a6ff">原文</a></div>
-<div style="margin-bottom:6px"><span style="color:#79c0ff">▸ 发生了什么</span><br><span style="line-height:1.7">GrapheneOS团队确认Pixel 11系列移除MTE硬件支持，导致内存安全缓解能力大幅倒退。</span></div>
-<div style="margin-bottom:6px"><span style="color:#d2a8ff">▸ 为什么重要</span><br><span style="line-height:1.7">MTE是防零日利用核心防线，厂商为成本/良率牺牲安全特性，直接降高威胁模型用户防护等级。</span></div>
-<div><span style="color:#7ee787">▸ 你可以怎么做</span><br><span style="line-height:1.7">采购端坚持要求MTE/CHERI硬件认证；自建设备采购白名单；推动供应链合同写入安全特性不回退条款。</span></div></div>
+<div style="font-size:17px;font-weight:700;margin-bottom:8px">1. Win98磁盘整理模拟器刷屏HN</div>
+<div style="color:#8b949e;font-size:12px;margin-bottom:10px">来源 HN(62分) · <a href="https://defrag98.com" style="color:#58a6ff">原文</a></div>
+<div style="margin-bottom:6px"><span style="color:#79c0ff">▸ 发生了什么</span><br><span style="line-height:1.7">开发者Dennis Morello用浏览器复刻Win98磁盘碎片整理界面，附带真实硬盘噪音，支持4个虚拟盘符，无需安装离线可用</span></div>
+<div style="margin-bottom:6px"><span style="color:#d2a8ff">▸ 为什么重要</span><br><span style="line-height:1.7">纯情怀向工具却登HN热榜，证明复古UI+ASMR音效在短视频/解压内容赛道仍有爆款潜质，零成本获取流量</span></div>
+<div><span style="color:#7ee787">▸ 你可以怎么做</span><br><span style="line-height:1.7">做小红书/B站&quot;解压向&quot;短视频：录10分钟整理动画配白噪音，挂解压、助眠标签引流；或模仿复刻Win95资源管理器、QQ2000等老界面做系列号</span></div></div><div style="background:#161b22;border-radius:12px;padding:18px 20px;margin-bottom:14px;border-left:3px solid #58a6ff">
+<div style="font-size:17px;font-weight:700;margin-bottom:8px">2. 火人节创始人大骂火人节已变质</div>
+<div style="color:#8b949e;font-size:12px;margin-bottom:10px">来源 HN(45分) · <a href="https://sfstandard.com/2026/08/29/burning-man-lost-its-soul-founder/" style="color:#58a6ff">原文</a></div>
+<div style="margin-bottom:6px"><span style="color:#79c0ff">▸ 发生了什么</span><br><span style="line-height:1.7">联合创始人John Law公开撰文：火人节从平等协作的实验社群，变成有钱人的商业化度假村，灵魂已死</span></div>
+<div style="margin-bottom:6px"><span style="color:#d2a8ff">▸ 为什么重要</span><br><span style="line-height:1.7"></span></div>
+<div><span style="color:#7ee787">▸ 你可以怎么做</span><br><span style="line-height:1.7"></span></div></div><div style="background:#161b22;border-radius:12px;padding:18px 20px;margin-bottom:14px;border-left:3px solid #58a6ff">
+<div style="font-size:17px;font-weight:700;margin-bottom:8px">3. 腾讯发布Hy4预览版超大模型</div>
+<div style="color:#8b949e;font-size:12px;margin-bottom:10px">来源 SimonWillison-AI · <a href="https://simonwillison.net/2026/Aug/29/hy4/" style="color:#58a6ff">原文</a></div>
+<div style="margin-bottom:6px"><span style="color:#79c0ff">▸ 发生了什么</span><br><span style="line-height:1.7">腾讯开源新模型Hy4 Preview：总参770B、激活49B、上下文100万token、权重1.56TB挂Hugging Face，比7月Hy3翻了近一倍</span></div>
+<div style="margin-bottom:6px"><span style="color:#d2a8ff">▸ 为什么重要</span><br><span style="line-height:1.7">中国大模型在MoE架构+超长上下文赛道继续碾压，1M窗口直接对标Gemini，国内API价格战即将再升级</span></div>
+<div><span style="color:#7ee787">▸ 你可以怎么做</span><br><span style="line-height:1.7">用Hy4跑长文档摘要/整书翻译/代码库分析任务对比GPT-5成本；关注腾讯云API定价，准备做长上下文SaaS工具</span></div></div><div style="background:#161b22;border-radius:12px;padding:18px 20px;margin-bottom:14px;border-left:3px solid #58a6ff">
+<div style="font-size:17px;font-weight:700;margin-bottom:8px">4. 南希·格蕾丝·罗曼太空望远镜周日起航</div>
+<div style="color:#8b949e;font-size:12px;margin-bottom:10px">来源 HN(56分) · <a href="https://www.npr.org/2026/08/28/nx-s1-5905370/nasa-nancy-grace-roman-space-telescope-dark-energy-supernova" style="color:#58a6ff">原文</a></div>
+<div style="margin-bottom:6px"><span style="color:#79c0ff">▸ 发生了什么</span><br><span style="line-height:1.7">深空探测进入&quot;广域巡天&quot;时代，配套的天文数据分析、公民科学平台、教育内容将成新一轮科技创业热点</span></div>
+<div style="margin-bottom:6px"><span style="color:#d2a8ff">▸ 为什么重要</span><br><span style="line-height:1.7"></span></div>
+<div><span style="color:#7ee787">▸ 你可以怎么做</span><br><span style="line-height:1.7">蹲守NASA直播做二创科普视频；天文数据可视化、业余天文SaaS工具有小众盈利空间</span></div></div>
 
-<div class="cardbox"><h3>同源联动 · 资金费率雷达</h3><p>过去 24 小时跨所正费率机会：</p><ul><li><b>牛来</b> @ GATE <span style='color:#3fb950'>年化 +1111%</span> <span style='color:#484f58'>(雷达持续跟踪中)</span></li><li><b>SIREN</b> @ GATE <span style='color:#3fb950'>年化 +784%</span> <span style='color:#484f58'>(雷达持续跟踪中)</span></li><li><b>INX</b> @ GATE <span style='color:#3fb950'>年化 +657%</span> <span style='color:#484f58'>(雷达持续跟踪中)</span></li></ul>
+<div class="cardbox"><h3>同源联动 · 资金费率雷达</h3><p>过去 24 小时跨所正费率机会：</p><ul><li><b>ASTEROID</b> @ GATE <span style='color:#3fb950'>年化 +1371%</span> <span style='color:#484f58'>(雷达持续跟踪中)</span></li><li><b>牛来</b> @ GATE <span style='color:#3fb950'>年化 +1111%</span> <span style='color:#484f58'>(雷达持续跟踪中)</span></li><li><b>SIREN</b> @ GATE <span style='color:#3fb950'>年化 +784%</span> <span style='color:#484f58'>(雷达持续跟踪中)</span></li></ul>
 <p><a href="https://756712329-commits.github.io/">实时看板 →</a></p></div>
 <div class="band"><div class="t">每日情报免费送达</div><div class="d">海外圈中文日报 + 费率尖峰速报，随时可退订</div><div class="acts"><a class="btn gold" href="https://t.me/autofarm_rate" target="_blank" rel="noopener">立即加入 →</a></div></div>
 <p style="font-size:11px;color:var(--ink-3);margin-top:18px">自动生成 · 内容为公开信息整理，不构成投资建议</p>
