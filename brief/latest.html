@@ -133,46 +133,46 @@ footer .in a{color:var(--ink-2)}
 <p class="meta num">2026-08-30 · 自动生成</p>
 <p class="lede">由数据引擎自动抓取 HackerNews / 一线科技媒体 / GitHub 周趋势并经 AI 编辑加工——帮你省掉每天刷英文圈的 2 小时。</p></div>
 <div style="background:#161b22;border-radius:12px;padding:18px 20px;margin-bottom:14px;border-left:3px solid #58a6ff">
-<div style="font-size:17px;font-weight:700;margin-bottom:8px">1. FreeCORE：TrueNAS CORE 社区延续版</div>
-<div style="color:#8b949e;font-size:12px;margin-bottom:10px">来源 HN(59分) · <a href="https://freecore.org/" style="color:#58a6ff">原文</a></div>
-<div style="margin-bottom:6px"><span style="color:#79c0ff">▸ 发生了什么</span><br><span style="line-height:1.7">iXsystems 停维 TrueNAS CORE 后，社区 fork 13.3 并承诺原地升级到 FreeBSD 15，保留 ZFS、插件、Web UI 全功能。</span></div>
-<div style="margin-bottom:6px"><span style="color:#d2a8ff">▸ 为什么重要</span><br><span style="line-height:1.7">不想迁移到 Linux 版 SCALE 的 NAS 用户有了不重装、不锁厂商的生存路径，省迁移成本。</span></div>
-<div><span style="color:#7ee787">▸ 你可以怎么做</span><br><span style="line-height:1.7">现有 CORE 用户先在测试机跑升级脚本；新装选 FreeCORE ISO；关注 GitHub issue 避坑早期 Bug。</span></div></div><div style="background:#161b22;border-radius:12px;padding:18px 20px;margin-bottom:14px;border-left:3px solid #58a6ff">
-<div style="font-size:17px;font-weight:700;margin-bottom:8px">2. CPython 官方支持 RISC-V</div>
-<div style="color:#8b949e;font-size:12px;margin-bottom:10px">来源 HN(72分) · <a href="https://blog.python.org/2026/08/riscv-now-officially-supported/" style="color:#58a6ff">原文</a></div>
-<div style="margin-bottom:6px"><span style="color:#79c0ff">▸ 发生了什么</span><br><span style="line-height:1.7">Python 3.14 将 RISC-V 列为 Tier 1 平台，CI 全绿，意味着解释器、标准库、pip 生态原生跑 RISC-V 硬件。</span></div>
-<div style="margin-bottom:6px"><span style="color:#d2a8ff">▸ 为什么重要</span><br><span style="line-height:1.7">RISC-V 服务器/边缘设备可直接跑标准 Python，免交叉编译坑，降低 AI 推理、IoT 开发门槛。</span></div>
-<div><span style="color:#7ee787">▸ 你可以怎么做</span><br><span style="line-height:1.7">拿 RISC-V 开发板跑 `python -m test` 验证；给常用包提 PR 适配；新项目评估 RISC-V 云实例性价比。</span></div></div><div style="background:#161b22;border-radius:12px;padding:18px 20px;margin-bottom:14px;border-left:3px solid #58a6ff">
-<div style="font-size:17px;font-weight:700;margin-bottom:8px">3. 修复损坏 Zip 实战指南</div>
-<div style="color:#8b949e;font-size:12px;margin-bottom:10px">来源 HN(45分) · <a href="https://www.construct.net/en/blogs/ashleys-blog-2/recovering-corrupt-zip-files-1895" style="color:#58a6ff">原文</a></div>
-<div style="margin-bottom:6px"><span style="color:#79c0ff">▸ 发生了什么</span><br><span style="line-height:1.7">Construct 博客详解 Zip 结构，手把手用 `zip -FF`、`7z`、Python `zipfile` 恢复截断/CRC 错误包，附自动化脚本。</span></div>
-<div style="margin-bottom:6px"><span style="color:#d2a8ff">▸ 为什么重要</span><br><span style="line-height:1.7">备份、传输、CI 产物常遭网络抖动或磁盘故障导致 Zip 损坏，会恢复能救单文件甚至整个构建包。</span></div>
-<div><span style="color:#7ee787">▸ 你可以怎么做</span><br><span style="line-height:1.7">收藏 `zip -FF broken.zip --out fixed.zip` 一键命令；脚本加入 CI 后处理；重要数据仍得按 3-2-1 备份别赌工具。</span></div></div><div style="background:#161b22;border-radius:12px;padding:18px 20px;margin-bottom:14px;border-left:3px solid #58a6ff">
-<div style="font-size:17px;font-weight:700;margin-bottom:8px">4. OpenAI 表态：SpaceX 收购 Cursor 后的去留</div>
-<div style="color:#8b949e;font-size:12px;margin-bottom:10px">来源 HN(122分) · <a href="https://openai.com/index/our-decision-on-cursor-following-its-acquisition-by-spacex/" style="color:#58a6ff">原文</a></div>
-<div style="margin-bottom:6px"><span style="color:#79c0ff">▸ 发生了什么</span><br><span style="line-height:1.7">OpenAI 官方博客确认：Cursor 被 SpaceX 收购后，OpenAI 将继续为 Cursor 提供模型 API，不独家、不下架，保持中立供应商角色。</span></div>
-<div style="margin-bottom:6px"><span style="color:#d2a8ff">▸ 为什么重要</span><br><span style="line-height:1.7">AI 编程工具链最大变数是模型供给，表态稳住开发者预期，也暗示 Cursor 可能接入 xAI/Grok 形成双模型策略。</span></div>
-<div><span style="color:#7ee787">▸ 你可以怎么做</span><br><span style="line-height:1.7">Cursor 用户不用恐慌迁移；关注 Cursor 后续定价/模型切换选项；备选 Windsurf、Cline 等多模型客户端防单点锁定。</span></div></div><div style="background:#161b22;border-radius:12px;padding:18px 20px;margin-bottom:14px;border-left:3px solid #58a6ff">
-<div style="font-size:17px;font-weight:700;margin-bottom:8px">5. 冰岛公投重启欧盟入盟谈判</div>
-<div style="color:#8b949e;font-size:12px;margin-bottom:10px">来源 HN(104分) · <a href="https://www.bbc.com/news/articles/cn45vdxyvvlo" style="color:#58a6ff">原文</a></div>
-<div style="margin-bottom:6px"><span style="color:#79c0ff">▸ 发生了什么</span><br><span style="line-height:1.7">冰岛举行全民公投，决定是否恢复加入欧盟谈判。</span></div>
-<div style="margin-bottom:6px"><span style="color:#d2a8ff">▸ 为什么重要</span><br><span style="line-height:1.7">若通过将重塑冰岛经贸版图，影响北极地缘博弈，欧元/克朗汇率或剧烈波动。</span></div>
-<div><span style="color:#7ee787">▸ 你可以怎么做</span><br><span style="line-height:1.7">关注冰岛资产配置机会，对冲汇率风险，评估北极航道投资标的。</span></div></div><div style="background:#161b22;border-radius:12px;padding:18px 20px;margin-bottom:14px;border-left:3px solid #58a6ff">
-<div style="font-size:17px;font-weight:700;margin-bottom:8px">6. GrapheneOS 揭 Pixel 11 取消 MTE 硬件内存标记</div>
-<div style="color:#8b949e;font-size:12px;margin-bottom:10px">来源 HN(104分) · <a href="https://bsky.app/profile/grapheneos.org/post/3mua32q4ds22e" style="color:#58a6ff">原文</a></div>
-<div style="margin-bottom:6px"><span style="color:#79c0ff">▸ 发生了什么</span><br><span style="line-height:1.7">GrapheneOS 确认 Pixel 11 不再支持硬件内存标记（MTE）安全特性。</span></div>
-<div style="margin-bottom:6px"><span style="color:#d2a8ff">▸ 为什么重要</span><br><span style="line-height:1.7">失去关键漏洞缓解手段，高安全需求用户面临风险升级，企业采购可能转向旧款。</span></div>
-<div><span style="color:#7ee787">▸ 你可以怎么做</span><br><span style="line-height:1.7">依赖 MTE 的项目留守 Pixel 8/9，评估替代加固系统，勿盲目升级。</span></div></div><div style="background:#161b22;border-radius:12px;padding:18px 20px;margin-bottom:14px;border-left:3px solid #58a6ff">
-<div style="font-size:17px;font-weight:700;margin-bottom:8px">7. 开源工具实现 macOS 上虚拟化运行 iPhone</div>
-<div style="color:#8b949e;font-size:12px;margin-bottom:10px">来源 HN(86分) · <a href="https://github.com/Lakr233/vphone-cli" style="color:#58a6ff">原文</a></div>
-<div style="margin-bottom:6px"><span style="color:#79c0ff">▸ 发生了什么</span><br><span style="line-height:1.7">vphone-cli 利用 Apple Virtualization.framework 在 Mac 上启动虚拟 iPhone。</span></div>
-<div style="margin-bottom:6px"><span style="color:#d2a8ff">▸ 为什么重要</span><br><span style="line-height:1.7">免实体机即可做 iOS 测试/安全研究，大幅降低 CI/CD 成本，仅限苹果硬件合法运行。</span></div>
-<div><span style="color:#7ee787">▸ 你可以怎么做</span><br><span style="line-height:1.7">接入 CI 流水线做自动化测试，确认 macOS 版本兼容，注意不可在非苹果设备部署。</span></div></div><div style="background:#161b22;border-radius:12px;padding:18px 20px;margin-bottom:14px;border-left:3px solid #58a6ff">
-<div style="font-size:17px;font-weight:700;margin-bottom:8px">8. 腾讯开源 Hy4 预览版：7700 亿总参数、490 亿激活、百万级上下文</div>
-<div style="color:#8b949e;font-size:12px;margin-bottom:10px">来源 HN(82分) · <a href="https://www.tencent.com/tencent-releases-and-open-sources-tencent-hy4-preview/" style="color:#58a6ff">原文</a></div>
-<div style="margin-bottom:6px"><span style="color:#79c0ff">▸ 发生了什么</span><br><span style="line-height:1.7">腾讯发布 MoE 大模型 Hy4，总参数 770B、激活 49B、上下文超 1M tokens。</span></div>
-<div style="margin-bottom:6px"><span style="color:#d2a8ff">▸ 为什么重要</span><br><span style="line-height:1.7">超长上下文利好长文本应用，开源权重强化中文生态，直追 Llama/DeepSeek。</span></div>
-<div><span style="color:#7ee787">▸ 你可以怎么做</span><br><span style="line-height:1.7">在 GPU 集群跑通推理，针对中文长文任务微调，留意许可证条款（疑似 Apache 2.0）。</span></div></div>
+<div style="font-size:17px;font-weight:700;margin-bottom:8px">1. 加州给Linux和开源软件开了年龄验证法案绿灯</div>
+<div style="color:#8b949e;font-size:12px;margin-bottom:10px">来源 HN(103分) · <a href="https://www.tomshardware.com/software/linux/california-lawmakers-unanimously-pass-linux-exemption-from-age-verification-law-software-distributed-under-the-gpl-mit-bsd-and-apache-licenses-are-exempt" style="color:#58a6ff">原文</a></div>
+<div style="margin-bottom:6px"><span style="color:#79c0ff">▸ 发生了什么</span><br><span style="line-height:1.7">AB 1856全票通过，GPL/MIT/BSD/Apache协议的开源操作系统豁免于《数字年龄保障法》年龄验证要求。</span></div>
+<div style="margin-bottom:6px"><span style="color:#d2a8ff">▸ 为什么重要</span><br><span style="line-height:1.7">加州监管开先例，若其他州跟进，开源工具分发免受平台级KYC拖累，开发者成本下降，独立软件小团队受益。</span></div>
+<div><span style="color:#7ee787">▸ 你可以怎么做</span><br><span style="line-height:1.7">用主流开源协议发布面向青少年的工具类产品；关注所在州是否跟进立法，及时调整分发策略避免合规踩雷。</span></div></div><div style="background:#161b22;border-radius:12px;padding:18px 20px;margin-bottom:14px;border-left:3px solid #58a6ff">
+<div style="font-size:17px;font-weight:700;margin-bottom:8px">2. 算法定价租金被盯上，房东和PropTech被告</div>
+<div style="color:#8b949e;font-size:12px;margin-bottom:10px">来源 HN(64分) · <a href="https://www.morganlewis.com/pubs/2026/08/algorithmic-rent-pricing-litigation-expands-under-new-state-and-local-laws" style="color:#58a6ff">原文</a></div>
+<div style="margin-bottom:6px"><span style="color:#79c0ff">▸ 发生了什么</span><br><span style="line-height:1.7">多州新规让租客可绕过反垄断门槛，直接起诉用算法租金软件的公寓房东，索赔门槛变低。</span></div>
+<div style="margin-bottom:6px"><span style="color:#d2a8ff">▸ 为什么重要</span><br><span style="line-height:1.7">传统反垄断案难打，市级法规提供捷径，物业主面临巨额罚款，PropTech的定价SaaS生意遭遇政策性风险。</span></div>
+<div><span style="color:#7ee787">▸ 你可以怎么做</span><br><span style="line-height:1.7">做地产SaaS的赶紧看客户合同里有没有连带赔偿条款；投资人重新评估revenue management工具估值模型。</span></div></div><div style="background:#161b22;border-radius:12px;padding:18px 20px;margin-bottom:14px;border-left:3px solid #58a6ff">
+<div style="font-size:17px;font-weight:700;margin-bottom:8px">3. GLM-5.3开源权重上线HuggingFace</div>
+<div style="color:#8b949e;font-size:12px;margin-bottom:10px">来源 HN(390分) · <a href="https://huggingface.co/zai-org/GLM-5.3" style="color:#58a6ff">原文</a></div>
+<div style="margin-bottom:6px"><span style="color:#79c0ff">▸ 发生了什么</span><br><span style="line-height:1.7">智谱把GLM-5.3模型权重开放下载，可商用二次微调，参数规模对标前沿闭源模型。</span></div>
+<div style="margin-bottom:6px"><span style="color:#d2a8ff">▸ 为什么重要</span><br><span style="line-height:1.7">开源顶级模型冲击闭源API定价，自部署成本大降，应用层创业公司可用更低成本做差异化产品。</span></div>
+<div><span style="color:#7ee787">▸ 你可以怎么做</span><br><span style="line-height:1.7">立刻拉权重做RAG/Agent微调，搭垂直场景抢窗口期；闭源API重度用户用GLM-5.3做AB测试压价。</span></div></div><div style="background:#161b22;border-radius:12px;padding:18px 20px;margin-bottom:14px;border-left:3px solid #58a6ff">
+<div style="font-size:17px;font-weight:700;margin-bottom:8px">4. Debian允许“负责任使用”生成式AI</div>
+<div style="color:#8b949e;font-size:12px;margin-bottom:10px">来源 HN(192分) · <a href="https://lwn.net/Articles/1091231/" style="color:#58a6ff">原文</a></div>
+<div style="margin-bottom:6px"><span style="color:#79c0ff">▸ 发生了什么</span><br><span style="line-height:1.7">Debian通过GR投票，允许在Debian项目中使用大模型辅助开发、文档、翻译，但要求披露和合规。</span></div>
+<div style="margin-bottom:6px"><span style="color:#d2a8ff">▸ 为什么重要</span><br><span style="line-height:1.7">最大Linux发行版开绿灯，相当于给上游社区和包维护者授权用AI提效，开源生态正式接纳AI工具链。</span></div>
+<div><span style="color:#7ee787">▸ 你可以怎么做</span><br><span style="line-height:1.7">贡献Debian/Ubuntu上游的开发者可借AI提PR效率；做Linux发行版二次开发的团队整理AI辅助工作规范。</span></div></div><div style="background:#161b22;border-radius:12px;padding:18px 20px;margin-bottom:14px;border-left:3px solid #58a6ff">
+<div style="font-size:17px;font-weight:700;margin-bottom:8px">5. 互联网沦为掠夺性污水池</div>
+<div style="color:#8b949e;font-size:12px;margin-bottom:10px">来源 HN(143分) · <a href="https://www.stephendiehl.com/posts/internet_predatory_cesspit/" style="color:#58a6ff">原文</a></div>
+<div style="margin-bottom:6px"><span style="color:#79c0ff">▸ 发生了什么</span><br><span style="line-height:1.7">斯蒂芬·迪尔指出：广告追踪、SEO 垃圾、AI 生成内容泛滥，用户注意力被掠夺，信任崩塌。</span></div>
+<div style="margin-bottom:6px"><span style="color:#d2a8ff">▸ 为什么重要</span><br><span style="line-height:1.7">流量模式失效，干净平台、隐私工具、垂直社区成新商机。</span></div>
+<div><span style="color:#7ee787">▸ 你可以怎么做</span><br><span style="line-height:1.7">做无广告/订阅制产品；接入隐私计算协议；别再靠买量变现。</span></div></div><div style="background:#161b22;border-radius:12px;padding:18px 20px;margin-bottom:14px;border-left:3px solid #58a6ff">
+<div style="font-size:17px;font-weight:700;margin-bottom:8px">6. 海温破纪录，强厄尔尼诺成型</div>
+<div style="color:#8b949e;font-size:12px;margin-bottom:10px">来源 HN(85分) · <a href="https://www.latimes.com/environment/story/2026-08-26/highest-ever-ocean-temperature-measured-as-powerful-el-nino-forms" style="color:#58a6ff">原文</a></div>
+<div style="margin-bottom:6px"><span style="color:#79c0ff">▸ 发生了什么</span><br><span style="line-height:1.7">洛杉矶时报报道：全球海表温创新高，厄尔尼诺增强，极端天气概率飙升。</span></div>
+<div style="margin-bottom:6px"><span style="color:#d2a8ff">▸ 为什么重要</span><br><span style="line-height:1.7">保费、粮价、航运、能源成本联动上涨，气候资产重估。</span></div>
+<div><span style="color:#7ee787">▸ 你可以怎么做</span><br><span style="line-height:1.7">配置绿色债券/气候基金；布局海洋监测数据服务；规避低海拔地产。</span></div></div><div style="background:#161b22;border-radius:12px;padding:18px 20px;margin-bottom:14px;border-left:3px solid #58a6ff">
+<div style="font-size:17px;font-weight:700;margin-bottom:8px">7. 三星 Hot Chips 发布 LPDDR5X PIM</div>
+<div style="color:#8b949e;font-size:12px;margin-bottom:10px">来源 HN(85分) · <a href="https://chipsandcheese.com/p/hot-chips-2026-samsungs-processing" style="color:#58a6ff">原文</a></div>
+<div style="margin-bottom:6px"><span style="color:#79c0ff">▸ 发生了什么</span><br><span style="line-height:1.7">三星展示处理器内存融合（PIM），把计算搬进 LPDDR5X，降低数据搬运功耗。</span></div>
+<div style="margin-bottom:6px"><span style="color:#d2a8ff">▸ 为什么重要</span><br><span style="line-height:1.7">AI 推理延迟/能耗下降 30%+，边缘端大模型落地加速，内存厂商话语权增强。</span></div>
+<div><span style="color:#7ee787">▸ 你可以怎么做</span><br><span style="line-height:1.7">关注 PIM 标准化进度；评估自家 AI 加速器是否迁移；锁定三星/美光供货。</span></div></div><div style="background:#161b22;border-radius:12px;padding:18px 20px;margin-bottom:14px;border-left:3px solid #58a6ff">
+<div style="font-size:17px;font-weight:700;margin-bottom:8px">8. 文化才是生产力杠杆，AI 只是放大器</div>
+<div style="color:#8b949e;font-size:12px;margin-bottom:10px">来源 HN(73分) · <a href="https://newsletter.eng-leadership.com/p/good-culture-is-the-biggest-productivity" style="color:#58a6ff">原文</a></div>
+<div style="margin-bottom:6px"><span style="color:#79c0ff">▸ 发生了什么</span><br><span style="line-height:1.7">Eng Leadership 实测：心理安全、目标对齐、反馈闭环缺失时，AI 工具反而拖累交付。</span></div>
+<div style="margin-bottom:6px"><span style="color:#d2a8ff">▸ 为什么重要</span><br><span style="line-height:1.7">团队信任度每提升 1 点，代码交付周期缩 15%，ROI 远超买 Copilot。</span></div>
+<div><span style="color:#7ee787">▸ 你可以怎么做</span><br><span style="line-height:1.7">先做匿名健康度调查→建立轻量复盘仪式→再上 AI 助手；别把文化当事后诸葛。</span></div></div>
 
 <div class="cardbox"><h3>同源联动 · 资金费率雷达</h3><p>过去 24 小时跨所正费率机会：</p><ul><li><b>ASTEROID</b> @ GATE <span style='color:#3fb950'>年化 +1371%</span> <span style='color:#484f58'>(雷达持续跟踪中)</span></li><li><b>KR200</b> @ GATE <span style='color:#3fb950'>年化 +548%</span> <span style='color:#484f58'>(雷达持续跟踪中)</span></li><li><b>牛来</b> @ GATE <span style='color:#3fb950'>年化 +533%</span> <span style='color:#484f58'>(雷达持续跟踪中)</span></li></ul>
 <p><a href="https://756712329-commits.github.io/">实时看板 →</a></p></div>
