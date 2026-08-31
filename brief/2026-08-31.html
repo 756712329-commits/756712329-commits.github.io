@@ -134,51 +134,26 @@ footer .in a{color:var(--ink-2)}
 <p class="meta num">2026-08-31 · 自动生成</p>
 <p class="lede">由数据引擎自动抓取 HackerNews / 一线科技媒体 / GitHub 周趋势并经 AI 编辑加工——帮你省掉每天刷英文圈的 2 小时。</p></div>
 <div style="background:#161b22;border-radius:12px;padding:18px 20px;margin-bottom:14px;border-left:3px solid #58a6ff">
-<div style="font-size:17px;font-weight:700;margin-bottom:8px">1. OpenShot 4.0：免费剪辑器逆袭专业级</div>
-<div style="color:#8b949e;font-size:12px;margin-bottom:10px">来源 HN(178分) · <a href="https://www.openshot.org/blog/2026/08/30/openshot-40-record-edit-color-like-never-before/" style="color:#58a6ff">原文</a></div>
-<div style="margin-bottom:6px"><span style="color:#79c0ff">▸ 发生了什么</span><br><span style="line-height:1.7">开源剪辑软件OpenShot发4.0版，新增屏幕/摄像头/麦克风/系统音频录制、专业调色面板、色轮/曲线/LUT/示波器、本地AI抠像、10种新特效。</span></div>
-<div style="margin-bottom:6px"><span style="color:#d2a8ff">▸ 为什么重要</span><br><span style="line-height:1.7">免费工具直接对标DaVinci、Premiere的核心功能，自媒体人和小工作室的剪辑成本可能归零，剪映海外对手再添一员。</span></div>
-<div><span style="color:#7ee787">▸ 你可以怎么做</span><br><span style="line-height:1.7">下载试用做副业剪辑，接单报价时强调&#x27;免费工具交付&#x27;拉低成本；学调色和AI抠像两项新功能可立刻接商单。</span></div></div><div style="background:#161b22;border-radius:12px;padding:18px 20px;margin-bottom:14px;border-left:3px solid #58a6ff">
-<div style="font-size:17px;font-weight:700;margin-bottom:8px">2. Claude Code自动模式被攻破，60-80%沦陷</div>
-<div style="color:#8b949e;font-size:12px;margin-bottom:10px">来源 HN(136分) · <a href="https://embracethered.com/blog/posts/2026/breaking-claude-code-opus-5-and-automode/" style="color:#58a6ff">原文</a></div>
-<div style="margin-bottom:6px"><span style="color:#79c0ff">▸ 发生了什么</span><br><span style="line-height:1.7">安全研究员用简单网站摘要任务，通过5步链路劫持Claude Code Opus 5的Auto Mode，实现代码执行；Anthropic官方测试显示0%成功率，实际却被捅穿。</span></div>
-<div style="margin-bottom:6px"><span style="color:#d2a8ff">▸ 为什么重要</span><br><span style="line-height:1.7">Auto模式已是默认设置，企业用Claude Code自动干活等于裸奔；提示注入风险首次在旗舰模型上有实锤数据。</span></div>
-<div><span style="color:#7ee787">▸ 你可以怎么做</span><br><span style="line-height:1.7">用Claude Code跑自动任务必须在沙箱或容器里隔离；禁止让它直接访问不可信外网URL；定期审计执行日志。</span></div></div><div style="background:#161b22;border-radius:12px;padding:18px 20px;margin-bottom:14px;border-left:3px solid #58a6ff">
-<div style="font-size:17px;font-weight:700;margin-bottom:8px">3. uv工具要给wheel缓存瘦个身</div>
-<div style="color:#8b949e;font-size:12px;margin-bottom:10px">来源 HN(83分) · <a href="https://github.com/astral-sh/uv/pull/21327" style="color:#58a6ff">原文</a></div>
-<div style="margin-bottom:6px"><span style="color:#79c0ff">▸ 发生了什么</span><br><span style="line-height:1.7">Rust写的Python包管理神器uv提交PR，要把wheel缓存里所有重复文件去重，硬链接复用，省磁盘空间。</span></div>
-<div style="margin-bottom:6px"><span style="color:#d2a8ff">▸ 为什么重要</span><br><span style="line-height:1.7">Python项目越多wheel越胖，CI机器和本地开发机磁盘告急成常态；uv是当下增长最快的Python工具链，热度高。</span></div>
-<div><span style="color:#7ee787">▸ 你可以怎么做</span><br><span style="line-height:1.7">关注PR合并进度，合并后第一时间升级uv并清缓存；用uv管理依赖的团队可借此梳理磁盘节省多少。</span></div></div><div style="background:#161b22;border-radius:12px;padding:18px 20px;margin-bottom:14px;border-left:3px solid #58a6ff">
-<div style="font-size:17px;font-weight:700;margin-bottom:8px">4. curl拒绝发CVE，安全圈吵起来了</div>
-<div style="color:#8b949e;font-size:12px;margin-bottom:10px">来源 HN(58分) · <a href="https://daniel.haxx.se/blog/2026/06/24/a-cve-dispute/" style="color:#58a6ff">原文</a></div>
-<div style="margin-bottom:6px"><span style="color:#79c0ff">▸ 发生了什么</span><br><span style="line-height:1.7">curl作为CNA拒绝给某个报告分配CVE编号，理由是触发条件太苛刻、低于LOW级，发CVE会浪费全球三十亿安装实例的运维成本。</span></div>
-<div style="margin-bottom:6px"><span style="color:#d2a8ff">▸ 为什么重要</span><br><span style="line-height:1.7">揭示CVE通胀问题——不是所有理论漏洞都该拉警报；开源维护者和企业安全团队的矛盾公开化。</span></div>
-<div><span style="color:#7ee787">▸ 你可以怎么做</span><br><span style="line-height:1.7">企业安全团队不要盲目按CVE数KPI，应评估实际触发条件；用curl的大项目可学这套&#x27;负责任披露&#x27;思路。</span></div></div><div style="background:#161b22;border-radius:12px;padding:18px 20px;margin-bottom:14px;border-left:3px solid #58a6ff">
-<div style="font-size:17px;font-weight:700;margin-bottom:8px">5. ⭐ tt-a1i/archify</div>
-<div style="color:#8b949e;font-size:12px;margin-bottom:10px">来源 GitHub周趋势 · <a href="https://github.com/tt-a1i/archify" style="color:#58a6ff">原文</a></div>
-<div style="margin-bottom:6px"><span style="color:#79c0ff">▸ 发生了什么</span><br><span style="line-height:1.7">Agent技能，生成可验证的架构/工作流/时序/数据流图，自包含HTML带动画和清晰导出。</span></div>
-<div style="margin-bottom:6px"><span style="color:#d2a8ff">▸ 为什么重要</span><br><span style="line-height:1.7">解决AI画架构图丑且不可用的痛点，Agent时代刚需可视化工具。</span></div>
-<div><span style="color:#7ee787">▸ 你可以怎么做</span><br><span style="line-height:1.7">技术博主和架构师直接用，告别手画draw.io；接咨询/写文档的副业可一键出图提效。</span></div></div><div style="background:#161b22;border-radius:12px;padding:18px 20px;margin-bottom:14px;border-left:3px solid #58a6ff">
-<div style="font-size:17px;font-weight:700;margin-bottom:8px">6. 军营免税超市冷冻柜疑遭批量瘫痪</div>
-<div style="color:#8b949e;font-size:12px;margin-bottom:10px">来源 HN(43分) · <a href="https://signalandsilence.substack.com/p/i-think-someone-hacked-the-commissary" style="color:#58a6ff">原文</a></div>
-<div style="margin-bottom:6px"><span style="color:#79c0ff">▸ 发生了什么</span><br><span style="line-height:1.7">11州14+军营免税超市冷冻柜同步瘫痪，五角大楼承认&quot;可能制冷中断&quot;，疑似网攻或设备老化集体故障</span></div>
-<div style="margin-bottom:6px"><span style="color:#d2a8ff">▸ 为什么重要</span><br><span style="line-height:1.7">涉及军方后勤补给链，若为网攻则暴露关键基础设施零信任漏洞；食品损耗成本高企，家属福利受冲击</span></div>
-<div><span style="color:#7ee787">▸ 你可以怎么做</span><br><span style="line-height:1.7">关注DeCA采购合同变更、OT安全厂商机会；物流商可推应急冷链方案；避坑：别信单一&quot;设备老化&quot;说辞</span></div></div><div style="background:#161b22;border-radius:12px;padding:18px 20px;margin-bottom:14px;border-left:3px solid #58a6ff">
-<div style="font-size:17px;font-weight:700;margin-bottom:8px">7. AI生成代码所有权仍在你手中</div>
-<div style="color:#8b949e;font-size:12px;margin-bottom:10px">来源 HN(24分) · <a href="https://martiansoftware.com/articles/ai-written-code-is-still-yours" style="color:#58a6ff">原文</a></div>
-<div style="margin-bottom:6px"><span style="color:#79c0ff">▸ 发生了什么</span><br><span style="line-height:1.7">AI生成代码让&quot;写&quot;成本趋零，但&quot;懂&quot;成本转嫁给开发者——你依然对质量、安全、维护负全责</span></div>
-<div style="margin-bottom:6px"><span style="color:#d2a8ff">▸ 为什么重要</span><br><span style="line-height:1.7">理解生成代码成新瓶颈，AI成复杂度制造机；低风险玩具项目可随意，核心业务盲用必填坑</span></div>
-<div><span style="color:#7ee787">▸ 你可以怎么做</span><br><span style="line-height:1.7">强制Code Review人工过关；建立&quot;可理解性&quot;设计规范；引入架构守护测试；拒绝全自动合并</span></div></div><div style="background:#161b22;border-radius:12px;padding:18px 20px;margin-bottom:14px;border-left:3px solid #58a6ff">
-<div style="font-size:17px;font-weight:700;margin-bottom:8px">8. 语法高亮应按&quot;关心度&quot;而非语法分类</div>
-<div style="color:#8b949e;font-size:12px;margin-bottom:10px">来源 HN(89分) · <a href="https://hank.bond/posts/highlighting-my-code-based-on-how-much-i-care/" style="color:#58a6ff">原文</a></div>
-<div style="margin-bottom:6px"><span style="color:#79c0ff">▸ 发生了什么</span><br><span style="line-height:1.7">开发者质疑默认高亮色太多记不住，实验极简配色甚至纯色调高亮，探索&quot;按关心度高亮&quot;而非语法分类</span></div>
-<div style="margin-bottom:6px"><span style="color:#d2a8ff">▸ 为什么重要</span><br><span style="line-height:1.7">传统高亮只给安全感不提效；认知负荷过重反干扰阅读，极简/非色彩方案可降噪聚焦核心逻辑</span></div>
-<div><span style="color:#7ee787">▸ 你可以怎么做</span><br><span style="line-height:1.7">尝试单色调主题或语义高亮插件；按&quot;修改频率/业务关键度&quot;着色；避坑：别追求花哨配色</span></div></div><div style="background:#161b22;border-radius:12px;padding:18px 20px;margin-bottom:14px;border-left:3px solid #58a6ff">
-<div style="font-size:17px;font-weight:700;margin-bottom:8px">9. 埋2000条内裤测土壤健康度</div>
-<div style="color:#8b949e;font-size:12px;margin-bottom:10px">来源 HN(46分) · <a href="https://studyfinds.com/what-2000-buried-underpants-revealed-about-where-soil-is-most-alive/" style="color:#58a6ff">原文</a></div>
-<div style="margin-bottom:6px"><span style="color:#79c0ff">▸ 发生了什么</span><br><span style="line-height:1.7">科研埋2000条棉质内裤测土壤微生物活性，分解越彻底土壤越健康，揭示农田/林地/草地活力差异</span></div>
-<div style="margin-bottom:6px"><span style="color:#d2a8ff">▸ 为什么重要</span><br><span style="line-height:1.7">低成本生物指标可替代昂贵实验室检测，指导精准施肥、再生农业，碳汇交易验证有新抓手</span></div>
-<div><span style="color:#7ee787">▸ 你可以怎么做</span><br><span style="line-height:1.7">农技推广可推&quot;埋内裤&quot;公民科学；碳交易平台接纳低成本MRV方案；避坑：合成纤维内裤无效</span></div></div>
+<div style="font-size:17px;font-weight:700;margin-bottom:8px">1. AI智能体记忆该是文件格式，不是流程管道</div>
+<div style="color:#8b949e;font-size:12px;margin-bottom:10px">来源 HN(45分) · <a href="https://calpaterson.com/memoryfields.html" style="color:#58a6ff">原文</a></div>
+<div style="margin-bottom:6px"><span style="color:#79c0ff">▸ 发生了什么</span><br><span style="line-height:1.7">作者推出memoryfield方案：把AI记忆打包成zip文件，内含Markdown页面加可选SQLite向量索引，主张用散文代替知识图谱和事实碎片。</span></div>
+<div style="margin-bottom:6px"><span style="color:#d2a8ff">▸ 为什么重要</span><br><span style="line-height:1.7">现有记忆系统要么绑定厂商平台，要么依赖pgvector+Neo4j+大模型三件套，复杂且容易迷惑模型。文件式记忆更便宜、可移植、易调试，是AI代理刚需。</span></div>
+<div><span style="color:#7ee787">▸ 你可以怎么做</span><br><span style="line-height:1.7">开发者可直接用zip+Markdown+sqlite-vec搭私有代理记忆库；创业者可做记忆文件转换/托管工具；避坑：别再堆图数据库和蒸馏事实，模型读得懂原文才有用。</span></div></div><div style="background:#161b22;border-radius:12px;padding:18px 20px;margin-bottom:14px;border-left:3px solid #58a6ff">
+<div style="font-size:17px;font-weight:700;margin-bottom:8px">2. 苹果被企业AI需求打了个措手不及</div>
+<div style="color:#8b949e;font-size:12px;margin-bottom:10px">来源 HN(41分) · <a href="https://www.macrumors.com/2026/08/30/apple-unexpected-mac-mini-and-studio-demand/" style="color:#58a6ff">原文</a></div>
+<div style="margin-bottom:6px"><span style="color:#79c0ff">▸ 发生了什么</span><br><span style="line-height:1.7">苹果提前发布Mac mini和Mac Studio，因企业抢购跑大模型，企业甚至想买Private Cloud Compute被拒，苹果没有企业AI策略也没有专门BD团队。</span></div>
+<div style="margin-bottom:6px"><span style="color:#d2a8ff">▸ 为什么重要</span><br><span style="line-height:1.7">苹果首次承认在企业AI硬件市场落后，叠加全球内存短缺，Mac溢价能力面临考验，但同时也是苹果切入AI基础设施的窗口期。</span></div>
+<div><span style="color:#7ee787">▸ 你可以怎么做</span><br><span style="line-height:1.7">企业买家：现在下单Mac Studio搭集群跑本地模型，比云端更划算；投资人：关注WebAI、Mount Thor等苹果AI合作伙伴；开发者：本地LLM推理需求是确定趋势。</span></div></div><div style="background:#161b22;border-radius:12px;padding:18px 20px;margin-bottom:14px;border-left:3px solid #58a6ff">
+<div style="font-size:17px;font-weight:700;margin-bottom:8px">3. ReactOS 0.4.16发布，图形安装器终于来了</div>
+<div style="color:#8b949e;font-size:12px;margin-bottom:10px">来源 HN(35分) · <a href="https://reactos.org/project-news/reactos-0416-released/" style="color:#58a6ff">原文</a></div>
+<div style="margin-bottom:6px"><span style="color:#79c0ff">▸ 发生了什么</span><br><span style="line-height:1.7">开源Windows兼容系统ReactOS发布0.4.16，新版统一了bootcd和livecd镜像，提供图形化安装器，修Nvidia显卡卡顿和HD音频崩溃两大顽疾。</span></div>
+<div style="margin-bottom:6px"><span style="color:#d2a8ff">▸ 为什么重要</span><br><span style="line-height:1.7">ReactOS是唯一能跑Windows生态的开源替代品，对去微软化、老硬件复活、特定行业（工控/政企）有刚需价值，但生态成熟度仍远不及Wine。</span></div>
+<div><span style="color:#7ee787">▸ 你可以怎么做</span><br><span style="line-height:1.7">怀旧玩家：可直接当日常系统试玩；企业可评估关键老XP应用迁移方案；避坑：别拿它跑生产环境，驱动兼容性仍是最大坑。</span></div></div><div style="background:#161b22;border-radius:12px;padding:18px 20px;margin-bottom:14px;border-left:3px solid #58a6ff">
+<div style="font-size:17px;font-weight:700;margin-bottom:8px">4. Circleback 推免费版抢会议记录赛道</div>
+<div style="color:#8b949e;font-size:12px;margin-bottom:10px">来源 TechCrunch · <a href="https://techcrunch.com/2026/08/31/meeting-notetaker-circleback-adds-a-free-tier-to-attract-more-customers/" style="color:#58a6ff">原文</a></div>
+<div style="margin-bottom:6px"><span style="color:#79c0ff">▸ 发生了什么</span><br><span style="line-height:1.7">Circleback推免费版：无限转写会议、30天历史、AI问答、Slack/Linear集成，付费$14/月起解锁全量历史与API</span></div>
+<div style="margin-bottom:6px"><span style="color:#d2a8ff">▸ 为什么重要</span><br><span style="line-height:1.7">会议记录赛道内卷，Granola、Fireflies等烧钱抢用户，Circleback用免费版做获客渠道，靠产品力转化付费，人均ARR百万证明模型跑通</span></div>
+<div><span style="color:#7ee787">▸ 你可以怎么做</span><br><span style="line-height:1.7">1) 直接用免费版替代付费笔记工具，绑Slack/Linear自动落库 2) 若团队&gt;5人且需长期溯源、API对接，按$14/人/月升级 3) 避坑：免费版仅留30天历史，关键会议需手动导出或升级</span></div></div>
 
 <div class="cardbox"><h3>同源联动 · 资金费率雷达</h3><p>过去 24 小时跨所正费率机会：</p><ul><li><b>ASTEROID</b> @ GATE <span style='color:#3fb950'>年化 +2009%</span> <span style='color:#484f58'>(雷达持续跟踪中)</span></li><li><b>TSEM</b> @ BYBIT <span style='color:#3fb950'>年化 +790%</span> <span style='color:#484f58'>(雷达持续跟踪中)</span></li><li><b>BNC</b> @ BYBIT <span style='color:#3fb950'>年化 +662%</span> <span style='color:#484f58'>(雷达持续跟踪中)</span></li></ul>
 <p><a href="https://ratecompass.tech/">实时看板 →</a></p></div>
