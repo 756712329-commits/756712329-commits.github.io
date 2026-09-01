@@ -1,0 +1,176 @@
+<!doctype html><html lang="zh-CN"><head><meta charset="utf-8">
+<title>ALLO 资金费率换算器｜永续合约ALLO计算工具</title>
+<meta name="description" content="把 ALLO 每期资金费率换算成年化 APR 与复利 APY，支持 1/2/4/8 小时结算。免费在线资金费率换算器，浏览器本地计算，结果即时显示。">
+<meta name="viewport" content="width=device-width,initial-scale=1"><meta name="robots" content="noindex, nofollow">
+<script type="application/ld+json">[{"@context": "https://schema.org", "@type": "WebApplication", "name": "ALLO 资金费率换算器", "applicationCategory": "FinanceApplication", "operatingSystem": "Web", "description": "把 ALLO 每期资金费率换算成年化 APR 与复利 APY，支持 1/2/4/8 小时结算", "url": "https://ratecompass.tech/tools/funding-allo.html", "offers": {"@type": "Offer", "price": "0", "priceCurrency": "CNY"}}, {"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "费率看板", "item": "https://ratecompass.tech/"}, {"@type": "ListItem", "position": 2, "name": "工具箱", "item": "https://ratecompass.tech/tools/index.html"}, {"@type": "ListItem", "position": 3, "name": "ALLO 资金费率换算器", "item": "https://ratecompass.tech/tools/funding-allo.html"}]}]</script><link rel="canonical" href="https://ratecompass.tech/tools/funding-allo.html">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+:root{
+  --bg:#0A101B; --surface:#101A29; --raised:#15223A;
+  --line:rgba(148,163,184,.14); --line-strong:rgba(148,163,184,.26);
+  --ink:#E8EEF6; --ink-2:#9AA8BC; --ink-3:#66748A;
+  --blue:#5B9DFF; --gold-1:#F0C070; --gold-2:#D99A3A;
+  --up:#3AC98A; --down:#F0655A; --neut:#8B99AD;
+}
+body{background:var(--bg);color:var(--ink);line-height:1.75;font-size:15px;
+  font-family:-apple-system,BlinkMacSystemFont,"PingFang SC","Microsoft YaHei","Segoe UI",Roboto,sans-serif;
+  -webkit-font-smoothing:antialiased}
+.num{font-variant-numeric:tabular-nums}
+a{color:var(--blue);text-decoration:none}
+a:hover{text-decoration:none}
+.wrap{max-width:1120px;margin:0 auto;padding:0 24px}
+/* ---------- topbar ---------- */
+.topbar{position:sticky;top:0;z-index:50;background:rgba(10,16,27,.86);backdrop-filter:blur(10px);
+  border-bottom:1px solid var(--line)}
+.topbar .in{display:flex;align-items:center;gap:24px;height:60px}
+.brand{font-size:16px;font-weight:800;letter-spacing:.04em;color:var(--ink);display:flex;align-items:center;gap:9px;flex-shrink:0}
+.brand:hover{text-decoration:none}
+.brand .dot{width:9px;height:9px;border-radius:3px;background:var(--gold-2);display:inline-block}
+.nav{display:flex;gap:18px;margin-left:6px;flex-wrap:wrap}
+.nav a{color:var(--ink-2);font-size:13.5px;white-space:nowrap}
+.nav a:hover{color:var(--ink)}
+.nav a.on{color:var(--ink);font-weight:700;box-shadow:inset 0 -2px 0 var(--gold-2);padding-bottom:2px}
+.topbar .cta{margin-left:auto;flex-shrink:0}
+.menutgl{display:none}
+.burger{display:none;margin-left:auto;color:var(--ink);cursor:pointer}
+@media(max-width:860px){
+  .burger{display:flex;align-items:center;justify-content:center;width:38px;height:38px;border:1px solid var(--line);border-radius:9px}
+  .topbar .cta{margin-left:0}
+  .menutgl:checked ~ .wrap .nav{display:flex}
+  .nav{display:none;position:absolute;top:60px;left:0;right:0;flex-direction:column;gap:0;
+    background:var(--bg);border-bottom:1px solid var(--line);padding:8px 24px 14px}
+  .nav a{padding:11px 0;font-size:15px;border-top:1px solid var(--line)}
+  .nav a:first-child{border-top:none}
+  .nav a.on{box-shadow:none}
+}
+/* ---------- buttons ---------- */
+.btn{display:inline-flex;align-items:center;gap:8px;border-radius:10px;padding:10px 20px;
+  font-size:14px;font-weight:700;letter-spacing:.02em;transition:transform .15s ease,filter .15s ease}
+.btn:hover{transform:translateY(-1px)}
+.btn.gold{color:#14100A;background:linear-gradient(180deg,var(--gold-1),var(--gold-2))}
+.btn.gold:hover{filter:brightness(1.06)}
+.btn.ghost{color:var(--blue);border:1px solid var(--line-strong)}
+.btn.ghost:hover{border-color:var(--blue)}
+.btn.sm{padding:7px 14px;font-size:13px;border-radius:8px}
+/* ---------- page head ---------- */
+.phead{padding:44px 0 8px}
+.phead h1{font-size:clamp(25px,3.2vw,32px);font-weight:800;letter-spacing:.01em;line-height:1.3;text-wrap:balance}
+.phead .meta{color:var(--ink-3);font-size:13px;margin-top:8px}
+.phead .lede{color:var(--ink-2);font-size:15px;margin-top:10px;max-width:760px}
+/* ---------- content 图层：统一重皮肤遗留标记 ---------- */
+.content{padding-bottom:26px}
+.content h1,.content h2,.content h3{color:var(--ink);text-wrap:balance}
+.content a{color:var(--blue)!important}
+.content a:hover{text-decoration:underline}
+.content table{width:100%;border-collapse:collapse;background:transparent!important;
+  border:1px solid var(--line)!important;border-radius:12px;overflow:hidden;margin-top:20px!important;font-size:13.5px}
+.content th{background:rgba(21,34,58,.62)!important;color:var(--ink-3)!important;
+  padding:11px 14px!important;border-bottom:1px solid var(--line-strong)!important;
+  font-size:12px;letter-spacing:.05em;font-weight:700}
+.content td{padding:10px 14px!important;border-bottom:1px solid var(--line)!important;color:var(--ink-2);background:transparent!important}
+.content h2,.content h3{color:var(--ink)!important}
+.content th{white-space:nowrap}
+.content tr:last-child td{border-bottom:none!important}
+.content tr:hover td{background:rgba(91,157,255,.045)!important}
+.content .cardbox{background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:22px 24px;margin-top:26px}
+.content .cardbox h3{font-size:15.5px;margin-bottom:8px}
+.content .cardbox p{font-size:13.5px;color:var(--ink-2);margin:6px 0}
+
+/* ---------- sparks / tool grid / table scroll ---------- */
+.sparks{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:12px;margin-top:20px}
+.spark{background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:14px 16px;font-size:13px}
+.spark b{font-size:14px}
+.spark svg{display:block;margin-top:6px}
+.spark .cap{color:var(--ink-3);font-size:11px;margin-top:4px}
+.tgrid{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:8px}
+@media(max-width:680px){.tgrid{grid-template-columns:1fr}
+  .content table{display:block;overflow-x:auto;min-width:600px;-webkit-overflow-scrolling:touch}
+  .content table::-webkit-scrollbar{height:4px}
+  .content table::-webkit-scrollbar-thumb{background:var(--line-strong);border-radius:2px}}
+.scroller{overflow-x:auto;-webkit-overflow-scrolling:touch}
+.scroller svg{min-width:820px;height:auto;display:block}
+/* ---------- 移动端卡片视图（deals 等） ---------- */
+.m-cards{display:none}
+.m-card{background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:14px 16px;margin-top:12px}
+.m-card .t{font-weight:800;font-size:14.5px;line-height:1.5}
+.m-card .meta{color:var(--ink-3);font-size:12px;margin-top:2px}
+.m-card .prow{display:flex;align-items:baseline;gap:10px;margin-top:8px}
+.m-card .orig{color:var(--ink-3);text-decoration:line-through;font-size:13px}
+.m-card .now{font-size:19px;font-weight:800}
+.m-card .off{color:var(--up);font-weight:800;font-size:14px;margin-left:auto}
+.m-card .cn{font-size:12.5px;color:var(--gold-1);margin-top:4px}
+.m-card .buy{display:inline-block;margin-top:8px;font-size:13px;font-weight:700}
+@media(max-width:680px){
+  .dtable-d{display:none}
+  .m-cards{display:block}
+}
+/* ---------- cta band ---------- */
+.band{border:1px solid var(--line);border-radius:16px;padding:30px 32px;text-align:center;
+  background:radial-gradient(520px 180px at 50% 0%,rgba(91,157,255,.10),transparent 70%),var(--surface);margin-top:30px}
+.band .t{font-size:19px;font-weight:800;text-wrap:balance}
+.band .d{color:var(--ink-2);font-size:13.5px;margin-top:6px}
+.band .acts{display:flex;gap:12px;justify-content:center;margin-top:18px;flex-wrap:wrap}
+/* ---------- footer ---------- */
+footer{border-top:1px solid var(--line);margin-top:64px}
+footer .in{padding:26px 0 30px;display:flex;justify-content:space-between;gap:14px;flex-wrap:wrap;font-size:12.5px;color:var(--ink-3)}
+footer .in a{color:var(--ink-2)}
+/* ---------- responsive ---------- */
+@media (max-width:860px){
+  .nav{display:none}
+  .topbar .cta{margin-left:0}
+  .phead{padding:32px 0 4px}
+  .content .cardbox{padding:18px}
+}
+</style></head>
+<body><div class="topbar"><input type="checkbox" id="mt" class="menutgl"><div class="wrap in">
+  <a class="brand" href="/"><span class="dot"></span>量化情报站</a>
+  <nav class="nav"><a href="/">费率看板</a><a href="/history/">历史中心</a><a href="/tools/" class="on">工具箱</a><a href="/deals.html">游戏折扣</a><a href="/ai/">AI 榜</a><a href="/brief/latest.html">情报日报</a><a href="/about.html">关于</a></nav>
+  <a class="btn gold sm cta" href="https://ratecompass.tech/masters/" target="_blank" rel="noopener">API 与服务 ↗</a>
+  <label class="burger" for="mt"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 7h16M4 12h16M4 17h16"/></svg></label>
+</div></div>
+<div class="wrap"><div class="content">
+
+<div class="phead"><h1>ALLO 资金费率换算器</h1>
+<p class="meta num">免费在线 · 浏览器本地计算 · 与主站数据口径一致</p>
+<p class="lede">把 ALLO 每期资金费率换算成年化 APR 与复利 APY，支持 1/2/4/8 小时结算。</p></div>
+
+<div style="display:grid;grid-template-columns:1fr 1fr;gap:0 18px">
+  <div><p style="font-size:13px;color:#8b949e;margin:10px 0 4px">每期资金费率（%）</p><input style="width:100%;box-sizing:border-box;background:#0d1117;border:1px solid #30363d;border-radius:6px;color:#e6edf3;padding:8px 10px;font-size:15px" oninput="calc()" onkeyup="calc()" id="rate" type="number" step="any" value="0.01"></div>
+  <div><p style="font-size:13px;color:#8b949e;margin:10px 0 4px">结算间隔</p><select style="width:100%;background:#0d1117;border:1px solid #30363d;border-radius:6px;color:#e6edf3;padding:8px 6px;font-size:15px" id="interval" onchange="calc()">
+    <option value="1">1 小时</option><option value="2">2 小时</option>
+    <option value="4">4 小时</option><option value="8" selected>8 小时</option></select></div>
+  <div><p style="font-size:13px;color:#8b949e;margin:10px 0 4px">名义本金（USDT，选填）</p><input style="width:100%;box-sizing:border-box;background:#0d1117;border:1px solid #30363d;border-radius:6px;color:#e6edf3;padding:8px 10px;font-size:15px" oninput="calc()" onkeyup="calc()" id="notional" type="number" step="any" value="1000"></div>
+</div>
+<button style="background:#238636;border:none;border-radius:6px;color:#fff;padding:9px 22px;font-size:15px;cursor:pointer" onclick="calc()" style="margin-top:16px">计算</button>
+<div style="margin-top:14px;background:#0d1117;border:1px solid #30363d;border-radius:8px;padding:14px 16px;font-size:15px;line-height:2" id="out">填写上方数值自动计算</div>
+<script>
+function calc(){
+  var r=parseFloat(document.getElementById('rate').value)/100;
+  var iv=parseFloat(document.getElementById('interval').value);
+  var n=parseFloat(document.getElementById('notional').value)||0;
+  if(isNaN(r)||isNaN(iv)||r<=0&&n<=0){document.getElementById('out').textContent='填写上方数值自动计算';return;}
+  var perDay=24/iv, apr=r*perDay*365*100;
+  var apy=(Math.pow(1+r,perDay*365)-1)*100;
+  var per=n*r, day=n*r*perDay;
+  var h=(t,v)=>'<div><span style="color:#8b949e">'+t+'</span>　<b style="font-size:17px;color:'+(v>=0?'#3fb950':'#f85149')+'">'+v+'</b></div>';
+  document.getElementById('out').innerHTML=
+    h('年化（单利 APR）', apr.toFixed(2)+'%')+h('年化（复利 APY）', apy.toFixed(2)+'%')
+    +(n>0?h('每期收益', per.toFixed(4)+' USDT')+h('每日收益', day.toFixed(4)+' USDT'):'');
+}
+calc();
+</script>
+<div class="cardbox"><h3>公式与说明</h3><p><b>资金费率换算公式</b>：交易所展示的费率是「每期费率」，结算间隔可以是 1/2/4/8 小时。
+年化（单利 APR）= 每期费率 × 每天/间隔 × 每期间隔数 × 365；复利 APY 按每期滚仓计算：(1+每期费率)^每年期数 − 1。
+例：费率 0.01%/8h ≈ 年化 10.95%；而 0.01%/1h 的年化高达 87.6%——<b>同样是 0.01%，结算越快年化越高</b>，
+对比两个币种时务必换算到同一年化口径。本站<a href="/" style="color:#58a6ff">费率总排行</a>已自动折算成年化，可直接对比。</p></div>
+<div class="cardbox"><h3>ALLO 延伸</h3>
+<p><a href="/history/allo.html">ALLO 费率历史走势</a> ·
+<a href="/tools/funding-converter.html">通用资金费率换算器</a> ·
+<a href="/tools/index.html">工具箱</a> ·
+<a href="/">实时费率看板</a></p>
+<p style="color:var(--ink-3);font-size:12px">公开数据与公开公式，仅供参考，不构成投资建议。</p></div>
+</div><footer><div class="wrap in">
+  <span>© 2026 量化情报站 · 数据每 10 分钟至每交易日自动更新 · 公开数据聚合，不构成投资建议</span>
+  <span><a href="https://ratecompass.tech/masters/" target="_blank" rel="noopener">API 与技术服务</a> ·
+  <a href="/about.html">推广模式说明</a> · <a href="/privacy.html">隐私</a></span>
+</div></footer></div></body></html>
