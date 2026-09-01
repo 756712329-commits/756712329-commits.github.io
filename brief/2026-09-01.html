@@ -134,36 +134,46 @@ footer .in a{color:var(--ink-2)}
 <p class="meta num">2026-09-01 · 自动生成</p>
 <p class="lede">由数据引擎自动抓取 HackerNews / 一线科技媒体 / GitHub 周趋势并经 AI 编辑加工——帮你省掉每天刷英文圈的 2 小时。</p></div>
 <div style="background:#161b22;border-radius:12px;padding:18px 20px;margin-bottom:14px;border-left:3px solid #58a6ff">
-<div style="font-size:17px;font-weight:700;margin-bottom:8px">1. 工程菌替代化肥：Switch Bioworks 的基因开关路线</div>
-<div style="color:#8b949e;font-size:12px;margin-bottom:10px">来源 MIT-TechReview · <a href="https://www.technologyreview.com/2026/09/01/1143195/microbe-fertilizer-switch-bioworks/" style="color:#58a6ff">原文</a></div>
-<div style="margin-bottom:6px"><span style="color:#79c0ff">▸ 发生了什么</span><br><span style="line-height:1.7">Switch Bioworks 开发「先定殖、后固氮」的工程微生物，利用基因开关在菌群建立后再开启氨释放，解决微生物固氮能耗高、难存活的痛点，正在玉米田做早期试验。</span></div>
-<div style="margin-bottom:6px"><span style="color:#d2a8ff">▸ 为什么重要</span><br><span style="line-height:1.7">化肥生产占全球温室气体 2%，伊朗战乱推高能源/化肥价；若微生物肥能稳定替代 20% 以上合成氮，农户省钱、供应链去碳、粮食安全双赢，百亿级市场。</span></div>
-<div><span style="color:#7ee787">▸ 你可以怎么做</span><br><span style="line-height:1.7">关注 Switch Bioworks 融资与田间数据；农资渠道可提前铺「微生物肥+减量化肥」套餐；投资端盯紧合成生物平台型公司（基因开关、代谢模块化）而非单一菌株。</span></div></div><div style="background:#161b22;border-radius:12px;padding:18px 20px;margin-bottom:14px;border-left:3px solid #58a6ff">
-<div style="font-size:17px;font-weight:700;margin-bottom:8px">2. Fastpotify：原生跨平台 Spotify 客户端，秒开、低内存、还能换 Winamp 皮肤</div>
-<div style="color:#8b949e;font-size:12px;margin-bottom:10px">来源 HN(103分) · <a href="https://fastpotify.rocks/" style="color:#58a6ff">原文</a></div>
-<div style="margin-bottom:6px"><span style="color:#79c0ff">▸ 发生了什么</span><br><span style="line-height:1.7">Rust/Tauri 写的原生二进制，无嵌入浏览器，启动 &lt;1s、内存极低；支持本地播放 320 kbps、Spotify Connect、MPRIS、系统托盘；一键加载 .wsz 皮肤变身 Winamp。</span></div>
-<div style="margin-bottom:6px"><span style="color:#d2a8ff">▸ 为什么重要</span><br><span style="line-height:1.7">官方 Electron 客户端臃肿、内存占用高，Linux/macOS 体验差；独立开发者交出「更轻、更快、更怀旧」的替代品，满足高保真党与怀旧党双重需求，GitHub 星标飙升证明刚需。</span></div>
-<div><span style="color:#7ee787">▸ 你可以怎么做</span><br><span style="line-height:1.7">开发者可 Fork 二次开发（插件系统、Last.fm、歌词源）；高保真用户直接下载替代官方客户端；想做跨平台音频 App 的团队可参考其 Tauri+Rust 架构避坑 Electron。</span></div></div><div style="background:#161b22;border-radius:12px;padding:18px 20px;margin-bottom:14px;border-left:3px solid #58a6ff">
-<div style="font-size:17px;font-weight:700;margin-bottom:8px">3. uv PR #21327：轮子缓存去重，磁盘占用再砍半</div>
-<div style="color:#8b949e;font-size:12px;margin-bottom:10px">来源 HN(87分) · <a href="https://restroomarchive.com" style="color:#58a6ff">原文</a></div>
-<div style="margin-bottom:6px"><span style="color:#79c0ff">▸ 发生了什么</span><br><span style="line-height:1.7">Astral 团队在 uv 的 wheel 缓存层引入内容寻址去重，同一文件只存一份硬链接；实测大型单仓缓存体积降 40%-60%，冷启动解压也快了。</span></div>
-<div style="margin-bottom:6px"><span style="color:#d2a8ff">▸ 为什么重要</span><br><span style="line-height:1.7">Python 生态依赖爆炸，CI/CD 磁盘、带宽、时间全是钱；uv 已成 Rust 系包管理器事实标准，底层缓存优化直接惠及所有下游项目，迁移成本极低。</span></div>
-<div><span style="color:#7ee787">▸ 你可以怎么做</span><br><span style="line-height:1.7">升级 uv 到含该 PR 的夜ly/稳定版，CI 配 `uv cache prune --ci` 自动清理；自建镜像源的厂商同步开启硬链接去重，存储成本直降；别再用 pip+虚拟环境跑大型 monorepo。</span></div></div><div style="background:#161b22;border-radius:12px;padding:18px 20px;margin-bottom:14px;border-left:3px solid #58a6ff">
-<div style="font-size:17px;font-weight:700;margin-bottom:8px">4. 拖延症名研究涉嫌造假</div>
-<div style="color:#8b949e;font-size:12px;margin-bottom:10px">来源 HN(70分) · <a href="https://datacolada.org/138" style="color:#58a6ff">原文</a></div>
-<div style="margin-bottom:6px"><span style="color:#79c0ff">▸ 发生了什么</span><br><span style="line-height:1.7">Data Colada指控Ariely 2002年拖延症论文原始数据被篡改,该研究被引超2100次,新版独立复制失败。</span></div>
-<div style="margin-bottom:6px"><span style="color:#d2a8ff">▸ 为什么重要</span><br><span style="line-height:1.7">行为经济学经典文献翻车,影响课程教材和后续实验设计;Ariely还身陷$2500万诉讼,信任危机持续发酵。</span></div>
-<div><span style="color:#7ee787">▸ 你可以怎么做</span><br><span style="line-height:1.7">心理学/经济研究者重读Data Colada全文对照原数据;引用此研究做决策时注明存疑;媒体人可追踪诉讼后续。</span></div></div><div style="background:#161b22;border-radius:12px;padding:18px 20px;margin-bottom:14px;border-left:3px solid #58a6ff">
-<div style="font-size:17px;font-weight:700;margin-bottom:8px">5. NAT是互联网中心化的原罪</div>
-<div style="color:#8b949e;font-size:12px;margin-bottom:10px">来源 HN(103分) · <a href="https://dreamstation.systems/personal/ntppost.html" style="color:#58a6ff">原文</a></div>
-<div style="margin-bottom:6px"><span style="color:#79c0ff">▸ 发生了什么</span><br><span style="line-height:1.7">技术长文详解1994年NAT设计初衷是临时应对IPv4枯竭,却永久改变了互联网架构,扼杀P2P直连。</span></div>
-<div style="margin-bottom:6px"><span style="color:#d2a8ff">▸ 为什么重要</span><br><span style="line-height:1.7">NAT+CGNAT造就云服务垄断,普通用户失去独立主机能力,WebRTC等穿墙方案越复杂,巨头地位越稳。</span></div>
-<div><span style="color:#7ee787">▸ 你可以怎么做</span><br><span style="line-height:1.7">开发者可用IPv6+Tailscale/Yggdrasil建直连方案;创业者避开依赖公网IP的传统服务模式;政策倡导者关注IPv6普及。</span></div></div><div style="background:#161b22;border-radius:12px;padding:18px 20px;margin-bottom:14px;border-left:3px solid #58a6ff">
-<div style="font-size:17px;font-weight:700;margin-bottom:8px">6. RuneScape在56k拨号上网时代的字节炼金术</div>
-<div style="color:#8b949e;font-size:12px;margin-bottom:10px">来源 HN(72分) · <a href="https://jkm.dev/posts/how-2004-runescape-fit-a-multiplayer-rpg-into-56k-dialup/" style="color:#58a6ff">原文</a></div>
-<div style="margin-bottom:6px"><span style="color:#79c0ff">▸ 发生了什么</span><br><span style="line-height:1.7">2004年Jagex在5KB/s带宽+600ms服务器tick下,如何用Java Applet+ISAAC流密码压缩协议撑起千人同屏MMO。</span></div>
-<div style="margin-bottom:6px"><span style="color:#d2a8ff">▸ 为什么重要</span><br><span style="line-height:1.7">极致约束孕育极简协议设计,对今日边缘计算、低带宽IoT、Web3节点同步仍有借鉴价值,游戏技术怀旧金矿。</span></div>
-<div><span style="color:#7ee787">▸ 你可以怎么做</span><br><span style="line-height:1.7">网络工程师精读协议层逐字节分析;游戏开发者研究其opcode流密码做低带宽同步;怀旧项目可fork开源反编译代码。</span></div></div>
+<div style="font-size:17px;font-weight:700;margin-bottom:8px">1. Starcloud推8万年飞行星际探测器</div>
+<div style="color:#8b949e;font-size:12px;margin-bottom:10px">来源 TechCrunch · <a href="https://techcrunch.com/2026/09/01/if-space-data-centers-feel-far-fetched-why-not-interstellar-travel/" style="color:#58a6ff">原文</a></div>
+<div style="margin-bottom:6px"><span style="color:#79c0ff">▸ 发生了什么</span><br><span style="line-height:1.7">Starcloud创始人成立非营利组织Fermi Explorer，计划2029年花1500万美元发射1公斤载荷飞向半人马座α星，用电推进+引力弹弓实现8万年旅程，系首个人造指向恒星物体。</span></div>
+<div style="margin-bottom:6px"><span style="color:#d2a8ff">▸ 为什么重要</span><br><span style="line-height:1.7">用现有技术验证星际飞行可行性，反向操作失败的百亿美元激光推进计划；为Starcloud轨道GPU舰队融资做技术背书，证明长周期太空运维能力。</span></div>
+<div><span style="color:#7ee787">▸ 你可以怎么做</span><br><span style="line-height:1.7">关注搭载火箭共享发射合同、电推进供应商；若轨道数据中心业务落地，可跟投空间计算基建；警惕非营利转营利的利益输送。</span></div></div><div style="background:#161b22;border-radius:12px;padding:18px 20px;margin-bottom:14px;border-left:3px solid #58a6ff">
+<div style="font-size:17px;font-weight:700;margin-bottom:8px">2. Chrome彻底清除MV2扩展含uBlock</div>
+<div style="color:#8b949e;font-size:12px;margin-bottom:10px">来源 HN(206分) · <a href="https://webiterate.dev/google-removed-extensions-ublock-origin-108/" style="color:#58a6ff">原文</a></div>
+<div style="margin-bottom:6px"><span style="color:#79c0ff">▸ 发生了什么</span><br><span style="line-height:1.7">Google将所有Manifest V2扩展从Chrome网上应用店下架，含uBlock Origin；Brave自建后端托管四款MV2广告拦截器，其他Chromium浏览器受牵连。</span></div>
+<div style="margin-bottom:6px"><span style="color:#d2a8ff">▸ 为什么重要</span><br><span style="line-height:1.7">MV3声明式网络请求削弱拦截上限，广告技术与用户控制权博弈白热化；Brave分叉生态制造分发新入口，隐私工具赛道重构。</span></div>
+<div><span style="color:#7ee787">▸ 你可以怎么做</span><br><span style="line-height:1.7">普通用户迁移Firefox+uBlock MV3或Brave；开发者同步适配MV3或走GitHub侧载；留意Brave/Edge应用商店分成政策，做隐私工具分发渠道。</span></div></div><div style="background:#161b22;border-radius:12px;padding:18px 20px;margin-bottom:14px;border-left:3px solid #58a6ff">
+<div style="font-size:17px;font-weight:700;margin-bottom:8px">3. OpenShot 4.0上线专业调色与本地AI</div>
+<div style="color:#8b949e;font-size:12px;margin-bottom:10px">来源 HN(178分) · <a href="https://www.openshot.org/blog/2026/08/30/openshot-40-record-edit-color-like-never-before/" style="color:#58a6ff">原文</a></div>
+<div style="margin-bottom:6px"><span style="color:#79c0ff">▸ 发生了什么</span><br><span style="line-height:1.7">OpenShot 4.0新增Color View（色轮/曲线/LUT/示波器）、Recording View（屏/摄/麦分轨录制）、10大特效、本地AI抠像、Qt6底层加速，免费开源直逼DaVinci入门级。</span></div>
+<div style="margin-bottom:6px"><span style="color:#d2a8ff">▸ 为什么重要</span><br><span style="line-height:1.7">本地AI无订阅无上传，击穿低端付费剪辑护城河；Qt6铺路Android/移动端，流动创作场景可期；社区插件生态可变现。</span></div>
+<div><span style="color:#7ee787">▸ 你可以怎么做</span><br><span style="line-height:1.7">接单用它替代付费授权降本；测试AI抠像对标付费旋转镜头；二开插件卖模板/预设；盯着Android版发布做平板剪辑教程变现。</span></div></div><div style="background:#161b22;border-radius:12px;padding:18px 20px;margin-bottom:14px;border-left:3px solid #58a6ff">
+<div style="font-size:17px;font-weight:700;margin-bottom:8px">4. 手工逐字对齐实现等宽完美两端对齐</div>
+<div style="color:#8b949e;font-size:12px;margin-bottom:10px">来源 HN(173分) · <a href="https://unsung.aresluna.org/i-just-chose-words-carefully/" style="color:#58a6ff">原文</a></div>
+<div style="margin-bottom:6px"><span style="color:#79c0ff">▸ 发生了什么</span><br><span style="line-height:1.7">作者为《超级银河战士》1.7万字攻略在等宽字体下纯手工选词，使每行右侧严丝合缝落在字母上，无双空格无连字符，耗时极大。</span></div>
+<div style="margin-bottom:6px"><span style="color:#d2a8ff">▸ 为什么重要</span><br><span style="line-height:1.7">极限约束下的工匠心态，映射UI文案适配、终端仪表盘、代码注释排版等定宽场景的实战痛点；零工具零依赖的硬核方案。</span></div>
+<div><span style="color:#7ee787">▸ 你可以怎么做</span><br><span style="line-height:1.7">写脚本自动按列宽贪心/动规填词生成帮助文本/CLI表格；嵌入式UI标签按此法预排版；README/技术文档用等宽区块时套用模板避坑。</span></div></div><div style="background:#161b22;border-radius:12px;padding:18px 20px;margin-bottom:14px;border-left:3px solid #58a6ff">
+<div style="font-size:17px;font-weight:700;margin-bottom:8px">5. Breaking Claude Code Opus 5 Auto Mode</div>
+<div style="color:#8b949e;font-size:12px;margin-bottom:10px">来源 HN(136分) · <a href="https://embracethered.com/blog/posts/2026/breaking-claude-code-opus-5-and-automode/" style="color:#58a6ff">原文</a></div>
+<div style="margin-bottom:6px"><span style="color:#79c0ff">▸ 发生了什么</span><br><span style="line-height:1.7">研究者用恶意网站绕过Claude Code Opus 5 Auto Mode防护，通过WebFetch→curl→ZIP投毒→Python模块劫持实现代码执行，攻击成功率60-80%，打脸Anthropic官方0%宣称。</span></div>
+<div style="margin-bottom:6px"><span style="color:#d2a8ff">▸ 为什么重要</span><br><span style="line-height:1.7">Auto Mode已成默认模式，安全分类器易被针对性攻击链穿透，生产环境若不隔离运行、监控行为，极易被提示词注入导致供应链攻击或数据窃取。</span></div>
+<div><span style="color:#7ee787">▸ 你可以怎么做</span><br><span style="line-height:1.7">立即关闭Auto Mode改用人工审批；在容器/虚拟机隔离环境跑Agent；给Claude Code加网络出站白名单；监控异常工具调用链。</span></div></div><div style="background:#161b22;border-radius:12px;padding:18px 20px;margin-bottom:14px;border-left:3px solid #58a6ff">
+<div style="font-size:17px;font-weight:700;margin-bottom:8px">6. 安防摄像头变鸟类识别站</div>
+<div style="color:#8b949e;font-size:12px;margin-bottom:10px">来源 HN(96分) · <a href="https://jasontucker.blog/how-i-turned-my-security-cameras-into-an-automatic-bird-identification-system-with-birdnet-go/" style="color:#58a6ff">原文</a></div>
+<div style="margin-bottom:6px"><span style="color:#79c0ff">▸ 发生了什么</span><br><span style="line-height:1.7">用BirdNet-Go Docker版把现有RTSP摄像头变成24/7本地鸟类/蝙蝠/蛙类识别系统，支持1.4万物种、Discord告警、新物种追踪、BirdWeather数据共享，零云费用。</span></div>
+<div style="margin-bottom:6px"><span style="color:#d2a8ff">▸ 为什么重要</span><br><span style="line-height:1.7">监控摄像头闲置麦克风成低成本生物多样性传感器，本地推理保障隐私且无订阅费，适合自然观察、生态研究、农场监测等细分场景变现。</span></div>
+<div><span style="color:#7ee787">▸ 你可以怎么做</span><br><span style="line-height:1.7">搭树莓派/旧本跑Docker挂载RTSP流，配置目标物种告警推送到Discord/Telegram；可做SaaS卖给观鸟社区/生态机构。</span></div></div><div style="background:#161b22;border-radius:12px;padding:18px 20px;margin-bottom:14px;border-left:3px solid #58a6ff">
+<div style="font-size:17px;font-weight:700;margin-bottom:8px">7. Playa Phone：沙漠里的免费电话亭</div>
+<div style="color:#8b949e;font-size:12px;margin-bottom:10px">来源 HN(93分) · <a href="https://playaphone.com/" style="color:#58a6ff">原文</a></div>
+<div style="margin-bottom:6px"><span style="color:#79c0ff">▸ 发生了什么</span><br><span style="line-height:1.7">Burning Man现场改造电话亭，拨+1 (775) 557-4848免费通世界5分钟，或被路人随机接听，状态页实时显示通话统计，纯VoIP无话费。</span></div>
+<div style="margin-bottom:6px"><span style="color:#d2a8ff">▸ 为什么重要</span><br><span style="line-height:1.7">极低成本用VoIP+实体装置制造&quot;陌生人连接&quot;社交体验，适合活动营销、品牌互动、艺术装置，电话号码本身成传播载体。</span></div>
+<div><span style="color:#7ee787">▸ 你可以怎么做</span><br><span style="line-height:1.7">租VoIP号+SIP网关+树莓派控制继电器接老式电话机，部署状态看板；租给音乐节/品牌快闪店做互动装置，按天收费。</span></div></div><div style="background:#161b22;border-radius:12px;padding:18px 20px;margin-bottom:14px;border-left:3px solid #58a6ff">
+<div style="font-size:17px;font-weight:700;margin-bottom:8px">8. 网线直连两电脑极速传文件</div>
+<div style="color:#8b949e;font-size:12px;margin-bottom:10px">来源 HN(102分) · <a href="https://maurycyz.com/misc/etherfiles/" style="color:#58a6ff">原文</a></div>
+<div style="margin-bottom:6px"><span style="color:#79c0ff">▸ 发生了什么</span><br><span style="line-height:1.7">两台电脑直连网线，配IPv6链路本地地址用socat跑TCP传文件，实测900Mbps约6.7GB/分，吊打U盘/云盘/WiFi，Linux/macOS/Windows通用。</span></div>
+<div style="margin-bottom:6px"><span style="color:#d2a8ff">▸ 为什么重要</span><br><span style="line-height:1.7">离线大文件迁移、气隙环境数据交换、服务器机柜内互传的最快零成本方案，无需交换机/路由器/外置存储，物理隔离场景刚需。</span></div>
+<div><span style="color:#7ee787">▸ 你可以怎么做</span><br><span style="line-height:1.7">记两条ip address add命令+socat收发模板，做成别名脚本；运维/数据迁移服务里作为&quot;极速离线传输&quot;增值项报价。</span></div></div>
 
 <div class="cardbox"><h3>同源联动 · 资金费率雷达</h3><p>过去 24 小时跨所正费率机会：</p><ul><li><b>BTGO</b> @ GATE <span style='color:#3fb950'>年化 +1095%</span> <span style='color:#484f58'>(雷达持续跟踪中)</span></li><li><b>BNC</b> @ BINANCE <span style='color:#3fb950'>年化 +880%</span> <span style='color:#484f58'>(雷达持续跟踪中)</span></li><li><b>DKNG</b> @ BYBIT <span style='color:#3fb950'>年化 +834%</span> <span style='color:#484f58'>(雷达持续跟踪中)</span></li></ul>
 <p><a href="https://ratecompass.tech/">实时看板 →</a></p></div>
