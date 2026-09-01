@@ -2,87 +2,144 @@
 <title>DKNG 资金费率历史走势 | 多交易所实时对比·每10分钟更新</title>
 <meta name="description" content="DKNG 永续合约资金费率实时与历史数据：多交易所费率对比、年化走势图、Delta中性套利时机。每10分钟自动更新。">
 <meta name="viewport" content="width=device-width,initial-scale=1"><meta name="robots" content="index,follow">
+<meta name="theme-color" content="#070C15">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'><rect x='1' y='1' width='22' height='22' rx='6' fill='%230D1522' stroke='%23D99A3A' stroke-width='1.5'/><path d='M12 5l2.2 7-2.2 7-2.2-7z' fill='%23F5D08A'/></svg>">
 <script type="application/ld+json">[{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "DKNG 资金费率是什么？", "acceptedAnswer": {"@type": "Answer", "text": "DKNG 永续合约没有交割日，交易所通过资金费率让合约价格锚定现货价格：费率为正时多头付给空头，为负时空头付给多头，通常每8小时结算一次。"}}, {"@type": "Question", "name": "DKNG 资金费率怎么用来套利？", "acceptedAnswer": {"@type": "Answer", "text": "当 DKNG 资金费率折合年化显著为正时，经典做法是 Delta 中性套利：买入 DKNG 现货并做空等额永续合约，价格波动被对冲、赚取资金费；费率持续为负时反向操作同理。"}}]}, {"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "费率看板", "item": "https://ratecompass.tech/"}, {"@type": "ListItem", "position": 2, "name": "费率历史中心", "item": "https://ratecompass.tech/history/"}, {"@type": "ListItem", "position": 3, "name": "DKNG 资金费率历史走势", "item": "https://ratecompass.tech/history/dkng.html"}]}]</script>
 <style>
 *{margin:0;padding:0;box-sizing:border-box}
 :root{
-  --bg:#0A101B; --surface:#101A29; --raised:#15223A;
-  --line:rgba(148,163,184,.14); --line-strong:rgba(148,163,184,.26);
-  --ink:#E8EEF6; --ink-2:#9AA8BC; --ink-3:#66748A;
-  --blue:#5B9DFF; --gold-1:#F0C070; --gold-2:#D99A3A;
+  --bg:#070C15; --surface:#0D1522; --raised:#131E30;
+  --line:rgba(148,163,184,.13); --line-strong:rgba(148,163,184,.28);
+  --ink:#EAF0F8; --ink-2:#A7B4C7; --ink-3:#6B7A92;
+  --blue:#5B9DFF; --gold-1:#F5D08A; --gold-2:#D99A3A;
   --up:#3AC98A; --down:#F0655A; --neut:#8B99AD;
 }
+html{scroll-behavior:smooth}
 body{background:var(--bg);color:var(--ink);line-height:1.75;font-size:15px;
-  font-family:-apple-system,BlinkMacSystemFont,"PingFang SC","Microsoft YaHei","Segoe UI",Roboto,sans-serif;
-  -webkit-font-smoothing:antialiased}
-.num{font-variant-numeric:tabular-nums}
+  font-family:Inter,-apple-system,BlinkMacSystemFont,"PingFang SC","Microsoft YaHei","Segoe UI",Roboto,sans-serif;
+  -webkit-font-smoothing:antialiased;
+  background-image:radial-gradient(1000px 480px at 75% -120px,rgba(91,157,255,.07),transparent 60%),
+    radial-gradient(760px 420px at 8% -80px,rgba(240,192,112,.05),transparent 60%)}
+::selection{background:rgba(240,192,112,.28);color:var(--ink)}
+::-webkit-scrollbar{width:10px;height:10px}
+::-webkit-scrollbar-track{background:transparent}
+::-webkit-scrollbar-thumb{background:#1C2942;border-radius:6px;border:2px solid var(--bg)}
 a{color:var(--blue);text-decoration:none}
-a:hover{text-decoration:none}
-.wrap{max-width:1120px;margin:0 auto;padding:0 24px}
+a:focus-visible{outline:2px solid var(--blue);outline-offset:2px;border-radius:4px}
+b,strong{color:var(--ink)}
+h1,h2,h3{letter-spacing:-.01em}
+.num{font-variant-numeric:tabular-nums}
+.wrap{max-width:1140px;margin:0 auto;padding:0 24px}
 /* ---------- topbar ---------- */
-.topbar{position:sticky;top:0;z-index:50;background:rgba(10,16,27,.86);backdrop-filter:blur(10px);
+.topbar{position:sticky;top:0;z-index:50;background:rgba(7,12,21,.78);backdrop-filter:blur(14px) saturate(1.4);
   border-bottom:1px solid var(--line)}
-.topbar .in{display:flex;align-items:center;gap:24px;height:60px}
-.brand{font-size:16px;font-weight:800;letter-spacing:.04em;color:var(--ink);display:flex;align-items:center;gap:9px;flex-shrink:0}
+.topbar .in{display:flex;align-items:center;gap:20px;height:64px}
+.brand{font-size:16.5px;font-weight:800;letter-spacing:.02em;color:var(--ink);display:flex;align-items:center;gap:10px;flex-shrink:0}
 .brand:hover{text-decoration:none}
-.brand .dot{width:9px;height:9px;border-radius:3px;background:var(--gold-2);display:inline-block}
-.nav{display:flex;gap:18px;margin-left:6px;flex-wrap:wrap}
-.nav a{color:var(--ink-2);font-size:13.5px;white-space:nowrap}
-.nav a:hover{color:var(--ink)}
-.nav a.on{color:var(--ink);font-weight:700;box-shadow:inset 0 -2px 0 var(--gold-2);padding-bottom:2px}
+.brand svg{display:block;filter:drop-shadow(0 0 10px rgba(240,192,112,.35))}
+.nav{display:flex;gap:4px;margin-left:2px;flex-wrap:wrap}
+.nav a{color:var(--ink-2);font-size:13.5px;white-space:nowrap;padding:7px 11px;border-radius:9px;transition:color .15s,background .15s}
+.nav a:hover{color:var(--ink);background:rgba(255,255,255,.05)}
+.nav a.on{color:var(--gold-1);background:rgba(240,192,112,.10);font-weight:700}
 .topbar .cta{margin-left:auto;flex-shrink:0}
 .menutgl{display:none}
 .burger{display:none;margin-left:auto;color:var(--ink);cursor:pointer}
-@media(max-width:860px){
+@media(max-width:900px){
   .burger{display:flex;align-items:center;justify-content:center;width:38px;height:38px;border:1px solid var(--line);border-radius:9px}
   .topbar .cta{margin-left:0}
   .menutgl:checked ~ .wrap .nav{display:flex}
-  .nav{display:none;position:absolute;top:60px;left:0;right:0;flex-direction:column;gap:0;
-    background:var(--bg);border-bottom:1px solid var(--line);padding:8px 24px 14px}
-  .nav a{padding:11px 0;font-size:15px;border-top:1px solid var(--line)}
+  .nav{display:none;position:absolute;top:64px;left:0;right:0;flex-direction:column;gap:0;
+    background:rgba(7,12,21,.98);border-bottom:1px solid var(--line);padding:8px 24px 14px}
+  .nav a{padding:11px 4px;font-size:15px;border-top:1px solid var(--line);border-radius:0}
   .nav a:first-child{border-top:none}
-  .nav a.on{box-shadow:none}
 }
 /* ---------- buttons ---------- */
-.btn{display:inline-flex;align-items:center;gap:8px;border-radius:10px;padding:10px 20px;
-  font-size:14px;font-weight:700;letter-spacing:.02em;transition:transform .15s ease,filter .15s ease}
+.btn{display:inline-flex;align-items:center;gap:8px;border-radius:12px;padding:11px 22px;
+  font-size:14px;font-weight:700;letter-spacing:.02em;
+  transition:transform .15s ease,filter .15s ease,box-shadow .15s ease}
 .btn:hover{transform:translateY(-1px)}
-.btn.gold{color:#14100A;background:linear-gradient(180deg,var(--gold-1),var(--gold-2))}
-.btn.gold:hover{filter:brightness(1.06)}
-.btn.ghost{color:var(--blue);border:1px solid var(--line-strong)}
+.btn.gold{color:#17110A;background:linear-gradient(180deg,#F8DCA0,#E2A94F);
+  box-shadow:0 6px 22px rgba(226,169,79,.22),inset 0 1px 0 rgba(255,255,255,.5)}
+.btn.gold:hover{filter:brightness(1.05)}
+.btn.ghost{color:var(--ink);border:1px solid var(--line-strong);background:rgba(255,255,255,.02)}
 .btn.ghost:hover{border-color:var(--blue)}
-.btn.sm{padding:7px 14px;font-size:13px;border-radius:8px}
+.btn.sm{padding:7px 14px;font-size:13px;border-radius:9px}
+/* ---------- hero / stats / sections ---------- */
+.hero{padding:72px 0 6px}
+.eyebrow{display:inline-flex;align-items:center;gap:8px;font-size:12.5px;color:var(--ink-2);
+  border:1px solid var(--line);background:rgba(255,255,255,.03);border-radius:999px;padding:6px 14px;letter-spacing:.04em}
+.live{width:7px;height:7px;border-radius:50%;background:var(--up);box-shadow:0 0 0 0 rgba(58,201,138,.5);animation:pulse 2s infinite;flex-shrink:0}
+@keyframes pulse{0%{box-shadow:0 0 0 0 rgba(58,201,138,.45)}70%{box-shadow:0 0 0 8px rgba(58,201,138,0)}100%{box-shadow:0 0 0 0 rgba(58,201,138,0)}}
+.hero h1{font-size:clamp(30px,4.6vw,44px);font-weight:800;line-height:1.22;letter-spacing:-.015em;margin-top:18px;text-wrap:balance}
+.gradtext{background:linear-gradient(94deg,#F8DCA0 10%,#E2A94F 55%,#F8DCA0 90%);
+  -webkit-background-clip:text;background-clip:text;color:transparent}
+.hero .lede{color:var(--ink-2);font-size:16px;margin-top:14px;max-width:780px}
+.hero .acts{display:flex;gap:12px;margin-top:24px;flex-wrap:wrap}
+.stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:12px;margin-top:36px}
+.stats div{background:linear-gradient(180deg,rgba(255,255,255,.025),rgba(255,255,255,0) 55%),var(--surface);
+  border:1px solid var(--line);border-radius:14px;padding:16px 18px;position:relative;overflow:hidden}
+.stats div::after{content:"";position:absolute;inset:0 0 auto 0;height:2px;
+  background:linear-gradient(90deg,transparent,rgba(240,192,112,.5),transparent);opacity:.7}
+.stats b{display:block;font-size:27px;line-height:1.15;font-variant-numeric:tabular-nums;
+  background:linear-gradient(180deg,#F8DCA0,#DFA34A);-webkit-background-clip:text;background-clip:text;color:transparent}
+.stats span{font-size:12px;color:var(--ink-3);letter-spacing:.03em}
+.sec{margin-top:52px}
+.shead{display:flex;align-items:baseline;gap:14px;flex-wrap:wrap;margin-bottom:14px}
+.shead h2{font-size:21px;font-weight:800;letter-spacing:-.01em}
+.shead .d{color:var(--ink-3);font-size:13px}
+.shead .more{margin-left:auto;font-size:13px}
 /* ---------- page head ---------- */
-.phead{padding:44px 0 8px}
-.phead h1{font-size:clamp(25px,3.2vw,32px);font-weight:800;letter-spacing:.01em;line-height:1.3;text-wrap:balance}
-.phead .meta{color:var(--ink-3);font-size:13px;margin-top:8px}
-.phead .lede{color:var(--ink-2);font-size:15px;margin-top:10px;max-width:760px}
+.phead{padding:56px 0 10px}
+.phead h1{font-size:clamp(26px,3.4vw,34px);font-weight:800;line-height:1.25;text-wrap:balance}
+.phead .meta{color:var(--ink-3);font-size:13px;margin-top:10px}
+.phead .lede{color:var(--ink-2);font-size:15.5px;margin-top:12px;max-width:780px}
 /* ---------- content 图层：统一重皮肤遗留标记 ---------- */
-.content{padding-bottom:26px}
-.content h1,.content h2,.content h3{color:var(--ink);text-wrap:balance}
+.content{padding-bottom:30px}
+.content h1,.content h2,.content h3{color:var(--ink)}
 .content a{color:var(--blue)!important}
 .content a:hover{text-decoration:underline}
 .content table{width:100%;border-collapse:collapse;background:transparent!important;
-  border:1px solid var(--line)!important;border-radius:12px;overflow:hidden;margin-top:20px!important;font-size:13.5px}
-.content th{background:rgba(21,34,58,.62)!important;color:var(--ink-3)!important;
-  padding:11px 14px!important;border-bottom:1px solid var(--line-strong)!important;
-  font-size:12px;letter-spacing:.05em;font-weight:700}
-.content td{padding:10px 14px!important;border-bottom:1px solid var(--line)!important;color:var(--ink-2);background:transparent!important}
-.content h2,.content h3{color:var(--ink)!important}
-.content th{white-space:nowrap}
+  border:1px solid var(--line)!important;border-radius:14px;overflow:hidden;margin-top:20px!important;font-size:13.5px}
+.content th{background:rgba(19,30,48,.7)!important;color:var(--ink-3)!important;
+  padding:12px 14px!important;border-bottom:1px solid var(--line-strong)!important;
+  font-size:11px;letter-spacing:.08em;font-weight:700;text-transform:uppercase;white-space:nowrap}
+.content td{padding:11px 14px!important;border-bottom:1px solid var(--line)!important;color:var(--ink-2);background:transparent!important}
 .content tr:last-child td{border-bottom:none!important}
-.content tr:hover td{background:rgba(91,157,255,.045)!important}
-.content .cardbox{background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:22px 24px;margin-top:26px}
-.content .cardbox h3{font-size:15.5px;margin-bottom:8px}
-.content .cardbox p{font-size:13.5px;color:var(--ink-2);margin:6px 0}
-
-/* ---------- sparks / tool grid / table scroll ---------- */
-.trustbar{display:grid;grid-template-columns:repeat(auto-fit,minmax(120px,1fr));gap:10px;margin-top:18px}
-.trustbar div{background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:12px 14px;text-align:center}
+.content tr:hover td{background:rgba(91,157,255,.05)!important}
+.content td.r,.content th.r{text-align:right}
+.content .cardbox{background:linear-gradient(180deg,rgba(255,255,255,.02),rgba(255,255,255,0) 46%),var(--surface);
+  border:1px solid var(--line);border-radius:16px;padding:24px 26px;margin-top:26px;
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.03)}
+.content .cardbox h3{font-size:16px;margin-bottom:8px;font-weight:800}
+.content .cardbox p{font-size:13.8px;color:var(--ink-2);margin:7px 0}
+/* ---------- badge / 交易所色 ---------- */
+.badge{display:inline-flex;align-items:center;font-size:11px;font-weight:800;letter-spacing:.06em;
+  padding:3px 9px;border-radius:7px;background:rgba(148,163,184,.12);color:var(--ink-2)}
+.ex-binance{color:#F0B90B;background:rgba(240,185,11,.12)}
+.ex-okx{color:#8FC1FF;background:rgba(91,157,255,.14)}
+.ex-bybit{color:#FFB84D;background:rgba(247,166,0,.13)}
+.ex-gate{color:#63D8C8;background:rgba(79,209,197,.13)}
+/* ---------- 产品矩阵 ---------- */
+.featgrid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:14px;margin-top:16px}
+.feat{display:block;background:linear-gradient(180deg,rgba(255,255,255,.02),rgba(255,255,255,0) 46%),var(--surface);
+  border:1px solid var(--line);border-radius:16px;padding:20px;
+  transition:transform .15s ease,border-color .15s ease}
+.feat:hover{transform:translateY(-3px);border-color:var(--line-strong)}
+.feat .ic{width:34px;height:34px;border-radius:10px;display:flex;align-items:center;justify-content:center;
+  background:rgba(240,192,112,.10);color:var(--gold-1);margin-bottom:12px}
+.feat b{display:block;font-size:15px;color:var(--ink);margin-bottom:5px}
+.feat p{font-size:13px;color:var(--ink-3);line-height:1.65}
+.feat .go{display:inline-block;margin-top:10px;font-size:12.5px;color:var(--blue)}
+.feat:hover .go{text-decoration:underline}
+/* ---------- trustbar（旧版兼容） ---------- */
+.trustbar{display:grid;grid-template-columns:repeat(auto-fit,minmax(130px,1fr));gap:10px;margin-top:18px}
+.trustbar div{background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:13px 14px;text-align:center}
 .trustbar b{display:block;font-size:24px;color:var(--gold-1);line-height:1.2}
 .trustbar span{font-size:12px;color:var(--ink-3)}
-.sparks{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:12px;margin-top:20px}
-.spark{background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:14px 16px;font-size:13px}
+/* ---------- sparks / tool grid / table scroll ---------- */
+.sparks{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:12px;margin-top:16px}
+.spark{background:linear-gradient(180deg,rgba(255,255,255,.02),rgba(255,255,255,0) 46%),var(--surface);
+  border:1px solid var(--line);border-radius:14px;padding:16px 18px;font-size:13px}
 .spark b{font-size:14px}
 .spark svg{display:block;margin-top:6px}
 .spark .cap{color:var(--ink-3);font-size:11px;margin-top:4px}
@@ -95,7 +152,7 @@ a:hover{text-decoration:none}
 .scroller svg{min-width:820px;height:auto;display:block}
 /* ---------- 移动端卡片视图（deals 等） ---------- */
 .m-cards{display:none}
-.m-card{background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:14px 16px;margin-top:12px}
+.m-card{background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:14px 16px;margin-top:12px}
 .m-card .t{font-weight:800;font-size:14.5px;line-height:1.5}
 .m-card .meta{color:var(--ink-3);font-size:12px;margin-top:2px}
 .m-card .prow{display:flex;align-items:baseline;gap:10px;margin-top:8px}
@@ -108,26 +165,40 @@ a:hover{text-decoration:none}
   .dtable-d{display:none}
   .m-cards{display:block}
 }
-/* ---------- cta band ---------- */
-.band{border:1px solid var(--line);border-radius:16px;padding:30px 32px;text-align:center;
-  background:radial-gradient(520px 180px at 50% 0%,rgba(91,157,255,.10),transparent 70%),var(--surface);margin-top:30px}
-.band .t{font-size:19px;font-weight:800;text-wrap:balance}
+/* ---------- cta band（渐变描边） ---------- */
+.band{border:1px solid transparent;border-radius:18px;padding:34px 32px;text-align:center;margin-top:36px;
+  background:linear-gradient(180deg,rgba(255,255,255,.02),transparent 50%),
+    linear-gradient(var(--surface),var(--surface)) padding-box,
+    linear-gradient(120deg,rgba(240,192,112,.45),rgba(91,157,255,.35),rgba(240,192,112,.2)) border-box}
+.band .t{font-size:20px;font-weight:800;text-wrap:balance}
 .band .d{color:var(--ink-2);font-size:13.5px;margin-top:6px}
 .band .acts{display:flex;gap:12px;justify-content:center;margin-top:18px;flex-wrap:wrap}
 /* ---------- footer ---------- */
-footer{border-top:1px solid var(--line);margin-top:64px}
-footer .in{padding:26px 0 30px;display:flex;justify-content:space-between;gap:14px;flex-wrap:wrap;font-size:12.5px;color:var(--ink-3)}
+footer{border-top:1px solid var(--line);margin-top:72px;background:rgba(255,255,255,.012)}
+footer .in{padding:36px 0 38px;font-size:12.5px;color:var(--ink-3)}
+footer .frow{display:flex;gap:32px;flex-wrap:wrap;justify-content:space-between}
+footer .fcol{min-width:210px;line-height:1.9}
+footer .fbrand{display:flex;align-items:center;gap:9px;color:var(--ink);font-weight:800;font-size:14.5px;margin-bottom:6px}
+footer .fhead{color:var(--ink);font-weight:700;font-size:13px;margin-bottom:6px}
 footer .in a{color:var(--ink-2)}
+footer .in a:hover{color:var(--ink)}
+footer .fdis{margin-top:24px;padding-top:16px;border-top:1px solid var(--line);color:var(--ink-3)}
 /* ---------- responsive ---------- */
-@media (max-width:860px){
+@media (max-width:900px){
   .nav{display:none}
   .topbar .cta{margin-left:0}
-  .phead{padding:32px 0 4px}
+  .phead{padding:40px 0 6px}
+  .hero{padding:48px 0 4px}
   .content .cardbox{padding:18px}
+  .band{padding:26px 20px}
 }
 </style></head>
 <body><div class="topbar"><input type="checkbox" id="mt" class="menutgl"><div class="wrap in">
-  <a class="brand" href="/"><span class="dot"></span>量化情报站</a>
+  <a class="brand" href="/"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+<defs><linearGradient id="lgm" x1="0" y1="0" x2="24" y2="24">
+<stop stop-color="#F8DCA0"/><stop offset="1" stop-color="#D99A3A"/></linearGradient></defs>
+<rect x="1.5" y="1.5" width="21" height="21" rx="6" stroke="url(#lgm)" stroke-width="1.6"/>
+<path d="M12 5l2.2 7-2.2 7-2.2-7z" fill="url(#lgm)"/></svg>量化情报站</a>
   <nav class="nav"><a href="/">费率看板</a><a href="/history/" class="on">历史中心</a><a href="/tools/">工具箱</a><a href="/deals.html">游戏折扣</a><a href="/ai/">AI 榜</a><a href="/brief/latest.html">情报日报</a><a href="/about.html">关于</a></nav>
   <a class="btn gold sm cta" href="https://ratecompass.tech/masters/" target="_blank" rel="noopener">API 与服务 ↗</a>
   <label class="burger" for="mt"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 7h16M4 12h16M4 17h16"/></svg></label>
@@ -139,9 +210,9 @@ footer .in a{color:var(--ink-2)}
 <p class="lede">Delta 中性视角下的费率与套利时机解读随数据自动更新。</p></div>
 <table>
 <tr><th style="text-align:left">交易所</th><th>当前费率/8h</th><th>折合年化</th><th>下次结算</th><th>直达</th></tr>
-<tr><td><span style='color:#f0b90b'>●</span> 币安 Binance</td><td>+0.0001%</td><td style='color:#3fb950;font-weight:700'>+0.1% 年化</td><td>00:00</td><td><a href='https://www.binance.com?ref=CPA_00087XP6TE' rel='nofollow sponsored' style='color:#58a6ff'>开户/交易</a></td></tr><tr><td><span style='color:#ff6b35'>●</span> Bybit</td><td>+0.0080%</td><td style='color:#3fb950;font-weight:700'>+8.8% 年化</td><td>00:00</td><td><a href='https://www.bybit.com' rel='nofollow sponsored' style='color:#58a6ff'>开户/交易</a></td></tr><tr><td><span style='color:#58a6ff'>●</span> OKX</td><td>+0.0334%</td><td style='color:#3fb950;font-weight:700'>+36.6% 年化</td><td>08:00</td><td><a href='https://www.okx.com/join/XKO562F73C077D0' rel='nofollow sponsored' style='color:#58a6ff'>开户/交易</a></td></tr><tr><td><span style='color:#3fb950'>●</span> Gate</td><td>+0.0000%</td><td style='color:#3fb950;font-weight:700'>+0.0% 年化</td><td>00:00</td><td><a href='https://www.gate.com/referral/invite/VFKSU11ZBA' rel='nofollow sponsored' style='color:#58a6ff'>开户/交易</a></td></tr></table>
-<div style='display:flex;gap:22px;flex-wrap:wrap;font-size:14px;margin:14px 0'><span>最高 <b style='color:#3fb950'>+834.3%</b></span><span>最低 <b style='color:#f85149'>-755.1%</b></span><span>均值 <b>+11.9%</b></span><span>正费率占比 <b>16%</b></span><span>已跟踪 <b>120 小时</b> · 1267 个采样点</span></div>
-<div class="scroller" style="margin-top:16px"><div style="margin-top:10px"><svg viewBox="0 0 860 300" style="width:100%;background:#0d1117;border-radius:12px"><line x1="48" y1="48.0" x2="812" y2="48.0" stroke="#161b22"/><text x="42" y="52.0" fill="#8b949e" font-size="11" text-anchor="end">+834%</text><line x1="48" y1="150.0" x2="812" y2="150.0" stroke="#161b22"/><text x="42" y="154.0" fill="#8b949e" font-size="11" text-anchor="end">+40%</text><line x1="48" y1="252.0" x2="812" y2="252.0" stroke="#161b22"/><text x="42" y="256.0" fill="#8b949e" font-size="11" text-anchor="end">-755%</text><line x1="48" y1="155.1" x2="812" y2="155.1" stroke="#30363d" stroke-dasharray="4 4"/><text x="48" y="288" fill="#8b949e" font-size="11">08-27 18:50</text><text x="812" y="288" fill="#8b949e" font-size="11" text-anchor="end">09-01 18:45</text><polyline points="48.0,151.4 49.6,152.0 51.2,152.5 52.8,152.9 53.9,153.3 55.4,153.7 57.0,154.7 58.6,155.1 60.2,155.1 61.8,155.1 63.4,155.1 65.0,155.1 66.6,155.1 68.2,155.1 69.8,155.1 71.4,155.1 73.0,155.1 74.5,155.1 76.7,155.1 78.3,155.1 79.9,155.1 81.5,155.1 83.1,155.1 84.6,155.1 86.2,155.1 87.8,155.1 89.4,155.1 91.0,155.1 92.6,155.1 94.2,155.1 95.8,155.1 97.4,155.1 99.0,155.1 100.6,155.1 102.2,155.1 103.7,155.1 105.3,155.1 106.9,155.1 108.5,155.1 110.1,155.1 111.7,155.1 113.3,155.1 114.9,155.1 116.5,155.1 118.1,155.1 119.7,155.1 121.3,155.1 122.9,155.1 124.5,155.1 126.0,155.1 127.6,155.1 129.2,155.1 130.8,155.1 132.4,155.1 134.0,155.1 135.6,155.1 137.2,154.2 138.8,152.9 140.4,150.7 142.0,148.4 143.6,146.3 145.2,143.3 146.8,142.7 148.3,141.8 152.1,140.2 153.7,139.9 155.3,139.6 156.8,139.0 158.4,138.4 160.0,137.3 161.6,136.7 163.2,136.0 164.8,135.2 166.4,134.4 168.0,133.9 169.6,134.6 171.2,135.2 172.8,136.2 174.4,136.7 176.0,137.3 177.5,137.8 179.1,138.4 180.7,139.4 182.3,140.4 183.9,142.0 185.5,143.6 187.1,144.9 188.7,146.3 190.3,147.7 191.9,148.9 193.0,149.6 194.5,149.8 198.8,151.3 200.4,151.4 202.0,152.3 203.6,152.6 205.2,153.0 206.8,153.6 208.3,154.4 209.9,155.1 222.2,155.1 223.7,155.1 225.3,155.1 226.9,155.1 228.5,155.1 230.1,155.1 231.7,155.1 233.3,155.1 234.9,155.1 236.5,155.1 238.1,155.1 239.7,155.1 241.3,155.1 242.9,155.1 244.4,155.1 246.0,155.1 247.6,155.1 249.2,155.1 250.8,155.1 252.4,155.1 254.0,155.1 255.6,155.1 257.2,155.1 258.8,155.1 260.4,155.1 262.0,155.1 263.6,155.1 265.1,155.1 266.7,155.1 268.3,155.1 269.9,155.1 271.5,155.1 273.1,155.1 274.7,155.1 276.3,155.1 277.9,155.1 279.5,155.1 281.1,155.1 282.7,155.1 284.3,155.1 285.9,155.1 287.4,153.5 289.0,152.8 290.6,153.2 292.2,153.6 293.8,153.8 295.4,154.2 297.0,154.6 298.6,154.6 300.2,155.0 301.8,155.1 303.4,155.1 305.0,155.1 306.6,155.1 308.2,155.1 309.7,155.1 311.3,155.1 312.9,155.1 314.5,155.1 316.1,155.1 317.7,155.1 319.3,155.1 320.9,155.1 322.5,155.1 324.1,155.1 325.7,155.1 327.3,155.1 328.9,155.1 330.5,155.1 332.0,155.1 333.6,155.1 335.2,155.1 336.8,155.1 339.4,155.1 599.7,155.1 602.9,155.1 604.4,155.1 606.0,155.1 607.6,155.1 609.2,155.1 610.8,155.1 612.4,155.1 615.6,155.1 617.2,155.1 618.7,155.1 620.3,155.1 621.9,155.1 623.5,155.1 625.1,155.1 626.7,155.1 628.3,155.1 629.4,155.1 631.0,155.1 634.2,155.1 637.4,155.1 638.9,155.1 640.5,155.1 642.1,155.1 643.7,155.1 645.3,155.1 646.9,155.1 648.5,155.1 650.1,155.1 651.7,155.1 653.3,155.1 655.4,155.1 657.0,155.1 657.1,155.1 658.6,155.1 660.2,155.1 661.8,155.1 663.3,155.1 664.9,155.1 666.5,155.1 668.1,155.1 669.7,155.1 671.3,155.1 672.9,155.1 674.5,155.1 677.7,155.1 679.3,155.1 680.9,155.1 682.5,155.1 684.0,155.1 685.7,155.1 687.2,155.1 688.8,155.1 690.4,155.1 692.0,155.1 694.1,155.1 695.7,155.1 697.3,155.1 698.9,155.1 700.5,155.1 702.1,155.1 703.7,155.1 705.3,155.1 706.9,155.1 708.5,155.1 710.1,155.1 711.7,155.1 713.2,155.1 714.8,155.1 716.4,155.1 718.0,155.1 719.6,155.1 721.2,155.1 722.8,155.1 724.4,155.1 726.0,155.1 727.6,155.1 729.2,155.1 730.8,155.1 732.4,155.1 734.0,155.1 735.5,155.1 737.1,155.1 738.7,155.1 740.3,155.1 741.9,155.1 743.5,155.1 745.1,155.1 746.7,155.1 748.3,155.1 749.9,155.1 751.5,155.1 753.1,155.1 754.7,155.1 756.3,155.1 757.9,155.1 761.1,155.1 762.6,155.1 765.8,155.1 767.4,155.1 769.0,155.1 770.6,155.1 772.2,155.1 773.8,155.1 775.4,155.1 777.0,155.1 778.6,155.1 780.2,155.1 781.7,155.1 783.3,155.1 784.9,155.1 786.5,155.1 788.1,155.1 789.7,155.1 791.3,155.1 792.9,155.1 794.5,155.1 796.1,155.1 797.7,155.1 799.3,155.1 800.9,154.6 802.4,154.0 804.0,153.2 805.6,153.6 807.2,153.9 808.8,154.2 810.4,154.6 812.0,155.1" fill="none" stroke="#f0b90b" stroke-width="1.8"/><polyline points="48.0,149.1 49.6,151.2 51.2,152.9 52.8,154.0 53.9,154.7 55.4,155.1 57.0,155.1 58.6,155.1 60.2,155.1 61.8,155.1 63.4,155.1 65.0,155.1 66.6,155.1 68.2,155.1 69.8,155.1 71.4,155.1 73.0,155.1 74.5,155.1 76.7,155.1 78.3,155.1 79.9,155.1 81.5,155.1 83.1,155.1 84.6,155.1 86.2,155.1 87.8,155.1 89.4,155.1 91.0,155.1 92.6,155.1 94.2,155.1 95.8,155.1 97.4,155.1 99.0,155.1 100.6,155.1 102.2,155.1 103.7,155.1 105.3,155.1 106.9,155.1 108.5,155.1 110.1,155.1 111.7,155.1 113.3,155.1 114.9,155.1 116.5,155.1 118.1,155.1 119.7,155.1 121.3,155.1 122.9,155.1 124.5,155.1 126.0,155.1 127.6,155.1 129.2,155.1 130.8,155.1 132.4,155.1 134.0,110.1 135.6,83.9 137.2,107.1 138.8,119.2 140.4,114.5 142.0,116.2 143.6,118.3 145.2,120.9 146.8,125.2 148.3,124.9 152.1,129.8 153.7,132.5 155.3,135.6 156.8,137.7 158.4,139.5 160.0,141.2 161.6,142.4 163.2,142.9 164.8,141.5 166.4,140.2 168.0,139.5 169.6,138.8 171.2,137.8 172.8,138.3 174.4,139.5 176.0,140.0 177.5,140.3 179.1,140.3 180.7,141.7 182.3,142.4 183.9,155.1 185.5,155.1 187.1,153.3 188.7,155.1 190.3,155.1 191.9,155.1 193.0,155.1 194.5,151.6 198.8,154.2 200.4,155.1 202.0,155.1 203.6,155.1 205.2,155.1 206.8,155.1 208.3,155.1 209.9,155.1 222.2,155.1 223.7,155.1 225.3,155.1 226.9,155.1 228.5,155.1 230.1,155.1 231.7,155.1 233.3,155.1 234.9,155.1 236.5,155.1 238.1,155.1 239.7,155.1 241.3,155.1 242.9,155.1 244.4,155.1 246.0,155.1 247.6,155.1 249.2,155.1 250.8,155.1 252.4,155.1 254.0,155.1 255.6,155.1 257.2,155.1 258.8,155.1 260.4,155.1 262.0,155.1 263.6,155.1 265.1,155.1 266.7,155.1 268.3,155.1 269.9,155.1 271.5,155.1 273.1,155.1 274.7,155.1 276.3,155.1 277.9,155.1 279.5,155.1 281.1,155.1 282.7,155.1 284.3,155.1 285.9,128.7 287.4,145.3 289.0,155.1 290.6,155.1 292.2,155.1 293.8,155.1 295.4,155.1 297.0,155.1 298.6,155.1 300.2,155.1 301.8,155.1 303.4,155.1 305.0,155.1 306.6,155.1 308.2,155.1 309.7,155.1 311.3,155.1 312.9,155.1 314.5,155.1 316.1,155.1 317.7,155.1 319.3,155.1 320.9,155.1 322.5,155.1 324.1,155.1 325.7,155.1 327.3,155.1 328.9,155.1 330.5,155.1 332.0,155.1 333.6,155.1 335.2,155.1 336.8,155.1 599.7,155.1 602.9,155.1 604.4,155.1 606.0,155.1 607.6,155.1 609.2,155.1 610.8,155.1 612.4,155.1 615.6,155.1 617.2,155.1 618.7,155.1 620.3,155.1 621.9,155.1 623.5,155.1 625.1,155.1 626.7,155.1 628.3,155.1 629.4,155.1 631.0,155.1 632.6,155.1 634.2,155.1 637.4,155.1 638.9,155.1 640.5,155.1 642.1,252.0 643.7,242.6 645.3,196.1 646.9,189.0 648.5,166.8 650.1,155.1 651.7,155.1 653.3,155.1 655.4,155.1 657.0,155.1 657.1,155.1 658.6,155.1 660.2,155.1 661.8,155.1 663.3,155.1 664.9,155.1 666.5,155.1 668.1,155.1 669.7,155.1 671.3,155.1 672.9,155.1 674.5,155.1 677.7,155.1 679.3,155.1 680.9,155.1 682.5,155.1 684.0,155.1 685.7,155.1 687.2,155.1 688.8,155.1 690.4,155.1 692.0,155.1 694.1,155.1 695.7,155.1 697.3,155.1 698.9,155.1 700.5,155.1 702.1,155.1 703.7,155.1 705.3,155.1 706.9,155.1 708.5,155.1 710.1,155.1 711.7,155.1 713.2,155.1 714.8,155.1 716.4,155.1 718.0,155.1 719.6,155.1 721.2,155.1 722.8,155.1 724.4,155.1 726.0,155.1 727.6,155.1 729.2,155.1 730.8,155.1 732.4,155.1 734.0,155.1 735.5,155.1 737.1,155.1 738.7,155.1 740.3,155.1 741.9,155.1 743.5,155.1 745.1,154.2 746.7,155.1 748.3,155.1 749.9,155.1 751.5,155.1 753.1,155.1 754.7,155.1 756.3,155.1 757.9,155.1 761.1,155.1 762.6,155.1 765.8,155.1 767.4,155.1 769.0,155.1 770.6,155.1 772.2,155.1 773.8,155.1 775.4,155.1 777.0,155.1 778.6,155.1 780.2,155.1 781.7,155.1 783.3,155.1 784.9,155.1 786.5,155.1 788.1,155.1 789.7,155.1 791.3,155.1 792.9,155.1 794.5,155.1 796.1,48.0 797.7,107.6 799.3,117.0 800.9,124.2 802.4,130.8 804.0,133.9 805.6,141.1 807.2,146.0 808.8,149.6 810.4,152.1 812.0,154.0" fill="none" stroke="#ff6b35" stroke-width="1.8"/><polyline points="48.0,147.9 49.6,148.7 51.2,149.4 52.8,149.9 53.9,150.1 55.4,150.6 57.0,151.4 58.6,152.1 60.2,152.9 61.8,153.2 63.4,153.8 65.0,154.2 66.6,154.7 68.2,155.1 69.8,155.1 71.4,155.1 73.0,155.1 74.5,155.1 76.7,155.1 78.3,155.1 79.9,155.1 81.5,155.1 83.1,155.1 84.6,155.1 86.2,155.1 87.8,155.1 89.4,155.1 91.0,155.1 92.6,155.1 94.2,155.1 95.8,155.1 97.4,155.1 99.0,155.1 100.6,155.1 102.2,155.1 103.7,155.1 105.3,155.1 106.9,155.1 108.5,155.1 110.1,155.1 111.7,155.1 113.3,155.1 114.9,155.1 116.5,155.1 118.1,155.1 119.7,155.1 121.3,155.1 122.9,155.1 124.5,155.1 126.0,155.1 127.6,155.1 129.2,155.1 130.8,155.1 132.4,155.1 134.0,155.1 135.6,152.5 137.2,151.2 138.8,150.8 140.4,149.0 142.0,147.5 143.6,145.8 145.2,144.3 146.8,143.6 148.3,142.2 152.1,141.1 153.7,141.4 155.3,141.3 156.8,140.9 158.4,140.4 160.0,139.9 161.6,139.1 163.2,138.5 164.8,138.0 166.4,137.5 168.0,137.6 169.6,137.5 171.2,137.2 172.8,138.0 174.4,139.4 176.0,140.8 177.5,142.0 179.1,142.4 180.7,143.0 182.3,143.9 183.9,145.4 185.5,146.6 187.1,147.2 188.7,148.3 190.3,149.6 191.9,150.8 193.0,151.5 194.5,151.3 198.8,153.2 200.4,153.4 202.0,154.0 203.6,153.6 205.2,153.3 206.8,153.6 208.3,154.4 209.9,155.1 222.2,155.1 223.7,155.1 225.3,155.1 226.9,155.1 228.5,155.1 230.1,155.1 231.7,155.1 233.3,155.1 234.9,155.1 236.5,155.1 238.1,155.1 239.7,155.1 241.3,155.1 242.9,155.1 244.4,155.1 246.0,155.1 247.6,155.1 249.2,155.1 250.8,155.1 252.4,155.1 254.0,155.1 255.6,155.1 257.2,155.1 258.8,155.1 260.4,155.1 262.0,155.1 263.6,155.1 265.1,155.1 266.7,155.1 268.3,155.1 269.9,155.1 271.5,155.1 273.1,155.1 274.7,155.1 276.3,155.1 277.9,155.1 279.5,155.1 281.1,155.1 282.7,155.1 284.3,155.1 285.9,155.1 287.4,155.1 289.0,155.0 290.6,155.1 292.2,154.7 293.8,154.1 295.4,153.6 297.0,154.0 298.6,153.2 300.2,152.4 301.8,151.6 303.4,151.6 305.0,152.0 306.6,152.5 308.2,153.0 309.7,153.4 311.3,151.4 312.9,150.6 314.5,150.6 316.1,151.3 317.7,152.0 319.3,153.1 320.9,154.1 322.5,154.9 324.1,155.1 325.7,155.1 327.3,155.1 328.9,155.1 330.5,155.1 332.0,155.1 333.6,155.1 335.2,155.1 336.8,155.1 599.7,155.1 601.3,155.1 602.9,155.1 604.4,155.1 606.0,155.1 607.6,155.1 609.2,155.1 610.8,155.1 612.4,155.1 615.6,155.1 617.2,155.1 618.7,155.1 620.3,155.1 621.9,155.1 623.5,155.1 625.1,155.1 626.7,155.1 628.3,155.1 629.4,155.1 631.0,155.1 632.6,155.1 634.2,155.1 637.4,155.1 638.9,155.1 640.5,155.1 642.1,155.1 643.7,155.1 645.3,155.2 646.9,157.8 648.5,156.3 650.1,155.1 651.7,155.1 653.3,155.1 655.4,155.1 657.0,155.1 657.1,155.1 658.6,155.1 660.2,155.1 661.8,155.1 663.3,155.1 664.9,155.1 666.5,155.1 668.1,155.1 669.7,155.1 671.3,155.1 672.9,155.1 674.5,155.1 677.7,155.1 679.3,155.1 680.9,155.1 682.5,155.1 684.0,155.1 685.7,155.1 687.2,155.1 688.8,155.1 690.4,155.1 692.0,155.1 694.1,155.1 695.7,155.1 697.3,155.1 698.9,155.1 700.5,155.1 702.1,155.1 703.7,155.1 705.3,155.1 706.9,155.1 708.5,155.1 710.1,155.1 711.7,155.1 713.2,155.1 714.8,155.1 716.4,155.1 718.0,155.1 719.6,155.1 721.2,155.1 722.8,155.1 724.4,155.1 726.0,155.1 727.6,155.1 729.2,155.1 730.8,155.1 732.4,155.1 734.0,155.1 735.5,155.1 737.1,155.1 738.7,155.1 740.3,155.1 741.9,155.1 743.5,155.1 745.1,155.1 746.7,155.1 748.3,155.1 749.9,155.1 751.5,155.1 753.1,155.1 754.7,155.1 756.3,155.1 757.9,155.1 761.1,155.1 762.6,155.1 765.8,155.1 767.4,155.1 769.0,155.1 770.6,155.1 772.2,155.1 773.8,155.1 775.4,155.1 777.0,155.1 778.6,155.1 780.2,155.1 781.7,155.1 783.3,155.1 784.9,155.1 786.5,155.1 788.1,155.1 789.7,155.1 791.3,155.1 792.9,155.1 794.5,155.1 796.1,154.2 797.7,152.9 799.3,150.4 800.9,148.0 802.4,147.9 804.0,148.1 805.6,148.5 807.2,148.8 808.8,149.3 810.4,149.9 812.0,150.4" fill="none" stroke="#58a6ff" stroke-width="1.8"/><polyline points="48.0,155.1 49.6,155.1 51.2,155.1 52.8,155.1 53.9,155.1 55.4,155.1 57.0,155.1 58.6,155.1 61.8,155.1 63.4,155.1 65.0,155.1 66.6,155.1 68.2,155.1 69.8,155.1 71.4,155.1 73.0,155.1 76.7,155.1 78.3,155.1 79.9,155.1 81.5,155.1 83.1,155.1 84.6,155.1 86.2,155.1 87.8,155.1 91.0,155.1 92.6,155.1 94.2,155.1 95.8,155.1 97.4,155.1 99.0,155.1 100.6,155.1 102.2,155.1 105.3,155.1 106.9,155.1 108.5,155.1 110.1,155.1 111.7,155.1 113.3,155.1 114.9,155.1 116.5,155.1 119.7,155.1 121.3,155.1 122.9,155.1 124.5,155.1 126.0,155.1 127.6,155.1 129.2,155.1 130.8,155.1 134.0,155.1 135.6,155.1 137.2,155.1 138.8,155.1 140.4,155.1 142.0,155.1 143.6,155.1 145.2,155.1 148.3,155.1 150.6,155.1 152.1,155.1 153.7,155.1 155.3,155.1 156.8,155.1 158.4,155.1 160.0,155.1 163.2,155.1 164.8,155.1 166.4,155.1 168.0,155.1 169.6,155.1 171.2,155.1 172.8,155.1 174.4,155.1 177.5,155.1 179.1,155.1 180.7,155.1 182.3,155.1 183.9,155.1 185.5,155.1 187.1,155.1 188.7,155.1 191.9,155.1 193.0,155.1 194.5,155.1 197.4,155.1 198.8,155.1 200.4,155.1 202.0,155.1 203.6,155.1 206.8,155.1 208.3,155.1 209.9,155.1 212.6,155.1 215.3,155.1 218.0,155.1 220.7,155.1 222.2,155.1 225.3,155.1 226.9,155.1 228.5,155.1 230.1,155.1 231.7,155.1 233.3,155.1 234.9,155.1 236.5,155.1 239.7,155.1 241.3,155.1 242.9,155.1 244.4,155.1 246.0,155.1 247.6,155.1 249.2,155.1 250.8,155.1 254.0,155.1 255.6,155.1 257.2,155.1 258.8,155.1 260.4,155.1 262.0,155.1 263.6,155.1 265.1,155.1 268.3,155.1 269.9,155.1 271.5,155.1 273.1,155.1 274.7,155.1 276.3,155.1 277.9,155.1 279.5,155.1 282.7,155.1 284.3,155.1 285.9,155.1 287.4,155.1 289.0,155.1 290.6,155.1 292.2,155.1 293.8,155.1 297.0,155.1 298.6,155.1 300.2,155.1 301.8,155.1 303.4,155.1 305.0,155.1 306.6,155.1 308.2,155.1 311.3,155.1 312.9,155.1 314.5,155.1 316.1,155.1 317.7,155.1 319.3,155.1 320.9,155.1 322.5,155.1 325.7,155.1 327.3,155.1 328.9,155.1 330.5,155.1 332.0,155.1 333.6,155.1 335.2,155.1 336.8,155.1 341.7,155.1 344.9,155.1 347.6,155.1 350.2,155.1 353.8,155.1 356.6,155.1 359.2,155.1 362.4,155.1 367.8,155.1 371.5,155.1 374.0,155.1 376.8,155.1 380.0,155.1 382.6,155.1 385.2,155.1 388.4,155.1 393.7,155.1 396.3,155.1 399.0,155.1 401.7,155.1 404.3,155.1 407.0,155.1 409.6,155.1 412.2,155.1 417.5,155.1 420.2,155.1 422.8,155.1 425.5,155.1 428.2,155.1 430.8,155.1 433.5,155.1 436.1,155.1 442.0,155.1 444.7,155.1 447.3,155.1 450.0,155.1 452.7,155.1 455.5,155.1 458.5,155.1 461.2,155.1 466.9,155.1 469.7,155.1 472.2,155.1 475.5,155.1 478.1,155.1 480.9,155.1 483.9,155.1 486.7,155.1 492.5,155.1 495.1,155.1 497.8,155.1 500.5,155.1 503.0,155.1 505.2,155.1 509.0,155.1 511.6,155.1 517.4,155.1 520.0,155.1 522.6,155.1 525.9,155.1 528.6,155.1 531.2,155.1 534.4,155.1 537.0,155.1 542.9,155.1 545.5,155.1 548.2,155.1 550.7,155.1 553.0,155.1 555.6,155.1 558.2,155.1 560.9,155.1 566.2,155.1 568.8,155.1 571.5,155.1 574.2,155.1 576.8,155.1 579.5,155.1 582.1,155.1 584.8,155.1 590.1,155.1 592.8,155.1 595.5,155.1 598.1,155.1 599.7,155.1 601.3,155.1 602.9,155.1 604.4,155.1 607.6,155.1 609.2,155.1 610.8,155.1 612.4,155.1 615.6,155.1 617.2,155.1 618.7,155.1 620.3,155.1 623.5,155.1 625.1,155.1 626.7,155.1 628.3,155.1 629.4,155.1 631.0,155.1 632.6,155.1 634.2,155.1 638.9,155.1 640.5,155.1 642.1,155.1 643.7,155.1 645.3,155.1 646.9,155.1 648.5,155.1 650.1,155.1 653.3,155.1 655.4,155.1 657.0,155.1 657.1,155.1 658.6,155.1 660.2,155.1 661.8,155.1 663.3,155.1 666.5,155.1 668.1,155.1 669.7,155.1 671.3,155.1 672.9,155.1 674.5,155.1 677.7,155.1 679.3,155.1 682.5,155.1 684.0,155.1 685.7,155.1 687.2,155.1 688.8,155.1 690.4,155.1 692.0,155.1 694.1,155.1 697.3,155.1 698.9,155.1 700.5,155.1 702.1,155.1 703.7,155.1 705.3,155.1 706.9,155.1 708.5,155.1 711.7,155.1 713.2,155.1 714.8,155.1 716.4,155.1 718.0,155.1 719.6,155.1 721.2,155.1 722.8,155.1 726.0,155.1 727.6,155.1 729.2,155.1 730.8,155.1 732.4,155.1 734.0,155.1 735.5,155.1 737.1,155.1 740.3,155.1 741.9,155.1 743.5,155.1 745.1,155.1 746.7,155.1 748.3,155.1 749.9,155.1 751.5,155.1 754.7,155.1 756.3,155.1 757.9,155.1 761.1,155.1 762.6,155.1 764.7,155.1 765.8,155.1 767.4,155.1 770.6,155.1 772.2,155.1 773.8,155.1 775.4,155.1 777.0,155.1 778.6,155.1 780.2,155.1 781.7,155.1 784.9,155.1 786.5,155.1 788.1,155.1 789.7,155.1 791.3,155.1 792.9,155.1 794.5,155.1 796.1,155.1 799.3,155.1 800.9,155.1 802.4,155.1 804.0,155.1 805.6,155.1 807.2,155.1 808.8,155.1 812.0,155.1" fill="none" stroke="#3fb950" stroke-width="1.8"/></svg><div style="margin-top:8px"><span style="color:#f0b90b;font-size:12px;margin-right:16px">— 币安 Binance</span> <span style="color:#ff6b35;font-size:12px;margin-right:16px">— Bybit</span> <span style="color:#58a6ff;font-size:12px;margin-right:16px">— OKX</span> <span style="color:#3fb950;font-size:12px;margin-right:16px">— Gate</span></div></div></div>
+<tr><td><span style='color:#f0b90b'>●</span> 币安 Binance</td><td>+0.0000%</td><td style='color:#3fb950;font-weight:700'>+0.0% 年化</td><td>00:00</td><td><a href='https://www.binance.com?ref=CPA_00087XP6TE' rel='nofollow sponsored' style='color:#58a6ff'>开户/交易</a></td></tr><tr><td><span style='color:#ff6b35'>●</span> Bybit</td><td>+0.0000%</td><td style='color:#3fb950;font-weight:700'>+0.0% 年化</td><td>00:00</td><td><a href='https://www.bybit.com' rel='nofollow sponsored' style='color:#58a6ff'>开户/交易</a></td></tr><tr><td><span style='color:#58a6ff'>●</span> OKX</td><td>+0.0055%</td><td style='color:#3fb950;font-weight:700'>+6.0% 年化</td><td>08:00</td><td><a href='https://www.okx.com/join/XKO562F73C077D0' rel='nofollow sponsored' style='color:#58a6ff'>开户/交易</a></td></tr><tr><td><span style='color:#3fb950'>●</span> Gate</td><td>+0.0000%</td><td style='color:#3fb950;font-weight:700'>+0.0% 年化</td><td>00:00</td><td><a href='https://www.gate.com/referral/invite/VFKSU11ZBA' rel='nofollow sponsored' style='color:#58a6ff'>开户/交易</a></td></tr></table>
+<div style='display:flex;gap:22px;flex-wrap:wrap;font-size:14px;margin:14px 0'><span>最高 <b style='color:#3fb950'>+834.3%</b></span><span>最低 <b style='color:#f85149'>-755.1%</b></span><span>均值 <b>+11.6%</b></span><span>正费率占比 <b>15%</b></span><span>已跟踪 <b>120 小时</b> · 1267 个采样点</span></div>
+<div class="scroller" style="margin-top:16px"><div style="margin-top:10px"><svg viewBox="0 0 860 300" style="width:100%;background:#0d1117;border-radius:12px"><line x1="48" y1="48.0" x2="812" y2="48.0" stroke="#161b22"/><text x="42" y="52.0" fill="#8b949e" font-size="11" text-anchor="end">+834%</text><line x1="48" y1="150.0" x2="812" y2="150.0" stroke="#161b22"/><text x="42" y="154.0" fill="#8b949e" font-size="11" text-anchor="end">+40%</text><line x1="48" y1="252.0" x2="812" y2="252.0" stroke="#161b22"/><text x="42" y="256.0" fill="#8b949e" font-size="11" text-anchor="end">-755%</text><line x1="48" y1="155.1" x2="812" y2="155.1" stroke="#30363d" stroke-dasharray="4 4"/><text x="48" y="288" fill="#8b949e" font-size="11">08-27 20:00</text><text x="812" y="288" fill="#8b949e" font-size="11" text-anchor="end">09-01 20:00</text><polyline points="48.0,153.7 49.6,154.7 51.2,155.1 52.8,155.1 54.4,155.1 56.0,155.1 57.6,155.1 59.2,155.1 60.7,155.1 62.3,155.1 63.9,155.1 65.5,155.1 67.1,155.1 69.2,155.1 70.8,155.1 72.4,155.1 74.0,155.1 75.6,155.1 77.2,155.1 78.8,155.1 80.4,155.1 82.0,155.1 83.5,155.1 85.1,155.1 86.7,155.1 88.3,155.1 89.9,155.1 91.5,155.1 93.1,155.1 94.7,155.1 96.3,155.1 97.9,155.1 99.5,155.1 101.1,155.1 102.6,155.1 104.2,155.1 105.8,155.1 107.4,155.1 109.0,155.1 110.6,155.1 112.2,155.1 113.8,155.1 115.4,155.1 117.0,155.1 118.6,155.1 120.2,155.1 121.7,155.1 123.3,155.1 124.9,155.1 126.5,155.1 128.1,155.1 129.7,154.2 131.3,152.9 132.9,150.7 134.5,148.4 136.1,146.3 137.7,143.3 139.3,142.7 140.8,141.8 144.6,140.2 146.2,139.9 147.8,139.6 149.3,139.0 150.9,138.4 152.5,137.3 154.1,136.7 155.7,136.0 157.3,135.2 158.9,134.4 160.5,133.9 162.1,134.6 163.7,135.2 165.3,136.2 166.8,136.7 168.4,137.3 170.0,137.8 171.6,138.4 173.2,139.4 174.8,140.4 176.4,142.0 178.0,143.6 179.6,144.9 181.2,146.3 182.8,147.7 184.4,148.9 185.5,149.6 187.0,149.8 191.3,151.3 192.9,151.4 194.5,152.3 196.1,152.6 197.7,153.0 199.2,153.6 200.8,154.4 202.4,155.1 214.6,155.1 216.2,155.1 217.8,155.1 219.4,155.1 221.0,155.1 222.6,155.1 224.1,155.1 225.7,155.1 227.3,155.1 228.9,155.1 230.5,155.1 232.1,155.1 233.7,155.1 235.3,155.1 236.9,155.1 238.5,155.1 240.1,155.1 241.7,155.1 243.2,155.1 244.8,155.1 246.4,155.1 248.0,155.1 249.6,155.1 251.2,155.1 252.8,155.1 254.4,155.1 256.0,155.1 257.6,155.1 259.2,155.1 260.8,155.1 262.3,155.1 263.9,155.1 265.5,155.1 267.1,155.1 268.7,155.1 270.3,155.1 271.9,155.1 273.5,155.1 275.1,155.1 276.7,155.1 278.3,155.1 279.9,153.5 281.4,152.8 283.0,153.2 284.6,153.6 286.2,153.8 287.8,154.2 289.4,154.6 291.0,154.6 292.6,155.0 294.2,155.1 295.8,155.1 297.4,155.1 299.0,155.1 300.5,155.1 302.1,155.1 303.7,155.1 305.3,155.1 306.9,155.1 308.5,155.1 310.1,155.1 311.7,155.1 313.3,155.1 314.9,155.1 316.5,155.1 318.1,155.1 319.6,155.1 321.2,155.1 322.8,155.1 324.4,155.1 326.0,155.1 327.6,155.1 329.2,155.1 331.8,155.1 591.9,155.1 595.0,155.1 596.6,155.1 598.2,155.1 599.8,155.1 601.4,155.1 603.0,155.1 604.6,155.1 607.7,155.1 609.3,155.1 610.9,155.1 612.5,155.1 614.1,155.1 615.7,155.1 617.3,155.1 618.9,155.1 620.5,155.1 621.6,155.1 623.1,155.1 626.3,155.1 629.5,155.1 631.1,155.1 632.7,155.1 634.3,155.1 635.9,155.1 637.5,155.1 639.0,155.1 640.6,155.1 642.2,155.1 643.8,155.1 645.4,155.1 647.6,155.1 649.1,155.1 649.3,155.1 650.7,155.1 652.3,155.1 653.9,155.1 655.5,155.1 657.1,155.1 658.7,155.1 660.3,155.1 661.9,155.1 663.4,155.1 665.0,155.1 666.6,155.1 669.8,155.1 671.4,155.1 673.0,155.1 674.6,155.1 676.2,155.1 677.8,155.1 679.4,155.1 681.0,155.1 682.6,155.1 684.1,155.1 686.3,155.1 687.9,155.1 689.4,155.1 691.0,155.1 692.6,155.1 694.2,155.1 695.8,155.1 697.4,155.1 699.0,155.1 700.6,155.1 702.2,155.1 703.8,155.1 705.4,155.1 707.0,155.1 708.5,155.1 710.1,155.1 711.7,155.1 713.3,155.1 714.9,155.1 716.5,155.1 718.1,155.1 719.7,155.1 721.3,155.1 722.9,155.1 724.5,155.1 726.1,155.1 727.6,155.1 729.2,155.1 730.8,155.1 732.4,155.1 734.0,155.1 735.6,155.1 737.2,155.1 738.8,155.1 740.4,155.1 742.0,155.1 743.6,155.1 745.2,155.1 746.8,155.1 748.4,155.1 750.0,155.1 753.1,155.1 754.7,155.1 757.9,155.1 759.5,155.1 761.1,155.1 762.7,155.1 764.3,155.1 765.9,155.1 767.4,155.1 769.0,155.1 770.6,155.1 772.3,155.1 773.8,155.1 775.4,155.1 777.0,155.1 778.6,155.1 780.2,155.1 781.8,155.1 783.4,155.1 784.9,155.1 786.5,155.1 788.1,155.1 789.7,155.1 791.3,155.1 792.9,154.6 794.5,154.0 796.1,153.2 797.7,153.6 799.3,153.9 800.9,154.2 802.5,154.6 804.0,155.1 805.6,155.1 807.2,155.1 808.8,155.1 810.4,155.1 812.0,155.1" fill="none" stroke="#f0b90b" stroke-width="1.8"/><polyline points="48.0,155.1 49.6,155.1 51.2,155.1 52.8,155.1 54.4,155.1 56.0,155.1 57.6,155.1 59.2,155.1 60.7,155.1 62.3,155.1 63.9,155.1 65.5,155.1 67.1,155.1 69.2,155.1 70.8,155.1 72.4,155.1 74.0,155.1 75.6,155.1 77.2,155.1 78.8,155.1 80.4,155.1 82.0,155.1 83.5,155.1 85.1,155.1 86.7,155.1 88.3,155.1 89.9,155.1 91.5,155.1 93.1,155.1 94.7,155.1 96.3,155.1 97.9,155.1 99.5,155.1 101.1,155.1 102.6,155.1 104.2,155.1 105.8,155.1 107.4,155.1 109.0,155.1 110.6,155.1 112.2,155.1 113.8,155.1 115.4,155.1 117.0,155.1 118.6,155.1 120.2,155.1 121.7,155.1 123.3,155.1 124.9,155.1 126.5,110.1 128.1,83.9 129.7,107.1 131.3,119.2 132.9,114.5 134.5,116.2 136.1,118.3 137.7,120.9 139.3,125.2 140.8,124.9 144.6,129.8 146.2,132.5 147.8,135.6 149.3,137.7 150.9,139.5 152.5,141.2 154.1,142.4 155.7,142.9 157.3,141.5 158.9,140.2 160.5,139.5 162.1,138.8 163.7,137.8 165.3,138.3 166.8,139.5 168.4,140.0 170.0,140.3 171.6,140.3 173.2,141.7 174.8,142.4 176.4,155.1 178.0,155.1 179.6,153.3 181.2,155.1 182.8,155.1 184.4,155.1 185.5,155.1 187.0,151.6 191.3,154.2 192.9,155.1 194.5,155.1 196.1,155.1 197.7,155.1 199.2,155.1 200.8,155.1 202.4,155.1 214.6,155.1 216.2,155.1 217.8,155.1 219.4,155.1 221.0,155.1 222.6,155.1 224.1,155.1 225.7,155.1 227.3,155.1 228.9,155.1 230.5,155.1 232.1,155.1 233.7,155.1 235.3,155.1 236.9,155.1 238.5,155.1 240.1,155.1 241.7,155.1 243.2,155.1 244.8,155.1 246.4,155.1 248.0,155.1 249.6,155.1 251.2,155.1 252.8,155.1 254.4,155.1 256.0,155.1 257.6,155.1 259.2,155.1 260.8,155.1 262.3,155.1 263.9,155.1 265.5,155.1 267.1,155.1 268.7,155.1 270.3,155.1 271.9,155.1 273.5,155.1 275.1,155.1 276.7,155.1 278.3,128.7 279.9,145.3 281.4,155.1 283.0,155.1 284.6,155.1 286.2,155.1 287.8,155.1 289.4,155.1 291.0,155.1 292.6,155.1 294.2,155.1 295.8,155.1 297.4,155.1 299.0,155.1 300.5,155.1 302.1,155.1 303.7,155.1 305.3,155.1 306.9,155.1 308.5,155.1 310.1,155.1 311.7,155.1 313.3,155.1 314.9,155.1 316.5,155.1 318.1,155.1 319.6,155.1 321.2,155.1 322.8,155.1 324.4,155.1 326.0,155.1 327.6,155.1 329.2,155.1 591.9,155.1 595.0,155.1 596.6,155.1 598.2,155.1 599.8,155.1 601.4,155.1 603.0,155.1 604.6,155.1 607.7,155.1 609.3,155.1 610.9,155.1 612.5,155.1 614.1,155.1 615.7,155.1 617.3,155.1 618.9,155.1 620.5,155.1 621.6,155.1 623.1,155.1 624.8,155.1 626.3,155.1 629.5,155.1 631.1,155.1 632.7,155.1 634.3,252.0 635.9,242.6 637.5,196.1 639.0,189.0 640.6,166.8 642.2,155.1 643.8,155.1 645.4,155.1 647.6,155.1 649.1,155.1 649.3,155.1 650.7,155.1 652.3,155.1 653.9,155.1 655.5,155.1 657.1,155.1 658.7,155.1 660.3,155.1 661.9,155.1 663.4,155.1 665.0,155.1 666.6,155.1 669.8,155.1 671.4,155.1 673.0,155.1 674.6,155.1 676.2,155.1 677.8,155.1 679.4,155.1 681.0,155.1 682.6,155.1 684.1,155.1 686.3,155.1 687.9,155.1 689.4,155.1 691.0,155.1 692.6,155.1 694.2,155.1 695.8,155.1 697.4,155.1 699.0,155.1 700.6,155.1 702.2,155.1 703.8,155.1 705.4,155.1 707.0,155.1 708.5,155.1 710.1,155.1 711.7,155.1 713.3,155.1 714.9,155.1 716.5,155.1 718.1,155.1 719.7,155.1 721.3,155.1 722.9,155.1 724.5,155.1 726.1,155.1 727.6,155.1 729.2,155.1 730.8,155.1 732.4,155.1 734.0,155.1 735.6,155.1 737.2,154.2 738.8,155.1 740.4,155.1 742.0,155.1 743.6,155.1 745.2,155.1 746.8,155.1 748.4,155.1 750.0,155.1 753.1,155.1 754.7,155.1 757.9,155.1 759.5,155.1 761.1,155.1 762.7,155.1 764.3,155.1 765.9,155.1 767.4,155.1 769.0,155.1 770.6,155.1 772.3,155.1 773.8,155.1 775.4,155.1 777.0,155.1 778.6,155.1 780.2,155.1 781.8,155.1 783.4,155.1 784.9,155.1 786.5,155.1 788.1,48.0 789.7,107.6 791.3,117.0 792.9,124.2 794.5,130.8 796.1,133.9 797.7,141.1 799.3,146.0 800.9,149.6 802.5,152.1 804.0,154.0 805.6,155.1 807.2,155.1 808.8,155.1 810.4,155.1 812.0,155.1" fill="none" stroke="#ff6b35" stroke-width="1.8"/><polyline points="48.0,150.6 49.6,151.4 51.2,152.1 52.8,152.9 54.4,153.2 56.0,153.8 57.6,154.2 59.2,154.7 60.7,155.1 62.3,155.1 63.9,155.1 65.5,155.1 67.1,155.1 69.2,155.1 70.8,155.1 72.4,155.1 74.0,155.1 75.6,155.1 77.2,155.1 78.8,155.1 80.4,155.1 82.0,155.1 83.5,155.1 85.1,155.1 86.7,155.1 88.3,155.1 89.9,155.1 91.5,155.1 93.1,155.1 94.7,155.1 96.3,155.1 97.9,155.1 99.5,155.1 101.1,155.1 102.6,155.1 104.2,155.1 105.8,155.1 107.4,155.1 109.0,155.1 110.6,155.1 112.2,155.1 113.8,155.1 115.4,155.1 117.0,155.1 118.6,155.1 120.2,155.1 121.7,155.1 123.3,155.1 124.9,155.1 126.5,155.1 128.1,152.5 129.7,151.2 131.3,150.8 132.9,149.0 134.5,147.5 136.1,145.8 137.7,144.3 139.3,143.6 140.8,142.2 144.6,141.1 146.2,141.4 147.8,141.3 149.3,140.9 150.9,140.4 152.5,139.9 154.1,139.1 155.7,138.5 157.3,138.0 158.9,137.5 160.5,137.6 162.1,137.5 163.7,137.2 165.3,138.0 166.8,139.4 168.4,140.8 170.0,142.0 171.6,142.4 173.2,143.0 174.8,143.9 176.4,145.4 178.0,146.6 179.6,147.2 181.2,148.3 182.8,149.6 184.4,150.8 185.5,151.5 187.0,151.3 191.3,153.2 192.9,153.4 194.5,154.0 196.1,153.6 197.7,153.3 199.2,153.6 200.8,154.4 202.4,155.1 214.6,155.1 216.2,155.1 217.8,155.1 219.4,155.1 221.0,155.1 222.6,155.1 224.1,155.1 225.7,155.1 227.3,155.1 228.9,155.1 230.5,155.1 232.1,155.1 233.7,155.1 235.3,155.1 236.9,155.1 238.5,155.1 240.1,155.1 241.7,155.1 243.2,155.1 244.8,155.1 246.4,155.1 248.0,155.1 249.6,155.1 251.2,155.1 252.8,155.1 254.4,155.1 256.0,155.1 257.6,155.1 259.2,155.1 260.8,155.1 262.3,155.1 263.9,155.1 265.5,155.1 267.1,155.1 268.7,155.1 270.3,155.1 271.9,155.1 273.5,155.1 275.1,155.1 276.7,155.1 278.3,155.1 279.9,155.1 281.4,155.0 283.0,155.1 284.6,154.7 286.2,154.1 287.8,153.6 289.4,154.0 291.0,153.2 292.6,152.4 294.2,151.6 295.8,151.6 297.4,152.0 299.0,152.5 300.5,153.0 302.1,153.4 303.7,151.4 305.3,150.6 306.9,150.6 308.5,151.3 310.1,152.0 311.7,153.1 313.3,154.1 314.9,154.9 316.5,155.1 318.1,155.1 319.6,155.1 321.2,155.1 322.8,155.1 324.4,155.1 326.0,155.1 327.6,155.1 329.2,155.1 591.9,155.1 593.5,155.1 595.0,155.1 596.6,155.1 598.2,155.1 599.8,155.1 601.4,155.1 603.0,155.1 604.6,155.1 607.7,155.1 609.3,155.1 610.9,155.1 612.5,155.1 614.1,155.1 615.7,155.1 617.3,155.1 618.9,155.1 620.5,155.1 621.6,155.1 623.1,155.1 624.8,155.1 626.3,155.1 629.5,155.1 631.1,155.1 632.7,155.1 634.3,155.1 635.9,155.1 637.5,155.2 639.0,157.8 640.6,156.3 642.2,155.1 643.8,155.1 645.4,155.1 647.6,155.1 649.1,155.1 649.3,155.1 650.7,155.1 652.3,155.1 653.9,155.1 655.5,155.1 657.1,155.1 658.7,155.1 660.3,155.1 661.9,155.1 663.4,155.1 665.0,155.1 666.6,155.1 669.8,155.1 671.4,155.1 673.0,155.1 674.6,155.1 676.2,155.1 677.8,155.1 679.4,155.1 681.0,155.1 682.6,155.1 684.1,155.1 686.3,155.1 687.9,155.1 689.4,155.1 691.0,155.1 692.6,155.1 694.2,155.1 695.8,155.1 697.4,155.1 699.0,155.1 700.6,155.1 702.2,155.1 703.8,155.1 705.4,155.1 707.0,155.1 708.5,155.1 710.1,155.1 711.7,155.1 713.3,155.1 714.9,155.1 716.5,155.1 718.1,155.1 719.7,155.1 721.3,155.1 722.9,155.1 724.5,155.1 726.1,155.1 727.6,155.1 729.2,155.1 730.8,155.1 732.4,155.1 734.0,155.1 735.6,155.1 737.2,155.1 738.8,155.1 740.4,155.1 742.0,155.1 743.6,155.1 745.2,155.1 746.8,155.1 748.4,155.1 750.0,155.1 753.1,155.1 754.7,155.1 757.9,155.1 759.5,155.1 761.1,155.1 762.7,155.1 764.3,155.1 765.9,155.1 767.4,155.1 769.0,155.1 770.6,155.1 772.3,155.1 773.8,155.1 775.4,155.1 777.0,155.1 778.6,155.1 780.2,155.1 781.8,155.1 783.4,155.1 784.9,155.1 786.5,155.1 788.1,154.2 789.7,152.9 791.3,150.4 792.9,148.0 794.5,147.9 796.1,148.1 797.7,148.5 799.3,148.8 800.9,149.3 802.5,149.9 804.0,150.4 805.6,150.9 807.2,151.5 808.8,152.4 810.4,153.7 812.0,154.3" fill="none" stroke="#58a6ff" stroke-width="1.8"/><polyline points="48.0,155.1 49.6,155.1 51.2,155.1 52.8,155.1 54.4,155.1 56.0,155.1 57.6,155.1 59.2,155.1 62.3,155.1 63.9,155.1 65.5,155.1 67.1,155.1 69.2,155.1 70.8,155.1 72.4,155.1 74.0,155.1 77.2,155.1 78.8,155.1 80.4,155.1 82.0,155.1 83.5,155.1 85.1,155.1 86.7,155.1 88.3,155.1 91.5,155.1 93.1,155.1 94.7,155.1 96.3,155.1 97.9,155.1 99.5,155.1 101.1,155.1 102.6,155.1 105.8,155.1 107.4,155.1 109.0,155.1 110.6,155.1 112.2,155.1 113.8,155.1 115.4,155.1 117.0,155.1 120.2,155.1 121.7,155.1 123.3,155.1 124.9,155.1 126.5,155.1 128.1,155.1 129.7,155.1 131.3,155.1 134.5,155.1 136.1,155.1 137.7,155.1 139.3,155.1 140.8,155.1 143.1,155.1 144.6,155.1 146.2,155.1 149.3,155.1 150.9,155.1 152.5,155.1 154.1,155.1 155.7,155.1 157.3,155.1 158.9,155.1 160.5,155.1 163.7,155.1 165.3,155.1 166.8,155.1 168.4,155.1 170.0,155.1 171.6,155.1 173.2,155.1 174.8,155.1 178.0,155.1 179.6,155.1 181.2,155.1 182.8,155.1 184.4,155.1 185.5,155.1 187.0,155.1 189.9,155.1 192.9,155.1 194.5,155.1 196.1,155.1 197.7,155.1 199.2,155.1 200.8,155.1 202.4,155.1 205.0,155.1 210.5,155.1 213.1,155.1 214.6,155.1 216.2,155.1 217.8,155.1 219.4,155.1 221.0,155.1 222.6,155.1 225.7,155.1 227.3,155.1 228.9,155.1 230.5,155.1 232.1,155.1 233.7,155.1 235.3,155.1 236.9,155.1 240.1,155.1 241.7,155.1 243.2,155.1 244.8,155.1 246.4,155.1 248.0,155.1 249.6,155.1 251.2,155.1 254.4,155.1 256.0,155.1 257.6,155.1 259.2,155.1 260.8,155.1 262.3,155.1 263.9,155.1 265.5,155.1 268.7,155.1 270.3,155.1 271.9,155.1 273.5,155.1 275.1,155.1 276.7,155.1 278.3,155.1 279.9,155.1 283.0,155.1 284.6,155.1 286.2,155.1 287.8,155.1 289.4,155.1 291.0,155.1 292.6,155.1 294.2,155.1 297.4,155.1 299.0,155.1 300.5,155.1 302.1,155.1 303.7,155.1 305.3,155.1 306.9,155.1 308.5,155.1 311.7,155.1 313.3,155.1 314.9,155.1 316.5,155.1 318.1,155.1 319.6,155.1 321.2,155.1 322.8,155.1 326.0,155.1 327.6,155.1 329.2,155.1 331.8,155.1 334.1,155.1 337.3,155.1 339.9,155.1 342.6,155.1 348.9,155.1 351.6,155.1 354.7,155.1 357.4,155.1 360.2,155.1 363.8,155.1 366.4,155.1 369.2,155.1 375.0,155.1 377.6,155.1 380.7,155.1 383.4,155.1 386.1,155.1 388.7,155.1 391.3,155.1 394.0,155.1 399.3,155.1 401.9,155.1 404.5,155.1 407.3,155.1 409.9,155.1 412.5,155.1 415.2,155.1 417.8,155.1 423.1,155.1 425.8,155.1 428.4,155.1 431.2,155.1 434.3,155.1 437.0,155.1 439.6,155.1 442.3,155.1 447.8,155.1 450.8,155.1 453.5,155.1 456.1,155.1 459.2,155.1 462.0,155.1 464.5,155.1 467.8,155.1 473.2,155.1 476.2,155.1 478.9,155.1 481.6,155.1 484.8,155.1 487.4,155.1 490.1,155.1 492.8,155.1 497.5,155.1 501.2,155.1 503.9,155.1 506.5,155.1 509.7,155.1 512.2,155.1 514.9,155.1 518.1,155.1 523.4,155.1 526.6,155.1 529.3,155.1 532.0,155.1 535.1,155.1 537.8,155.1 540.4,155.1 542.9,155.1 547.9,155.1 550.4,155.1 553.1,155.1 555.8,155.1 558.4,155.1 561.1,155.1 563.7,155.1 566.4,155.1 571.7,155.1 574.3,155.1 577.0,155.1 579.6,155.1 582.3,155.1 585.0,155.1 587.7,155.1 590.3,155.1 593.5,155.1 595.0,155.1 596.6,155.1 598.2,155.1 599.8,155.1 601.4,155.1 603.0,155.1 604.6,155.1 609.3,155.1 610.9,155.1 612.5,155.1 614.1,155.1 615.7,155.1 617.3,155.1 618.9,155.1 620.5,155.1 623.1,155.1 624.8,155.1 626.3,155.1 629.5,155.1 631.1,155.1 632.7,155.1 634.3,155.1 635.9,155.1 639.0,155.1 640.6,155.1 642.2,155.1 643.8,155.1 645.4,155.1 647.6,155.1 649.1,155.1 649.3,155.1 652.3,155.1 653.9,155.1 655.5,155.1 657.1,155.1 658.7,155.1 660.3,155.1 661.9,155.1 663.4,155.1 666.6,155.1 669.8,155.1 671.4,155.1 673.0,155.1 674.6,155.1 676.2,155.1 677.8,155.1 679.4,155.1 682.6,155.1 684.1,155.1 686.3,155.1 687.9,155.1 689.4,155.1 691.0,155.1 692.6,155.1 694.2,155.1 697.4,155.1 699.0,155.1 700.6,155.1 702.2,155.1 703.8,155.1 705.4,155.1 707.0,155.1 708.5,155.1 711.7,155.1 713.3,155.1 714.9,155.1 716.5,155.1 718.1,155.1 719.7,155.1 721.3,155.1 722.9,155.1 726.1,155.1 727.6,155.1 729.2,155.1 730.8,155.1 732.4,155.1 734.0,155.1 735.6,155.1 737.2,155.1 740.4,155.1 742.0,155.1 743.6,155.1 745.2,155.1 746.8,155.1 748.4,155.1 750.0,155.1 753.1,155.1 756.7,155.1 757.9,155.1 759.5,155.1 761.1,155.1 762.7,155.1 764.3,155.1 765.9,155.1 767.4,155.1 770.6,155.1 772.3,155.1 773.8,155.1 775.4,155.1 777.0,155.1 778.6,155.1 780.2,155.1 781.8,155.1 784.9,155.1 786.5,155.1 788.1,155.1 789.7,155.1 791.3,155.1 792.9,155.1 794.5,155.1 796.1,155.1 799.3,155.1 800.9,155.1 802.5,155.1 804.0,155.1 805.6,155.1 807.2,155.1 808.8,155.1 812.0,155.1" fill="none" stroke="#3fb950" stroke-width="1.8"/></svg><div style="margin-top:8px"><span style="color:#f0b90b;font-size:12px;margin-right:16px">— 币安 Binance</span> <span style="color:#ff6b35;font-size:12px;margin-right:16px">— Bybit</span> <span style="color:#58a6ff;font-size:12px;margin-right:16px">— OKX</span> <span style="color:#3fb950;font-size:12px;margin-right:16px">— Gate</span></div></div></div>
 <div class="cardbox"><h2 style="color:#58a6ff">DKNG 资金费率是什么？</h2>
 <p style="color:#c9d1d9;line-height:1.8">DKNG 永续合约没有交割日，交易所通过<b>资金费率</b>(Funding Rate)让合约价锚定现货价：
 费率为正时多头付给空头，为负时空头付给多头，通常每8小时结算一次。本页聚合币安/Bybit/OKX/Gate
@@ -152,7 +223,25 @@ footer .in a{color:var(--ink-2)}
 <p style="color:#8b949e;line-height:1.7">⚠️ 高费率常伴随高波动与流动性风险；本页为公开数据聚合，不构成投资建议。</p></div>
 <p style="font-size:12px;color:var(--ink-3);margin-top:20px">数据来源：各交易所公开 API · 自动维护 · 不构成投资建议</p>
 </div><footer><div class="wrap in">
-  <span>© 2026 量化情报站 · 数据每 10 分钟至每交易日自动更新 · 公开数据聚合，不构成投资建议</span>
-  <span><a href="https://ratecompass.tech/masters/" target="_blank" rel="noopener">API 与技术服务</a> ·
-  <a href="/about.html">推广模式说明</a> · <a href="/privacy.html">隐私</a></span>
+  <div class="frow">
+    <div class="fcol">
+      <div class="fbrand"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+<defs><linearGradient id="lgm" x1="0" y1="0" x2="24" y2="24">
+<stop stop-color="#F8DCA0"/><stop offset="1" stop-color="#D99A3A"/></linearGradient></defs>
+<rect x="1.5" y="1.5" width="21" height="21" rx="6" stroke="url(#lgm)" stroke-width="1.6"/>
+<path d="M12 5l2.2 7-2.2 7-2.2-7z" fill="url(#lgm)"/></svg>量化情报站</div>
+      <div>全自动加密数据与海外情报站<br>每 10 分钟至每交易日自动更新，无人工编辑</div>
+    </div>
+    <div class="fcol">
+      <div class="fhead">站点导航</div>
+      <a href="/">费率看板</a> · <a href="/history/">历史中心</a> · <a href="/tools/">工具箱</a><br>
+      <a href="/deals.html">游戏折扣</a> · <a href="/ai/">AI 榜</a> · <a href="/brief/latest.html">情报日报</a>
+    </div>
+    <div class="fcol">
+      <div class="fhead">对外服务</div>
+      <a href="https://ratecompass.tech/masters/" target="_blank" rel="noopener">API 与技术服务</a> · <a href="/about.html">推广模式说明</a><br>
+      <a href="https://t.me/autofarm_rate" target="_blank" rel="noopener">Telegram 频道</a> · <a href="/privacy.html">隐私说明</a>
+    </div>
+  </div>
+  <div class="fdis">© 2026 量化情报站 · 公开数据聚合与工具，不构成任何投资建议 · 合约交易风险极高，请自行决策</div>
 </div></footer></div></body></html>

@@ -2,87 +2,144 @@
 <title>ADA 资金费率历史走势 | 多交易所实时对比·每10分钟更新</title>
 <meta name="description" content="ADA 永续合约资金费率实时与历史数据：多交易所费率对比、年化走势图、Delta中性套利时机。每10分钟自动更新。">
 <meta name="viewport" content="width=device-width,initial-scale=1"><meta name="robots" content="index,follow">
+<meta name="theme-color" content="#070C15">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'><rect x='1' y='1' width='22' height='22' rx='6' fill='%230D1522' stroke='%23D99A3A' stroke-width='1.5'/><path d='M12 5l2.2 7-2.2 7-2.2-7z' fill='%23F5D08A'/></svg>">
 <script type="application/ld+json">[{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "ADA 资金费率是什么？", "acceptedAnswer": {"@type": "Answer", "text": "ADA 永续合约没有交割日，交易所通过资金费率让合约价格锚定现货价格：费率为正时多头付给空头，为负时空头付给多头，通常每8小时结算一次。"}}, {"@type": "Question", "name": "ADA 资金费率怎么用来套利？", "acceptedAnswer": {"@type": "Answer", "text": "当 ADA 资金费率折合年化显著为正时，经典做法是 Delta 中性套利：买入 ADA 现货并做空等额永续合约，价格波动被对冲、赚取资金费；费率持续为负时反向操作同理。"}}]}, {"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "费率看板", "item": "https://ratecompass.tech/"}, {"@type": "ListItem", "position": 2, "name": "费率历史中心", "item": "https://ratecompass.tech/history/"}, {"@type": "ListItem", "position": 3, "name": "ADA 资金费率历史走势", "item": "https://ratecompass.tech/history/ada.html"}]}]</script>
 <style>
 *{margin:0;padding:0;box-sizing:border-box}
 :root{
-  --bg:#0A101B; --surface:#101A29; --raised:#15223A;
-  --line:rgba(148,163,184,.14); --line-strong:rgba(148,163,184,.26);
-  --ink:#E8EEF6; --ink-2:#9AA8BC; --ink-3:#66748A;
-  --blue:#5B9DFF; --gold-1:#F0C070; --gold-2:#D99A3A;
+  --bg:#070C15; --surface:#0D1522; --raised:#131E30;
+  --line:rgba(148,163,184,.13); --line-strong:rgba(148,163,184,.28);
+  --ink:#EAF0F8; --ink-2:#A7B4C7; --ink-3:#6B7A92;
+  --blue:#5B9DFF; --gold-1:#F5D08A; --gold-2:#D99A3A;
   --up:#3AC98A; --down:#F0655A; --neut:#8B99AD;
 }
+html{scroll-behavior:smooth}
 body{background:var(--bg);color:var(--ink);line-height:1.75;font-size:15px;
-  font-family:-apple-system,BlinkMacSystemFont,"PingFang SC","Microsoft YaHei","Segoe UI",Roboto,sans-serif;
-  -webkit-font-smoothing:antialiased}
-.num{font-variant-numeric:tabular-nums}
+  font-family:Inter,-apple-system,BlinkMacSystemFont,"PingFang SC","Microsoft YaHei","Segoe UI",Roboto,sans-serif;
+  -webkit-font-smoothing:antialiased;
+  background-image:radial-gradient(1000px 480px at 75% -120px,rgba(91,157,255,.07),transparent 60%),
+    radial-gradient(760px 420px at 8% -80px,rgba(240,192,112,.05),transparent 60%)}
+::selection{background:rgba(240,192,112,.28);color:var(--ink)}
+::-webkit-scrollbar{width:10px;height:10px}
+::-webkit-scrollbar-track{background:transparent}
+::-webkit-scrollbar-thumb{background:#1C2942;border-radius:6px;border:2px solid var(--bg)}
 a{color:var(--blue);text-decoration:none}
-a:hover{text-decoration:none}
-.wrap{max-width:1120px;margin:0 auto;padding:0 24px}
+a:focus-visible{outline:2px solid var(--blue);outline-offset:2px;border-radius:4px}
+b,strong{color:var(--ink)}
+h1,h2,h3{letter-spacing:-.01em}
+.num{font-variant-numeric:tabular-nums}
+.wrap{max-width:1140px;margin:0 auto;padding:0 24px}
 /* ---------- topbar ---------- */
-.topbar{position:sticky;top:0;z-index:50;background:rgba(10,16,27,.86);backdrop-filter:blur(10px);
+.topbar{position:sticky;top:0;z-index:50;background:rgba(7,12,21,.78);backdrop-filter:blur(14px) saturate(1.4);
   border-bottom:1px solid var(--line)}
-.topbar .in{display:flex;align-items:center;gap:24px;height:60px}
-.brand{font-size:16px;font-weight:800;letter-spacing:.04em;color:var(--ink);display:flex;align-items:center;gap:9px;flex-shrink:0}
+.topbar .in{display:flex;align-items:center;gap:20px;height:64px}
+.brand{font-size:16.5px;font-weight:800;letter-spacing:.02em;color:var(--ink);display:flex;align-items:center;gap:10px;flex-shrink:0}
 .brand:hover{text-decoration:none}
-.brand .dot{width:9px;height:9px;border-radius:3px;background:var(--gold-2);display:inline-block}
-.nav{display:flex;gap:18px;margin-left:6px;flex-wrap:wrap}
-.nav a{color:var(--ink-2);font-size:13.5px;white-space:nowrap}
-.nav a:hover{color:var(--ink)}
-.nav a.on{color:var(--ink);font-weight:700;box-shadow:inset 0 -2px 0 var(--gold-2);padding-bottom:2px}
+.brand svg{display:block;filter:drop-shadow(0 0 10px rgba(240,192,112,.35))}
+.nav{display:flex;gap:4px;margin-left:2px;flex-wrap:wrap}
+.nav a{color:var(--ink-2);font-size:13.5px;white-space:nowrap;padding:7px 11px;border-radius:9px;transition:color .15s,background .15s}
+.nav a:hover{color:var(--ink);background:rgba(255,255,255,.05)}
+.nav a.on{color:var(--gold-1);background:rgba(240,192,112,.10);font-weight:700}
 .topbar .cta{margin-left:auto;flex-shrink:0}
 .menutgl{display:none}
 .burger{display:none;margin-left:auto;color:var(--ink);cursor:pointer}
-@media(max-width:860px){
+@media(max-width:900px){
   .burger{display:flex;align-items:center;justify-content:center;width:38px;height:38px;border:1px solid var(--line);border-radius:9px}
   .topbar .cta{margin-left:0}
   .menutgl:checked ~ .wrap .nav{display:flex}
-  .nav{display:none;position:absolute;top:60px;left:0;right:0;flex-direction:column;gap:0;
-    background:var(--bg);border-bottom:1px solid var(--line);padding:8px 24px 14px}
-  .nav a{padding:11px 0;font-size:15px;border-top:1px solid var(--line)}
+  .nav{display:none;position:absolute;top:64px;left:0;right:0;flex-direction:column;gap:0;
+    background:rgba(7,12,21,.98);border-bottom:1px solid var(--line);padding:8px 24px 14px}
+  .nav a{padding:11px 4px;font-size:15px;border-top:1px solid var(--line);border-radius:0}
   .nav a:first-child{border-top:none}
-  .nav a.on{box-shadow:none}
 }
 /* ---------- buttons ---------- */
-.btn{display:inline-flex;align-items:center;gap:8px;border-radius:10px;padding:10px 20px;
-  font-size:14px;font-weight:700;letter-spacing:.02em;transition:transform .15s ease,filter .15s ease}
+.btn{display:inline-flex;align-items:center;gap:8px;border-radius:12px;padding:11px 22px;
+  font-size:14px;font-weight:700;letter-spacing:.02em;
+  transition:transform .15s ease,filter .15s ease,box-shadow .15s ease}
 .btn:hover{transform:translateY(-1px)}
-.btn.gold{color:#14100A;background:linear-gradient(180deg,var(--gold-1),var(--gold-2))}
-.btn.gold:hover{filter:brightness(1.06)}
-.btn.ghost{color:var(--blue);border:1px solid var(--line-strong)}
+.btn.gold{color:#17110A;background:linear-gradient(180deg,#F8DCA0,#E2A94F);
+  box-shadow:0 6px 22px rgba(226,169,79,.22),inset 0 1px 0 rgba(255,255,255,.5)}
+.btn.gold:hover{filter:brightness(1.05)}
+.btn.ghost{color:var(--ink);border:1px solid var(--line-strong);background:rgba(255,255,255,.02)}
 .btn.ghost:hover{border-color:var(--blue)}
-.btn.sm{padding:7px 14px;font-size:13px;border-radius:8px}
+.btn.sm{padding:7px 14px;font-size:13px;border-radius:9px}
+/* ---------- hero / stats / sections ---------- */
+.hero{padding:72px 0 6px}
+.eyebrow{display:inline-flex;align-items:center;gap:8px;font-size:12.5px;color:var(--ink-2);
+  border:1px solid var(--line);background:rgba(255,255,255,.03);border-radius:999px;padding:6px 14px;letter-spacing:.04em}
+.live{width:7px;height:7px;border-radius:50%;background:var(--up);box-shadow:0 0 0 0 rgba(58,201,138,.5);animation:pulse 2s infinite;flex-shrink:0}
+@keyframes pulse{0%{box-shadow:0 0 0 0 rgba(58,201,138,.45)}70%{box-shadow:0 0 0 8px rgba(58,201,138,0)}100%{box-shadow:0 0 0 0 rgba(58,201,138,0)}}
+.hero h1{font-size:clamp(30px,4.6vw,44px);font-weight:800;line-height:1.22;letter-spacing:-.015em;margin-top:18px;text-wrap:balance}
+.gradtext{background:linear-gradient(94deg,#F8DCA0 10%,#E2A94F 55%,#F8DCA0 90%);
+  -webkit-background-clip:text;background-clip:text;color:transparent}
+.hero .lede{color:var(--ink-2);font-size:16px;margin-top:14px;max-width:780px}
+.hero .acts{display:flex;gap:12px;margin-top:24px;flex-wrap:wrap}
+.stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:12px;margin-top:36px}
+.stats div{background:linear-gradient(180deg,rgba(255,255,255,.025),rgba(255,255,255,0) 55%),var(--surface);
+  border:1px solid var(--line);border-radius:14px;padding:16px 18px;position:relative;overflow:hidden}
+.stats div::after{content:"";position:absolute;inset:0 0 auto 0;height:2px;
+  background:linear-gradient(90deg,transparent,rgba(240,192,112,.5),transparent);opacity:.7}
+.stats b{display:block;font-size:27px;line-height:1.15;font-variant-numeric:tabular-nums;
+  background:linear-gradient(180deg,#F8DCA0,#DFA34A);-webkit-background-clip:text;background-clip:text;color:transparent}
+.stats span{font-size:12px;color:var(--ink-3);letter-spacing:.03em}
+.sec{margin-top:52px}
+.shead{display:flex;align-items:baseline;gap:14px;flex-wrap:wrap;margin-bottom:14px}
+.shead h2{font-size:21px;font-weight:800;letter-spacing:-.01em}
+.shead .d{color:var(--ink-3);font-size:13px}
+.shead .more{margin-left:auto;font-size:13px}
 /* ---------- page head ---------- */
-.phead{padding:44px 0 8px}
-.phead h1{font-size:clamp(25px,3.2vw,32px);font-weight:800;letter-spacing:.01em;line-height:1.3;text-wrap:balance}
-.phead .meta{color:var(--ink-3);font-size:13px;margin-top:8px}
-.phead .lede{color:var(--ink-2);font-size:15px;margin-top:10px;max-width:760px}
+.phead{padding:56px 0 10px}
+.phead h1{font-size:clamp(26px,3.4vw,34px);font-weight:800;line-height:1.25;text-wrap:balance}
+.phead .meta{color:var(--ink-3);font-size:13px;margin-top:10px}
+.phead .lede{color:var(--ink-2);font-size:15.5px;margin-top:12px;max-width:780px}
 /* ---------- content 图层：统一重皮肤遗留标记 ---------- */
-.content{padding-bottom:26px}
-.content h1,.content h2,.content h3{color:var(--ink);text-wrap:balance}
+.content{padding-bottom:30px}
+.content h1,.content h2,.content h3{color:var(--ink)}
 .content a{color:var(--blue)!important}
 .content a:hover{text-decoration:underline}
 .content table{width:100%;border-collapse:collapse;background:transparent!important;
-  border:1px solid var(--line)!important;border-radius:12px;overflow:hidden;margin-top:20px!important;font-size:13.5px}
-.content th{background:rgba(21,34,58,.62)!important;color:var(--ink-3)!important;
-  padding:11px 14px!important;border-bottom:1px solid var(--line-strong)!important;
-  font-size:12px;letter-spacing:.05em;font-weight:700}
-.content td{padding:10px 14px!important;border-bottom:1px solid var(--line)!important;color:var(--ink-2);background:transparent!important}
-.content h2,.content h3{color:var(--ink)!important}
-.content th{white-space:nowrap}
+  border:1px solid var(--line)!important;border-radius:14px;overflow:hidden;margin-top:20px!important;font-size:13.5px}
+.content th{background:rgba(19,30,48,.7)!important;color:var(--ink-3)!important;
+  padding:12px 14px!important;border-bottom:1px solid var(--line-strong)!important;
+  font-size:11px;letter-spacing:.08em;font-weight:700;text-transform:uppercase;white-space:nowrap}
+.content td{padding:11px 14px!important;border-bottom:1px solid var(--line)!important;color:var(--ink-2);background:transparent!important}
 .content tr:last-child td{border-bottom:none!important}
-.content tr:hover td{background:rgba(91,157,255,.045)!important}
-.content .cardbox{background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:22px 24px;margin-top:26px}
-.content .cardbox h3{font-size:15.5px;margin-bottom:8px}
-.content .cardbox p{font-size:13.5px;color:var(--ink-2);margin:6px 0}
-
-/* ---------- sparks / tool grid / table scroll ---------- */
-.trustbar{display:grid;grid-template-columns:repeat(auto-fit,minmax(120px,1fr));gap:10px;margin-top:18px}
-.trustbar div{background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:12px 14px;text-align:center}
+.content tr:hover td{background:rgba(91,157,255,.05)!important}
+.content td.r,.content th.r{text-align:right}
+.content .cardbox{background:linear-gradient(180deg,rgba(255,255,255,.02),rgba(255,255,255,0) 46%),var(--surface);
+  border:1px solid var(--line);border-radius:16px;padding:24px 26px;margin-top:26px;
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.03)}
+.content .cardbox h3{font-size:16px;margin-bottom:8px;font-weight:800}
+.content .cardbox p{font-size:13.8px;color:var(--ink-2);margin:7px 0}
+/* ---------- badge / 交易所色 ---------- */
+.badge{display:inline-flex;align-items:center;font-size:11px;font-weight:800;letter-spacing:.06em;
+  padding:3px 9px;border-radius:7px;background:rgba(148,163,184,.12);color:var(--ink-2)}
+.ex-binance{color:#F0B90B;background:rgba(240,185,11,.12)}
+.ex-okx{color:#8FC1FF;background:rgba(91,157,255,.14)}
+.ex-bybit{color:#FFB84D;background:rgba(247,166,0,.13)}
+.ex-gate{color:#63D8C8;background:rgba(79,209,197,.13)}
+/* ---------- 产品矩阵 ---------- */
+.featgrid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:14px;margin-top:16px}
+.feat{display:block;background:linear-gradient(180deg,rgba(255,255,255,.02),rgba(255,255,255,0) 46%),var(--surface);
+  border:1px solid var(--line);border-radius:16px;padding:20px;
+  transition:transform .15s ease,border-color .15s ease}
+.feat:hover{transform:translateY(-3px);border-color:var(--line-strong)}
+.feat .ic{width:34px;height:34px;border-radius:10px;display:flex;align-items:center;justify-content:center;
+  background:rgba(240,192,112,.10);color:var(--gold-1);margin-bottom:12px}
+.feat b{display:block;font-size:15px;color:var(--ink);margin-bottom:5px}
+.feat p{font-size:13px;color:var(--ink-3);line-height:1.65}
+.feat .go{display:inline-block;margin-top:10px;font-size:12.5px;color:var(--blue)}
+.feat:hover .go{text-decoration:underline}
+/* ---------- trustbar（旧版兼容） ---------- */
+.trustbar{display:grid;grid-template-columns:repeat(auto-fit,minmax(130px,1fr));gap:10px;margin-top:18px}
+.trustbar div{background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:13px 14px;text-align:center}
 .trustbar b{display:block;font-size:24px;color:var(--gold-1);line-height:1.2}
 .trustbar span{font-size:12px;color:var(--ink-3)}
-.sparks{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:12px;margin-top:20px}
-.spark{background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:14px 16px;font-size:13px}
+/* ---------- sparks / tool grid / table scroll ---------- */
+.sparks{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:12px;margin-top:16px}
+.spark{background:linear-gradient(180deg,rgba(255,255,255,.02),rgba(255,255,255,0) 46%),var(--surface);
+  border:1px solid var(--line);border-radius:14px;padding:16px 18px;font-size:13px}
 .spark b{font-size:14px}
 .spark svg{display:block;margin-top:6px}
 .spark .cap{color:var(--ink-3);font-size:11px;margin-top:4px}
@@ -95,7 +152,7 @@ a:hover{text-decoration:none}
 .scroller svg{min-width:820px;height:auto;display:block}
 /* ---------- 移动端卡片视图（deals 等） ---------- */
 .m-cards{display:none}
-.m-card{background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:14px 16px;margin-top:12px}
+.m-card{background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:14px 16px;margin-top:12px}
 .m-card .t{font-weight:800;font-size:14.5px;line-height:1.5}
 .m-card .meta{color:var(--ink-3);font-size:12px;margin-top:2px}
 .m-card .prow{display:flex;align-items:baseline;gap:10px;margin-top:8px}
@@ -108,26 +165,40 @@ a:hover{text-decoration:none}
   .dtable-d{display:none}
   .m-cards{display:block}
 }
-/* ---------- cta band ---------- */
-.band{border:1px solid var(--line);border-radius:16px;padding:30px 32px;text-align:center;
-  background:radial-gradient(520px 180px at 50% 0%,rgba(91,157,255,.10),transparent 70%),var(--surface);margin-top:30px}
-.band .t{font-size:19px;font-weight:800;text-wrap:balance}
+/* ---------- cta band（渐变描边） ---------- */
+.band{border:1px solid transparent;border-radius:18px;padding:34px 32px;text-align:center;margin-top:36px;
+  background:linear-gradient(180deg,rgba(255,255,255,.02),transparent 50%),
+    linear-gradient(var(--surface),var(--surface)) padding-box,
+    linear-gradient(120deg,rgba(240,192,112,.45),rgba(91,157,255,.35),rgba(240,192,112,.2)) border-box}
+.band .t{font-size:20px;font-weight:800;text-wrap:balance}
 .band .d{color:var(--ink-2);font-size:13.5px;margin-top:6px}
 .band .acts{display:flex;gap:12px;justify-content:center;margin-top:18px;flex-wrap:wrap}
 /* ---------- footer ---------- */
-footer{border-top:1px solid var(--line);margin-top:64px}
-footer .in{padding:26px 0 30px;display:flex;justify-content:space-between;gap:14px;flex-wrap:wrap;font-size:12.5px;color:var(--ink-3)}
+footer{border-top:1px solid var(--line);margin-top:72px;background:rgba(255,255,255,.012)}
+footer .in{padding:36px 0 38px;font-size:12.5px;color:var(--ink-3)}
+footer .frow{display:flex;gap:32px;flex-wrap:wrap;justify-content:space-between}
+footer .fcol{min-width:210px;line-height:1.9}
+footer .fbrand{display:flex;align-items:center;gap:9px;color:var(--ink);font-weight:800;font-size:14.5px;margin-bottom:6px}
+footer .fhead{color:var(--ink);font-weight:700;font-size:13px;margin-bottom:6px}
 footer .in a{color:var(--ink-2)}
+footer .in a:hover{color:var(--ink)}
+footer .fdis{margin-top:24px;padding-top:16px;border-top:1px solid var(--line);color:var(--ink-3)}
 /* ---------- responsive ---------- */
-@media (max-width:860px){
+@media (max-width:900px){
   .nav{display:none}
   .topbar .cta{margin-left:0}
-  .phead{padding:32px 0 4px}
+  .phead{padding:40px 0 6px}
+  .hero{padding:48px 0 4px}
   .content .cardbox{padding:18px}
+  .band{padding:26px 20px}
 }
 </style></head>
 <body><div class="topbar"><input type="checkbox" id="mt" class="menutgl"><div class="wrap in">
-  <a class="brand" href="/"><span class="dot"></span>量化情报站</a>
+  <a class="brand" href="/"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+<defs><linearGradient id="lgm" x1="0" y1="0" x2="24" y2="24">
+<stop stop-color="#F8DCA0"/><stop offset="1" stop-color="#D99A3A"/></linearGradient></defs>
+<rect x="1.5" y="1.5" width="21" height="21" rx="6" stroke="url(#lgm)" stroke-width="1.6"/>
+<path d="M12 5l2.2 7-2.2 7-2.2-7z" fill="url(#lgm)"/></svg>量化情报站</a>
   <nav class="nav"><a href="/">费率看板</a><a href="/history/" class="on">历史中心</a><a href="/tools/">工具箱</a><a href="/deals.html">游戏折扣</a><a href="/ai/">AI 榜</a><a href="/brief/latest.html">情报日报</a><a href="/about.html">关于</a></nav>
   <a class="btn gold sm cta" href="https://ratecompass.tech/masters/" target="_blank" rel="noopener">API 与服务 ↗</a>
   <label class="burger" for="mt"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 7h16M4 12h16M4 17h16"/></svg></label>
@@ -139,9 +210,9 @@ footer .in a{color:var(--ink-2)}
 <p class="lede">Delta 中性视角下的费率与套利时机解读随数据自动更新。</p></div>
 <table>
 <tr><th style="text-align:left">交易所</th><th>当前费率/8h</th><th>折合年化</th><th>下次结算</th><th>直达</th></tr>
-<tr><td><span style='color:#f0b90b'>●</span> 币安 Binance</td><td>+0.0042%</td><td style='color:#3fb950;font-weight:700'>+4.6% 年化</td><td>00:00</td><td><a href='https://www.binance.com?ref=CPA_00087XP6TE' rel='nofollow sponsored' style='color:#58a6ff'>开户/交易</a></td></tr><tr><td><span style='color:#ff6b35'>●</span> Bybit</td><td>+0.0059%</td><td style='color:#3fb950;font-weight:700'>+6.4% 年化</td><td>00:00</td><td><a href='https://www.bybit.com' rel='nofollow sponsored' style='color:#58a6ff'>开户/交易</a></td></tr><tr><td><span style='color:#58a6ff'>●</span> OKX</td><td>+0.0100%</td><td style='color:#3fb950;font-weight:700'>+10.9% 年化</td><td>08:00</td><td><a href='https://www.okx.com/join/XKO562F73C077D0' rel='nofollow sponsored' style='color:#58a6ff'>开户/交易</a></td></tr><tr><td><span style='color:#3fb950'>●</span> Gate</td><td>+0.0100%</td><td style='color:#3fb950;font-weight:700'>+10.9% 年化</td><td>00:00</td><td><a href='https://www.gate.com/referral/invite/VFKSU11ZBA' rel='nofollow sponsored' style='color:#58a6ff'>开户/交易</a></td></tr></table>
-<div style='display:flex;gap:22px;flex-wrap:wrap;font-size:14px;margin:14px 0'><span>最高 <b style='color:#3fb950'>+10.9%</b></span><span>最低 <b style='color:#f85149'>-38.8%</b></span><span>均值 <b>+4.4%</b></span><span>正费率占比 <b>80%</b></span><span>已跟踪 <b>120 小时</b> · 1267 个采样点</span></div>
-<div class="scroller" style="margin-top:16px"><div style="margin-top:10px"><svg viewBox="0 0 860 300" style="width:100%;background:#0d1117;border-radius:12px"><line x1="48" y1="48.0" x2="812" y2="48.0" stroke="#161b22"/><text x="42" y="52.0" fill="#8b949e" font-size="11" text-anchor="end">+11%</text><line x1="48" y1="150.0" x2="812" y2="150.0" stroke="#161b22"/><text x="42" y="154.0" fill="#8b949e" font-size="11" text-anchor="end">-14%</text><line x1="48" y1="252.0" x2="812" y2="252.0" stroke="#161b22"/><text x="42" y="256.0" fill="#8b949e" font-size="11" text-anchor="end">-39%</text><line x1="48" y1="92.9" x2="812" y2="92.9" stroke="#30363d" stroke-dasharray="4 4"/><text x="48" y="288" fill="#8b949e" font-size="11">08-27 18:50</text><text x="812" y="288" fill="#8b949e" font-size="11" text-anchor="end">09-01 18:45</text><polyline points="48.0,100.9 49.6,97.6 51.2,94.5 52.8,90.2 53.9,88.7 55.4,84.9 57.0,80.4 58.6,73.8 60.2,69.7 61.8,66.6 63.4,66.2 65.0,63.0 66.6,61.1 68.2,61.2 69.8,60.6 71.4,61.3 73.0,59.0 74.5,57.5 76.7,58.5 78.3,57.5 79.9,57.7 81.5,55.8 83.1,55.9 84.6,55.2 86.2,55.5 87.8,60.6 89.4,64.3 91.0,66.8 92.6,70.4 94.2,73.1 95.8,74.9 97.4,79.5 99.0,81.0 100.6,83.2 102.2,85.5 103.7,81.7 105.3,76.3 106.9,72.0 108.5,71.0 110.1,69.7 111.7,64.5 113.3,61.8 114.9,61.4 116.5,62.2 118.1,60.7 119.7,56.1 121.3,55.7 122.9,61.8 124.5,65.4 126.0,69.6 127.6,72.3 129.2,71.6 130.8,72.1 132.4,75.3 134.0,74.0 135.6,76.0 137.2,78.5 138.8,78.6 140.4,78.9 142.0,73.7 143.6,70.1 145.2,71.9 146.8,72.2 148.3,69.4 152.1,79.5 153.7,84.6 155.3,86.8 156.8,85.6 158.4,86.6 160.0,86.9 161.6,88.2 163.2,85.8 164.8,84.8 166.4,84.8 168.0,81.1 169.6,77.1 171.2,73.9 172.8,70.6 174.4,70.6 176.0,69.8 177.5,74.7 179.1,73.3 180.7,74.1 182.3,75.5 183.9,80.5 185.5,84.1 187.1,87.0 188.7,88.9 190.3,92.7 191.9,93.7 193.0,96.3 194.5,99.0 198.8,106.1 200.4,107.0 202.0,107.2 203.6,109.3 205.2,109.2 206.8,112.3 208.3,115.9 209.9,118.0 222.2,120.1 223.7,122.5 225.3,122.8 226.9,129.2 228.5,133.8 230.1,132.3 231.7,130.1 233.3,127.9 234.9,125.9 236.5,124.6 238.1,123.2 239.7,120.6 241.3,115.6 242.9,109.9 244.4,104.6 246.0,99.0 247.6,93.6 249.2,88.0 250.8,82.4 252.4,74.8 254.0,72.4 255.6,70.0 257.2,67.1 258.8,62.5 260.4,57.9 262.0,56.5 263.6,54.4 265.1,54.1 266.7,49.8 268.3,48.0 269.9,48.0 271.5,48.0 273.1,48.0 274.7,50.7 276.3,56.2 277.9,64.3 279.5,71.0 281.1,75.2 282.7,79.8 284.3,82.5 285.9,86.9 287.4,87.5 289.0,88.5 290.6,88.7 292.2,87.2 293.8,84.5 295.4,82.2 297.0,79.2 298.6,78.7 300.2,80.4 301.8,75.9 303.4,69.4 305.0,66.4 306.6,62.3 308.2,59.6 309.7,60.0 311.3,62.0 312.9,66.1 314.5,64.7 316.1,65.0 317.7,63.0 319.3,64.1 320.9,63.0 322.5,62.7 324.1,60.5 325.7,61.1 327.3,57.1 328.9,57.7 330.5,58.7 332.0,59.3 333.6,59.3 335.2,61.3 336.8,61.3 339.4,61.4 599.7,99.3 602.9,101.4 604.4,99.0 606.0,96.9 607.6,94.5 609.2,93.0 610.8,88.8 612.4,85.0 615.6,73.1 617.2,69.5 618.7,71.1 620.3,68.0 621.9,66.9 623.5,65.1 625.1,61.5 626.7,59.7 628.3,58.6 629.4,56.6 631.0,54.7 634.2,56.5 637.4,52.8 638.9,57.0 640.5,57.3 642.1,60.6 643.7,65.6 645.3,70.5 646.9,77.2 648.5,85.9 650.1,92.2 651.7,95.4 653.3,97.3 655.4,99.9 657.0,103.9 657.1,104.3 658.6,103.8 660.2,107.9 661.8,114.1 663.3,114.8 664.9,112.1 666.5,108.3 668.1,104.8 669.7,103.6 671.3,102.0 672.9,97.5 674.5,95.4 677.7,94.3 679.3,88.7 680.9,85.1 682.5,79.8 684.0,74.9 685.7,70.8 687.2,71.6 688.8,72.6 690.4,73.8 692.0,75.2 694.1,74.1 695.7,78.1 697.3,73.3 698.9,72.6 700.5,71.0 702.1,71.8 703.7,70.2 705.3,73.6 706.9,74.8 708.5,78.5 710.1,85.0 711.7,89.2 713.2,97.3 714.8,99.3 716.4,98.9 718.0,100.7 719.6,99.3 721.2,97.2 722.8,92.4 724.4,90.6 726.0,88.9 727.6,89.6 729.2,92.6 730.8,92.3 732.4,92.5 734.0,93.3 735.5,89.6 737.1,87.9 738.7,87.7 740.3,83.3 741.9,81.0 743.5,81.1 745.1,80.1 746.7,80.9 748.3,79.5 749.9,75.6 751.5,75.0 753.1,76.0 754.7,71.2 756.3,68.2 757.9,65.3 761.1,60.2 762.6,61.9 765.8,66.1 767.4,66.4 769.0,65.9 770.6,68.0 772.2,69.6 773.8,72.9 775.4,76.1 777.0,81.0 778.6,82.2 780.2,82.8 781.7,86.1 783.3,90.6 784.9,92.1 786.5,91.5 788.1,91.3 789.7,91.7 791.3,91.2 792.9,89.2 794.5,88.8 796.1,89.8 797.7,87.0 799.3,87.1 800.9,88.1 802.4,86.0 804.0,83.2 805.6,79.6 807.2,77.3 808.8,77.0 810.4,76.2 812.0,74.1" fill="none" stroke="#f0b90b" stroke-width="1.8"/><polyline points="48.0,203.8 49.6,203.9 51.2,189.6 52.8,187.2 53.9,195.0 55.4,184.6 57.0,178.5 58.6,172.7 60.2,172.7 61.8,163.3 63.4,156.1 65.0,144.9 66.6,135.8 68.2,124.3 69.8,115.8 71.4,108.6 73.0,106.3 74.5,104.1 76.7,103.1 78.3,96.9 79.9,94.7 81.5,48.0 83.1,48.0 84.6,94.1 86.2,116.2 87.8,175.4 89.4,159.3 91.0,131.1 92.6,147.9 94.2,150.2 95.8,149.8 97.4,163.5 99.0,154.1 100.6,152.3 102.2,146.3 103.7,146.9 105.3,137.5 106.9,116.1 108.5,113.6 110.1,110.3 111.7,110.5 113.3,99.8 114.9,91.6 116.5,88.8 118.1,87.3 119.7,78.7 121.3,75.0 122.9,79.4 124.5,79.0 126.0,81.8 127.6,82.4 129.2,80.7 130.8,84.4 132.4,141.7 134.0,82.4 135.6,130.9 137.2,121.5 138.8,101.2 140.4,99.5 142.0,53.9 143.6,61.7 145.2,67.0 146.8,80.8 148.3,119.4 152.1,155.1 153.7,140.6 155.3,135.9 156.8,133.2 158.4,140.2 160.0,141.0 161.6,146.5 163.2,143.0 164.8,138.5 166.4,134.0 168.0,126.6 169.6,123.8 171.2,121.0 172.8,116.7 174.4,112.9 176.0,105.9 177.5,111.5 179.1,113.6 180.7,112.1 182.3,110.7 183.9,131.3 185.5,174.6 187.1,183.0 188.7,161.1 190.3,142.3 191.9,166.1 193.0,171.2 194.5,168.4 198.8,160.1 200.4,160.4 202.0,158.4 203.6,158.0 205.2,160.1 206.8,158.9 208.3,155.1 209.9,156.4 222.2,155.5 223.7,158.5 225.3,167.6 226.9,174.9 228.5,180.2 230.1,176.1 231.7,175.7 233.3,176.4 234.9,122.6 236.5,186.0 238.1,165.7 239.7,131.6 241.3,111.8 242.9,104.5 244.4,97.8 246.0,105.0 247.6,104.0 249.2,125.2 250.8,133.8 252.4,122.7 254.0,115.8 255.6,123.3 257.2,117.5 258.8,111.5 260.4,101.0 262.0,103.4 263.6,104.3 265.1,104.8 266.7,101.1 268.3,104.0 269.9,94.0 271.5,87.1 273.1,82.4 274.7,81.0 276.3,83.6 277.9,85.8 279.5,85.9 281.1,84.6 282.7,84.7 284.3,84.1 285.9,144.6 287.4,48.0 289.0,55.3 290.6,109.3 292.2,106.4 293.8,94.7 295.4,86.9 297.0,72.3 298.6,73.3 300.2,94.5 301.8,90.0 303.4,72.3 305.0,69.8 306.6,76.8 308.2,82.0 309.7,87.4 311.3,92.9 312.9,104.0 314.5,107.5 316.1,106.6 317.7,104.5 319.3,100.8 320.9,98.2 322.5,96.5 324.1,97.8 325.7,101.7 327.3,107.0 328.9,109.4 330.5,109.7 332.0,107.7 333.6,104.8 335.2,106.6 336.8,144.1 599.7,176.4 602.9,177.4 604.4,145.1 606.0,137.0 607.6,129.0 609.2,124.1 610.8,112.6 612.4,98.3 615.6,94.0 617.2,90.3 618.7,88.7 620.3,88.6 621.9,92.1 623.5,83.4 625.1,75.5 626.7,76.3 628.3,76.0 629.4,72.8 631.0,66.1 632.6,65.6 634.2,66.0 637.4,60.1 638.9,61.5 640.5,59.9 642.1,77.7 643.7,84.1 645.3,73.2 646.9,73.1 648.5,71.6 650.1,67.1 651.7,58.1 653.3,54.7 655.4,48.0 657.0,48.0 657.1,48.0 658.6,48.0 660.2,48.0 661.8,48.0 663.3,48.0 664.9,48.8 666.5,48.0 668.1,48.0 669.7,48.0 671.3,48.0 672.9,48.0 674.5,48.0 677.7,48.0 679.3,48.0 680.9,48.0 682.5,48.0 684.0,48.0 685.7,48.0 687.2,48.0 688.8,48.0 690.4,48.0 692.0,48.0 694.1,48.0 695.7,48.0 697.3,48.0 698.9,48.0 700.5,48.0 702.1,48.0 703.7,48.0 705.3,48.0 706.9,48.0 708.5,48.0 710.1,48.0 711.7,55.5 713.2,69.6 714.8,81.7 716.4,89.5 718.0,80.4 719.6,83.6 721.2,92.9 722.8,84.9 724.4,86.8 726.0,85.8 727.6,80.7 729.2,72.3 730.8,67.5 732.4,65.5 734.0,63.5 735.5,61.7 737.1,61.5 738.7,63.7 740.3,65.6 741.9,65.5 743.5,68.5 745.1,48.0 746.7,68.4 748.3,48.0 749.9,48.0 751.5,48.0 753.1,48.0 754.7,48.0 756.3,48.0 757.9,48.0 761.1,48.0 762.6,48.0 765.8,48.0 767.4,48.0 769.0,48.0 770.6,48.0 772.2,48.0 773.8,48.0 775.4,48.0 777.0,48.0 778.6,48.0 780.2,48.0 781.7,48.0 783.3,48.0 784.9,48.0 786.5,48.0 788.1,48.0 789.7,48.0 791.3,48.0 792.9,49.4 794.5,58.0 796.1,197.7 797.7,164.9 799.3,209.2 800.9,161.1 802.4,147.2 804.0,124.0 805.6,108.2 807.2,85.0 808.8,78.9 810.4,77.7 812.0,66.6" fill="none" stroke="#ff6b35" stroke-width="1.8"/><polyline points="48.0,48.0 49.6,48.0 51.2,48.0 52.8,48.0 53.9,48.0 55.4,48.0 57.0,48.0 58.6,48.0 60.2,48.0 61.8,48.0 63.4,48.0 65.0,48.0 66.6,48.0 68.2,48.0 69.8,48.0 71.4,48.0 73.0,48.0 74.5,48.0 76.7,48.0 78.3,48.0 79.9,48.0 81.5,48.0 83.1,48.0 84.6,48.0 86.2,48.0 87.8,48.0 89.4,48.0 91.0,48.0 92.6,48.0 94.2,48.0 95.8,48.0 97.4,48.0 99.0,48.0 100.6,48.0 102.2,48.0 103.7,48.0 105.3,48.0 106.9,48.0 108.5,48.0 110.1,48.0 111.7,48.0 113.3,48.0 114.9,48.0 116.5,48.0 118.1,48.0 119.7,48.0 121.3,48.0 122.9,48.0 124.5,48.0 126.0,48.0 127.6,48.0 129.2,48.0 130.8,48.0 132.4,48.0 134.0,48.0 135.6,48.0 137.2,48.0 138.8,48.0 140.4,48.0 142.0,48.0 143.6,48.0 145.2,48.0 146.8,48.0 148.3,48.0 152.1,48.0 153.7,48.0 155.3,48.0 156.8,48.0 158.4,48.0 160.0,48.0 161.6,48.0 163.2,48.0 164.8,48.0 166.4,48.0 168.0,48.0 169.6,48.0 171.2,48.0 172.8,48.0 174.4,48.0 176.0,48.0 177.5,48.0 179.1,48.0 180.7,48.0 182.3,49.0 183.9,54.6 185.5,59.1 187.1,61.2 188.7,63.8 190.3,62.1 191.9,69.8 193.0,76.2 194.5,78.4 198.8,70.4 200.4,65.5 202.0,61.9 203.6,62.5 205.2,61.9 206.8,60.5 208.3,60.6 209.9,68.0 222.2,69.1 223.7,71.8 225.3,69.9 226.9,75.2 228.5,79.9 230.1,77.5 231.7,83.3 233.3,90.4 234.9,90.0 236.5,92.3 238.1,88.1 239.7,92.8 241.3,95.9 242.9,90.8 244.4,89.5 246.0,91.3 247.6,95.3 249.2,96.6 250.8,93.7 252.4,92.8 254.0,93.6 255.6,92.5 257.2,93.3 258.8,89.5 260.4,84.0 262.0,79.8 263.6,81.5 265.1,81.5 266.7,83.0 268.3,84.1 269.9,84.8 271.5,78.7 273.1,71.5 274.7,69.3 276.3,68.2 277.9,68.8 279.5,67.5 281.1,67.0 282.7,67.3 284.3,68.0 285.9,70.2 287.4,71.9 289.0,77.5 290.6,80.9 292.2,81.6 293.8,83.6 295.4,81.1 297.0,81.9 298.6,80.6 300.2,78.3 301.8,77.6 303.4,75.3 305.0,76.8 306.6,74.8 308.2,74.5 309.7,76.9 311.3,75.6 312.9,73.3 314.5,71.5 316.1,68.3 317.7,65.0 319.3,59.4 320.9,62.1 322.5,66.3 324.1,66.2 325.7,68.4 327.3,64.9 328.9,59.8 330.5,55.8 332.0,54.4 333.6,53.0 335.2,53.8 336.8,54.6 599.7,48.0 601.3,48.0 602.9,48.0 604.4,48.0 606.0,48.0 607.6,48.0 609.2,48.0 610.8,48.0 612.4,48.0 615.6,48.0 617.2,48.0 618.7,48.0 620.3,48.0 621.9,48.0 623.5,48.0 625.1,48.0 626.7,53.7 628.3,63.2 629.4,65.1 631.0,65.6 632.6,68.0 634.2,67.2 637.4,71.2 638.9,76.4 640.5,83.7 642.1,86.0 643.7,87.7 645.3,88.5 646.9,85.5 648.5,88.4 650.1,91.7 651.7,87.9 653.3,87.3 655.4,91.1 657.0,86.9 657.1,85.8 658.6,86.8 660.2,85.3 661.8,88.1 663.3,85.7 664.9,92.0 666.5,89.4 668.1,81.7 669.7,78.3 671.3,75.2 672.9,66.7 674.5,59.1 677.7,58.3 679.3,58.3 680.9,56.3 682.5,54.4 684.0,50.1 685.7,48.7 687.2,48.0 688.8,51.8 690.4,51.6 692.0,57.6 694.1,56.6 695.7,59.0 697.3,54.8 698.9,53.8 700.5,49.9 702.1,51.8 703.7,49.2 705.3,48.9 706.9,50.6 708.5,49.8 710.1,50.2 711.7,54.8 713.2,59.8 714.8,64.7 716.4,68.4 718.0,69.3 719.6,77.3 721.2,81.6 722.8,83.0 724.4,79.5 726.0,82.2 727.6,83.5 729.2,79.6 730.8,78.6 732.4,82.2 734.0,88.7 735.5,89.3 737.1,89.6 738.7,88.4 740.3,83.7 741.9,83.0 743.5,82.0 745.1,78.5 746.7,75.6 748.3,69.9 749.9,60.0 751.5,53.9 753.1,49.5 754.7,48.0 756.3,48.0 757.9,48.0 761.1,48.0 762.6,48.0 765.8,48.0 767.4,48.0 769.0,48.0 770.6,48.0 772.2,48.0 773.8,48.0 775.4,48.0 777.0,48.0 778.6,48.0 780.2,48.0 781.7,48.0 783.3,48.0 784.9,48.0 786.5,48.0 788.1,48.0 789.7,48.0 791.3,48.0 792.9,48.0 794.5,48.0 796.1,48.0 797.7,48.0 799.3,48.0 800.9,48.0 802.4,48.0 804.0,48.0 805.6,48.0 807.2,48.0 808.8,48.0 810.4,48.0 812.0,48.0" fill="none" stroke="#58a6ff" stroke-width="1.8"/><polyline points="48.0,135.2 49.6,138.8 51.2,130.2 52.8,127.5 53.9,120.8 55.4,106.4 57.0,94.3 58.6,83.5 61.8,79.9 63.4,77.7 65.0,71.4 66.6,66.4 68.2,61.9 69.8,56.5 71.4,51.6 73.0,48.0 76.7,48.0 78.3,48.0 79.9,48.0 81.5,48.0 83.1,48.0 84.6,48.0 86.2,48.0 87.8,48.0 91.0,48.0 92.6,48.0 94.2,48.0 95.8,48.0 97.4,48.0 99.0,48.0 100.6,48.0 102.2,48.0 105.3,48.0 106.9,48.0 108.5,48.0 110.1,48.0 111.7,48.0 113.3,48.0 114.9,48.0 116.5,48.0 119.7,48.0 121.3,48.0 122.9,48.0 124.5,48.0 126.0,48.0 127.6,48.0 129.2,48.0 130.8,48.0 134.0,48.0 135.6,48.0 137.2,48.0 138.8,48.0 140.4,48.0 142.0,48.0 143.6,48.0 145.2,48.0 148.3,48.0 150.6,48.0 152.1,48.0 153.7,48.0 155.3,48.0 156.8,48.0 158.4,50.2 160.0,49.8 163.2,48.0 164.8,48.0 166.4,48.0 168.0,48.0 169.6,48.0 171.2,48.5 172.8,48.0 174.4,48.0 177.5,50.2 179.1,55.6 180.7,59.7 182.3,60.6 183.9,71.8 185.5,50.2 187.1,83.9 188.7,52.9 191.9,72.3 193.0,77.2 194.5,96.5 197.4,98.3 198.8,83.5 200.4,78.1 202.0,63.7 203.6,61.5 206.8,68.2 208.3,67.3 209.9,64.2 212.6,66.0 215.3,55.2 218.0,61.0 220.7,64.6 222.2,74.1 225.3,74.5 226.9,75.4 228.5,78.6 230.1,75.4 231.7,75.4 233.3,78.6 234.9,48.0 236.5,70.9 239.7,48.0 241.3,48.0 242.9,48.0 244.4,48.0 246.0,48.0 247.6,48.0 249.2,48.0 250.8,48.0 254.0,48.0 255.6,48.0 257.2,48.0 258.8,48.0 260.4,48.0 262.0,48.0 263.6,48.0 265.1,48.0 268.3,48.0 269.9,48.0 271.5,48.0 273.1,48.0 274.7,48.0 276.3,48.0 277.9,48.0 279.5,48.0 282.7,48.0 284.3,48.0 285.9,62.8 287.4,48.0 289.0,56.5 290.6,82.1 292.2,68.2 293.8,52.9 297.0,53.4 298.6,48.0 300.2,53.4 301.8,48.0 303.4,48.0 305.0,48.0 306.6,48.0 308.2,48.0 311.3,48.0 312.9,48.0 314.5,48.0 316.1,48.0 317.7,48.0 319.3,48.0 320.9,48.0 322.5,48.0 325.7,48.0 327.3,48.0 328.9,48.0 330.5,48.0 332.0,48.0 333.6,48.0 335.2,48.0 336.8,48.0 341.7,48.0 344.9,48.0 347.6,48.0 350.2,48.0 353.8,48.0 356.6,48.0 359.2,48.0 362.4,48.0 367.8,48.0 371.5,48.0 374.0,48.0 376.8,48.0 380.0,48.0 382.6,48.0 385.2,48.0 388.4,48.0 393.7,49.8 396.3,80.4 399.0,88.0 401.7,101.0 404.3,119.4 407.0,118.5 409.6,111.4 412.2,123.0 417.5,113.6 420.2,109.1 422.8,109.6 425.5,105.1 428.2,96.5 430.8,85.3 433.5,80.4 436.1,78.6 442.0,123.9 444.7,96.5 447.3,83.0 450.0,70.0 452.7,50.2 455.5,56.1 458.5,70.0 461.2,68.7 466.9,70.9 469.7,67.8 472.2,60.1 475.5,56.1 478.1,55.2 480.9,53.4 483.9,48.0 486.7,48.0 492.5,48.0 495.1,65.5 497.8,59.7 500.5,65.1 503.0,69.1 505.2,52.5 509.0,48.0 511.6,48.0 517.4,48.0 520.0,48.0 522.6,48.0 525.9,48.0 528.6,48.0 531.2,48.0 534.4,48.0 537.0,48.0 542.9,48.0 545.5,48.0 548.2,48.0 550.7,48.0 553.0,48.0 555.6,48.0 558.2,48.0 560.9,48.0 566.2,48.0 568.8,48.0 571.5,48.0 574.2,48.0 576.8,48.0 579.5,48.0 582.1,48.0 584.8,52.0 590.1,65.5 592.8,48.0 595.5,58.8 598.1,97.4 599.7,109.6 601.3,138.3 602.9,128.9 604.4,109.1 607.6,106.9 609.2,101.9 610.8,83.9 612.4,75.9 615.6,66.0 617.2,69.1 618.7,70.5 620.3,65.1 623.5,62.8 625.1,59.2 626.7,60.6 628.3,60.1 629.4,56.5 631.0,53.4 632.6,55.2 634.2,55.6 638.9,62.4 640.5,63.7 642.1,252.0 643.7,118.5 645.3,51.6 646.9,48.0 648.5,85.3 650.1,92.0 653.3,106.4 655.4,85.3 657.0,70.5 657.1,67.8 658.6,68.2 660.2,75.0 661.8,70.0 663.3,62.4 666.5,64.6 668.1,63.7 669.7,63.7 671.3,62.8 672.9,59.7 674.5,65.1 677.7,74.1 679.3,72.3 682.5,65.1 684.0,61.5 685.7,58.8 687.2,53.8 688.8,54.3 690.4,50.7 692.0,53.4 694.1,77.7 697.3,48.0 698.9,48.0 700.5,48.0 702.1,48.0 703.7,48.0 705.3,48.0 706.9,48.0 708.5,51.6 711.7,66.9 713.2,86.6 714.8,88.0 716.4,88.4 718.0,86.6 719.6,85.7 721.2,92.5 722.8,92.0 726.0,91.6 727.6,88.0 729.2,85.3 730.8,81.7 732.4,81.7 734.0,84.8 735.5,80.8 737.1,79.9 740.3,82.1 741.9,82.6 743.5,79.5 745.1,48.0 746.7,81.3 748.3,84.8 749.9,53.4 751.5,62.8 754.7,48.0 756.3,48.0 757.9,48.0 761.1,48.0 762.6,48.0 764.7,48.0 765.8,48.0 767.4,48.0 770.6,48.0 772.2,48.0 773.8,48.0 775.4,48.0 777.0,48.0 778.6,48.0 780.2,48.0 781.7,48.0 784.9,48.0 786.5,48.0 788.1,48.0 789.7,48.0 791.3,48.0 792.9,48.0 794.5,50.7 796.1,84.4 799.3,60.1 800.9,51.6 802.4,52.0 804.0,48.0 805.6,48.0 807.2,48.0 808.8,48.0 812.0,48.0" fill="none" stroke="#3fb950" stroke-width="1.8"/></svg><div style="margin-top:8px"><span style="color:#f0b90b;font-size:12px;margin-right:16px">— 币安 Binance</span> <span style="color:#ff6b35;font-size:12px;margin-right:16px">— Bybit</span> <span style="color:#58a6ff;font-size:12px;margin-right:16px">— OKX</span> <span style="color:#3fb950;font-size:12px;margin-right:16px">— Gate</span></div></div></div>
+<tr><td><span style='color:#f0b90b'>●</span> 币安 Binance</td><td>+0.0047%</td><td style='color:#3fb950;font-weight:700'>+5.1% 年化</td><td>00:00</td><td><a href='https://www.binance.com?ref=CPA_00087XP6TE' rel='nofollow sponsored' style='color:#58a6ff'>开户/交易</a></td></tr><tr><td><span style='color:#ff6b35'>●</span> Bybit</td><td>+0.0100%</td><td style='color:#3fb950;font-weight:700'>+10.9% 年化</td><td>00:00</td><td><a href='https://www.bybit.com' rel='nofollow sponsored' style='color:#58a6ff'>开户/交易</a></td></tr><tr><td><span style='color:#58a6ff'>●</span> OKX</td><td>+0.0100%</td><td style='color:#3fb950;font-weight:700'>+10.9% 年化</td><td>08:00</td><td><a href='https://www.okx.com/join/XKO562F73C077D0' rel='nofollow sponsored' style='color:#58a6ff'>开户/交易</a></td></tr><tr><td><span style='color:#3fb950'>●</span> Gate</td><td>+0.0100%</td><td style='color:#3fb950;font-weight:700'>+10.9% 年化</td><td>00:00</td><td><a href='https://www.gate.com/referral/invite/VFKSU11ZBA' rel='nofollow sponsored' style='color:#58a6ff'>开户/交易</a></td></tr></table>
+<div style='display:flex;gap:22px;flex-wrap:wrap;font-size:14px;margin:14px 0'><span>最高 <b style='color:#3fb950'>+10.9%</b></span><span>最低 <b style='color:#f85149'>-38.8%</b></span><span>均值 <b>+4.6%</b></span><span>正费率占比 <b>81%</b></span><span>已跟踪 <b>120 小时</b> · 1267 个采样点</span></div>
+<div class="scroller" style="margin-top:16px"><div style="margin-top:10px"><svg viewBox="0 0 860 300" style="width:100%;background:#0d1117;border-radius:12px"><line x1="48" y1="48.0" x2="812" y2="48.0" stroke="#161b22"/><text x="42" y="52.0" fill="#8b949e" font-size="11" text-anchor="end">+11%</text><line x1="48" y1="150.0" x2="812" y2="150.0" stroke="#161b22"/><text x="42" y="154.0" fill="#8b949e" font-size="11" text-anchor="end">-14%</text><line x1="48" y1="252.0" x2="812" y2="252.0" stroke="#161b22"/><text x="42" y="256.0" fill="#8b949e" font-size="11" text-anchor="end">-39%</text><line x1="48" y1="92.9" x2="812" y2="92.9" stroke="#30363d" stroke-dasharray="4 4"/><text x="48" y="288" fill="#8b949e" font-size="11">08-27 20:00</text><text x="812" y="288" fill="#8b949e" font-size="11" text-anchor="end">09-01 20:00</text><polyline points="48.0,84.9 49.6,80.4 51.2,73.8 52.8,69.7 54.4,66.6 56.0,66.2 57.6,63.0 59.2,61.1 60.7,61.2 62.3,60.6 63.9,61.3 65.5,59.0 67.1,57.5 69.2,58.5 70.8,57.5 72.4,57.7 74.0,55.8 75.6,55.9 77.2,55.2 78.8,55.5 80.4,60.6 82.0,64.3 83.5,66.8 85.1,70.4 86.7,73.1 88.3,74.9 89.9,79.5 91.5,81.0 93.1,83.2 94.7,85.5 96.3,81.7 97.9,76.3 99.5,72.0 101.1,71.0 102.6,69.7 104.2,64.5 105.8,61.8 107.4,61.4 109.0,62.2 110.6,60.7 112.2,56.1 113.8,55.7 115.4,61.8 117.0,65.4 118.6,69.6 120.2,72.3 121.7,71.6 123.3,72.1 124.9,75.3 126.5,74.0 128.1,76.0 129.7,78.5 131.3,78.6 132.9,78.9 134.5,73.7 136.1,70.1 137.7,71.9 139.3,72.2 140.8,69.4 144.6,79.5 146.2,84.6 147.8,86.8 149.3,85.6 150.9,86.6 152.5,86.9 154.1,88.2 155.7,85.8 157.3,84.8 158.9,84.8 160.5,81.1 162.1,77.1 163.7,73.9 165.3,70.6 166.8,70.6 168.4,69.8 170.0,74.7 171.6,73.3 173.2,74.1 174.8,75.5 176.4,80.5 178.0,84.1 179.6,87.0 181.2,88.9 182.8,92.7 184.4,93.7 185.5,96.3 187.0,99.0 191.3,106.1 192.9,107.0 194.5,107.2 196.1,109.3 197.7,109.2 199.2,112.3 200.8,115.9 202.4,118.0 214.6,120.1 216.2,122.5 217.8,122.8 219.4,129.2 221.0,133.8 222.6,132.3 224.1,130.1 225.7,127.9 227.3,125.9 228.9,124.6 230.5,123.2 232.1,120.6 233.7,115.6 235.3,109.9 236.9,104.6 238.5,99.0 240.1,93.6 241.7,88.0 243.2,82.4 244.8,74.8 246.4,72.4 248.0,70.0 249.6,67.1 251.2,62.5 252.8,57.9 254.4,56.5 256.0,54.4 257.6,54.1 259.2,49.8 260.8,48.0 262.3,48.0 263.9,48.0 265.5,48.0 267.1,50.7 268.7,56.2 270.3,64.3 271.9,71.0 273.5,75.2 275.1,79.8 276.7,82.5 278.3,86.9 279.9,87.5 281.4,88.5 283.0,88.7 284.6,87.2 286.2,84.5 287.8,82.2 289.4,79.2 291.0,78.7 292.6,80.4 294.2,75.9 295.8,69.4 297.4,66.4 299.0,62.3 300.5,59.6 302.1,60.0 303.7,62.0 305.3,66.1 306.9,64.7 308.5,65.0 310.1,63.0 311.7,64.1 313.3,63.0 314.9,62.7 316.5,60.5 318.1,61.1 319.6,57.1 321.2,57.7 322.8,58.7 324.4,59.3 326.0,59.3 327.6,61.3 329.2,61.3 331.8,61.4 591.9,99.3 595.0,101.4 596.6,99.0 598.2,96.9 599.8,94.5 601.4,93.0 603.0,88.8 604.6,85.0 607.7,73.1 609.3,69.5 610.9,71.1 612.5,68.0 614.1,66.9 615.7,65.1 617.3,61.5 618.9,59.7 620.5,58.6 621.6,56.6 623.1,54.7 626.3,56.5 629.5,52.8 631.1,57.0 632.7,57.3 634.3,60.6 635.9,65.6 637.5,70.5 639.0,77.2 640.6,85.9 642.2,92.2 643.8,95.4 645.4,97.3 647.6,99.9 649.1,103.9 649.3,104.3 650.7,103.8 652.3,107.9 653.9,114.1 655.5,114.8 657.1,112.1 658.7,108.3 660.3,104.8 661.9,103.6 663.4,102.0 665.0,97.5 666.6,95.4 669.8,94.3 671.4,88.7 673.0,85.1 674.6,79.8 676.2,74.9 677.8,70.8 679.4,71.6 681.0,72.6 682.6,73.8 684.1,75.2 686.3,74.1 687.9,78.1 689.4,73.3 691.0,72.6 692.6,71.0 694.2,71.8 695.8,70.2 697.4,73.6 699.0,74.8 700.6,78.5 702.2,85.0 703.8,89.2 705.4,97.3 707.0,99.3 708.5,98.9 710.1,100.7 711.7,99.3 713.3,97.2 714.9,92.4 716.5,90.6 718.1,88.9 719.7,89.6 721.3,92.6 722.9,92.3 724.5,92.5 726.1,93.3 727.6,89.6 729.2,87.9 730.8,87.7 732.4,83.3 734.0,81.0 735.6,81.1 737.2,80.1 738.8,80.9 740.4,79.5 742.0,75.6 743.6,75.0 745.2,76.0 746.8,71.2 748.4,68.2 750.0,65.3 753.1,60.2 754.7,61.9 757.9,66.1 759.5,66.4 761.1,65.9 762.7,68.0 764.3,69.6 765.9,72.9 767.4,76.1 769.0,81.0 770.6,82.2 772.3,82.8 773.8,86.1 775.4,90.6 777.0,92.1 778.6,91.5 780.2,91.3 781.8,91.7 783.4,91.2 784.9,89.2 786.5,88.8 788.1,89.8 789.7,87.0 791.3,87.1 792.9,88.1 794.5,86.0 796.1,83.2 797.7,79.6 799.3,77.3 800.9,77.0 802.5,76.2 804.0,74.1 805.6,74.1 807.2,71.4 808.8,71.6 810.4,71.0 812.0,71.9" fill="none" stroke="#f0b90b" stroke-width="1.8"/><polyline points="48.0,184.6 49.6,178.5 51.2,172.7 52.8,172.7 54.4,163.3 56.0,156.1 57.6,144.9 59.2,135.8 60.7,124.3 62.3,115.8 63.9,108.6 65.5,106.3 67.1,104.1 69.2,103.1 70.8,96.9 72.4,94.7 74.0,48.0 75.6,48.0 77.2,94.1 78.8,116.2 80.4,175.4 82.0,159.3 83.5,131.1 85.1,147.9 86.7,150.2 88.3,149.8 89.9,163.5 91.5,154.1 93.1,152.3 94.7,146.3 96.3,146.9 97.9,137.5 99.5,116.1 101.1,113.6 102.6,110.3 104.2,110.5 105.8,99.8 107.4,91.6 109.0,88.8 110.6,87.3 112.2,78.7 113.8,75.0 115.4,79.4 117.0,79.0 118.6,81.8 120.2,82.4 121.7,80.7 123.3,84.4 124.9,141.7 126.5,82.4 128.1,130.9 129.7,121.5 131.3,101.2 132.9,99.5 134.5,53.9 136.1,61.7 137.7,67.0 139.3,80.8 140.8,119.4 144.6,155.1 146.2,140.6 147.8,135.9 149.3,133.2 150.9,140.2 152.5,141.0 154.1,146.5 155.7,143.0 157.3,138.5 158.9,134.0 160.5,126.6 162.1,123.8 163.7,121.0 165.3,116.7 166.8,112.9 168.4,105.9 170.0,111.5 171.6,113.6 173.2,112.1 174.8,110.7 176.4,131.3 178.0,174.6 179.6,183.0 181.2,161.1 182.8,142.3 184.4,166.1 185.5,171.2 187.0,168.4 191.3,160.1 192.9,160.4 194.5,158.4 196.1,158.0 197.7,160.1 199.2,158.9 200.8,155.1 202.4,156.4 214.6,155.5 216.2,158.5 217.8,167.6 219.4,174.9 221.0,180.2 222.6,176.1 224.1,175.7 225.7,176.4 227.3,122.6 228.9,186.0 230.5,165.7 232.1,131.6 233.7,111.8 235.3,104.5 236.9,97.8 238.5,105.0 240.1,104.0 241.7,125.2 243.2,133.8 244.8,122.7 246.4,115.8 248.0,123.3 249.6,117.5 251.2,111.5 252.8,101.0 254.4,103.4 256.0,104.3 257.6,104.8 259.2,101.1 260.8,104.0 262.3,94.0 263.9,87.1 265.5,82.4 267.1,81.0 268.7,83.6 270.3,85.8 271.9,85.9 273.5,84.6 275.1,84.7 276.7,84.1 278.3,144.6 279.9,48.0 281.4,55.3 283.0,109.3 284.6,106.4 286.2,94.7 287.8,86.9 289.4,72.3 291.0,73.3 292.6,94.5 294.2,90.0 295.8,72.3 297.4,69.8 299.0,76.8 300.5,82.0 302.1,87.4 303.7,92.9 305.3,104.0 306.9,107.5 308.5,106.6 310.1,104.5 311.7,100.8 313.3,98.2 314.9,96.5 316.5,97.8 318.1,101.7 319.6,107.0 321.2,109.4 322.8,109.7 324.4,107.7 326.0,104.8 327.6,106.6 329.2,144.1 591.9,176.4 595.0,177.4 596.6,145.1 598.2,137.0 599.8,129.0 601.4,124.1 603.0,112.6 604.6,98.3 607.7,94.0 609.3,90.3 610.9,88.7 612.5,88.6 614.1,92.1 615.7,83.4 617.3,75.5 618.9,76.3 620.5,76.0 621.6,72.8 623.1,66.1 624.8,65.6 626.3,66.0 629.5,60.1 631.1,61.5 632.7,59.9 634.3,77.7 635.9,84.1 637.5,73.2 639.0,73.1 640.6,71.6 642.2,67.1 643.8,58.1 645.4,54.7 647.6,48.0 649.1,48.0 649.3,48.0 650.7,48.0 652.3,48.0 653.9,48.0 655.5,48.0 657.1,48.8 658.7,48.0 660.3,48.0 661.9,48.0 663.4,48.0 665.0,48.0 666.6,48.0 669.8,48.0 671.4,48.0 673.0,48.0 674.6,48.0 676.2,48.0 677.8,48.0 679.4,48.0 681.0,48.0 682.6,48.0 684.1,48.0 686.3,48.0 687.9,48.0 689.4,48.0 691.0,48.0 692.6,48.0 694.2,48.0 695.8,48.0 697.4,48.0 699.0,48.0 700.6,48.0 702.2,48.0 703.8,55.5 705.4,69.6 707.0,81.7 708.5,89.5 710.1,80.4 711.7,83.6 713.3,92.9 714.9,84.9 716.5,86.8 718.1,85.8 719.7,80.7 721.3,72.3 722.9,67.5 724.5,65.5 726.1,63.5 727.6,61.7 729.2,61.5 730.8,63.7 732.4,65.6 734.0,65.5 735.6,68.5 737.2,48.0 738.8,68.4 740.4,48.0 742.0,48.0 743.6,48.0 745.2,48.0 746.8,48.0 748.4,48.0 750.0,48.0 753.1,48.0 754.7,48.0 757.9,48.0 759.5,48.0 761.1,48.0 762.7,48.0 764.3,48.0 765.9,48.0 767.4,48.0 769.0,48.0 770.6,48.0 772.3,48.0 773.8,48.0 775.4,48.0 777.0,48.0 778.6,48.0 780.2,48.0 781.8,48.0 783.4,48.0 784.9,49.4 786.5,58.0 788.1,197.7 789.7,164.9 791.3,209.2 792.9,161.1 794.5,147.2 796.1,124.0 797.7,108.2 799.3,85.0 800.9,78.9 802.5,77.7 804.0,66.6 805.6,62.6 807.2,57.2 808.8,55.0 810.4,48.0 812.0,48.0" fill="none" stroke="#ff6b35" stroke-width="1.8"/><polyline points="48.0,48.0 49.6,48.0 51.2,48.0 52.8,48.0 54.4,48.0 56.0,48.0 57.6,48.0 59.2,48.0 60.7,48.0 62.3,48.0 63.9,48.0 65.5,48.0 67.1,48.0 69.2,48.0 70.8,48.0 72.4,48.0 74.0,48.0 75.6,48.0 77.2,48.0 78.8,48.0 80.4,48.0 82.0,48.0 83.5,48.0 85.1,48.0 86.7,48.0 88.3,48.0 89.9,48.0 91.5,48.0 93.1,48.0 94.7,48.0 96.3,48.0 97.9,48.0 99.5,48.0 101.1,48.0 102.6,48.0 104.2,48.0 105.8,48.0 107.4,48.0 109.0,48.0 110.6,48.0 112.2,48.0 113.8,48.0 115.4,48.0 117.0,48.0 118.6,48.0 120.2,48.0 121.7,48.0 123.3,48.0 124.9,48.0 126.5,48.0 128.1,48.0 129.7,48.0 131.3,48.0 132.9,48.0 134.5,48.0 136.1,48.0 137.7,48.0 139.3,48.0 140.8,48.0 144.6,48.0 146.2,48.0 147.8,48.0 149.3,48.0 150.9,48.0 152.5,48.0 154.1,48.0 155.7,48.0 157.3,48.0 158.9,48.0 160.5,48.0 162.1,48.0 163.7,48.0 165.3,48.0 166.8,48.0 168.4,48.0 170.0,48.0 171.6,48.0 173.2,48.0 174.8,49.0 176.4,54.6 178.0,59.1 179.6,61.2 181.2,63.8 182.8,62.1 184.4,69.8 185.5,76.2 187.0,78.4 191.3,70.4 192.9,65.5 194.5,61.9 196.1,62.5 197.7,61.9 199.2,60.5 200.8,60.6 202.4,68.0 214.6,69.1 216.2,71.8 217.8,69.9 219.4,75.2 221.0,79.9 222.6,77.5 224.1,83.3 225.7,90.4 227.3,90.0 228.9,92.3 230.5,88.1 232.1,92.8 233.7,95.9 235.3,90.8 236.9,89.5 238.5,91.3 240.1,95.3 241.7,96.6 243.2,93.7 244.8,92.8 246.4,93.6 248.0,92.5 249.6,93.3 251.2,89.5 252.8,84.0 254.4,79.8 256.0,81.5 257.6,81.5 259.2,83.0 260.8,84.1 262.3,84.8 263.9,78.7 265.5,71.5 267.1,69.3 268.7,68.2 270.3,68.8 271.9,67.5 273.5,67.0 275.1,67.3 276.7,68.0 278.3,70.2 279.9,71.9 281.4,77.5 283.0,80.9 284.6,81.6 286.2,83.6 287.8,81.1 289.4,81.9 291.0,80.6 292.6,78.3 294.2,77.6 295.8,75.3 297.4,76.8 299.0,74.8 300.5,74.5 302.1,76.9 303.7,75.6 305.3,73.3 306.9,71.5 308.5,68.3 310.1,65.0 311.7,59.4 313.3,62.1 314.9,66.3 316.5,66.2 318.1,68.4 319.6,64.9 321.2,59.8 322.8,55.8 324.4,54.4 326.0,53.0 327.6,53.8 329.2,54.6 591.9,48.0 593.5,48.0 595.0,48.0 596.6,48.0 598.2,48.0 599.8,48.0 601.4,48.0 603.0,48.0 604.6,48.0 607.7,48.0 609.3,48.0 610.9,48.0 612.5,48.0 614.1,48.0 615.7,48.0 617.3,48.0 618.9,53.7 620.5,63.2 621.6,65.1 623.1,65.6 624.8,68.0 626.3,67.2 629.5,71.2 631.1,76.4 632.7,83.7 634.3,86.0 635.9,87.7 637.5,88.5 639.0,85.5 640.6,88.4 642.2,91.7 643.8,87.9 645.4,87.3 647.6,91.1 649.1,86.9 649.3,85.8 650.7,86.8 652.3,85.3 653.9,88.1 655.5,85.7 657.1,92.0 658.7,89.4 660.3,81.7 661.9,78.3 663.4,75.2 665.0,66.7 666.6,59.1 669.8,58.3 671.4,58.3 673.0,56.3 674.6,54.4 676.2,50.1 677.8,48.7 679.4,48.0 681.0,51.8 682.6,51.6 684.1,57.6 686.3,56.6 687.9,59.0 689.4,54.8 691.0,53.8 692.6,49.9 694.2,51.8 695.8,49.2 697.4,48.9 699.0,50.6 700.6,49.8 702.2,50.2 703.8,54.8 705.4,59.8 707.0,64.7 708.5,68.4 710.1,69.3 711.7,77.3 713.3,81.6 714.9,83.0 716.5,79.5 718.1,82.2 719.7,83.5 721.3,79.6 722.9,78.6 724.5,82.2 726.1,88.7 727.6,89.3 729.2,89.6 730.8,88.4 732.4,83.7 734.0,83.0 735.6,82.0 737.2,78.5 738.8,75.6 740.4,69.9 742.0,60.0 743.6,53.9 745.2,49.5 746.8,48.0 748.4,48.0 750.0,48.0 753.1,48.0 754.7,48.0 757.9,48.0 759.5,48.0 761.1,48.0 762.7,48.0 764.3,48.0 765.9,48.0 767.4,48.0 769.0,48.0 770.6,48.0 772.3,48.0 773.8,48.0 775.4,48.0 777.0,48.0 778.6,48.0 780.2,48.0 781.8,48.0 783.4,48.0 784.9,48.0 786.5,48.0 788.1,48.0 789.7,48.0 791.3,48.0 792.9,48.0 794.5,48.0 796.1,48.0 797.7,48.0 799.3,48.0 800.9,48.0 802.5,48.0 804.0,48.0 805.6,48.0 807.2,48.0 808.8,48.0 810.4,48.0 812.0,48.0" fill="none" stroke="#58a6ff" stroke-width="1.8"/><polyline points="48.0,106.4 49.6,94.3 51.2,83.5 52.8,80.8 54.4,79.9 56.0,77.7 57.6,71.4 59.2,66.4 62.3,56.5 63.9,51.6 65.5,48.0 67.1,48.0 69.2,48.0 70.8,48.0 72.4,48.0 74.0,48.0 77.2,48.0 78.8,48.0 80.4,48.0 82.0,48.0 83.5,48.0 85.1,48.0 86.7,48.0 88.3,48.0 91.5,48.0 93.1,48.0 94.7,48.0 96.3,48.0 97.9,48.0 99.5,48.0 101.1,48.0 102.6,48.0 105.8,48.0 107.4,48.0 109.0,48.0 110.6,48.0 112.2,48.0 113.8,48.0 115.4,48.0 117.0,48.0 120.2,48.0 121.7,48.0 123.3,48.0 124.9,48.0 126.5,48.0 128.1,48.0 129.7,48.0 131.3,48.0 134.5,48.0 136.1,48.0 137.7,48.0 139.3,48.0 140.8,48.0 143.1,48.0 144.6,48.0 146.2,48.0 149.3,48.0 150.9,50.2 152.5,49.8 154.1,50.7 155.7,48.0 157.3,48.0 158.9,48.0 160.5,48.0 163.7,48.5 165.3,48.0 166.8,48.0 168.4,48.0 170.0,50.2 171.6,55.6 173.2,59.7 174.8,60.6 178.0,50.2 179.6,83.9 181.2,52.9 182.8,78.6 184.4,72.3 185.5,77.2 187.0,96.5 189.9,98.3 192.9,78.1 194.5,63.7 196.1,61.5 197.7,62.8 199.2,68.2 200.8,67.3 202.4,64.2 205.0,66.0 210.5,61.0 213.1,64.6 214.6,74.1 216.2,72.3 217.8,74.5 219.4,75.4 221.0,78.6 222.6,75.4 225.7,78.6 227.3,48.0 228.9,70.9 230.5,48.0 232.1,48.0 233.7,48.0 235.3,48.0 236.9,48.0 240.1,48.0 241.7,48.0 243.2,48.0 244.8,48.0 246.4,48.0 248.0,48.0 249.6,48.0 251.2,48.0 254.4,48.0 256.0,48.0 257.6,48.0 259.2,48.0 260.8,48.0 262.3,48.0 263.9,48.0 265.5,48.0 268.7,48.0 270.3,48.0 271.9,48.0 273.5,48.0 275.1,48.0 276.7,48.0 278.3,62.8 279.9,48.0 283.0,82.1 284.6,68.2 286.2,52.9 287.8,49.8 289.4,53.4 291.0,48.0 292.6,53.4 294.2,48.0 297.4,48.0 299.0,48.0 300.5,48.0 302.1,48.0 303.7,48.0 305.3,48.0 306.9,48.0 308.5,48.0 311.7,48.0 313.3,48.0 314.9,48.0 316.5,48.0 318.1,48.0 319.6,48.0 321.2,48.0 322.8,48.0 326.0,48.0 327.6,48.0 329.2,48.0 331.8,48.0 334.1,48.0 337.3,48.0 339.9,48.0 342.6,48.0 348.9,48.0 351.6,48.0 354.7,48.0 357.4,48.0 360.2,48.0 363.8,48.0 366.4,48.0 369.2,48.0 375.0,48.0 377.6,48.0 380.7,48.0 383.4,48.0 386.1,49.8 388.7,80.4 391.3,88.0 394.0,101.0 399.3,118.5 401.9,111.4 404.5,123.0 407.3,112.7 409.9,113.6 412.5,109.1 415.2,109.6 417.8,105.1 423.1,85.3 425.8,80.4 428.4,78.6 431.2,49.3 434.3,123.9 437.0,96.5 439.6,83.0 442.3,70.0 447.8,56.1 450.8,70.0 453.5,68.7 456.1,79.0 459.2,70.9 462.0,67.8 464.5,60.1 467.8,56.1 473.2,53.4 476.2,48.0 478.9,48.0 481.6,48.0 484.8,48.0 487.4,65.5 490.1,59.7 492.8,65.1 497.5,52.5 501.2,48.0 503.9,48.0 506.5,48.0 509.7,48.0 512.2,48.0 514.9,48.0 518.1,48.0 523.4,48.0 526.6,48.0 529.3,48.0 532.0,48.0 535.1,48.0 537.8,48.0 540.4,48.0 542.9,48.0 547.9,48.0 550.4,48.0 553.1,48.0 555.8,48.0 558.4,48.0 561.1,48.0 563.7,48.0 566.4,48.0 571.7,48.0 574.3,48.0 577.0,52.0 579.6,56.1 582.3,65.5 585.0,48.0 587.7,58.8 590.3,97.4 593.5,138.3 595.0,128.9 596.6,109.1 598.2,115.4 599.8,106.9 601.4,101.9 603.0,83.9 604.6,75.9 609.3,69.1 610.9,70.5 612.5,65.1 614.1,66.0 615.7,62.8 617.3,59.2 618.9,60.6 620.5,60.1 623.1,53.4 624.8,55.2 626.3,55.6 629.5,53.8 631.1,62.4 632.7,63.7 634.3,252.0 635.9,118.5 639.0,48.0 640.6,85.3 642.2,92.0 643.8,89.8 645.4,106.4 647.6,85.3 649.1,70.5 649.3,67.8 652.3,75.0 653.9,70.0 655.5,62.4 657.1,60.1 658.7,64.6 660.3,63.7 661.9,63.7 663.4,62.8 666.6,65.1 669.8,74.1 671.4,72.3 673.0,68.7 674.6,65.1 676.2,61.5 677.8,58.8 679.4,53.8 682.6,50.7 684.1,53.4 686.3,77.7 687.9,53.8 689.4,48.0 691.0,48.0 692.6,48.0 694.2,48.0 697.4,48.0 699.0,48.0 700.6,51.6 702.2,52.5 703.8,66.9 705.4,86.6 707.0,88.0 708.5,88.4 711.7,85.7 713.3,92.5 714.9,92.0 716.5,93.4 718.1,91.6 719.7,88.0 721.3,85.3 722.9,81.7 726.1,84.8 727.6,80.8 729.2,79.9 730.8,84.4 732.4,82.1 734.0,82.6 735.6,79.5 737.2,48.0 740.4,84.8 742.0,53.4 743.6,62.8 745.2,57.0 746.8,48.0 748.4,48.0 750.0,48.0 753.1,48.0 756.7,48.0 757.9,48.0 759.5,48.0 761.1,48.0 762.7,48.0 764.3,48.0 765.9,48.0 767.4,48.0 770.6,48.0 772.3,48.0 773.8,48.0 775.4,48.0 777.0,48.0 778.6,48.0 780.2,48.0 781.8,48.0 784.9,48.0 786.5,50.7 788.1,84.4 789.7,65.5 791.3,60.1 792.9,51.6 794.5,52.0 796.1,48.0 799.3,48.0 800.9,48.0 802.5,48.0 804.0,48.0 805.6,48.0 807.2,48.0 808.8,48.0 812.0,48.0" fill="none" stroke="#3fb950" stroke-width="1.8"/></svg><div style="margin-top:8px"><span style="color:#f0b90b;font-size:12px;margin-right:16px">— 币安 Binance</span> <span style="color:#ff6b35;font-size:12px;margin-right:16px">— Bybit</span> <span style="color:#58a6ff;font-size:12px;margin-right:16px">— OKX</span> <span style="color:#3fb950;font-size:12px;margin-right:16px">— Gate</span></div></div></div>
 <div class="cardbox"><h2 style="color:#58a6ff">ADA 资金费率是什么？</h2>
 <p style="color:#c9d1d9;line-height:1.8">ADA 永续合约没有交割日，交易所通过<b>资金费率</b>(Funding Rate)让合约价锚定现货价：
 费率为正时多头付给空头，为负时空头付给多头，通常每8小时结算一次。本页聚合币安/Bybit/OKX/Gate
@@ -152,7 +223,25 @@ footer .in a{color:var(--ink-2)}
 <p style="color:#8b949e;line-height:1.7">⚠️ 高费率常伴随高波动与流动性风险；本页为公开数据聚合，不构成投资建议。</p></div>
 <p style="font-size:12px;color:var(--ink-3);margin-top:20px">数据来源：各交易所公开 API · 自动维护 · 不构成投资建议</p>
 </div><footer><div class="wrap in">
-  <span>© 2026 量化情报站 · 数据每 10 分钟至每交易日自动更新 · 公开数据聚合，不构成投资建议</span>
-  <span><a href="https://ratecompass.tech/masters/" target="_blank" rel="noopener">API 与技术服务</a> ·
-  <a href="/about.html">推广模式说明</a> · <a href="/privacy.html">隐私</a></span>
+  <div class="frow">
+    <div class="fcol">
+      <div class="fbrand"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+<defs><linearGradient id="lgm" x1="0" y1="0" x2="24" y2="24">
+<stop stop-color="#F8DCA0"/><stop offset="1" stop-color="#D99A3A"/></linearGradient></defs>
+<rect x="1.5" y="1.5" width="21" height="21" rx="6" stroke="url(#lgm)" stroke-width="1.6"/>
+<path d="M12 5l2.2 7-2.2 7-2.2-7z" fill="url(#lgm)"/></svg>量化情报站</div>
+      <div>全自动加密数据与海外情报站<br>每 10 分钟至每交易日自动更新，无人工编辑</div>
+    </div>
+    <div class="fcol">
+      <div class="fhead">站点导航</div>
+      <a href="/">费率看板</a> · <a href="/history/">历史中心</a> · <a href="/tools/">工具箱</a><br>
+      <a href="/deals.html">游戏折扣</a> · <a href="/ai/">AI 榜</a> · <a href="/brief/latest.html">情报日报</a>
+    </div>
+    <div class="fcol">
+      <div class="fhead">对外服务</div>
+      <a href="https://ratecompass.tech/masters/" target="_blank" rel="noopener">API 与技术服务</a> · <a href="/about.html">推广模式说明</a><br>
+      <a href="https://t.me/autofarm_rate" target="_blank" rel="noopener">Telegram 频道</a> · <a href="/privacy.html">隐私说明</a>
+    </div>
+  </div>
+  <div class="fdis">© 2026 量化情报站 · 公开数据聚合与工具，不构成任何投资建议 · 合约交易风险极高，请自行决策</div>
 </div></footer></div></body></html>

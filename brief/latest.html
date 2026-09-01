@@ -2,87 +2,144 @@
 <title>海外圈情报日报 2026-09-01 | 量化情报站</title>
 <meta name="description" content="HackerNews/一线科技媒体/GitHub周趋势的中文AI精编日报，每早自动更新。">
 <meta name="viewport" content="width=device-width,initial-scale=1"><meta name="robots" content="index,follow">
+<meta name="theme-color" content="#070C15">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'><rect x='1' y='1' width='22' height='22' rx='6' fill='%230D1522' stroke='%23D99A3A' stroke-width='1.5'/><path d='M12 5l2.2 7-2.2 7-2.2-7z' fill='%23F5D08A'/></svg>">
 
 <style>
 *{margin:0;padding:0;box-sizing:border-box}
 :root{
-  --bg:#0A101B; --surface:#101A29; --raised:#15223A;
-  --line:rgba(148,163,184,.14); --line-strong:rgba(148,163,184,.26);
-  --ink:#E8EEF6; --ink-2:#9AA8BC; --ink-3:#66748A;
-  --blue:#5B9DFF; --gold-1:#F0C070; --gold-2:#D99A3A;
+  --bg:#070C15; --surface:#0D1522; --raised:#131E30;
+  --line:rgba(148,163,184,.13); --line-strong:rgba(148,163,184,.28);
+  --ink:#EAF0F8; --ink-2:#A7B4C7; --ink-3:#6B7A92;
+  --blue:#5B9DFF; --gold-1:#F5D08A; --gold-2:#D99A3A;
   --up:#3AC98A; --down:#F0655A; --neut:#8B99AD;
 }
+html{scroll-behavior:smooth}
 body{background:var(--bg);color:var(--ink);line-height:1.75;font-size:15px;
-  font-family:-apple-system,BlinkMacSystemFont,"PingFang SC","Microsoft YaHei","Segoe UI",Roboto,sans-serif;
-  -webkit-font-smoothing:antialiased}
-.num{font-variant-numeric:tabular-nums}
+  font-family:Inter,-apple-system,BlinkMacSystemFont,"PingFang SC","Microsoft YaHei","Segoe UI",Roboto,sans-serif;
+  -webkit-font-smoothing:antialiased;
+  background-image:radial-gradient(1000px 480px at 75% -120px,rgba(91,157,255,.07),transparent 60%),
+    radial-gradient(760px 420px at 8% -80px,rgba(240,192,112,.05),transparent 60%)}
+::selection{background:rgba(240,192,112,.28);color:var(--ink)}
+::-webkit-scrollbar{width:10px;height:10px}
+::-webkit-scrollbar-track{background:transparent}
+::-webkit-scrollbar-thumb{background:#1C2942;border-radius:6px;border:2px solid var(--bg)}
 a{color:var(--blue);text-decoration:none}
-a:hover{text-decoration:none}
-.wrap{max-width:1120px;margin:0 auto;padding:0 24px}
+a:focus-visible{outline:2px solid var(--blue);outline-offset:2px;border-radius:4px}
+b,strong{color:var(--ink)}
+h1,h2,h3{letter-spacing:-.01em}
+.num{font-variant-numeric:tabular-nums}
+.wrap{max-width:1140px;margin:0 auto;padding:0 24px}
 /* ---------- topbar ---------- */
-.topbar{position:sticky;top:0;z-index:50;background:rgba(10,16,27,.86);backdrop-filter:blur(10px);
+.topbar{position:sticky;top:0;z-index:50;background:rgba(7,12,21,.78);backdrop-filter:blur(14px) saturate(1.4);
   border-bottom:1px solid var(--line)}
-.topbar .in{display:flex;align-items:center;gap:24px;height:60px}
-.brand{font-size:16px;font-weight:800;letter-spacing:.04em;color:var(--ink);display:flex;align-items:center;gap:9px;flex-shrink:0}
+.topbar .in{display:flex;align-items:center;gap:20px;height:64px}
+.brand{font-size:16.5px;font-weight:800;letter-spacing:.02em;color:var(--ink);display:flex;align-items:center;gap:10px;flex-shrink:0}
 .brand:hover{text-decoration:none}
-.brand .dot{width:9px;height:9px;border-radius:3px;background:var(--gold-2);display:inline-block}
-.nav{display:flex;gap:18px;margin-left:6px;flex-wrap:wrap}
-.nav a{color:var(--ink-2);font-size:13.5px;white-space:nowrap}
-.nav a:hover{color:var(--ink)}
-.nav a.on{color:var(--ink);font-weight:700;box-shadow:inset 0 -2px 0 var(--gold-2);padding-bottom:2px}
+.brand svg{display:block;filter:drop-shadow(0 0 10px rgba(240,192,112,.35))}
+.nav{display:flex;gap:4px;margin-left:2px;flex-wrap:wrap}
+.nav a{color:var(--ink-2);font-size:13.5px;white-space:nowrap;padding:7px 11px;border-radius:9px;transition:color .15s,background .15s}
+.nav a:hover{color:var(--ink);background:rgba(255,255,255,.05)}
+.nav a.on{color:var(--gold-1);background:rgba(240,192,112,.10);font-weight:700}
 .topbar .cta{margin-left:auto;flex-shrink:0}
 .menutgl{display:none}
 .burger{display:none;margin-left:auto;color:var(--ink);cursor:pointer}
-@media(max-width:860px){
+@media(max-width:900px){
   .burger{display:flex;align-items:center;justify-content:center;width:38px;height:38px;border:1px solid var(--line);border-radius:9px}
   .topbar .cta{margin-left:0}
   .menutgl:checked ~ .wrap .nav{display:flex}
-  .nav{display:none;position:absolute;top:60px;left:0;right:0;flex-direction:column;gap:0;
-    background:var(--bg);border-bottom:1px solid var(--line);padding:8px 24px 14px}
-  .nav a{padding:11px 0;font-size:15px;border-top:1px solid var(--line)}
+  .nav{display:none;position:absolute;top:64px;left:0;right:0;flex-direction:column;gap:0;
+    background:rgba(7,12,21,.98);border-bottom:1px solid var(--line);padding:8px 24px 14px}
+  .nav a{padding:11px 4px;font-size:15px;border-top:1px solid var(--line);border-radius:0}
   .nav a:first-child{border-top:none}
-  .nav a.on{box-shadow:none}
 }
 /* ---------- buttons ---------- */
-.btn{display:inline-flex;align-items:center;gap:8px;border-radius:10px;padding:10px 20px;
-  font-size:14px;font-weight:700;letter-spacing:.02em;transition:transform .15s ease,filter .15s ease}
+.btn{display:inline-flex;align-items:center;gap:8px;border-radius:12px;padding:11px 22px;
+  font-size:14px;font-weight:700;letter-spacing:.02em;
+  transition:transform .15s ease,filter .15s ease,box-shadow .15s ease}
 .btn:hover{transform:translateY(-1px)}
-.btn.gold{color:#14100A;background:linear-gradient(180deg,var(--gold-1),var(--gold-2))}
-.btn.gold:hover{filter:brightness(1.06)}
-.btn.ghost{color:var(--blue);border:1px solid var(--line-strong)}
+.btn.gold{color:#17110A;background:linear-gradient(180deg,#F8DCA0,#E2A94F);
+  box-shadow:0 6px 22px rgba(226,169,79,.22),inset 0 1px 0 rgba(255,255,255,.5)}
+.btn.gold:hover{filter:brightness(1.05)}
+.btn.ghost{color:var(--ink);border:1px solid var(--line-strong);background:rgba(255,255,255,.02)}
 .btn.ghost:hover{border-color:var(--blue)}
-.btn.sm{padding:7px 14px;font-size:13px;border-radius:8px}
+.btn.sm{padding:7px 14px;font-size:13px;border-radius:9px}
+/* ---------- hero / stats / sections ---------- */
+.hero{padding:72px 0 6px}
+.eyebrow{display:inline-flex;align-items:center;gap:8px;font-size:12.5px;color:var(--ink-2);
+  border:1px solid var(--line);background:rgba(255,255,255,.03);border-radius:999px;padding:6px 14px;letter-spacing:.04em}
+.live{width:7px;height:7px;border-radius:50%;background:var(--up);box-shadow:0 0 0 0 rgba(58,201,138,.5);animation:pulse 2s infinite;flex-shrink:0}
+@keyframes pulse{0%{box-shadow:0 0 0 0 rgba(58,201,138,.45)}70%{box-shadow:0 0 0 8px rgba(58,201,138,0)}100%{box-shadow:0 0 0 0 rgba(58,201,138,0)}}
+.hero h1{font-size:clamp(30px,4.6vw,44px);font-weight:800;line-height:1.22;letter-spacing:-.015em;margin-top:18px;text-wrap:balance}
+.gradtext{background:linear-gradient(94deg,#F8DCA0 10%,#E2A94F 55%,#F8DCA0 90%);
+  -webkit-background-clip:text;background-clip:text;color:transparent}
+.hero .lede{color:var(--ink-2);font-size:16px;margin-top:14px;max-width:780px}
+.hero .acts{display:flex;gap:12px;margin-top:24px;flex-wrap:wrap}
+.stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:12px;margin-top:36px}
+.stats div{background:linear-gradient(180deg,rgba(255,255,255,.025),rgba(255,255,255,0) 55%),var(--surface);
+  border:1px solid var(--line);border-radius:14px;padding:16px 18px;position:relative;overflow:hidden}
+.stats div::after{content:"";position:absolute;inset:0 0 auto 0;height:2px;
+  background:linear-gradient(90deg,transparent,rgba(240,192,112,.5),transparent);opacity:.7}
+.stats b{display:block;font-size:27px;line-height:1.15;font-variant-numeric:tabular-nums;
+  background:linear-gradient(180deg,#F8DCA0,#DFA34A);-webkit-background-clip:text;background-clip:text;color:transparent}
+.stats span{font-size:12px;color:var(--ink-3);letter-spacing:.03em}
+.sec{margin-top:52px}
+.shead{display:flex;align-items:baseline;gap:14px;flex-wrap:wrap;margin-bottom:14px}
+.shead h2{font-size:21px;font-weight:800;letter-spacing:-.01em}
+.shead .d{color:var(--ink-3);font-size:13px}
+.shead .more{margin-left:auto;font-size:13px}
 /* ---------- page head ---------- */
-.phead{padding:44px 0 8px}
-.phead h1{font-size:clamp(25px,3.2vw,32px);font-weight:800;letter-spacing:.01em;line-height:1.3;text-wrap:balance}
-.phead .meta{color:var(--ink-3);font-size:13px;margin-top:8px}
-.phead .lede{color:var(--ink-2);font-size:15px;margin-top:10px;max-width:760px}
+.phead{padding:56px 0 10px}
+.phead h1{font-size:clamp(26px,3.4vw,34px);font-weight:800;line-height:1.25;text-wrap:balance}
+.phead .meta{color:var(--ink-3);font-size:13px;margin-top:10px}
+.phead .lede{color:var(--ink-2);font-size:15.5px;margin-top:12px;max-width:780px}
 /* ---------- content 图层：统一重皮肤遗留标记 ---------- */
-.content{padding-bottom:26px}
-.content h1,.content h2,.content h3{color:var(--ink);text-wrap:balance}
+.content{padding-bottom:30px}
+.content h1,.content h2,.content h3{color:var(--ink)}
 .content a{color:var(--blue)!important}
 .content a:hover{text-decoration:underline}
 .content table{width:100%;border-collapse:collapse;background:transparent!important;
-  border:1px solid var(--line)!important;border-radius:12px;overflow:hidden;margin-top:20px!important;font-size:13.5px}
-.content th{background:rgba(21,34,58,.62)!important;color:var(--ink-3)!important;
-  padding:11px 14px!important;border-bottom:1px solid var(--line-strong)!important;
-  font-size:12px;letter-spacing:.05em;font-weight:700}
-.content td{padding:10px 14px!important;border-bottom:1px solid var(--line)!important;color:var(--ink-2);background:transparent!important}
-.content h2,.content h3{color:var(--ink)!important}
-.content th{white-space:nowrap}
+  border:1px solid var(--line)!important;border-radius:14px;overflow:hidden;margin-top:20px!important;font-size:13.5px}
+.content th{background:rgba(19,30,48,.7)!important;color:var(--ink-3)!important;
+  padding:12px 14px!important;border-bottom:1px solid var(--line-strong)!important;
+  font-size:11px;letter-spacing:.08em;font-weight:700;text-transform:uppercase;white-space:nowrap}
+.content td{padding:11px 14px!important;border-bottom:1px solid var(--line)!important;color:var(--ink-2);background:transparent!important}
 .content tr:last-child td{border-bottom:none!important}
-.content tr:hover td{background:rgba(91,157,255,.045)!important}
-.content .cardbox{background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:22px 24px;margin-top:26px}
-.content .cardbox h3{font-size:15.5px;margin-bottom:8px}
-.content .cardbox p{font-size:13.5px;color:var(--ink-2);margin:6px 0}
-
-/* ---------- sparks / tool grid / table scroll ---------- */
-.trustbar{display:grid;grid-template-columns:repeat(auto-fit,minmax(120px,1fr));gap:10px;margin-top:18px}
-.trustbar div{background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:12px 14px;text-align:center}
+.content tr:hover td{background:rgba(91,157,255,.05)!important}
+.content td.r,.content th.r{text-align:right}
+.content .cardbox{background:linear-gradient(180deg,rgba(255,255,255,.02),rgba(255,255,255,0) 46%),var(--surface);
+  border:1px solid var(--line);border-radius:16px;padding:24px 26px;margin-top:26px;
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.03)}
+.content .cardbox h3{font-size:16px;margin-bottom:8px;font-weight:800}
+.content .cardbox p{font-size:13.8px;color:var(--ink-2);margin:7px 0}
+/* ---------- badge / 交易所色 ---------- */
+.badge{display:inline-flex;align-items:center;font-size:11px;font-weight:800;letter-spacing:.06em;
+  padding:3px 9px;border-radius:7px;background:rgba(148,163,184,.12);color:var(--ink-2)}
+.ex-binance{color:#F0B90B;background:rgba(240,185,11,.12)}
+.ex-okx{color:#8FC1FF;background:rgba(91,157,255,.14)}
+.ex-bybit{color:#FFB84D;background:rgba(247,166,0,.13)}
+.ex-gate{color:#63D8C8;background:rgba(79,209,197,.13)}
+/* ---------- 产品矩阵 ---------- */
+.featgrid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:14px;margin-top:16px}
+.feat{display:block;background:linear-gradient(180deg,rgba(255,255,255,.02),rgba(255,255,255,0) 46%),var(--surface);
+  border:1px solid var(--line);border-radius:16px;padding:20px;
+  transition:transform .15s ease,border-color .15s ease}
+.feat:hover{transform:translateY(-3px);border-color:var(--line-strong)}
+.feat .ic{width:34px;height:34px;border-radius:10px;display:flex;align-items:center;justify-content:center;
+  background:rgba(240,192,112,.10);color:var(--gold-1);margin-bottom:12px}
+.feat b{display:block;font-size:15px;color:var(--ink);margin-bottom:5px}
+.feat p{font-size:13px;color:var(--ink-3);line-height:1.65}
+.feat .go{display:inline-block;margin-top:10px;font-size:12.5px;color:var(--blue)}
+.feat:hover .go{text-decoration:underline}
+/* ---------- trustbar（旧版兼容） ---------- */
+.trustbar{display:grid;grid-template-columns:repeat(auto-fit,minmax(130px,1fr));gap:10px;margin-top:18px}
+.trustbar div{background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:13px 14px;text-align:center}
 .trustbar b{display:block;font-size:24px;color:var(--gold-1);line-height:1.2}
 .trustbar span{font-size:12px;color:var(--ink-3)}
-.sparks{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:12px;margin-top:20px}
-.spark{background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:14px 16px;font-size:13px}
+/* ---------- sparks / tool grid / table scroll ---------- */
+.sparks{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:12px;margin-top:16px}
+.spark{background:linear-gradient(180deg,rgba(255,255,255,.02),rgba(255,255,255,0) 46%),var(--surface);
+  border:1px solid var(--line);border-radius:14px;padding:16px 18px;font-size:13px}
 .spark b{font-size:14px}
 .spark svg{display:block;margin-top:6px}
 .spark .cap{color:var(--ink-3);font-size:11px;margin-top:4px}
@@ -95,7 +152,7 @@ a:hover{text-decoration:none}
 .scroller svg{min-width:820px;height:auto;display:block}
 /* ---------- 移动端卡片视图（deals 等） ---------- */
 .m-cards{display:none}
-.m-card{background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:14px 16px;margin-top:12px}
+.m-card{background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:14px 16px;margin-top:12px}
 .m-card .t{font-weight:800;font-size:14.5px;line-height:1.5}
 .m-card .meta{color:var(--ink-3);font-size:12px;margin-top:2px}
 .m-card .prow{display:flex;align-items:baseline;gap:10px;margin-top:8px}
@@ -108,26 +165,40 @@ a:hover{text-decoration:none}
   .dtable-d{display:none}
   .m-cards{display:block}
 }
-/* ---------- cta band ---------- */
-.band{border:1px solid var(--line);border-radius:16px;padding:30px 32px;text-align:center;
-  background:radial-gradient(520px 180px at 50% 0%,rgba(91,157,255,.10),transparent 70%),var(--surface);margin-top:30px}
-.band .t{font-size:19px;font-weight:800;text-wrap:balance}
+/* ---------- cta band（渐变描边） ---------- */
+.band{border:1px solid transparent;border-radius:18px;padding:34px 32px;text-align:center;margin-top:36px;
+  background:linear-gradient(180deg,rgba(255,255,255,.02),transparent 50%),
+    linear-gradient(var(--surface),var(--surface)) padding-box,
+    linear-gradient(120deg,rgba(240,192,112,.45),rgba(91,157,255,.35),rgba(240,192,112,.2)) border-box}
+.band .t{font-size:20px;font-weight:800;text-wrap:balance}
 .band .d{color:var(--ink-2);font-size:13.5px;margin-top:6px}
 .band .acts{display:flex;gap:12px;justify-content:center;margin-top:18px;flex-wrap:wrap}
 /* ---------- footer ---------- */
-footer{border-top:1px solid var(--line);margin-top:64px}
-footer .in{padding:26px 0 30px;display:flex;justify-content:space-between;gap:14px;flex-wrap:wrap;font-size:12.5px;color:var(--ink-3)}
+footer{border-top:1px solid var(--line);margin-top:72px;background:rgba(255,255,255,.012)}
+footer .in{padding:36px 0 38px;font-size:12.5px;color:var(--ink-3)}
+footer .frow{display:flex;gap:32px;flex-wrap:wrap;justify-content:space-between}
+footer .fcol{min-width:210px;line-height:1.9}
+footer .fbrand{display:flex;align-items:center;gap:9px;color:var(--ink);font-weight:800;font-size:14.5px;margin-bottom:6px}
+footer .fhead{color:var(--ink);font-weight:700;font-size:13px;margin-bottom:6px}
 footer .in a{color:var(--ink-2)}
+footer .in a:hover{color:var(--ink)}
+footer .fdis{margin-top:24px;padding-top:16px;border-top:1px solid var(--line);color:var(--ink-3)}
 /* ---------- responsive ---------- */
-@media (max-width:860px){
+@media (max-width:900px){
   .nav{display:none}
   .topbar .cta{margin-left:0}
-  .phead{padding:32px 0 4px}
+  .phead{padding:40px 0 6px}
+  .hero{padding:48px 0 4px}
   .content .cardbox{padding:18px}
+  .band{padding:26px 20px}
 }
 </style></head>
 <body><div class="topbar"><input type="checkbox" id="mt" class="menutgl"><div class="wrap in">
-  <a class="brand" href="/"><span class="dot"></span>量化情报站</a>
+  <a class="brand" href="/"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+<defs><linearGradient id="lgm" x1="0" y1="0" x2="24" y2="24">
+<stop stop-color="#F8DCA0"/><stop offset="1" stop-color="#D99A3A"/></linearGradient></defs>
+<rect x="1.5" y="1.5" width="21" height="21" rx="6" stroke="url(#lgm)" stroke-width="1.6"/>
+<path d="M12 5l2.2 7-2.2 7-2.2-7z" fill="url(#lgm)"/></svg>量化情报站</a>
   <nav class="nav"><a href="/">费率看板</a><a href="/history/">历史中心</a><a href="/tools/">工具箱</a><a href="/deals.html">游戏折扣</a><a href="/ai/">AI 榜</a><a href="/brief/latest.html" class="on">情报日报</a><a href="/about.html">关于</a></nav>
   <a class="btn gold sm cta" href="https://ratecompass.tech/masters/" target="_blank" rel="noopener">API 与服务 ↗</a>
   <label class="burger" for="mt"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 7h16M4 12h16M4 17h16"/></svg></label>
@@ -138,33 +209,71 @@ footer .in a{color:var(--ink-2)}
 <p class="meta num">2026-09-01 · 自动生成</p>
 <p class="lede">由数据引擎自动抓取 HackerNews / 一线科技媒体 / GitHub 周趋势并经 AI 编辑加工——帮你省掉每天刷英文圈的 2 小时。</p></div>
 <div style="background:#161b22;border-radius:12px;padding:18px 20px;margin-bottom:14px;border-left:3px solid #58a6ff">
-<div style="font-size:17px;font-weight:700;margin-bottom:8px">1. AnkiDroid 捐赠链接被 Google Play 下架</div>
-<div style="color:#8b949e;font-size:12px;margin-bottom:10px">来源 HN(164分) · <a href="https://github.com/ankidroid/Anki-Android/issues/21656" style="color:#58a6ff">原文</a></div>
-<div style="margin-bottom:6px"><span style="color:#79c0ff">▸ 发生了什么</span><br><span style="line-height:1.7">Google Play 下架 AnkiDroid 捐赠链接，开源项目失去官方渠道募资入口。</span></div>
-<div style="margin-bottom:6px"><span style="color:#d2a8ff">▸ 为什么重要</span><br><span style="line-height:1.7">切断开源可持续变现路径，倒逼项目方自建支付或转商业化，影响数千万用户信任。</span></div>
-<div><span style="color:#7ee787">▸ 你可以怎么做</span><br><span style="line-height:1.7">开发者速迁移至 GitHub Sponsors/Patreon，官网植入支付宝/微信码；用户改走侧载版捐赠，避免断更风险。</span></div></div><div style="background:#161b22;border-radius:12px;padding:18px 20px;margin-bottom:14px;border-left:3px solid #58a6ff">
-<div style="font-size:17px;font-weight:700;margin-bottom:8px">2. NASA 火星计划全押直升机</div>
-<div style="color:#8b949e;font-size:12px;margin-bottom:10px">来源 ArsTechnica · <a href="https://arstechnica.com/space/2026/09/without-new-landers-or-rovers-its-helicopters-or-bust-for-nasas-mars-program/" style="color:#58a6ff">原文</a></div>
-<div style="margin-bottom:6px"><span style="color:#79c0ff">▸ 发生了什么</span><br><span style="line-height:1.7">NASA 砍掉登陆器/漫游车计划，全押 SkyFall 三架直升机 2028 年发射，绑定 21 亿核动力验证器。</span></div>
-<div style="margin-bottom:6px"><span style="color:#d2a8ff">▸ 为什么重要</span><br><span style="line-height:1.7">单一技术路线风险极高，若直升机失败将丧失十年火星探测窗口，供应链仅靠 AeroVironment 一家。</span></div>
-<div><span style="color:#7ee787">▸ 你可以怎么做</span><br><span style="line-height:1.7">关注 JPL 采购名单，跟投直升机电机/雷达供应商；留意核电推进进度，延期即做空相关标的。</span></div></div><div style="background:#161b22;border-radius:12px;padding:18px 20px;margin-bottom:14px;border-left:3px solid #58a6ff">
-<div style="font-size:17px;font-weight:700;margin-bottom:8px">3. 私营团队众筹星际探测器</div>
-<div style="color:#8b949e;font-size:12px;margin-bottom:10px">来源 ArsTechnica · <a href="https://arstechnica.com/space/2026/09/private-group-wants-to-launch-cheapest-possible-mission-to-alpha-centauri/" style="color:#58a6ff">原文</a></div>
-<div style="margin-bottom:6px"><span style="color:#79c0ff">▸ 发生了什么</span><br><span style="line-height:1.7">英国数学家筹 1500 万美金造「费米探索者」，用离子推进 8 万年飞半人马座，2029 年发射。</span></div>
-<div style="margin-bottom:6px"><span style="color:#d2a8ff">▸ 为什么重要</span><br><span style="line-height:1.7">极低成本验证星际航行可行性，若成功打破「大过滤器」论，引爆深空探测私有化赛道。</span></div>
-<div><span style="color:#7ee787">▸ 你可以怎么做</span><br><span style="line-height:1.7">评估星云/Relativity Space 等廉价发射商受益；别碰该项目股权——回报周期超人类文明寿命。</span></div></div><div style="background:#161b22;border-radius:12px;padding:18px 20px;margin-bottom:14px;border-left:3px solid #58a6ff">
-<div style="font-size:17px;font-weight:700;margin-bottom:8px">4. 美航百岁机械师谢世</div>
-<div style="color:#8b949e;font-size:12px;margin-bottom:10px">来源 HN(81分) · <a href="https://simpleflying.com/american-airlines-mechanic-passes-away-100-record-80-years/" style="color:#58a6ff">原文</a></div>
-<div style="margin-bottom:6px"><span style="color:#79c0ff">▸ 发生了什么</span><br><span style="line-height:1.7">美航传奇机械师 Al Blackman 100 岁逝世，服役 80 年创行业最长工龄纪录。</span></div>
-<div style="margin-bottom:6px"><span style="color:#d2a8ff">▸ 为什么重要</span><br><span style="line-height:1.7">象征民航维修知识断层加剧，资深技师流失推高外包成本，倒逼 AI 预测性维护落地。</span></div>
-<div><span style="color:#7ee787">▸ 你可以怎么做</span><br><span style="line-height:1.7">航空 MRO 龙头买入；关注 Palantir/Boeing 数字孪生维护平台，技师退休潮即交付高峰。</span></div></div>
+<div style="font-size:17px;font-weight:700;margin-bottom:8px">1. Google下架MV2扩展含uBlock Origin</div>
+<div style="color:#8b949e;font-size:12px;margin-bottom:10px">来源 HN(206分) · <a href="https://webiterate.dev/google-removed-extensions-ublock-origin-108/" style="color:#58a6ff">原文</a></div>
+<div style="margin-bottom:6px"><span style="color:#79c0ff">▸ 发生了什么</span><br><span style="line-height:1.7">Google彻底清空Chrome商店所有MV2扩展，uBlock Origin等广告拦截神器无法更新重装，旧版仅能苟活至浏览器升级</span></div>
+<div style="margin-bottom:6px"><span style="color:#d2a8ff">▸ 为什么重要</span><br><span style="line-height:1.7">Chromium系浏览器全连坐，Brave仅自救四款，广告拦截核心防线崩塌，Google变现加速隐私让路</span></div>
+<div><span style="color:#7ee787">▸ 你可以怎么做</span><br><span style="line-height:1.7">立即迁移Firefox或Brave原生拦截，开发者火速适配MV3，自建扩展源或用SideStore侧载救命</span></div></div><div style="background:#161b22;border-radius:12px;padding:18px 20px;margin-bottom:14px;border-left:3px solid #58a6ff">
+<div style="font-size:17px;font-weight:700;margin-bottom:8px">2. OpenShot 4.0发布达商用级</div>
+<div style="color:#8b949e;font-size:12px;margin-bottom:10px">来源 HN(178分) · <a href="https://www.openshot.org/blog/2026/08/30/openshot-40-record-edit-color-like-never-before/" style="color:#58a6ff">原文</a></div>
+<div style="margin-bottom:6px"><span style="color:#79c0ff">▸ 发生了什么</span><br><span style="line-height:1.7">免费开源剪辑器重大更新：内置录屏、专业调色盘、本地AI抠像、10大新特效、Qt6跨平台底座</span></div>
+<div style="margin-bottom:6px"><span style="color:#d2a8ff">▸ 为什么重要</span><br><span style="line-height:1.7">功能对标Premiere/达芬奇零订阅费，Linux首选，本地AI无云端隐私风险，接单成本归零</span></div>
+<div><span style="color:#7ee787">▸ 你可以怎么做</span><br><span style="line-height:1.7">立即下载替代付费软件，用AI抠像批量产短视频，接广告/带货变现，贡献代码混个核心贡献者头衔</span></div></div><div style="background:#161b22;border-radius:12px;padding:18px 20px;margin-bottom:14px;border-left:3px solid #58a6ff">
+<div style="font-size:17px;font-weight:700;margin-bottom:8px">3. 极客手工对齐1.7万字等宽文本</div>
+<div style="color:#8b949e;font-size:12px;margin-bottom:10px">来源 HN(173分) · <a href="https://unsung.aresluna.org/i-just-chose-words-carefully/" style="color:#58a6ff">原文</a></div>
+<div style="margin-bottom:6px"><span style="color:#79c0ff">▸ 发生了什么</span><br><span style="line-height:1.7">作者纯手工选词让等宽字体完美两端对齐，1.7万字零多余空格零连字符，ASCII编辑器硬核操作</span></div>
+<div style="margin-bottom:6px"><span style="color:#d2a8ff">▸ 为什么重要</span><br><span style="line-height:1.7">极客美学天花板，倒逼UI文案压行技巧，程序员审美可变现为极客周边/技术教程流量</span></div>
+<div><span style="color:#7ee787">▸ 你可以怎么做</span><br><span style="line-height:1.7">学单词微调压行术，应用按钮文案/提示词排版，做极客简历模板/键盘贴纸卖审美溢价</span></div></div><div style="background:#161b22;border-radius:12px;padding:18px 20px;margin-bottom:14px;border-left:3px solid #58a6ff">
+<div style="font-size:17px;font-weight:700;margin-bottom:8px">4. Claude Opus 5自动模式被破防</div>
+<div style="color:#8b949e;font-size:12px;margin-bottom:10px">来源 HN(136分) · <a href="https://embracethered.com/blog/posts/2026/breaking-claude-code-opus-5-and-automode/" style="color:#58a6ff">原文</a></div>
+<div style="margin-bottom:6px"><span style="color:#79c0ff">▸ 发生了什么</span><br><span style="line-height:1.7">恶意网站利用ZIP投毒struct.py劫持Python导入链，绕过安全分类器实现代码执行，成功率60-80%</span></div>
+<div style="margin-bottom:6px"><span style="color:#d2a8ff">▸ 为什么重要</span><br><span style="line-height:1.7">Anthropic宣称0%注入率失效，默认自动模式成企业级攻击面，沙箱隔离缺失等于裸奔</span></div>
+<div><span style="color:#7ee787">▸ 你可以怎么做</span><br><span style="line-height:1.7">立即关闭自动模式，Docker/虚拟机强制隔离，监控所有工具调用，审计AI生成代码再入库</span></div></div><div style="background:#161b22;border-radius:12px;padding:18px 20px;margin-bottom:14px;border-left:3px solid #58a6ff">
+<div style="font-size:17px;font-weight:700;margin-bottom:8px">5. Fastpotify：原生轻量Spotify客户端</div>
+<div style="color:#8b949e;font-size:12px;margin-bottom:10px">来源 HN(103分) · <a href="https://fastpotify.rocks/" style="color:#58a6ff">原文</a></div>
+<div style="margin-bottom:6px"><span style="color:#79c0ff">▸ 发生了什么</span><br><span style="line-height:1.7">原生二进制无浏览器引擎，&lt;1秒启动、占用100-250MB内存，支持本地无间隙320kbps播放、Spotify Connect、歌单管理、Winamp皮肤、MPRIS/托盘集成。</span></div>
+<div style="margin-bottom:6px"><span style="color:#d2a8ff">▸ 为什么重要</span><br><span style="line-height:1.7">替代笨重Electron版，省内存、启动快、高码率无间隙，Linux桌面集成最好（MPRIS/托盘/全局快捷键）。</span></div>
+<div><span style="color:#7ee787">▸ 你可以怎么做</span><br><span style="line-height:1.7">Linux/macOS/Win下载二进制直跑；配合Premium用Connect控制音箱；导入.wsz皮肤怀旧Winamp界面。</span></div></div><div style="background:#161b22;border-radius:12px;padding:18px 20px;margin-bottom:14px;border-left:3px solid #58a6ff">
+<div style="font-size:17px;font-weight:700;margin-bottom:8px">6. BirdNet-Go：安防摄像头变鸟类识别站</div>
+<div style="color:#8b949e;font-size:12px;margin-bottom:10px">来源 HN(96分) · <a href="https://jasontucker.blog/how-i-turned-my-security-cameras-into-an-automatic-bird-identification-system-with-birdnet-go/" style="color:#58a6ff">原文</a></div>
+<div style="margin-bottom:6px"><span style="color:#79c0ff">▸ 发生了什么</span><br><span style="line-height:1.7">用现有摄像头RTSP流跑本地AI（Docker部署），7×24实时识别鸟/蝙蝠/蛙叫，支持稀有鸟警报、新物种记录、BirdWeather数据共享。</span></div>
+<div style="margin-bottom:6px"><span style="color:#d2a8ff">▸ 为什么重要</span><br><span style="line-height:1.7">零云费、隐私本地、利用闲置硬件，Perch v2模型覆盖1.4万物种，把被动监控变生物多样性数据资产。</span></div>
+<div><span style="color:#7ee787">▸ 你可以怎么做</span><br><span style="line-height:1.7">树莓派/NAS跑Docker-compose指向RTSP地址；配Webhook推送稀有鸟到Discord/Telegram；同步BirdWeather助力科研。</span></div></div><div style="background:#161b22;border-radius:12px;padding:18px 20px;margin-bottom:14px;border-left:3px solid #58a6ff">
+<div style="font-size:17px;font-weight:700;margin-bottom:8px">7. Playa Phone：燃人节免费网络电话亭</div>
+<div style="color:#8b949e;font-size:12px;margin-bottom:10px">来源 HN(93分) · <a href="https://playaphone.com/" style="color:#58a6ff">原文</a></div>
+<div style="margin-bottom:6px"><span style="color:#79c0ff">▸ 发生了什么</span><br><span style="line-height:1.7">实体电话亭改装免费VoIP，拨+1 775-557-4848随机接通现场陌生人或被路人回拨，状态页实时显示通话/占线/未接统计。</span></div>
+<div style="margin-bottom:6px"><span style="color:#d2a8ff">▸ 为什么重要</span><br><span style="line-height:1.7">极客艺术装置+通信实验，展示VoIP+物理交互低成本部署，适合活动现场临时通讯或营销噱头。</span></div>
+<div><span style="color:#7ee787">▸ 你可以怎么做</span><br><span style="line-height:1.7">买旧电话亭+树莓派+SIM/星链复刻；接入FreeSWITCH做呼叫路由；做状态页嵌入活动官网引流。</span></div></div><div style="background:#161b22;border-radius:12px;padding:18px 20px;margin-bottom:14px;border-left:3px solid #58a6ff">
+<div style="font-size:17px;font-weight:700;margin-bottom:8px">8. 网线直连两电脑极速传文件</div>
+<div style="color:#8b949e;font-size:12px;margin-bottom:10px">来源 HN(102分) · <a href="https://maurycyz.com/misc/etherfiles/" style="color:#58a6ff">原文</a></div>
+<div style="margin-bottom:6px"><span style="color:#79c0ff">▸ 发生了什么</span><br><span style="line-height:1.7">双机直连网线，手动配IPv6链路本地地址，用socat跑TCP传输，实测900Mbps（6.7GB/分），碾压USB/云/。</span></div>
+<div style="margin-bottom:6px"><span style="color:#d2a8ff">▸ 为什么重要</span><br><span style="line-height:1.7">零配置零成本跑满千兆，避开云限速/USB线材坑，局域网离线传大文件最稳方案。</span></div>
+<div><span style="color:#7ee787">▸ 你可以怎么做</span><br><span style="line-height:1.7">双端执行`ip address add dev eth0 fd42:dead:beef::1/48`互ping通后，收端`socat - TCP6-LISTEN:1234 | dd &gt; file`，发端`socat - &#x27;TCP6-CONNECT:[::2]:1234&#x27; &lt; file`。</span></div></div>
 
 <div class="cardbox"><h3>同源联动 · 资金费率雷达</h3><p>过去 24 小时跨所正费率机会：</p><ul><li><b>BTGO</b> @ GATE <span style='color:#3fb950'>年化 +1095%</span> <span style='color:#484f58'>(雷达持续跟踪中)</span></li><li><b>BNC</b> @ BINANCE <span style='color:#3fb950'>年化 +880%</span> <span style='color:#484f58'>(雷达持续跟踪中)</span></li><li><b>DKNG</b> @ BYBIT <span style='color:#3fb950'>年化 +834%</span> <span style='color:#484f58'>(雷达持续跟踪中)</span></li></ul>
 <p><a href="https://ratecompass.tech/">实时看板 →</a></p></div>
 <div class="band"><div class="t">每日情报免费送达</div><div class="d">海外圈中文日报 + 费率尖峰速报，随时可退订</div><div class="acts"><a class="btn gold" href="https://t.me/autofarm_rate" target="_blank" rel="noopener">立即加入 →</a></div></div>
 <p style="font-size:11px;color:var(--ink-3);margin-top:18px">自动生成 · 内容为公开信息整理，不构成投资建议</p>
 </div><footer><div class="wrap in">
-  <span>© 2026 量化情报站 · 数据每 10 分钟至每交易日自动更新 · 公开数据聚合，不构成投资建议</span>
-  <span><a href="https://ratecompass.tech/masters/" target="_blank" rel="noopener">API 与技术服务</a> ·
-  <a href="/about.html">推广模式说明</a> · <a href="/privacy.html">隐私</a></span>
+  <div class="frow">
+    <div class="fcol">
+      <div class="fbrand"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+<defs><linearGradient id="lgm" x1="0" y1="0" x2="24" y2="24">
+<stop stop-color="#F8DCA0"/><stop offset="1" stop-color="#D99A3A"/></linearGradient></defs>
+<rect x="1.5" y="1.5" width="21" height="21" rx="6" stroke="url(#lgm)" stroke-width="1.6"/>
+<path d="M12 5l2.2 7-2.2 7-2.2-7z" fill="url(#lgm)"/></svg>量化情报站</div>
+      <div>全自动加密数据与海外情报站<br>每 10 分钟至每交易日自动更新，无人工编辑</div>
+    </div>
+    <div class="fcol">
+      <div class="fhead">站点导航</div>
+      <a href="/">费率看板</a> · <a href="/history/">历史中心</a> · <a href="/tools/">工具箱</a><br>
+      <a href="/deals.html">游戏折扣</a> · <a href="/ai/">AI 榜</a> · <a href="/brief/latest.html">情报日报</a>
+    </div>
+    <div class="fcol">
+      <div class="fhead">对外服务</div>
+      <a href="https://ratecompass.tech/masters/" target="_blank" rel="noopener">API 与技术服务</a> · <a href="/about.html">推广模式说明</a><br>
+      <a href="https://t.me/autofarm_rate" target="_blank" rel="noopener">Telegram 频道</a> · <a href="/privacy.html">隐私说明</a>
+    </div>
+  </div>
+  <div class="fdis">© 2026 量化情报站 · 公开数据聚合与工具，不构成任何投资建议 · 合约交易风险极高，请自行决策</div>
 </div></footer></div></body></html>
