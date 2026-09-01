@@ -90,6 +90,7 @@ h2{font-size:clamp(24px,3vw,30px);font-weight:800;letter-spacing:.01em;line-heig
 /* ---------- cards ---------- */
 .grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:36px}
 .grid2{display:grid;grid-template-columns:repeat(2,1fr);gap:18px;margin-top:36px}
+.grid4{display:grid;grid-template-columns:repeat(4,1fr);gap:18px;margin-top:36px}
 .card{background:linear-gradient(180deg,rgba(255,255,255,.02),rgba(255,255,255,0) 46%),var(--surface);
   border:1px solid var(--line);border-radius:16px;padding:26px;display:flex;flex-direction:column;
   box-shadow:inset 0 1px 0 rgba(255,255,255,.03);transition:border-color .18s ease,transform .18s ease}
@@ -214,7 +215,7 @@ footer .base{border-top:1px solid var(--line);padding:18px 0 26px;display:flex;j
   .stats .s{border-top:1px solid var(--line)}
   .stats .s:nth-child(-n+2){border-top:none}
   .stats .s:nth-child(odd){border-left:none}
-  .grid3,.feat,.steps{grid-template-columns:1fr 1fr}
+  .grid3,.grid4,.feat,.steps{grid-template-columns:1fr 1fr}
   .snap .body{grid-template-columns:1fr}
   .snap .score{border-right:none;border-bottom:1px solid var(--line)}
   .snap .kpis{grid-template-columns:1fr}
@@ -224,7 +225,7 @@ footer .base{border-top:1px solid var(--line);padding:18px 0 26px;display:flex;j
 }
 @media (max-width:620px){
   .nav{display:none}
-  .grid3,.grid2,.feat,.steps{grid-template-columns:1fr}
+  .grid3,.grid2,.grid4,.feat,.steps{grid-template-columns:1fr}
   .frow{grid-template-columns:120px 1fr 72px}
   .hero{padding:64px 0 52px}
   section{padding:56px 0}
@@ -249,23 +250,27 @@ footer .base{border-top:1px solid var(--line);padding:18px 0 26px;display:flex;j
 <header class="hero" style="padding:72px 0 40px"><div class="wrap">
   <div class="kick">DATA ENGINEERING · 技术服务</div>
   <h1>把重复劳动，交给机器</h1>
-  <p class="sub">数据管道、监控告警、自动报告三类标准化服务。页面下方就是在跑的交付案例——只交付自己敢长期运行的系统。</p>
+  <p class="sub">¥299 体验档 48 小时上线，不满意全额退；页面下方就是在跑的交付案例——只交付自己敢长期运行的系统。</p>
 </div></header>
 
 <section style="padding-top:20px"><div class="wrap">
-  <div class="grid3">
-    <div class="card hot"><div class="no">SERVICE 01</div><div class="t">数据管道搭建</div>
-      <div class="d" style="margin-top:10px">把公开 API / 网页数据，变成稳定入库的自动化管道。</div>
-      <ul><li>多源采集 · 清洗 · 入库</li><li>断点续跑与失败重试</li><li>计划任务部署 + 运维文档</li></ul>
-      <div class="push" style="font-size:20px;font-weight:800" ><span class="num">¥3,000 <small style="font-size:12.5px;color:var(--ink-3);font-weight:400">起 / 3-7 天交付</small></span></div></div>
-    <div class="card"><div class="no">SERVICE 02</div><div class="t">监控告警系统</div>
-      <div class="d" style="margin-top:10px">价格、库存、状态类监控，触发即通知。</div>
-      <ul><li>自定义阈值 + 冷却防骚扰</li><li>邮件 / Telegram / 企微推送</li><li>触发历史入库可回溯</li></ul>
-      <div class="push" style="font-size:20px;font-weight:800"><span class="num">¥2,000 <small style="font-size:12.5px;color:var(--ink-3);font-weight:400">起 / 2-5 天交付</small></span></div></div>
-    <div class="card"><div class="no">SERVICE 03</div><div class="t">自动报告系统</div>
-      <div class="d" style="margin-top:10px">数据 → 分析 → 排版，定时产出成品报告。</div>
-      <ul><li>HTML / PDF / 邮件多形态</li><li>可选 LLM 中文精编模块</li><li>历史报告自动归档</li></ul>
-      <div class="push" style="font-size:20px;font-weight:800"><span class="num">¥5,000 <small style="font-size:12.5px;color:var(--ink-3);font-weight:400">起 / 5-10 天交付</small></span></div></div>
+  <div class="grid4">
+    <div class="card"><div class="no">体验档 · 48小时</div><div class="t">监控上线体验</div>
+      <div class="d" style="margin-top:10px">1 个数据源 + 1 条告警规则推送到你的邮箱/TG，48 小时交付。<b>不满意全额退。</b></div>
+      <ul><li>单指标阈值监控</li><li>1 条推送通道接入</li><li>含 7 天运行观察</li></ul>
+      <div class="push" style="font-size:20px;font-weight:800"><span class="num">¥299 <small style="font-size:12.5px;color:var(--ink-3);font-weight:400">一口价 · 全额退款保障</small></span></div></div>
+    <div class="card"><div class="no">小单档 · 3-5天</div><div class="t">单源数据管道</div>
+      <div class="d" style="margin-top:10px">把一个公开 API / 网页数据源变成定时自动入库的管道，附运维文档。</div>
+      <ul><li>采集 + 清洗 + 落库</li><li>断点续跑与失败重试</li><li>计划任务部署演示</li></ul>
+      <div class="push" style="font-size:20px;font-weight:800"><span class="num">¥699 <small style="font-size:12.5px;color:var(--ink-3);font-weight:400">一口价 · 明码标价</small></span></div></div>
+    <div class="card hot"><div class="no">标准档 · 最受欢迎</div><div class="t">管道 + 告警 + 周报</div>
+      <div class="d" style="margin-top:10px">上面两项的组合：单源管道、阈值告警双通道、自动周报，一次交付。</div>
+      <ul><li>单源管道（同 ¥699 档）</li><li>双通道告警 + 触发历史</li><li>自动周报（HTML/邮件）</li><li>14 天免费缺陷修复</li></ul>
+      <div class="push" style="font-size:20px;font-weight:800"><span class="num">¥1,999 <small style="font-size:12.5px;color:var(--ink-3);font-weight:400">打包价 · 5-7 天交付</small></span></div></div>
+    <div class="card"><div class="no">定制档 · 按需</div><div class="t">多源 / 定制项目</div>
+      <div class="d" style="margin-top:10px">多数据源、复杂清洗、私有化部署、白标报告——按工作量报价，24 小时内给方案。</div>
+      <ul><li>多源聚合与定制指标</li><li>LLM 中文精编模块</li><li>私有部署 / 代管可选</li></ul>
+      <div class="push" style="font-size:20px;font-weight:800"><span class="num">¥3,000 <small style="font-size:12.5px;color:var(--ink-3);font-weight:400">起 · 先报价后开工</small></span></div></div>
   </div>
 
   <div class="steps">
@@ -283,7 +288,7 @@ footer .base{border-top:1px solid var(--line);padding:18px 0 26px;display:flex;j
     <tr><th>系统</th><th>能力</th><th>运行规模</th><th>在线验证</th></tr>
     <tr><td>USMarket 指标 API</td><td>41 项指标合成 + 公网 JSON 网关</td><td class="num">每交易日 07:00 · 五源质检</td>
       <td><a href="http://120.48.15.128/usmarket-api/docs" target="_blank">文档</a> · <a href="https://github.com/756712329-commits/usmarket" target="_blank">代码</a></td></tr>
-    <tr><td>AutoFarm 费率雷达</td><td>四所约 3,000 合约 10 分钟级扫描告警</td><td class="num">66+ 页面全自动维护</td>
+    <tr><td>AutoFarm 费率雷达</td><td>四所约 3,000 合约 10 分钟级扫描告警</td><td class="num">600+ 页面全自动维护</td>
       <td><a href="https://ratecompass.tech" target="_blank">看板</a></td></tr>
     <tr><td>投资大师日报引擎</td><td>19 套大师框架并行研判 + 自动对账</td><td class="num">每日邮件自动投递</td>
       <td><a href="http://120.48.15.128/masters/" target="_blank">落地页</a></td></tr>

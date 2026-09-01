@@ -90,6 +90,7 @@ h2{font-size:clamp(24px,3vw,30px);font-weight:800;letter-spacing:.01em;line-heig
 /* ---------- cards ---------- */
 .grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:36px}
 .grid2{display:grid;grid-template-columns:repeat(2,1fr);gap:18px;margin-top:36px}
+.grid4{display:grid;grid-template-columns:repeat(4,1fr);gap:18px;margin-top:36px}
 .card{background:linear-gradient(180deg,rgba(255,255,255,.02),rgba(255,255,255,0) 46%),var(--surface);
   border:1px solid var(--line);border-radius:16px;padding:26px;display:flex;flex-direction:column;
   box-shadow:inset 0 1px 0 rgba(255,255,255,.03);transition:border-color .18s ease,transform .18s ease}
@@ -214,7 +215,7 @@ footer .base{border-top:1px solid var(--line);padding:18px 0 26px;display:flex;j
   .stats .s{border-top:1px solid var(--line)}
   .stats .s:nth-child(-n+2){border-top:none}
   .stats .s:nth-child(odd){border-left:none}
-  .grid3,.feat,.steps{grid-template-columns:1fr 1fr}
+  .grid3,.grid4,.feat,.steps{grid-template-columns:1fr 1fr}
   .snap .body{grid-template-columns:1fr}
   .snap .score{border-right:none;border-bottom:1px solid var(--line)}
   .snap .kpis{grid-template-columns:1fr}
@@ -224,7 +225,7 @@ footer .base{border-top:1px solid var(--line);padding:18px 0 26px;display:flex;j
 }
 @media (max-width:620px){
   .nav{display:none}
-  .grid3,.grid2,.feat,.steps{grid-template-columns:1fr}
+  .grid3,.grid2,.grid4,.feat,.steps{grid-template-columns:1fr}
   .frow{grid-template-columns:120px 1fr 72px}
   .hero{padding:64px 0 52px}
   section{padding:56px 0}
