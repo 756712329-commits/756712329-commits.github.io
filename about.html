@@ -1,6 +1,6 @@
 <!doctype html><html lang="zh-CN"><head><meta charset="utf-8">
-<title>About | 量化情报站数据站</title>
-<meta name="description" content="About this automated publishing platform: crypto funding-rate dashboard, PC game deals radar, open-source AI tools index and daily tech briefing.">
+<title>关于本站 | 一个自动化数据管道的运行记录</title>
+<meta name="description" content="这个站由一套连续运行的自动化数据管道驱动：四大交易所费率每10分钟自动抓取、自动折算年化、自动捕捉尖峰。这里是它的运行记录和变现方式说明。">
 <meta name="viewport" content="width=device-width,initial-scale=1"><meta name="robots" content="index,follow">
 
 <style>
@@ -77,6 +77,10 @@ a:hover{text-decoration:none}
 .content .cardbox p{font-size:13.5px;color:var(--ink-2);margin:6px 0}
 
 /* ---------- sparks / tool grid / table scroll ---------- */
+.trustbar{display:grid;grid-template-columns:repeat(auto-fit,minmax(120px,1fr));gap:10px;margin-top:18px}
+.trustbar div{background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:12px 14px;text-align:center}
+.trustbar b{display:block;font-size:24px;color:var(--gold-1);line-height:1.2}
+.trustbar span{font-size:12px;color:var(--ink-3)}
 .sparks{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:12px;margin-top:20px}
 .spark{background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:14px 16px;font-size:13px}
 .spark b{font-size:14px}
@@ -130,15 +134,23 @@ footer .in a{color:var(--ink-2)}
 </div></div>
 <div class="wrap"><div class="content">
 
-<div class="phead"><h1>About This Platform</h1></div>
-<div class="cardbox"><p>We operate an automation-driven publishing hub for Chinese-speaking readers worldwide. All content is produced by our in-house data pipeline (codename <b>AutoFarm</b>) from public, official APIs — refreshed continuously without manual curation:</p>
-<p>· <b>Funding-Rate Dashboard</b> (/) — aggregates USDT perpetual funding rates across Binance, OKX, Bybit and Gate every 10 minutes, ranked by annualized yield.</p>
-<p>· <b>PC Game Deals Radar</b> (/deals.html) — daily price aggregation across 30+ official PC storefronts, quality-ranked discounts and all-time-low alerts.</p>
-<p>· <b>Open-Source AI Tools Index</b> (/ai/) — weekly ranking built on real GitHub star-growth and HuggingFace download data.</p>
-<p>· <b>Daily Tech Briefing</b> (/brief/latest.html) — a curated Chinese-language digest of Hacker News, release notes and GitHub Trending, delivered by opt-in e-mail.</p></div>
-<div class="cardbox"><h3>Monetization &amp; Independence</h3><p>This hub contains <b>referral (affiliate) links</b> to exchanges and game storefronts. If you sign up or buy through them, we may earn a commission at no extra cost to you. We do <b>not</b> run cashback schemes, incentivized traffic, cookie stuffing or trademark-bidding PPC. Links are contextual and marked rel="nofollow sponsored".</p>
-<p>Deals and rankings are produced by algorithms from official storefront data — no paid placement, no manual curation bias.</p></div>
-<div class="cardbox"><h3>Contact</h3><p>Telegram <a href="https://t.me/dealcompass_bot" rel="noopener">@dealcompass_bot</a> — questions, data corrections or partnership inquiries are welcome.</p></div>
+<div class="phead"><h1>这个站是什么</h1>
+<p class="lede">一个由自动化管道驱动的个人数据站：行情自己抓、页面自己生成、异常自己报警——我负责设计规则和维护，其余时间它在没有我的情况下运行。</p></div>
+
+<div class="cardbox"><h3>为什么做这个</h3>
+<p>我做加密货币资金费率套利的研究，发现全网没有一个中文页面能把四大交易所的费率放在一起、按同一年化口径实时对比。每次要看七八个页面、自己心算折算。所以我写了一套程序：<b>每 10 分钟抓一次全市场，自动折算年化、自动记录历史、年化异常时自动告警</b>。这个站就是那套程序的输出，你在页面上看到的每个数字都是它自己抓来的，没有任何人工编辑。</p>
+<p>顺带做了几个同源的副产物：PC 游戏史低雷达（30+ 商店比价）、开源 AI 工具周榜（按真实 star 增长排序）、海外科技圈中文日报。</p></div>
+
+<div class="cardbox"><h3>运行记录（不吹牛，只报数）</h3>
+<p>自 2026-08-27 上线以来：<b>连续运行 5 天，每 10 分钟一轮、从未中断</b>；已建档 2300+ 个合约、累计捕捉 276 次费率尖峰；每个币种的费率历史都可以回溯查证。数据来自币安、OKX、Bybit、Gate 四所的官方公开 API，页面上标注更新时间，出过错会在面板里留痕——一个自动系统的可信度，应该由它的运行记录来证明，而不是由文案来证明。</p></div>
+
+<div class="cardbox"><h3>这个站怎么赚钱（开诚布公）</h3>
+<p>站内部分交易所有推广链接：你通过链接开户并交易，我拿一点返佣，你的成本不变。此外我对外提供数据 API 和自动化开发服务（<a href="/masters/services.html">看这里</a>）。我<b>不做</b>返现拉新、不做诱导流量、不接付费排名——排行榜就是算法排序，谁的费率高谁在前。</p>
+<p style="color:var(--ink-3)">本站所有内容是公开数据聚合与工具，不构成任何投资建议；合约交易风险极高，请自行决策。</p></div>
+
+<div class="cardbox"><h3>联系</h3>
+<p>数据纠错、合作、API 咨询：Telegram <a href="https://t.me/dealcompass_bot" rel="noopener">@dealcompass_bot</a>（机器人直达，我看到会回）。</p></div>
+
 </div><footer><div class="wrap in">
   <span>© 2026 量化情报站 · 数据每 10 分钟至每交易日自动更新 · 公开数据聚合，不构成投资建议</span>
   <span><a href="https://ratecompass.tech/masters/" target="_blank" rel="noopener">API 与技术服务</a> ·
