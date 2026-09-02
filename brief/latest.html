@@ -209,41 +209,46 @@ footer .fdis{margin-top:24px;padding-top:16px;border-top:1px solid var(--line);c
 <p class="meta num">2026-09-02 · 自动生成</p>
 <p class="lede">由数据引擎自动抓取 HackerNews / 一线科技媒体 / GitHub 周趋势并经 AI 编辑加工——帮你省掉每天刷英文圈的 2 小时。</p></div>
 <div style="background:#161b22;border-radius:12px;padding:18px 20px;margin-bottom:14px;border-left:3px solid #58a6ff">
-<div style="font-size:17px;font-weight:700;margin-bottom:8px">1. Paint.NET 用 AI 逆向重写 Direct2D 跑 WINE</div>
-<div style="color:#8b949e;font-size:12px;margin-bottom:10px">来源 SimonWillison-AI · <a href="https://simonwillison.net/2026/Sep/2/rick-brewster/" style="color:#58a6ff">原文</a></div>
-<div style="margin-bottom:6px"><span style="color:#79c0ff">▸ 发生了什么</span><br><span style="line-height:1.7">作者用 Claude 清室逆向写了 18 万行 Direct2D 实现，直接塞进 Paint.NET 让它在 WINE 上跑通，代码未深度审查全靠“信我”。</span></div>
-<div style="margin-bottom:6px"><span style="color:#d2a8ff">▸ 为什么重要</span><br><span style="line-height:1.7">单人维护 20 年 70 万行项目，靠 AI 两周搞定微软十年没修好的 WINE 障碍，展示 AI 处理海量底层代码的实战上限。</span></div>
-<div><span style="color:#7ee787">▸ 你可以怎么做</span><br><span style="line-height:1.7">关注 PaintDotNet.Windows.Direct2D1.Managed.dll 源码；若做跨平台图形层，可参考‘AI 写桩+人工兜底’流程，但必须建立自动化回归测试防‘信我’翻车。</span></div></div><div style="background:#161b22;border-radius:12px;padding:18px 20px;margin-bottom:14px;border-left:3px solid #58a6ff">
-<div style="font-size:17px;font-weight:700;margin-bottom:8px">2. Chrome 商店下架 MV2 扩展，uBlock Origin 遭殃</div>
-<div style="color:#8b949e;font-size:12px;margin-bottom:10px">来源 HN(206分) · <a href="https://webiterate.dev/google-removed-extensions-ublock-origin-108/" style="color:#58a6ff">原文</a></div>
-<div style="margin-bottom:6px"><span style="color:#79c0ff">▸ 发生了什么</span><br><span style="line-height:1.7">Google 清空 Chrome 商店所有 Manifest V2 扩展，uBlock Origin 等广告拦截神器无法更新重装，仅存旧版本苟活。</span></div>
-<div style="margin-bottom:6px"><span style="color:#d2a8ff">▸ 为什么重要</span><br><span style="line-height:1.7">Chromium 系浏览器通用商店被垄断，MV3 限制网络请求拦截能力，广告拦截效果直线下滑，隐私保护倒退十年。</span></div>
-<div><span style="color:#7ee787">▸ 你可以怎么做</span><br><span style="line-height:1.7">立即迁移 Brave 或 Firefox 并开启内置拦截；开发者把扩展改 MV3 或自建分发站；普通用户装 uBlock Origin Lite 凑合，别指望 Google 回头。</span></div></div><div style="background:#161b22;border-radius:12px;padding:18px 20px;margin-bottom:14px;border-left:3px solid #58a6ff">
-<div style="font-size:17px;font-weight:700;margin-bottom:8px">3. Play Store 封杀 Aurora Store，GrapheneOS 用户断粮</div>
-<div style="color:#8b949e;font-size:12px;margin-bottom:10px">来源 HN(175分) · <a href="https://gitlab.com/AuroraOSS/AuroraStore/-/work_items/1566" style="color:#58a6ff">原文</a></div>
-<div style="margin-bottom:6px"><span style="color:#79c0ff">▸ 发生了什么</span><br><span style="line-height:1.7">Google Play 服务端拦截 Aurora Store 匿名下载接口，所有无 Google 账号用户装不上应用，GrapheneOS 等去谷歌系统直接瘫痪。</span></div>
-<div style="margin-bottom:6px"><span style="color:#d2a8ff">▸ 为什么重要</span><br><span style="line-height:1.7">Aurora Store 是去谷歌安卓唯一可用的 Play 替代前端，被封等于切断非 GMS 设备的应用获取渠道，迫使用户妥协登录 Google。</span></div>
-<div><span style="color:#7ee787">▸ 你可以怎么做</span><br><span style="line-height:1.7">GrapheneOS 用户暂时用 F-Droid+Obtainium 过渡；开发者把 APK 同步上传 GitHub Releases/F-Droid；长期监控 Aurora Store 夜ly 版或转投 Accrescent 商店。</span></div></div><div style="background:#161b22;border-radius:12px;padding:18px 20px;margin-bottom:14px;border-left:3px solid #58a6ff">
-<div style="font-size:17px;font-weight:700;margin-bottom:8px">4. Fastpotify：原生轻量 Spotify 客户端</div>
-<div style="color:#8b949e;font-size:12px;margin-bottom:10px">来源 HN(103分) · <a href="https://fastpotify.rocks/" style="color:#58a6ff">原文</a></div>
-<div style="margin-bottom:6px"><span style="color:#79c0ff">▸ 发生了什么</span><br><span style="line-height:1.7">原生二进制无浏览器引擎，启动&lt;1秒，内存100-250MB，支持本地播放/Connect/库管理/主题/快捷键/MPRIS/托盘</span></div>
-<div style="margin-bottom:6px"><span style="color:#d2a8ff">▸ 为什么重要</span><br><span style="line-height:1.7">解决官方 Electron 客户端臃肿卡顿，跨平台原生体验，开发者可二次开发或集成</span></div>
-<div><span style="color:#7ee787">▸ 你可以怎么做</span><br><span style="line-height:1.7">Linux/macOS/Windows 下载二进制即用；想自建音乐服务可参考其 Rust 代码库二次开发</span></div></div><div style="background:#161b22;border-radius:12px;padding:18px 20px;margin-bottom:14px;border-left:3px solid #58a6ff">
-<div style="font-size:17px;font-weight:700;margin-bottom:8px">5. RotaryCell：旧式拨号电话改 LTE 手机</div>
-<div style="color:#8b949e;font-size:12px;margin-bottom:10px">来源 HN(126分) · <a href="https://github.com/fregacmols/RotaryCell" style="color:#58a6ff">原文</a></div>
-<div style="margin-bottom:6px"><span style="color:#79c0ff">▸ 发生了什么</span><br><span style="line-height:1.7">用 ESP32-S3+LilyGO 模块+AG1171 接口，不改原机结构，电池供电，保留拨盘/听筒/铃声，原型已跑通</span></div>
-<div style="margin-bottom:6px"><span style="color:#d2a8ff">▸ 为什么重要</span><br><span style="line-height:1.7">硬件黑客/复古玩具切入物联网，零改装可量产化，教程全开源适合教学或小批量定制</span></div>
-<div><span style="color:#7ee787">▸ 你可以怎么做</span><br><span style="line-height:1.7">按 PDF 接线手搓原型，或等 PCB 量产；可做创客课程/文创周边/工业改装接单</span></div></div><div style="background:#161b22;border-radius:12px;padding:18px 20px;margin-bottom:14px;border-left:3px solid #58a6ff">
-<div style="font-size:17px;font-weight:700;margin-bottom:8px">6. Jujutsu 作者入职 ERSC 做下一代版本控制</div>
-<div style="color:#8b949e;font-size:12px;margin-bottom:10px">来源 HN(91分) · <a href="https://ersc.io/blog/martin-joins-ersc" style="color:#58a6ff">原文</a></div>
-<div style="margin-bottom:6px"><span style="color:#79c0ff">▸ 发生了什么</span><br><span style="line-height:1.7">Martin von Zweigbergk 任 CTO，ERSC 融资构建 AI 时代代码存储层，JJ 仍开源维护</span></div>
-<div style="margin-bottom:6px"><span style="color:#d2a8ff">▸ 为什么重要</span><br><span style="line-height:1.7">Git 存储天花板在大模型代码库面前失效，商业公司推进存储层重写比社区更靠谱</span></div>
-<div><span style="color:#7ee787">▸ 你可以怎么做</span><br><span style="line-height:1.7">关注 ERSC Storage 私测申请；继续用 JJ 本地工作流，远端仍兼容 Git；想入行版本控制基建可投简历</span></div></div><div style="background:#161b22;border-radius:12px;padding:18px 20px;margin-bottom:14px;border-left:3px solid #58a6ff">
-<div style="font-size:17px;font-weight:700;margin-bottom:8px">7. Firefox iOS 内置广告拦截上线</div>
-<div style="color:#8b949e;font-size:12px;margin-bottom:10px">来源 HN(92分) · <a href="https://blog.mozilla.org/en/firefox/ad-blocker-on-ios/" style="color:#58a6ff">原文</a></div>
-<div style="margin-bottom:6px"><span style="color:#79c0ff">▸ 发生了什么</span><br><span style="line-height:1.7">基于 WebKit Content Blocker+EasyList，设置里一键开启，默认关闭，不拦第一方广告/搜索广告，配合反追踪</span></div>
-<div style="margin-bottom:6px"><span style="color:#d2a8ff">▸ 为什么重要</span><br><span style="line-height:1.7">iOS 无扩展生态，原生拦截填补空白，保护隐私又不全盘否定广告模式，用户可选</span></div>
-<div><span style="color:#7ee787">▸ 你可以怎么做</span><br><span style="line-height:1.7">iOS 升级 Firefox → 设置-浏览-广告拦截开启；遇误拦上报 Mozilla Connect；开发者可研究 EasyList 规则适配自家广告</span></div></div>
+<div style="font-size:17px;font-weight:700;margin-bottom:8px">1. The Emergent Symbolic Structure of Artificial Neural Networks</div>
+<div style="color:#8b949e;font-size:12px;margin-bottom:10px">来源 HN(83分) · <a href="https://arxiv.org/abs/2608.29530" style="color:#58a6ff">原文</a></div>
+<div style="margin-bottom:6px"><span style="color:#79c0ff">▸ 发生了什么</span><br><span style="line-height:1.7">神经网络内部向量竟能用符号结构精确近似，替换后行为不变，覆盖算术、逻辑、代码、语言四大领域。</span></div>
+<div style="margin-bottom:6px"><span style="color:#d2a8ff">▸ 为什么重要</span><br><span style="line-height:1.7">打通符号主义与连接主义，解释大模型为何能推理，为可解释性、对齐、精准干预提供理论基石。</span></div>
+<div><span style="color:#7ee787">▸ 你可以怎么做</span><br><span style="line-height:1.7">读原文复现实验；尝试用符号提取法调试/控制模型行为；关注后续可解释性工具链。</span></div></div><div style="background:#161b22;border-radius:12px;padding:18px 20px;margin-bottom:14px;border-left:3px solid #58a6ff">
+<div style="font-size:17px;font-weight:700;margin-bottom:8px">2. Claude Fable 5.1 and Claude Mythos 5.1</div>
+<div style="color:#8b949e;font-size:12px;margin-bottom:10px">来源 HN(166分) · <a href="https://www.anthropic.com/claude-fable-and-mythos-5-1" style="color:#58a6ff">原文</a></div>
+<div style="margin-bottom:6px"><span style="color:#79c0ff">▸ 发生了什么</span><br><span style="line-height:1.7">Anthropic 发布 Fable 5.1（通用）与 Mythos 5.1（受信任访问，面向网安/生物），价格降 25%~45%，推出企业级零留存隐私方案 EFS。</span></div>
+<div style="margin-bottom:6px"><span style="color:#d2a8ff">▸ 为什么重要</span><br><span style="line-height:1.7">编码/知识工作 SOTA 更新，成本大降+隐私合规落地，直接影响 AI 代理开发预算与企业采购决策。</span></div>
+<div><span style="color:#7ee787">▸ 你可以怎么做</span><br><span style="line-height:1.7">在 Claude Code/CLI 实测对比 Fable 5；企业评估 EFS 上线时间表；网安/生物研发申请 Mythos 受信通道。</span></div></div><div style="background:#161b22;border-radius:12px;padding:18px 20px;margin-bottom:14px;border-left:3px solid #58a6ff">
+<div style="font-size:17px;font-weight:700;margin-bottom:8px">3. AnkiDroid: Google Play no longer allowing Open Collective donation link</div>
+<div style="color:#8b949e;font-size:12px;margin-bottom:10px">来源 HN(164分) · <a href="https://github.com/ankidroid/Anki-Android/issues/21656" style="color:#58a6ff">原文</a></div>
+<div style="margin-bottom:6px"><span style="color:#79c0ff">▸ 发生了什么</span><br><span style="line-height:1.7">Google 拒绝 501(c)(6) 免税资质，强制 AnkiDroid 移除捐赠链接，否则 9月11日全球下架（印俄除外）。</span></div>
+<div style="margin-bottom:6px"><span style="color:#d2a8ff">▸ 为什么重要</span><br><span style="line-height:1.7">开源可持续资金链被平台政策切断，1000万+ 用户面临无法更新；暴露应用商店对非 501(c)(3) 非营利的歧视。</span></div>
+<div><span style="color:#7ee787">▸ 你可以怎么做</span><br><span style="line-height:1.7">改用 GitHub/F-Droid 侧载更新；直接向 Open Collective 捐款；关注 AnkiDroid 官方渠道获取替代分发方案。</span></div></div><div style="background:#161b22;border-radius:12px;padding:18px 20px;margin-bottom:14px;border-left:3px solid #58a6ff">
+<div style="font-size:17px;font-weight:700;margin-bottom:8px">4. EFF to Courts: Don&#x27;t Rewrite Copyright over AI Hype</div>
+<div style="color:#8b949e;font-size:12px;margin-bottom:10px">来源 HN(136分) · <a href="https://www.eff.org/deeplinks/2026/08/eff-courts-dont-rewrite-copyright-over-ai-hype" style="color:#58a6ff">原文</a></div>
+<div style="margin-bottom:6px"><span style="color:#79c0ff">▸ 发生了什么</span><br><span style="line-height:1.7">EFF 呼吁法院勿因 AI 炒作扩大版权，反对“市场稀释”理论，主张合理使用保护非侵权性竞争创作。</span></div>
+<div style="margin-bottom:6px"><span style="color:#d2a8ff">▸ 为什么重要</span><br><span style="line-height:1.7">判例若偏向权利人，将扼杀开源模型、微调生态与二次创作，直接关系到 AI 训练数据合规成本与商业化路径。</span></div>
+<div><span style="color:#7ee787">▸ 你可以怎么做</span><br><span style="line-height:1.7">跟踪 Concord Music v. Anthropic 等关键案件；提交法庭之友意见或捐助 EFF；审计自有模型训练数据版权风险。</span></div></div><div style="background:#161b22;border-radius:12px;padding:18px 20px;margin-bottom:14px;border-left:3px solid #58a6ff">
+<div style="font-size:17px;font-weight:700;margin-bottom:8px">5. AI怀疑论大佬预测全翻车</div>
+<div style="color:#8b949e;font-size:12px;margin-bottom:10px">来源 HN(134分) · <a href="https://danluu.com/zitron/" style="color:#58a6ff">原文</a></div>
+<div style="margin-bottom:6px"><span style="color:#79c0ff">▸ 发生了什么</span><br><span style="line-height:1.7">技术博主Dan Luu逐条复盘网红AI怀疑论者Ed Zitron的预言，发现Meta/Google等公司不仅没死，反而营收利润暴涨。</span></div>
+<div style="margin-bottom:6px"><span style="color:#d2a8ff">▸ 为什么重要</span><br><span style="line-height:1.7">怀疑论叙事在科技圈很吃香，影响散户和创业者的资源判断；如果连最有名的大V都押错，跟着抄作业容易亏钱。</span></div>
+<div><span style="color:#7ee787">▸ 你可以怎么做</span><br><span style="line-height:1.7">做投资和职业决策时，别追情绪化KOL，对照财报和硬数据再下单，怀疑论和乐观论都要交叉验证。</span></div></div><div style="background:#161b22;border-radius:12px;padding:18px 20px;margin-bottom:14px;border-left:3px solid #58a6ff">
+<div style="font-size:17px;font-weight:700;margin-bottom:8px">6. 5090显卡1.5小时训出小模型打榜</div>
+<div style="color:#8b949e;font-size:12px;margin-bottom:10px">来源 HN(136分) · <a href="https://mvakde.github.io/blog/44-on-arc-1/" style="color:#58a6ff">原文</a></div>
+<div style="margin-bottom:6px"><span style="color:#79c0ff">▸ 发生了什么</span><br><span style="line-height:1.7">独立开发者用单张RTX 5090，1.5小时从零训练小型Transformer，在ARC-AGI-1上跑出44%，成本仅67美分。</span></div>
+<div style="margin-bottom:6px"><span style="color:#d2a8ff">▸ 为什么重要</span><br><span style="line-height:1.7">小模型+少样本+消费级硬件就能逼近前沿LLM，AI研发的资本和算力门槛被砸穿，个人和小团队机会窗口打开。</span></div>
+<div><span style="color:#7ee787">▸ 你可以怎么做</span><br><span style="line-height:1.7">会PyTorch的研究者可以fork其开源代码复现，把ARC类元学习作为副业或SaaS卖点；创业者关注小模型微调服务。</span></div></div><div style="background:#161b22;border-radius:12px;padding:18px 20px;margin-bottom:14px;border-left:3px solid #58a6ff">
+<div style="font-size:17px;font-weight:700;margin-bottom:8px">7. 美国真失业率高达24.9%</div>
+<div style="color:#8b949e;font-size:12px;margin-bottom:10px">来源 HN(100分) · <a href="https://www.lisep.org/tru" style="color:#58a6ff">原文</a></div>
+<div style="margin-bottom:6px"><span style="color:#79c0ff">▸ 发生了什么</span><br><span style="line-height:1.7">LISEP发布7月美国&quot;功能性&quot;失业率达24.9%，连续四个月攀升，远超官方4.1%的U-3失业率。</span></div>
+<div style="margin-bottom:6px"><span style="color:#d2a8ff">▸ 为什么重要</span><br><span style="line-height:1.7">官方数据严重低估就业困境，影响消费、房租、消费品股票定价；副业经济和服务业小企业才是真实刚需。</span></div>
+<div><span style="color:#7ee787">▸ 你可以怎么做</span><br><span style="line-height:1.7">做副业/小生意瞄准失业白领降级消费，做Temu/拼多多类平台选品，避开高客单重资产模型。</span></div></div><div style="background:#161b22;border-radius:12px;padding:18px 20px;margin-bottom:14px;border-left:3px solid #58a6ff">
+<div style="font-size:17px;font-weight:700;margin-bottom:8px">8. 矮人要塞开发者炮轰游戏业AI裁员</div>
+<div style="color:#8b949e;font-size:12px;margin-bottom:10px">来源 HN(87分) · <a href="https://www.pcgamer.com/gaming-industry/dwarf-fortress-creator-says-the-industrys-in-shambles-over-ai-and-layoff-happy-ceos-everyone-i-know-their-bosses-are-slowly-getting-psychosis/" style="color:#58a6ff">原文</a></div>
+<div style="margin-bottom:6px"><span style="color:#79c0ff">▸ 发生了什么</span><br><span style="line-height:1.7">《Dwarf Fortress》作者公开称游戏业因AI和CEO裁员成瘾陷入混乱，圈内人老板&quot;逐渐精神失常&quot;。</span></div>
+<div style="margin-bottom:6px"><span style="color:#d2a8ff">▸ 为什么重要</span><br><span style="line-height:1.7">大厂中层被AI和裁员双重挤压，3A团队洗牌，独立游戏和小众品类反而吃到人才溢出红利。</span></div>
+<div><span style="color:#7ee787">▸ 你可以怎么做</span><br><span style="line-height:1.7">游戏开发者可跳3A去做独立/Mod/AI工具项目；玩家和投资人关注小工作室发行的精品，避开裁员重灾的大厂。</span></div></div>
 
 <div class="cardbox"><h3>同源联动 · 资金费率雷达</h3><p>过去 24 小时跨所正费率机会：</p><ul><li><b>BTGO</b> @ GATE <span style='color:#3fb950'>年化 +1095%</span> <span style='color:#484f58'>(雷达持续跟踪中)</span></li><li><b>1000BTT</b> @ BYBIT <span style='color:#3fb950'>年化 +1011%</span> <span style='color:#484f58'>(雷达持续跟踪中)</span></li><li><b>DKNG</b> @ BYBIT <span style='color:#3fb950'>年化 +834%</span> <span style='color:#484f58'>(雷达持续跟踪中)</span></li></ul>
 <p><a href="https://ratecompass.tech/">实时看板 →</a></p></div>
