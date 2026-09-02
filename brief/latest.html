@@ -209,46 +209,46 @@ footer .fdis{margin-top:24px;padding-top:16px;border-top:1px solid var(--line);c
 <p class="meta num">2026-09-02 · 自动生成</p>
 <p class="lede">由数据引擎自动抓取 HackerNews / 一线科技媒体 / GitHub 周趋势并经 AI 编辑加工——帮你省掉每天刷英文圈的 2 小时。</p></div>
 <div style="background:#161b22;border-radius:12px;padding:18px 20px;margin-bottom:14px;border-left:3px solid #58a6ff">
-<div style="font-size:17px;font-weight:700;margin-bottom:8px">1. 自造文本编辑器实录</div>
-<div style="color:#8b949e;font-size:12px;margin-bottom:10px">来源 HN(124分) · <a href="https://dbushell.com/2026/09/01/text-editor/" style="color:#58a6ff">原文</a></div>
-<div style="margin-bottom:6px"><span style="color:#79c0ff">▸ 发生了什么</span><br><span style="line-height:1.7">开发者嫌 VS Code 基于 Monaco 的 DOM 渲染太重，先用 Canvas 手写渲染循环，再踩 contenteditable 坑，最后考虑退回 textarea。</span></div>
-<div style="margin-bottom:6px"><span style="color:#d2a8ff">▸ 为什么重要</span><br><span style="line-height:1.7">浏览器原生编辑组件各有短板：Canvas 无无障碍、contenteditable 性能玄学、textarea 无富文本。自己造轮子能精准控制延迟、内存、滚动，适合做轻量 IDE 或嵌入式编辑器。</span></div>
-<div><span style="color:#7ee787">▸ 你可以怎么做</span><br><span style="line-height:1.7">1. 先用 textarea + monaco-highlight 快速验证核心交互 2. 需要语法高亮/多光标时再上 Canvas 离屏渲染 3. 无障碍硬指标走 ARIA + contenteditable plaintext-only 兜底 4. 别自己写滚动条，套原生 overflow 配合 requestAnimationFrame 同步偏移量</span></div></div><div style="background:#161b22;border-radius:12px;padding:18px 20px;margin-bottom:14px;border-left:3px solid #58a6ff">
-<div style="font-size:17px;font-weight:700;margin-bottom:8px">2. Claude Fable 5.1 发布</div>
-<div style="color:#8b949e;font-size:12px;margin-bottom:10px">来源 HN(166分) · <a href="https://www.anthropic.com/claude-fable-and-mythos-5-1" style="color:#58a6ff">原文</a></div>
-<div style="margin-bottom:6px"><span style="color:#79c0ff">▸ 发生了什么</span><br><span style="line-height:1.7">Anthropic 推两版同模型：Fable 5.1 通用版、Mythos 5.1 高安全版。缓存读取降价 25%，企业数据留客户自管云，误报率降 60%，生物/网安定向开放。</span></div>
-<div style="margin-bottom:6px"><span style="color:#d2a8ff">▸ 为什么重要</span><br><span style="line-height:1.7">价格门槛降、数据主权回收、误拦截少，直接打进企业代码生成、合规审计、科研辅助三大高单价场景。</span></div>
-<div><span style="color:#7ee787">▸ 你可以怎么做</span><br><span style="line-height:1.7">1. 现有 Claude Code 用户切 High effort 省 45% token 费 2. 企业走 EFS 方案自建存储过合规 3. 网安/生物团队申请 Mythos 通道拿红队/湿实验辅助 4. 把旧 prompt 迁移到 Low/Medium effort 跑回归测试再上生产</span></div></div><div style="background:#161b22;border-radius:12px;padding:18px 20px;margin-bottom:14px;border-left:3px solid #58a6ff">
-<div style="font-size:17px;font-weight:700;margin-bottom:8px">3. AnkiDroid 被 Google Play 禁捐赠链接</div>
-<div style="color:#8b949e;font-size:12px;margin-bottom:10px">来源 HN(164分) · <a href="https://github.com/ankidroid/Anki-Android/issues/21656" style="color:#58a6ff">原文</a></div>
-<div style="margin-bottom:6px"><span style="color:#79c0ff">▸ 发生了什么</span><br><span style="line-height:1.7">Google Play 强制移除 AnkiDroid 里的 Open Collective 链接，理由是违反应用内购买政策，开源项目失去应用内直接募资入口。</span></div>
-<div style="margin-bottom:6px"><span style="color:#d2a8ff">▸ 为什么重要</span><br><span style="line-height:1.7">应用商店垄断分发+支付，开源项目要么交 30% 税要么被切资金链，直接威胁可持续维护。</span></div>
-<div><span style="color:#7ee787">▸ 你可以怎么做</span><br><span style="line-height:1.7">1. 官网/侧载版保留捐赠入口，引导用户 F-Droid/GitHub Release 下载 2. 接入 GitHub Sponsors/Patreon 落地页做深度链接 3. 在应用内放「支持我们」跳转网页支付，规避 IAP 审核 4. 加入开源联盟集体谈判争取政策豁免</span></div></div><div style="background:#161b22;border-radius:12px;padding:18px 20px;margin-bottom:14px;border-left:3px solid #58a6ff">
-<div style="font-size:17px;font-weight:700;margin-bottom:8px">4. EFF 硬刚 AI 版权扩张</div>
-<div style="color:#8b949e;font-size:12px;margin-bottom:10px">来源 HN(136分) · <a href="https://www.eff.org/deeplinks/2026/08/eff-courts-dont-rewrite-copyright-over-ai-hype" style="color:#58a6ff">原文</a></div>
-<div style="margin-bottom:6px"><span style="color:#79c0ff">▸ 发生了什么</span><br><span style="line-height:1.7">EFF 提交法庭之友状，反对权利人用「市场稀释」理论把版权保护范围无限扩大到非侵权 AI 生成物，主张合理使用应保护竞争而非垄断风格。</span></div>
-<div style="margin-bottom:6px"><span style="color:#d2a8ff">▸ 为什么重要</span><br><span style="line-height:1.7">判例一旦通过，大厂将掌握「风格版权」 veto 权，独立创作者、小模型训练数据、二次创作全面受制。</span></div>
-<div><span style="color:#7ee787">▸ 你可以怎么做</span><br><span style="line-height:1.7">1. 训练/微调模型时保留数据来源清单、去重日志备审 2. 产出加水印/元数据标注 AI 成分，降低「混淆市场」风险 3. 关注 Concord v. Anthropic、Mosaic 诉讼进展，必要时加入行业联合简报 4. 商业化前做版权法律意见书，把合理使用抗辩写进服务条款</span></div></div><div style="background:#161b22;border-radius:12px;padding:18px 20px;margin-bottom:14px;border-left:3px solid #58a6ff">
-<div style="font-size:17px;font-weight:700;margin-bottom:8px">5. AI怀疑论者Zitron预测被打脸：Meta营收三年翻倍</div>
-<div style="color:#8b949e;font-size:12px;margin-bottom:10px">来源 HN(134分) · <a href="https://danluu.com/zitron/" style="color:#58a6ff">原文</a></div>
-<div style="margin-bottom:6px"><span style="color:#79c0ff">▸ 发生了什么</span><br><span style="line-height:1.7">Dan Luu逐条验证知名AI怀疑论者Ed Zitron的预言，2024年他宣称Meta谷歌微软正在死去，实际Meta营收从135B涨到201B，利润率持续走高。</span></div>
-<div style="margin-bottom:6px"><span style="color:#d2a8ff">▸ 为什么重要</span><br><span style="line-height:1.7">怀疑叙事一旦失准，散户容易错过AI基建大牛市，反向指标价值千金；大厂活得越好，AI产业链订单越稳。</span></div>
-<div><span style="color:#7ee787">▸ 你可以怎么做</span><br><span style="line-height:1.7">别盲信KOL悲观叙事，用财报和营收数据交叉验证；AI怀疑论者连续错判时，反而是加仓AI infra的信号。</span></div></div><div style="background:#161b22;border-radius:12px;padding:18px 20px;margin-bottom:14px;border-left:3px solid #58a6ff">
-<div style="font-size:17px;font-weight:700;margin-bottom:8px">6. 单卡1.5小时训出44% ARC-AGI，成本仅0.67美元</div>
-<div style="color:#8b949e;font-size:12px;margin-bottom:10px">来源 HN(136分) · <a href="https://mvakde.github.io/blog/44-on-arc-1/" style="color:#58a6ff">原文</a></div>
-<div style="margin-bottom:6px"><span style="color:#79c0ff">▸ 发生了什么</span><br><span style="line-height:1.7">独立开发者在RTX 5090上用1.5小时、0.67美元训练小型Transformer，ARC-AGI-1跑分44%，追平TRM/HRM，ARC-AGI-2拿下7%。</span></div>
-<div style="margin-bottom:6px"><span style="color:#d2a8ff">▸ 为什么重要</span><br><span style="line-height:1.7">样本效率突破意味着AGI推理成本暴跌，未来模型不必堆千卡集群；小团队也能低成本迭代，AI创业门槛断崖式下降。</span></div>
-<div><span style="color:#7ee787">▸ 你可以怎么做</span><br><span style="line-height:1.7">去github clone代码复现；关注样本效率方向的初创团队，这是AGI路线最关键的瓶颈；小模型+微调的商业化机会来了。</span></div></div><div style="background:#161b22;border-radius:12px;padding:18px 20px;margin-bottom:14px;border-left:3px solid #58a6ff">
-<div style="font-size:17px;font-weight:700;margin-bottom:8px">7. 美国真实失业率24.9%，官方数据只有1/6</div>
-<div style="color:#8b949e;font-size:12px;margin-bottom:10px">来源 HN(100分) · <a href="https://www.lisep.org/tru" style="color:#58a6ff">原文</a></div>
-<div style="margin-bottom:6px"><span style="color:#79c0ff">▸ 发生了什么</span><br><span style="line-height:1.7">LISEP发布7月真实失业率24.9%，远高于官方4.1%；统计口径剔除了非全职和年薪低于2.6万美元的劳动力。</span></div>
-<div style="margin-bottom:6px"><span style="color:#d2a8ff">▸ 为什么重要</span><br><span style="line-height:1.7">官方数据失真会误导美联储利率决策，资产定价藏风险；内需疲软对消费品、零售、SaaS是利空，美元资产有泡沫嫌疑。</span></div>
-<div><span style="color:#7ee787">▸ 你可以怎么做</span><br><span style="line-height:1.7">做多黄金/抗通胀资产避险；消费品投资避开中低端；用真实失业率校准你对美国消费股的预期，别被4.1%骗了。</span></div></div><div style="background:#161b22;border-radius:12px;padding:18px 20px;margin-bottom:14px;border-left:3px solid #58a6ff">
-<div style="font-size:17px;font-weight:700;margin-bottom:8px">8. 《矮人要塞》作者炮轰游戏圈：AI和裁员毁了一切</div>
-<div style="color:#8b949e;font-size:12px;margin-bottom:10px">来源 HN(87分) · <a href="https://www.pcgamer.com/gaming-industry/dwarf-fortress-creator-says-the-industrys-in-shambles-over-ai-and-layoff-happy-ceos-everyone-i-know-their-bosses-are-slowly-getting-psychosis/" style="color:#58a6ff">原文</a></div>
-<div style="margin-bottom:6px"><span style="color:#79c0ff">▸ 发生了什么</span><br><span style="line-height:1.7"> Tarn Adams直言游戏行业被AI和裁员CEO搞崩，身边人老板都在发疯，独立开发者生存空间被挤压。</span></div>
-<div style="margin-bottom:6px"><span style="color:#d2a8ff">▸ 为什么重要</span><br><span style="line-height:1.7">行业大佬公开唱衰意味着3A大厂裁员潮还将持续，但独立精品和AI原生游戏反而获得人才流入机会。</span></div>
-<div><span style="color:#7ee787">▸ 你可以怎么做</span><br><span style="line-height:1.7">求职避开3A大厂常规岗，转投独立工作室或AI原生游戏团队；做游戏周边、AI游戏工具的创业者正迎来人才红利。</span></div></div>
+<div style="font-size:17px;font-weight:700;margin-bottom:8px">1. Google Play 封杀 Aurora Store 匿名安装</div>
+<div style="color:#8b949e;font-size:12px;margin-bottom:10px">来源 HN(175分) · <a href="https://gitlab.com/AuroraOSS/AuroraStore/-/work_items/1566" style="color:#58a6ff">原文</a></div>
+<div style="margin-bottom:6px"><span style="color:#79c0ff">▸ 发生了什么</span><br><span style="line-height:1.7">Google Play 封杀 Aurora Store 匿名账号安装功能，GrapheneOS 等去谷歌系统用户无法通过 Aurora 匿名下载应用</span></div>
+<div style="margin-bottom:6px"><span style="color:#d2a8ff">▸ 为什么重要</span><br><span style="line-height:1.7">切断隐私派最后的应用获取渠道，逼迫用户上 Google 账号或自建 F-Droid/Obtainium，厂商锁定加剧</span></div>
+<div><span style="color:#7ee787">▸ 你可以怎么做</span><br><span style="line-height:1.7">立即切换 Obtainium + F-Droid/Accrescent 双源；自托管 FDroid 仓库；关注 Aurora 夜间版修复或改用 Ghost Store</span></div></div><div style="background:#161b22;border-radius:12px;padding:18px 20px;margin-bottom:14px;border-left:3px solid #58a6ff">
+<div style="font-size:17px;font-weight:700;margin-bottom:8px">2. Fastpotify 原生 Spotify 客户端</div>
+<div style="color:#8b949e;font-size:12px;margin-bottom:10px">来源 HN(103分) · <a href="https://fastpotify.rocks/" style="color:#58a6ff">原文</a></div>
+<div style="margin-bottom:6px"><span style="color:#79c0ff">▸ 发生了什么</span><br><span style="line-height:1.7">Fastpotify 原生重写 Spotify 客户端，无 Electron，启动&lt;1秒，内存 100-250MB，支持本地播放/Connect/MPRIS</span></div>
+<div style="margin-bottom:6px"><span style="color:#d2a8ff">▸ 为什么重要</span><br><span style="line-height:1.7">官方客户端臃肿耗电，原生客户端省电、响应快、Linux 桌面集成好，开发者可二次开发插件</span></div>
+<div><span style="color:#7ee787">▸ 你可以怎么做</span><br><span style="line-height:1.7">Linux 用 flatpak 安装；Mac/Windows 下载释放即用；注意需 Premium 账号解锁 320kbps</span></div></div><div style="background:#161b22;border-radius:12px;padding:18px 20px;margin-bottom:14px;border-left:3px solid #58a6ff">
+<div style="font-size:17px;font-weight:700;margin-bottom:8px">3. RotaryCell 让拨号电话上 LTE</div>
+<div style="color:#8b949e;font-size:12px;margin-bottom:10px">来源 HN(126分) · <a href="https://github.com/fregacmols/RotaryCell" style="color:#58a6ff">原文</a></div>
+<div style="margin-bottom:6px"><span style="color:#79c0ff">▸ 发生了什么</span><br><span style="line-height:1.7">RotaryCell 用 ESP32-S3 + LTE 模块让老式拨号电话免改装接入蜂窝网，电池供电可随身带</span></div>
+<div style="margin-bottom:6px"><span style="color:#d2a8ff">▸ 为什么重要</span><br><span style="line-height:1.7">硬件开源、可逆改装，演示了存量设备蜂窝化新思路，适合教学/艺术装置/应急通讯细分场景</span></div>
+<div><span style="color:#7ee787">▸ 你可以怎么做</span><br><span style="line-height:1.7">照 GitHub 手接原型或等 PCB 批量版；BOM 约 $60；需基础焊接与 AT 指令调试能力；可魔改成 LoRa/卫星版本</span></div></div><div style="background:#161b22;border-radius:12px;padding:18px 20px;margin-bottom:14px;border-left:3px solid #58a6ff">
+<div style="font-size:17px;font-weight:700;margin-bottom:8px">4. Jujutsu 作者入职 ERSC 搞新版控</div>
+<div style="color:#8b949e;font-size:12px;margin-bottom:10px">来源 HN(91分) · <a href="https://ersc.io/blog/martin-joins-ersc" style="color:#58a6ff">原文</a></div>
+<div style="margin-bottom:6px"><span style="color:#79c0ff">▸ 发生了什么</span><br><span style="line-height:1.7">Jujutsu (JJ) 作者 Martin 入职 ERSC 担任 CTO，该初创公司融资后要重写 AI 时代的版本控制存储层</span></div>
+<div style="margin-bottom:6px"><span style="color:#d2a8ff">▸ 为什么重要</span><br><span style="line-height:1.7">JJ 已证明分布式工作流优于 Git，但远端仍靠 Git 受限；ERSC 要造新存储协议，可能重塑大厂 monorepo 基建</span></div>
+<div><span style="color:#7ee787">▸ 你可以怎么做</span><br><span style="line-height:1.7">关注 ERSC Storage 私测申请；生产环境先用 JJ 配合 Git 远端；大团队评估迁移成本 vs Git LFS/partial clone 现状</span></div></div><div style="background:#161b22;border-radius:12px;padding:18px 20px;margin-bottom:14px;border-left:3px solid #58a6ff">
+<div style="font-size:17px;font-weight:700;margin-bottom:8px">5. Firefox iOS 内置广告拦截上线</div>
+<div style="color:#8b949e;font-size:12px;margin-bottom:10px">来源 HN(92分) · <a href="https://blog.mozilla.org/en/firefox/ad-blocker-on-ios/" style="color:#58a6ff">原文</a></div>
+<div style="margin-bottom:6px"><span style="color:#79c0ff">▸ 发生了什么</span><br><span style="line-height:1.7">Mozilla 在 iOS 版 Firefox 集成广告拦截，基于 WebKit Content Blocker 与 EasyList，默认关闭，设置里一键开启，不拦第一方广告和搜索广告。</span></div>
+<div style="margin-bottom:6px"><span style="color:#d2a8ff">▸ 为什么重要</span><br><span style="line-height:1.7">iOS 禁扩展，原生拦截填补空白，用户夺回阅读体验，出版商广告收入再受压，隐私保护再进一步。</span></div>
+<div><span style="color:#7ee787">▸ 你可以怎么做</span><br><span style="line-height:1.7">进设置-浏览-广告拦截开启；遇漏拦或网页异常去 Mozilla Connect 反馈；内容方评估收入影响备 Plan B。</span></div></div><div style="background:#161b22;border-radius:12px;padding:18px 20px;margin-bottom:14px;border-left:3px solid #58a6ff">
+<div style="font-size:17px;font-weight:700;margin-bottom:8px">6. 苹果起诉前员工窃密投奔 OpenAI</div>
+<div style="color:#8b949e;font-size:12px;margin-bottom:10px">来源 HN(84分) · <a href="https://9to5mac.com/2026/08/31/apple-openai-forensic-macbook-evidence/" style="color:#58a6ff">原文</a></div>
+<div style="margin-bottom:6px"><span style="color:#79c0ff">▸ 发生了什么</span><br><span style="line-height:1.7">苹果法庭文件披露：前员工 MacBook 取证出电源转换电路商业机密，离职后带去 OpenAI 用于硬件研发，苹果申请加速取证。</span></div>
+<div style="margin-bottom:6px"><span style="color:#d2a8ff">▸ 为什么重要</span><br><span style="line-height:1.7">AI 人才战白热化，硬件机密外流成新战场，判例将重塑离职管控与取证标准，Big Tech 法务预算再涨。</span></div>
+<div><span style="color:#7ee787">▸ 你可以怎么做</span><br><span style="line-height:1.7">公司立刻查离职审计流程、加密监控与远程擦除；跳槽工程师自查带走代码/文档风险；律师备好商业秘密保护套餐。</span></div></div><div style="background:#161b22;border-radius:12px;padding:18px 20px;margin-bottom:14px;border-left:3px solid #58a6ff">
+<div style="font-size:17px;font-weight:700;margin-bottom:8px">7. 全球厕所档案网站火了</div>
+<div style="color:#8b949e;font-size:12px;margin-bottom:10px">来源 HN(87分) · <a href="https://restroomarchive.com" style="color:#58a6ff">原文</a></div>
+<div style="margin-bottom:6px"><span style="color:#79c0ff">▸ 发生了什么</span><br><span style="line-height:1.7">Restroom Archive 持续收录全球公共厕所照片与描述，覆盖博物馆、机场、餐厅等，已积累百余条地理标注记录。</span></div>
+<div style="margin-bottom:6px"><span style="color:#d2a8ff">▸ 为什么重要</span><br><span style="line-height:1.7">小众数据集意外成金矿：无障碍导航、旅游 App、商业选址、城市规划均可接入，变现路径清晰且门槛低。</span></div>
+<div><span style="color:#7ee787">▸ 你可以怎么做</span><br><span style="line-height:1.7">爬取数据清洗做 API 或嵌入地图服务；联系无障碍/旅游创业团队合作；注意隐私合规别存人脸车牌。</span></div></div><div style="background:#161b22;border-radius:12px;padding:18px 20px;margin-bottom:14px;border-left:3px solid #58a6ff">
+<div style="font-size:17px;font-weight:700;margin-bottom:8px">8. 神经网络内部藏符号结构</div>
+<div style="color:#8b949e;font-size:12px;margin-bottom:10px">来源 HN(83分) · <a href="https://arxiv.org/abs/2608.29530" style="color:#58a6ff">原文</a></div>
+<div style="margin-bottom:6px"><span style="color:#79c0ff">▸ 发生了什么</span><br><span style="line-height:1.7">新论文证明各类神经网络（含 LLM）的向量表征可用闭合符号方程近似替换，算术、逻辑、代码、语言四大领域均成立，行为基本不变。</span></div>
+<div style="margin-bottom:6px"><span style="color:#d2a8ff">▸ 为什么重要</span><br><span style="line-height:1.7">打通符号派与连接派，解释大模型为何能推理；可精准干预内部表示实现可控生成，解释性与安全对齐双赢。</span></div>
+<div><span style="color:#7ee787">▸ 你可以怎么做</span><br><span style="line-height:1.7">读原文复现符号近似流程；自有模型试探测干预；关注后续工具链（如激活编辑库）落地微调/推理阶段。</span></div></div>
 
 <div class="cardbox"><h3>同源联动 · 资金费率雷达</h3><p>过去 24 小时跨所正费率机会：</p><ul><li><b>1000BTT</b> @ BYBIT <span style='color:#3fb950'>年化 +1247%</span> <span style='color:#484f58'>(雷达持续跟踪中)</span></li><li><b>牛来</b> @ GATE <span style='color:#3fb950'>年化 +731%</span> <span style='color:#484f58'>(雷达持续跟踪中)</span></li><li><b>BNC</b> @ BYBIT <span style='color:#3fb950'>年化 +635%</span> <span style='color:#484f58'>(雷达持续跟踪中)</span></li></ul>
 <p><a href="https://ratecompass.tech/">实时看板 →</a></p></div>
