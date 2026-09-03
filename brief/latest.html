@@ -209,46 +209,36 @@ footer .fdis{margin-top:24px;padding-top:16px;border-top:1px solid var(--line);c
 <p class="meta num">2026-09-04 · 自动生成</p>
 <p class="lede">由数据引擎自动抓取 HackerNews / 一线科技媒体 / GitHub 周趋势并经 AI 编辑加工——帮你省掉每天刷英文圈的 2 小时。</p></div>
 <div style="background:#161b22;border-radius:12px;padding:18px 20px;margin-bottom:14px;border-left:3px solid #58a6ff">
-<div style="font-size:17px;font-weight:700;margin-bottom:8px">1. .name 域名被强制注销</div>
-<div style="color:#8b949e;font-size:12px;margin-bottom:10px">来源 HN(143分) · <a href="https://neil.fraser.name/news/2026/09/03/" style="color:#58a6ff">原文</a></div>
-<div style="margin-bottom:6px"><span style="color:#79c0ff">▸ 发生了什么</span><br><span style="line-height:1.7">Verisign 提议、ICANN 批准销毁 .name 三级域名，2.2 万用户域名 2 月失效，已付费至 2040 也作废</span></div>
-<div style="margin-bottom:6px"><span style="color:#d2a8ff">▸ 为什么重要</span><br><span style="line-height:1.7">二级域名释放后可被抢注劫持原三级域名，邮箱、IoT、代码提交权限全泄露，身份被盗风险极大</span></div>
-<div><span style="color:#7ee787">▸ 你可以怎么做</span><br><span style="line-height:1.7">立即迁移核心服务到自有顶级域名，启用双因子认证脱离旧邮箱，固证据找律师集体维权</span></div></div><div style="background:#161b22;border-radius:12px;padding:18px 20px;margin-bottom:14px;border-left:3px solid #58a6ff">
-<div style="font-size:17px;font-weight:700;margin-bottom:8px">2. Grok API 多区域降级</div>
-<div style="color:#8b949e;font-size:12px;margin-bottom:10px">来源 HN(124分) · <a href="https://status.x.ai/" style="color:#58a6ff">原文</a></div>
-<div style="margin-bottom:6px"><span style="color:#79c0ff">▸ 发生了什么</span><br><span style="line-height:1.7">x.ai 状态页显示美西、美东、欧西推理/非推理可用率跌至 92-98%，持续 29 秒前仍未恢复</span></div>
-<div style="margin-bottom:6px"><span style="color:#d2a8ff">▸ 为什么重要</span><br><span style="line-height:1.7">企业级调用若无熔断重试会直接报错，成本按量计费却得不到 SLA，生产环境易翻车</span></div>
-<div><span style="color:#7ee787">▸ 你可以怎么做</span><br><span style="line-height:1.7">接入层加指数退避重试+多区域故障转移，监控告警阈值设 99%，预留备用模型端点</span></div></div><div style="background:#161b22;border-radius:12px;padding:18px 20px;margin-bottom:14px;border-left:3px solid #58a6ff">
-<div style="font-size:17px;font-weight:700;margin-bottom:8px">3. Codex 长会话频繁 404</div>
-<div style="color:#8b949e;font-size:12px;margin-bottom:10px">来源 HN(100分) · <a href="https://github.com/openai/codex/issues/28756" style="color:#58a6ff">原文</a></div>
-<div style="margin-bottom:6px"><span style="color:#79c0ff">▸ 发生了什么</span><br><span style="line-height:1.7">Codex Pro 用户长会话（50k+ token、多子代理）触发 404，重试 5 次全败，Continue 后复发</span></div>
-<div style="margin-bottom:6px"><span style="color:#d2a8ff">▸ 为什么重要</span><br><span style="line-height:1.7">无指数退避机制导致单点故障阻断整条链路，付费用户核心开发流被卡死，信任度崩塌</span></div>
-<div><span style="color:#7ee787">▸ 你可以怎么做</span><br><span style="line-height:1.7">本地缓存关键上下文、拆分超长会话、脚本级加 20 次/10 分钟退避重试，催工单要 SLA</span></div></div><div style="background:#161b22;border-radius:12px;padding:18px 20px;margin-bottom:14px;border-left:3px solid #58a6ff">
-<div style="font-size:17px;font-weight:700;margin-bottom:8px">4. 随机生成一条真实人生</div>
-<div style="color:#8b949e;font-size:12px;margin-bottom:10px">来源 HN(89分) · <a href="https://anyhumanever.com/" style="color:#58a6ff">原文</a></div>
-<div style="margin-bottom:6px"><span style="color:#79c0ff">▸ 发生了什么</span><br><span style="line-height:1.7">网站从 1000 亿历史人口抽样，按出生年份（对数分布）、地理热力图、真实数据生成完整人生故事</span></div>
-<div style="margin-bottom:6px"><span style="color:#d2a8ff">▸ 为什么重要</span><br><span style="line-height:1.7">可视化人口爆炸与幸存者偏差，适合做人口统计教学、创意写作素材、概率直觉训练</span></div>
-<div><span style="color:#7ee787">▸ 你可以怎么做</span><br><span style="line-height:1.7">直接打开 anyhumanever.com 抽样，导出 JSON 嵌入课件/小说设定，注意数据源版权仅供非商业引用</span></div></div><div style="background:#161b22;border-radius:12px;padding:18px 20px;margin-bottom:14px;border-left:3px solid #58a6ff">
-<div style="font-size:17px;font-weight:700;margin-bottom:8px">5. 多模型AI同时宕机引发基建担忧</div>
-<div style="color:#8b949e;font-size:12px;margin-bottom:10px">来源 HN(83分) · <a href="https://news.ycombinator.com/item?id=49551096" style="color:#58a6ff">原文</a></div>
-<div style="margin-bottom:6px"><span style="color:#79c0ff">▸ 发生了什么</span><br><span style="line-height:1.7">OpenAI、Claude、Grok同一天挂了，HN热议是级联过载还是供应链攻击，暴露头部厂商共用数据中心的单点风险。</span></div>
-<div style="margin-bottom:6px"><span style="color:#d2a8ff">▸ 为什么重要</span><br><span style="line-height:1.7">企业业务强依赖单一模型API，宕机直接停摆；资本市场可能因基建脆弱性重估AI估值。</span></div>
-<div><span style="color:#7ee787">▸ 你可以怎么做</span><br><span style="line-height:1.7">立即配置多模型路由降级策略，监控各厂商状态页，谈合同要多云SLA条款，别把命拴在一根光缆上。</span></div></div><div style="background:#161b22;border-radius:12px;padding:18px 20px;margin-bottom:14px;border-left:3px solid #58a6ff">
-<div style="font-size:17px;font-weight:700;margin-bottom:8px">6. 主打隐私合规的家庭AI助手Ollie拿750万种子轮</div>
-<div style="color:#8b949e;font-size:12px;margin-bottom:10px">来源 TechCrunch · <a href="https://techcrunch.com/2026/09/03/ollie-is-betting-privacy-can-win-the-ai-assistant-race/" style="color:#58a6ff">原文</a></div>
-<div style="margin-bottom:6px"><span style="color:#79c0ff">▸ 发生了什么</span><br><span style="line-height:1.7">Ollie走订阅制不卖数据，拿SOC2认证切入家庭场景，对标融资3.5亿的Instinct等隐私政策宽松的竞品。</span></div>
-<div style="margin-bottom:6px"><span style="color:#d2a8ff">▸ 为什么重要</span><br><span style="line-height:1.7">消费级AI信任赤字扩大，隐私合规成稀缺护城河；订阅制避开广告/训练数据利益冲突，LTV更可预测。</span></div>
-<div><span style="color:#7ee787">▸ 你可以怎么做</span><br><span style="line-height:1.7">关注垂直场景+隐私合规的PMF机会，评估SOC2/ISO27001认证成本与溢价能力，警惕Google/Apple原生集成降维打击。</span></div></div><div style="background:#161b22;border-radius:12px;padding:18px 20px;margin-bottom:14px;border-left:3px solid #58a6ff">
-<div style="font-size:17px;font-weight:700;margin-bottom:8px">7. Google Workspace全家桶植入Gemini语音交互</div>
-<div style="color:#8b949e;font-size:12px;margin-bottom:10px">来源 TechCrunch · <a href="https://techcrunch.com/2026/09/03/google-launches-ai-voice-features-in-gmail-docs-and-keep/" style="color:#58a6ff">原文</a></div>
-<div style="margin-bottom:6px"><span style="color:#79c0ff">▸ 发生了什么</span><br><span style="line-height:1.7">Gmail/Docs/Keep上线Live语音功能，Pro/Ultra用户可语音写邮件、生成文档、整理笔记，Pixel手机同步推Rambler口述工具。</span></div>
-<div style="margin-bottom:6px"><span style="color:#d2a8ff">▸ 为什么重要</span><br><span style="line-height:1.7">大厂靠分发垄断锁死企业入口，语音成新交互范式；中小厂做通用助手彻底没戏，只能卷垂直工作流。</span></div>
-<div><span style="color:#7ee787">▸ 你可以怎么做</span><br><span style="line-height:1.7">企业立马开Pro版实测提效比，创业者别碰通用办公助手，转攻垂直领域语音Agent（如医疗记录/法律起草），或卖SDK给集成商。</span></div></div><div style="background:#161b22;border-radius:12px;padding:18px 20px;margin-bottom:14px;border-left:3px solid #58a6ff">
-<div style="font-size:17px;font-weight:700;margin-bottom:8px">8. 美国计算机博物馆藏品尘封21年启动数字化</div>
-<div style="color:#8b949e;font-size:12px;margin-bottom:10px">来源 HN(92分) · <a href="https://computer-museum.org/wp/" style="color:#58a6ff">原文</a></div>
-<div style="margin-bottom:6px"><span style="color:#79c0ff">▸ 发生了什么</span><br><span style="line-height:1.7">前计算机博物馆馆藏（硬件/杂志/代码/手册）躺在大学地下室，获资助开始建索引募资修复，号称全球最大计算机革命实物库。</span></div>
-<div style="margin-bottom:6px"><span style="color:#d2a8ff">▸ 为什么重要</span><br><span style="line-height:1.7">一手史料面临物理损毁，数字化后可产出专利挖掘、教学内容、复古计算IP等商业价值，学术界极度稀缺结构化数据集。</span></div>
-<div><span style="color:#7ee787">▸ 你可以怎么做</span><br><span style="line-height:1.7">联系馆方谈独家数据授权，做垂直领域知识图谱卖给大模型厂商做训练增强，或开发复古编程教学订阅制内容，低成本高溢价。</span></div></div>
+<div style="font-size:17px;font-weight:700;margin-bottom:8px">1. 纽约时报工会集体抗议Kalshi合作</div>
+<div style="color:#8b949e;font-size:12px;margin-bottom:10px">来源 HN(169分) · <a href="https://newsguild.org/new-york-times-and-the-athletic-workers-demand-company-scrap-kalshi-deal/" style="color:#58a6ff">原文</a></div>
+<div style="margin-bottom:6px"><span style="color:#79c0ff">▸ 发生了什么</span><br><span style="line-height:1.7">时报与Athletic员工全票通过声明，要求公司取消与预测市场平台Kalshi的合作，担心新闻独立性受损。</span></div>
+<div style="margin-bottom:6px"><span style="color:#d2a8ff">▸ 为什么重要</span><br><span style="line-height:1.7">Kalshi被纽约总检察长定性为非法赌博，若时报给其背书等于替灰产站台，砸自家公信力招牌。</span></div>
+<div><span style="color:#7ee787">▸ 你可以怎么做</span><br><span style="line-height:1.7">关注者：预测市场合规风险未解，创业避开赌博边界产品。媒体人：警惕内容合作中的独立性条款。</span></div></div><div style="background:#161b22;border-radius:12px;padding:18px 20px;margin-bottom:14px;border-left:3px solid #58a6ff">
+<div style="font-size:17px;font-weight:700;margin-bottom:8px">2. Google Antigravity服务条款藏封号雷区</div>
+<div style="color:#8b949e;font-size:12px;margin-bottom:10px">来源 HN(143分) · <a href="https://twitter.com/GergelyOrosz/status/2095453567955968398" style="color:#58a6ff">原文</a></div>
+<div style="margin-bottom:6px"><span style="color:#79c0ff">▸ 发生了什么</span><br><span style="line-height:1.7">Google Antigravity的TOS规定，第三方调用或滥用其额度可直接封禁用户整个Google账号，不限Antigravity本身。</span></div>
+<div style="margin-bottom:6px"><span style="color:#d2a8ff">▸ 为什么重要</span><br><span style="line-height:1.7">Google账号绑着Gmail、Drive、YouTube全家桶，被封等于数字生活归零，比OpenAI封号代价高百倍。</span></div>
+<div><span style="color:#7ee787">▸ 你可以怎么做</span><br><span style="line-height:1.7">立刻做两件事：1）关键资料备份到非Google云；2）重度AI工作用独立小号，别拿主号冒险薅羊毛。</span></div></div><div style="background:#161b22;border-radius:12px;padding:18px 20px;margin-bottom:14px;border-left:3px solid #58a6ff">
+<div style="font-size:17px;font-weight:700;margin-bottom:8px">3. 索尼法庭狡辩：买游戏不是买游戏</div>
+<div style="color:#8b949e;font-size:12px;margin-bottom:10px">来源 HN(124分) · <a href="https://aginggamer.net/game-industry/sony-makes-bold-claim-about-game-ownership/" style="color:#58a6ff">原文</a></div>
+<div style="margin-bottom:6px"><span style="color:#79c0ff">▸ 发生了什么</span><br><span style="line-height:1.7">索尼在诉讼中声称软件是无限复制的，买游戏本质只是买许可，玩家从未拥有实体。</span></div>
+<div style="margin-bottom:6px"><span style="color:#d2a8ff">▸ 为什么重要</span><br><span style="line-height:1.7">这把软件许可权推到极端，等于公开承认游戏可随时停服下架，玩家花的真金白银打水漂。</span></div>
+<div><span style="color:#7ee787">▸ 你可以怎么做</span><br><span style="line-height:1.7">玩家只买实体盘或Steam离线游戏，云游戏别碰；关注欧美游戏所有权立法进展，影响整个数字商品市场。</span></div></div><div style="background:#161b22;border-radius:12px;padding:18px 20px;margin-bottom:14px;border-left:3px solid #58a6ff">
+<div style="font-size:17px;font-weight:700;margin-bottom:8px">4. IFM开源K2 Horizon六模型舰队</div>
+<div style="color:#8b949e;font-size:12px;margin-bottom:10px">来源 HN(104分) · <a href="https://ifm.ai/blog/k2/" style="color:#58a6ff">原文</a></div>
+<div style="margin-bottom:6px"><span style="color:#79c0ff">▸ 发生了什么</span><br><span style="line-height:1.7">IFM发布K2 Horizon模型家族，0.9B到375B六款全开源，连训练数据和日志都公开，0.9B/3.7B/7B同尺寸SOTA。</span></div>
+<div style="margin-bottom:6px"><span style="color:#d2a8ff">▸ 为什么重要</span><br><span style="line-height:1.7">从预训练到智能体后训练全流程开源，Apache 2.0商用免费，小模型跑手表眼镜，大模型扛企业部署。</span></div>
+<div><span style="color:#7ee787">▸ 你可以怎么做</span><br><span style="line-height:1.7">创业者直接拿7B/32B做本地产品省算力钱；开发者下载微调做垂直智能体；投资人盯紧MoVA架构新机会。</span></div></div><div style="background:#161b22;border-radius:12px;padding:18px 20px;margin-bottom:14px;border-left:3px solid #58a6ff">
+<div style="font-size:17px;font-weight:700;margin-bottom:8px">5. 2026 搞诺贝尔奖揭晓：亲吻定义、防溅小便池获奖</div>
+<div style="color:#8b949e;font-size:12px;margin-bottom:10px">来源 ArsTechnica · <a href="https://arstechnica.com/science/2026/09/meet-the-2026-ig-nobel-prize-winners/" style="color:#58a6ff">原文</a></div>
+<div style="margin-bottom:6px"><span style="color:#79c0ff">▸ 发生了什么</span><br><span style="line-height:1.7">颁奖典礼因安全担忧从波士顿迁至苏黎世；获奖研究涵盖蚊子口器制微喷嘴、埋葬棉质内裤分解率、健康擤鼻液气动力学、跨物种亲吻精确定义等</span></div>
+<div style="margin-bottom:6px"><span style="color:#d2a8ff">▸ 为什么重要</span><br><span style="line-height:1.7">看似荒诞实有科学价值；典礼迁徙折射国际科研人员对美签证/安全顾虑，类似欧洲歌唱赛固定欧陆举办</span></div>
+<div><span style="color:#7ee787">▸ 你可以怎么做</span><br><span style="line-height:1.7">关注 Improbable Research 官网后续公开演讲；若从事跨学科/科普传播，可借势做「先笑后思」内容变现</span></div></div><div style="background:#161b22;border-radius:12px;padding:18px 20px;margin-bottom:14px;border-left:3px solid #58a6ff">
+<div style="font-size:17px;font-weight:700;margin-bottom:8px">6. 高通领投 Ultrahuman 7000 万：要把智能戒指变「手指电脑」</div>
+<div style="color:#8b949e;font-size:12px;margin-bottom:10px">来源 TechCrunch · <a href="https://techcrunch.com/2026/09/03/qualcomm-backs-ultrahuman-in-70m-round-on-bet-to-turn-smart-rings-into-computers/" style="color:#58a6ff">原文</a></div>
+<div style="margin-bottom:6px"><span style="color:#79c0ff">▸ 发生了什么</span><br><span style="line-height:1.7">印度初创估值 3.65 亿美元，将 Nordic 芯片换高通芯，端侧跑 AI/游戏/车钥/指针；9 月推送软件更新让现款戒指先尝鲜</span></div>
+<div style="margin-bottom:6px"><span style="color:#d2a8ff">▸ 为什么重要</span><br><span style="line-height:1.7">戒指形态比手表更适合精准指向+生理感知双重入口；高通押注「个人环境 AI」新硬件范式，开发者生态可成护城河</span></div>
+<div><span style="color:#7ee787">▸ 你可以怎么做</span><br><span style="line-height:1.7">关注 9 月底固件更新体验手势控制/AI 交互；做独立开发者可提前适配 SDK 抢首发红利；警惕续航与散热瓶颈</span></div></div>
 
 <div class="cardbox"><h3>同源联动 · 资金费率雷达</h3><p>过去 24 小时跨所正费率机会：</p><ul><li><b>PROLOGUE</b> @ GATE <span style='color:#3fb950'>年化 +4380%</span> <span style='color:#484f58'>(雷达持续跟踪中)</span></li><li><b>BONER</b> @ GATE <span style='color:#3fb950'>年化 +2974%</span> <span style='color:#484f58'>(雷达持续跟踪中)</span></li><li><b>MDB</b> @ BYBIT <span style='color:#3fb950'>年化 +2014%</span> <span style='color:#484f58'>(雷达持续跟踪中)</span></li></ul>
 <p><a href="https://ratecompass.tech/">实时看板 →</a></p></div>
