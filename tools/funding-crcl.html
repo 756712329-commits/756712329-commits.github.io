@@ -1,10 +1,10 @@
 <!doctype html><html lang="zh-CN"><head><meta charset="utf-8">
-<title>EWT 套利收益计算器｜永续合约EWT计算工具</title>
-<meta name="description" content="估算 EWT 现货-合约 Delta 中性吃费率套利的净收益与年化。免费在线套利收益计算器，浏览器本地计算，结果即时显示。">
+<title>CRCL 资金费率换算器｜永续合约CRCL计算工具</title>
+<meta name="description" content="把 CRCL 每期资金费率换算成年化 APR 与复利 APY，支持 1/2/4/8 小时结算。免费在线资金费率换算器，浏览器本地计算，结果即时显示。">
 <meta name="viewport" content="width=device-width,initial-scale=1"><meta name="robots" content="noindex, nofollow">
 <meta name="theme-color" content="#070C15">
 <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'><rect x='1' y='1' width='22' height='22' rx='6' fill='%230D1522' stroke='%23D99A3A' stroke-width='1.5'/><path d='M12 5l2.2 7-2.2 7-2.2-7z' fill='%23F5D08A'/></svg>">
-<script type="application/ld+json">[{"@context": "https://schema.org", "@type": "WebApplication", "name": "EWT 套利收益计算器", "applicationCategory": "FinanceApplication", "operatingSystem": "Web", "description": "估算 EWT 现货-合约 Delta 中性吃费率套利的净收益与年化", "url": "https://ratecompass.tech/tools/arb-ewt.html", "offers": {"@type": "Offer", "price": "0", "priceCurrency": "CNY"}}, {"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "费率看板", "item": "https://ratecompass.tech/"}, {"@type": "ListItem", "position": 2, "name": "工具箱", "item": "https://ratecompass.tech/tools/index.html"}, {"@type": "ListItem", "position": 3, "name": "EWT 套利收益计算器", "item": "https://ratecompass.tech/tools/arb-ewt.html"}]}]</script><link rel="canonical" href="https://ratecompass.tech/tools/arb-ewt.html">
+<script type="application/ld+json">[{"@context": "https://schema.org", "@type": "WebApplication", "name": "CRCL 资金费率换算器", "applicationCategory": "FinanceApplication", "operatingSystem": "Web", "description": "把 CRCL 每期资金费率换算成年化 APR 与复利 APY，支持 1/2/4/8 小时结算", "url": "https://ratecompass.tech/tools/funding-crcl.html", "offers": {"@type": "Offer", "price": "0", "priceCurrency": "CNY"}}, {"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "费率看板", "item": "https://ratecompass.tech/"}, {"@type": "ListItem", "position": 2, "name": "工具箱", "item": "https://ratecompass.tech/tools/index.html"}, {"@type": "ListItem", "position": 3, "name": "CRCL 资金费率换算器", "item": "https://ratecompass.tech/tools/funding-crcl.html"}]}]</script><link rel="canonical" href="https://ratecompass.tech/tools/funding-crcl.html">
 <style>
 *{margin:0;padding:0;box-sizing:border-box}
 :root{
@@ -205,47 +205,42 @@ footer .fdis{margin-top:24px;padding-top:16px;border-top:1px solid var(--line);c
 </div></div>
 <div class="wrap"><div class="content">
 
-<div class="phead"><h1>EWT 套利收益计算器</h1>
+<div class="phead"><h1>CRCL 资金费率换算器</h1>
 <p class="meta num">免费在线 · 浏览器本地计算 · 与主站数据口径一致</p>
-<p class="lede">估算 EWT 现货-合约 Delta 中性吃费率套利的净收益与年化。</p></div>
+<p class="lede">把 CRCL 每期资金费率换算成年化 APR 与复利 APY，支持 1/2/4/8 小时结算。</p></div>
 
 <div style="display:grid;grid-template-columns:1fr 1fr;gap:0 18px">
-  <div><p style="font-size:13px;color:#8b949e;margin:10px 0 4px">投入本金（USDT）</p><input style="width:100%;box-sizing:border-box;background:#0d1117;border:1px solid #30363d;border-radius:6px;color:#e6edf3;padding:8px 10px;font-size:15px" oninput="calc()" onkeyup="calc()" id="notional" type="number" step="any" value="1000"></div>
-  <div><p style="font-size:13px;color:#8b949e;margin:10px 0 4px">每期资金费率（%，收方视角）</p><input style="width:100%;box-sizing:border-box;background:#0d1117;border:1px solid #30363d;border-radius:6px;color:#e6edf3;padding:8px 10px;font-size:15px" oninput="calc()" onkeyup="calc()" id="rate" type="number" step="any" value="0.05"></div>
-  <div><p style="font-size:13px;color:#8b949e;margin:10px 0 4px">结算间隔</p><select style="width:100%;background:#0d1117;border:1px solid #30363d;border-radius:6px;color:#e6edf3;padding:8px 6px;font-size:15px" id="interval"><option value="1">1 小时</option><option value="2">2 小时</option><option value="4">4 小时</option><option value="8" selected>8 小时</option></select></div>
-  <div><p style="font-size:13px;color:#8b949e;margin:10px 0 4px">预计持有（天）</p><input style="width:100%;box-sizing:border-box;background:#0d1117;border:1px solid #30363d;border-radius:6px;color:#e6edf3;padding:8px 10px;font-size:15px" oninput="calc()" onkeyup="calc()" id="days" type="number" step="any" value="7"></div>
-  <div><p style="font-size:13px;color:#8b949e;margin:10px 0 4px">双腿来回手续费合计（%）</p><input style="width:100%;box-sizing:border-box;background:#0d1117;border:1px solid #30363d;border-radius:6px;color:#e6edf3;padding:8px 10px;font-size:15px" oninput="calc()" onkeyup="calc()" id="fee" type="number" step="any" value="0.14"></div>
+  <div><p style="font-size:13px;color:#8b949e;margin:10px 0 4px">每期资金费率（%）</p><input style="width:100%;box-sizing:border-box;background:#0d1117;border:1px solid #30363d;border-radius:6px;color:#e6edf3;padding:8px 10px;font-size:15px" oninput="calc()" onkeyup="calc()" id="rate" type="number" step="any" value="0.01"></div>
+  <div><p style="font-size:13px;color:#8b949e;margin:10px 0 4px">结算间隔</p><select style="width:100%;background:#0d1117;border:1px solid #30363d;border-radius:6px;color:#e6edf3;padding:8px 6px;font-size:15px" id="interval" onchange="calc()">
+    <option value="1">1 小时</option><option value="2">2 小时</option>
+    <option value="4">4 小时</option><option value="8" selected>8 小时</option></select></div>
+  <div><p style="font-size:13px;color:#8b949e;margin:10px 0 4px">名义本金（USDT，选填）</p><input style="width:100%;box-sizing:border-box;background:#0d1117;border:1px solid #30363d;border-radius:6px;color:#e6edf3;padding:8px 10px;font-size:15px" oninput="calc()" onkeyup="calc()" id="notional" type="number" step="any" value="1000"></div>
 </div>
 <button style="background:#238636;border:none;border-radius:6px;color:#fff;padding:9px 22px;font-size:15px;cursor:pointer" onclick="calc()" style="margin-top:16px">计算</button>
 <div style="margin-top:14px;background:#0d1117;border:1px solid #30363d;border-radius:8px;padding:14px 16px;font-size:15px;line-height:2" id="out">填写上方数值自动计算</div>
 <script>
 function calc(){
-  var n=parseFloat(document.getElementById('notional').value)||0;
   var r=parseFloat(document.getElementById('rate').value)/100;
   var iv=parseFloat(document.getElementById('interval').value);
-  var d=parseFloat(document.getElementById('days').value)||0;
-  var f=(parseFloat(document.getElementById('fee').value)||0)/100;
-  if(!(n>0)){document.getElementById('out').textContent='填写上方数值自动计算';return;}
-  var perDay=24/iv, periods=perDay*d;
-  var gross=n*r*periods, feeCost=n*f, net=gross-feeCost;
-  var apr=net/n/d*365*100;
-  var mark=v=>'<b style="font-size:17px;color:'+(v>=0?'#3fb950':'#f85149')+'">'+v.toFixed(2)+'</b>';
+  var n=parseFloat(document.getElementById('notional').value)||0;
+  if(isNaN(r)||isNaN(iv)||r<=0&&n<=0){document.getElementById('out').textContent='填写上方数值自动计算';return;}
+  var perDay=24/iv, apr=r*perDay*365*100;
+  var apy=(Math.pow(1+r,perDay*365)-1)*100;
+  var per=n*r, day=n*r*perDay;
+  var h=(t,v)=>'<div><span style="color:#8b949e">'+t+'</span>　<b style="font-size:17px;color:'+(v>=0?'#3fb950':'#f85149')+'">'+v+'</b></div>';
   document.getElementById('out').innerHTML=
-    '<div><span style="color:#8b949e">持有 '+d+' 天资金费毛收益</span>　'+mark(gross)+' USDT</div>'
-    +'<div><span style="color:#8b949e">开平仓手续费</span>　'+mark(-feeCost)+' USDT</div>'
-    +'<div><span style="color:#8b949e">净收益</span>　'+mark(net)+' USDT（'+mark(apr)+'% 年化）</div>'
-    +'<div style="color:#8b949e;font-size:13px">Delta 中性：现货多 + 合约空（或两所对锁），价格涨跌互相抵消，赚的是资金费差。</div>';
+    h('年化（单利 APR）', apr.toFixed(2)+'%')+h('年化（复利 APY）', apy.toFixed(2)+'%')
+    +(n>0?h('每期收益', per.toFixed(4)+' USDT')+h('每日收益', day.toFixed(4)+' USDT'):'');
 }
 calc();
 </script>
-<div class="cardbox"><h3>公式与说明</h3><p><b>Delta 中性套利怎么算</b>：收资金费的一腿每期入账 = 本金 × 每期费率；
-净收益 = 毛收益 − 双腿来回手续费（吃资金费的一方通常付方，正费率下做空收费）。
-判断标准：持有期间累计资金费必须盖过手续费，年化才为正。正费率环境里年化 ≥20% 的机会在本站
-<a href="/" style="color:#58a6ff">费率总排行</a>实时刷新（≥20% 自动标记），历史机会见
-<a href="/history/index.html" style="color:#58a6ff">费率历史中心</a>。注意：极端行情两腿滑点可能吞噬全部收益，仓位管理优于收益最大化。</p></div>
-<div class="cardbox"><h3>EWT 延伸</h3>
-<p><a href="/history/ewt.html">EWT 费率历史走势</a> ·
-<a href="/tools/funding-arb-calc.html">通用套利收益计算器</a> ·
+<div class="cardbox"><h3>公式与说明</h3><p><b>资金费率换算公式</b>：交易所展示的费率是「每期费率」，结算间隔可以是 1/2/4/8 小时。
+年化（单利 APR）= 每期费率 × 每天/间隔 × 每期间隔数 × 365；复利 APY 按每期滚仓计算：(1+每期费率)^每年期数 − 1。
+例：费率 0.01%/8h ≈ 年化 10.95%；而 0.01%/1h 的年化高达 87.6%——<b>同样是 0.01%，结算越快年化越高</b>，
+对比两个币种时务必换算到同一年化口径。本站<a href="/" style="color:#58a6ff">费率总排行</a>已自动折算成年化，可直接对比。</p></div>
+<div class="cardbox"><h3>CRCL 延伸</h3>
+<p><a href="/history/crcl.html">CRCL 费率历史走势</a> ·
+<a href="/tools/funding-converter.html">通用资金费率换算器</a> ·
 <a href="/tools/index.html">工具箱</a> ·
 <a href="/">实时费率看板</a></p>
 <p style="color:var(--ink-3);font-size:12px">公开数据与公开公式，仅供参考，不构成投资建议。</p></div>
