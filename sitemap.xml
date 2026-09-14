@@ -45,7 +45,6 @@
   <url><loc>https://ratecompass.tech/tools/arb-ldo.html</loc><lastmod>2026-09-14</lastmod><changefreq>weekly</changefreq></url>
   <url><loc>https://ratecompass.tech/tools/arb-link.html</loc><lastmod>2026-09-14</lastmod><changefreq>weekly</changefreq></url>
   <url><loc>https://ratecompass.tech/tools/arb-ltc.html</loc><lastmod>2026-09-14</lastmod><changefreq>weekly</changefreq></url>
-  <url><loc>https://ratecompass.tech/tools/arb-matic.html</loc><lastmod>2026-09-14</lastmod><changefreq>weekly</changefreq></url>
   <url><loc>https://ratecompass.tech/tools/arb-near.html</loc><lastmod>2026-09-14</lastmod><changefreq>weekly</changefreq></url>
   <url><loc>https://ratecompass.tech/tools/arb-ondo.html</loc><lastmod>2026-09-14</lastmod><changefreq>weekly</changefreq></url>
   <url><loc>https://ratecompass.tech/tools/arb-op.html</loc><lastmod>2026-09-14</lastmod><changefreq>weekly</changefreq></url>
@@ -61,7 +60,6 @@
   <url><loc>https://ratecompass.tech/tools/arb-sui.html</loc><lastmod>2026-09-14</lastmod><changefreq>weekly</changefreq></url>
   <url><loc>https://ratecompass.tech/tools/arb-tao.html</loc><lastmod>2026-09-14</lastmod><changefreq>weekly</changefreq></url>
   <url><loc>https://ratecompass.tech/tools/arb-tia.html</loc><lastmod>2026-09-14</lastmod><changefreq>weekly</changefreq></url>
-  <url><loc>https://ratecompass.tech/tools/arb-ton.html</loc><lastmod>2026-09-14</lastmod><changefreq>weekly</changefreq></url>
   <url><loc>https://ratecompass.tech/tools/arb-trx.html</loc><lastmod>2026-09-14</lastmod><changefreq>weekly</changefreq></url>
   <url><loc>https://ratecompass.tech/tools/arb-uni.html</loc><lastmod>2026-09-14</lastmod><changefreq>weekly</changefreq></url>
   <url><loc>https://ratecompass.tech/tools/arb-wif.html</loc><lastmod>2026-09-14</lastmod><changefreq>weekly</changefreq></url>
@@ -99,7 +97,6 @@
   <url><loc>https://ratecompass.tech/tools/funding-ldo.html</loc><lastmod>2026-09-14</lastmod><changefreq>weekly</changefreq></url>
   <url><loc>https://ratecompass.tech/tools/funding-link.html</loc><lastmod>2026-09-14</lastmod><changefreq>weekly</changefreq></url>
   <url><loc>https://ratecompass.tech/tools/funding-ltc.html</loc><lastmod>2026-09-14</lastmod><changefreq>weekly</changefreq></url>
-  <url><loc>https://ratecompass.tech/tools/funding-matic.html</loc><lastmod>2026-09-14</lastmod><changefreq>weekly</changefreq></url>
   <url><loc>https://ratecompass.tech/tools/funding-near.html</loc><lastmod>2026-09-14</lastmod><changefreq>weekly</changefreq></url>
   <url><loc>https://ratecompass.tech/tools/funding-ondo.html</loc><lastmod>2026-09-14</lastmod><changefreq>weekly</changefreq></url>
   <url><loc>https://ratecompass.tech/tools/funding-op.html</loc><lastmod>2026-09-14</lastmod><changefreq>weekly</changefreq></url>
@@ -115,7 +112,6 @@
   <url><loc>https://ratecompass.tech/tools/funding-sui.html</loc><lastmod>2026-09-14</lastmod><changefreq>weekly</changefreq></url>
   <url><loc>https://ratecompass.tech/tools/funding-tao.html</loc><lastmod>2026-09-14</lastmod><changefreq>weekly</changefreq></url>
   <url><loc>https://ratecompass.tech/tools/funding-tia.html</loc><lastmod>2026-09-14</lastmod><changefreq>weekly</changefreq></url>
-  <url><loc>https://ratecompass.tech/tools/funding-ton.html</loc><lastmod>2026-09-14</lastmod><changefreq>weekly</changefreq></url>
   <url><loc>https://ratecompass.tech/tools/funding-trx.html</loc><lastmod>2026-09-14</lastmod><changefreq>weekly</changefreq></url>
   <url><loc>https://ratecompass.tech/tools/funding-uni.html</loc><lastmod>2026-09-14</lastmod><changefreq>weekly</changefreq></url>
   <url><loc>https://ratecompass.tech/tools/funding-wif.html</loc><lastmod>2026-09-14</lastmod><changefreq>weekly</changefreq></url>
@@ -153,7 +149,6 @@
   <url><loc>https://ratecompass.tech/tools/liquidation-ldo.html</loc><lastmod>2026-09-14</lastmod><changefreq>weekly</changefreq></url>
   <url><loc>https://ratecompass.tech/tools/liquidation-link.html</loc><lastmod>2026-09-14</lastmod><changefreq>weekly</changefreq></url>
   <url><loc>https://ratecompass.tech/tools/liquidation-ltc.html</loc><lastmod>2026-09-14</lastmod><changefreq>weekly</changefreq></url>
-  <url><loc>https://ratecompass.tech/tools/liquidation-matic.html</loc><lastmod>2026-09-14</lastmod><changefreq>weekly</changefreq></url>
   <url><loc>https://ratecompass.tech/tools/liquidation-near.html</loc><lastmod>2026-09-14</lastmod><changefreq>weekly</changefreq></url>
   <url><loc>https://ratecompass.tech/tools/liquidation-ondo.html</loc><lastmod>2026-09-14</lastmod><changefreq>weekly</changefreq></url>
   <url><loc>https://ratecompass.tech/tools/liquidation-op.html</loc><lastmod>2026-09-14</lastmod><changefreq>weekly</changefreq></url>
@@ -169,7 +164,6 @@
   <url><loc>https://ratecompass.tech/tools/liquidation-sui.html</loc><lastmod>2026-09-14</lastmod><changefreq>weekly</changefreq></url>
   <url><loc>https://ratecompass.tech/tools/liquidation-tao.html</loc><lastmod>2026-09-14</lastmod><changefreq>weekly</changefreq></url>
   <url><loc>https://ratecompass.tech/tools/liquidation-tia.html</loc><lastmod>2026-09-14</lastmod><changefreq>weekly</changefreq></url>
-  <url><loc>https://ratecompass.tech/tools/liquidation-ton.html</loc><lastmod>2026-09-14</lastmod><changefreq>weekly</changefreq></url>
   <url><loc>https://ratecompass.tech/tools/liquidation-trx.html</loc><lastmod>2026-09-14</lastmod><changefreq>weekly</changefreq></url>
   <url><loc>https://ratecompass.tech/tools/liquidation-uni.html</loc><lastmod>2026-09-14</lastmod><changefreq>weekly</changefreq></url>
   <url><loc>https://ratecompass.tech/tools/liquidation-wif.html</loc><lastmod>2026-09-14</lastmod><changefreq>weekly</changefreq></url>
