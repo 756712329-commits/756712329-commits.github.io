@@ -210,16 +210,16 @@ footer .fdis{margin-top:24px;padding-top:16px;border-top:1px solid var(--line);c
 <p class="lede">把 DOS 每期资金费率换算成年化 APR 与复利 APY，支持 1/2/4/8 小时结算。</p></div>
 
 <div style="display:grid;grid-template-columns:1fr 1fr;gap:0 18px">
-  <div><p style="font-size:13px;color:#8b949e;margin:10px 0 4px">每期资金费率（%）</p><input style="width:100%;box-sizing:border-box;background:#0d1117;border:1px solid #30363d;border-radius:6px;color:#e6edf3;padding:8px 10px;font-size:15px" oninput="calc()" onkeyup="calc()" id="rate" type="number" step="any" value="0.01"></div>
-  <div><p style="font-size:13px;color:#8b949e;margin:10px 0 4px">结算间隔</p><select style="width:100%;background:#0d1117;border:1px solid #30363d;border-radius:6px;color:#e6edf3;padding:8px 6px;font-size:15px" id="interval" onchange="calc()">
+  <div><p style="font-size:13px;color:#8b949e;margin:10px 0 4px">每期资金费率（%）</p><input style="width:100%;box-sizing:border-box;background:#0d1117;border:1px solid #30363d;border-radius:6px;color:#e6edf3;padding:8px 10px;font-size:15px" oninput="calcFunding()" onkeyup="calcFunding()" id="rate" type="number" step="any" value="0.01"></div>
+  <div><p style="font-size:13px;color:#8b949e;margin:10px 0 4px">结算间隔</p><select style="width:100%;background:#0d1117;border:1px solid #30363d;border-radius:6px;color:#e6edf3;padding:8px 6px;font-size:15px" id="interval" onchange="calcFunding()">
     <option value="1">1 小时</option><option value="2">2 小时</option>
     <option value="4">4 小时</option><option value="8" selected>8 小时</option></select></div>
-  <div><p style="font-size:13px;color:#8b949e;margin:10px 0 4px">名义本金（USDT，选填）</p><input style="width:100%;box-sizing:border-box;background:#0d1117;border:1px solid #30363d;border-radius:6px;color:#e6edf3;padding:8px 10px;font-size:15px" oninput="calc()" onkeyup="calc()" id="notional" type="number" step="any" value="1000"></div>
+  <div><p style="font-size:13px;color:#8b949e;margin:10px 0 4px">名义本金（USDT，选填）</p><input style="width:100%;box-sizing:border-box;background:#0d1117;border:1px solid #30363d;border-radius:6px;color:#e6edf3;padding:8px 10px;font-size:15px" oninput="calcFunding()" onkeyup="calcFunding()" id="notional" type="number" step="any" value="1000"></div>
 </div>
-<button style="background:#238636;border:none;border-radius:6px;color:#fff;padding:9px 22px;font-size:15px;cursor:pointer" onclick="calc()" style="margin-top:16px">计算</button>
+<button style="background:#238636;border:none;border-radius:6px;color:#fff;padding:9px 22px;font-size:15px;cursor:pointer" onclick="calcFunding()" style="margin-top:16px">计算</button>
 <div style="margin-top:14px;background:#0d1117;border:1px solid #30363d;border-radius:8px;padding:14px 16px;font-size:15px;line-height:2" id="out">填写上方数值自动计算</div>
 <script>
-function calc(){
+function calcFunding(){
   var r=parseFloat(document.getElementById('rate').value)/100;
   var iv=parseFloat(document.getElementById('interval').value);
   var n=parseFloat(document.getElementById('notional').value)||0;
@@ -232,7 +232,7 @@ function calc(){
     h('年化（单利 APR）', apr.toFixed(2)+'%')+h('年化（复利 APY）', apy.toFixed(2)+'%')
     +(n>0?h('每期收益', per.toFixed(4)+' USDT')+h('每日收益', day.toFixed(4)+' USDT'):'');
 }
-calc();
+calcFunding();
 </script>
 <div class="cardbox"><h3>公式与说明</h3><p><b>资金费率换算公式</b>：交易所展示的费率是「每期费率」，结算间隔可以是 1/2/4/8 小时。
 年化（单利 APR）= 每期费率 × 每天/间隔 × 每期间隔数 × 365；复利 APY 按每期滚仓计算：(1+每期费率)^每年期数 − 1。

@@ -210,16 +210,16 @@ footer .fdis{margin-top:24px;padding-top:16px;border-top:1px solid var(--line);c
 <p class="lede">估算 AXS 现货-合约 Delta 中性吃费率套利的净收益与年化。</p></div>
 
 <div style="display:grid;grid-template-columns:1fr 1fr;gap:0 18px">
-  <div><p style="font-size:13px;color:#8b949e;margin:10px 0 4px">投入本金（USDT）</p><input style="width:100%;box-sizing:border-box;background:#0d1117;border:1px solid #30363d;border-radius:6px;color:#e6edf3;padding:8px 10px;font-size:15px" oninput="calc()" onkeyup="calc()" id="notional" type="number" step="any" value="1000"></div>
-  <div><p style="font-size:13px;color:#8b949e;margin:10px 0 4px">每期资金费率（%，收方视角）</p><input style="width:100%;box-sizing:border-box;background:#0d1117;border:1px solid #30363d;border-radius:6px;color:#e6edf3;padding:8px 10px;font-size:15px" oninput="calc()" onkeyup="calc()" id="rate" type="number" step="any" value="0.05"></div>
+  <div><p style="font-size:13px;color:#8b949e;margin:10px 0 4px">投入本金（USDT）</p><input style="width:100%;box-sizing:border-box;background:#0d1117;border:1px solid #30363d;border-radius:6px;color:#e6edf3;padding:8px 10px;font-size:15px" oninput="calcArb()" onkeyup="calcArb()" id="notional" type="number" step="any" value="1000"></div>
+  <div><p style="font-size:13px;color:#8b949e;margin:10px 0 4px">每期资金费率（%，收方视角）</p><input style="width:100%;box-sizing:border-box;background:#0d1117;border:1px solid #30363d;border-radius:6px;color:#e6edf3;padding:8px 10px;font-size:15px" oninput="calcArb()" onkeyup="calcArb()" id="rate" type="number" step="any" value="0.05"></div>
   <div><p style="font-size:13px;color:#8b949e;margin:10px 0 4px">结算间隔</p><select style="width:100%;background:#0d1117;border:1px solid #30363d;border-radius:6px;color:#e6edf3;padding:8px 6px;font-size:15px" id="interval"><option value="1">1 小时</option><option value="2">2 小时</option><option value="4">4 小时</option><option value="8" selected>8 小时</option></select></div>
-  <div><p style="font-size:13px;color:#8b949e;margin:10px 0 4px">预计持有（天）</p><input style="width:100%;box-sizing:border-box;background:#0d1117;border:1px solid #30363d;border-radius:6px;color:#e6edf3;padding:8px 10px;font-size:15px" oninput="calc()" onkeyup="calc()" id="days" type="number" step="any" value="7"></div>
-  <div><p style="font-size:13px;color:#8b949e;margin:10px 0 4px">双腿来回手续费合计（%）</p><input style="width:100%;box-sizing:border-box;background:#0d1117;border:1px solid #30363d;border-radius:6px;color:#e6edf3;padding:8px 10px;font-size:15px" oninput="calc()" onkeyup="calc()" id="fee" type="number" step="any" value="0.14"></div>
+  <div><p style="font-size:13px;color:#8b949e;margin:10px 0 4px">预计持有（天）</p><input style="width:100%;box-sizing:border-box;background:#0d1117;border:1px solid #30363d;border-radius:6px;color:#e6edf3;padding:8px 10px;font-size:15px" oninput="calcArb()" onkeyup="calcArb()" id="days" type="number" step="any" value="7"></div>
+  <div><p style="font-size:13px;color:#8b949e;margin:10px 0 4px">双腿来回手续费合计（%）</p><input style="width:100%;box-sizing:border-box;background:#0d1117;border:1px solid #30363d;border-radius:6px;color:#e6edf3;padding:8px 10px;font-size:15px" oninput="calcArb()" onkeyup="calcArb()" id="fee" type="number" step="any" value="0.14"></div>
 </div>
-<button style="background:#238636;border:none;border-radius:6px;color:#fff;padding:9px 22px;font-size:15px;cursor:pointer" onclick="calc()" style="margin-top:16px">计算</button>
+<button style="background:#238636;border:none;border-radius:6px;color:#fff;padding:9px 22px;font-size:15px;cursor:pointer" onclick="calcArb()" style="margin-top:16px">计算</button>
 <div style="margin-top:14px;background:#0d1117;border:1px solid #30363d;border-radius:8px;padding:14px 16px;font-size:15px;line-height:2" id="out">填写上方数值自动计算</div>
 <script>
-function calc(){
+function calcArb(){
   var n=parseFloat(document.getElementById('notional').value)||0;
   var r=parseFloat(document.getElementById('rate').value)/100;
   var iv=parseFloat(document.getElementById('interval').value);
@@ -236,7 +236,7 @@ function calc(){
     +'<div><span style="color:#8b949e">净收益</span>　'+mark(net)+' USDT（'+mark(apr)+'% 年化）</div>'
     +'<div style="color:#8b949e;font-size:13px">Delta 中性：现货多 + 合约空（或两所对锁），价格涨跌互相抵消，赚的是资金费差。</div>';
 }
-calc();
+calcArb();
 </script>
 <div class="cardbox"><h3>公式与说明</h3><p><b>Delta 中性套利怎么算</b>：收资金费的一腿每期入账 = 本金 × 每期费率；
 净收益 = 毛收益 − 双腿来回手续费（吃资金费的一方通常付方，正费率下做空收费）。
