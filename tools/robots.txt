@@ -1,4 +1,4 @@
-# robots.txt — 由 P7 build_tool_pages.py write_robots() 结构化生成 2026-09-14
+# robots.txt — 由 P7 build_tool_pages.py write_robots() 结构化生成 2026-09-15
 # 全站允许抓取；长尾工具页的 noindex 由页内 <meta name="robots"> 控制（不用 Disallow，保证 meta 可被抓取见到）
 User-agent: *
 Allow: /
