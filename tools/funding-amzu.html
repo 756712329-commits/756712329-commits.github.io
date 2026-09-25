@@ -1,10 +1,10 @@
 <!doctype html><html lang="zh-CN"><head><meta charset="utf-8">
-<title>ACH 资金费率历史走势 | 多交易所实时对比·每10分钟更新</title>
-<meta name="description" content="ACH 永续合约资金费率实时与历史数据：多交易所费率对比、年化走势图、Delta中性套利时机。每10分钟自动更新。">
-<meta name="viewport" content="width=device-width,initial-scale=1"><meta name="robots" content="index,follow">
+<title>AMZU 资金费率换算器｜永续合约AMZU计算工具</title>
+<meta name="description" content="把 AMZU 每期资金费率换算成年化 APR 与复利 APY，支持 1/2/4/8 小时结算。免费在线资金费率换算器，浏览器本地计算，结果即时显示。">
+<meta name="viewport" content="width=device-width,initial-scale=1"><meta name="robots" content="noindex, nofollow">
 <meta name="theme-color" content="#070C15">
 <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'><rect x='1' y='1' width='22' height='22' rx='6' fill='%230D1522' stroke='%23D99A3A' stroke-width='1.5'/><path d='M12 5l2.2 7-2.2 7-2.2-7z' fill='%23F5D08A'/></svg>">
-<script type="application/ld+json">[{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "ACH 资金费率是什么？", "acceptedAnswer": {"@type": "Answer", "text": "ACH 永续合约没有交割日，交易所通过资金费率让合约价格锚定现货价格：费率为正时多头付给空头，为负时空头付给多头，通常每8小时结算一次。"}}, {"@type": "Question", "name": "ACH 资金费率怎么用来套利？", "acceptedAnswer": {"@type": "Answer", "text": "当 ACH 资金费率折合年化显著为正时，经典做法是 Delta 中性套利：买入 ACH 现货并做空等额永续合约，价格波动被对冲、赚取资金费；费率持续为负时反向操作同理。"}}]}, {"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "费率看板", "item": "https://ratecompass.tech/"}, {"@type": "ListItem", "position": 2, "name": "费率历史中心", "item": "https://ratecompass.tech/history/"}, {"@type": "ListItem", "position": 3, "name": "ACH 资金费率历史走势", "item": "https://ratecompass.tech/history/ach.html"}]}]</script>
+<script type="application/ld+json">[{"@context": "https://schema.org", "@type": "WebApplication", "name": "AMZU 资金费率换算器", "applicationCategory": "FinanceApplication", "operatingSystem": "Web", "description": "把 AMZU 每期资金费率换算成年化 APR 与复利 APY，支持 1/2/4/8 小时结算", "url": "https://ratecompass.tech/tools/funding-amzu.html", "offers": {"@type": "Offer", "price": "0", "priceCurrency": "CNY"}}, {"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "费率看板", "item": "https://ratecompass.tech/"}, {"@type": "ListItem", "position": 2, "name": "工具箱", "item": "https://ratecompass.tech/tools/index.html"}, {"@type": "ListItem", "position": 3, "name": "AMZU 资金费率换算器", "item": "https://ratecompass.tech/tools/funding-amzu.html"}]}]</script><link rel="canonical" href="https://ratecompass.tech/tools/funding-amzu.html">
 <style>
 *{margin:0;padding:0;box-sizing:border-box}
 :root{
@@ -199,29 +199,51 @@ footer .fdis{margin-top:24px;padding-top:16px;border-top:1px solid var(--line);c
 <stop stop-color="#F8DCA0"/><stop offset="1" stop-color="#D99A3A"/></linearGradient></defs>
 <rect x="1.5" y="1.5" width="21" height="21" rx="6" stroke="url(#lgm)" stroke-width="1.6"/>
 <path d="M12 5l2.2 7-2.2 7-2.2-7z" fill="url(#lgm)"/></svg>量化情报站</a>
-  <nav class="nav"><a href="/">费率看板</a><a href="/history/" class="on">历史中心</a><a href="/tools/">工具箱</a><a href="/deals.html">游戏折扣</a><a href="/ai/">AI 榜</a><a href="/brief/latest.html">情报日报</a><a href="/about.html">关于</a></nav>
+  <nav class="nav"><a href="/">费率看板</a><a href="/history/">历史中心</a><a href="/tools/" class="on">工具箱</a><a href="/deals.html">游戏折扣</a><a href="/ai/">AI 榜</a><a href="/brief/latest.html">情报日报</a><a href="/about.html">关于</a></nav>
   <a class="btn gold sm cta" href="https://ratecompass.tech/masters/" target="_blank" rel="noopener">API 与服务 ↗</a>
   <label class="burger" for="mt"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 7h16M4 12h16M4 17h16"/></svg></label>
 </div></div>
 <div class="wrap"><div class="content">
 
-<div class="phead"><h1>ACH 资金费率历史走势</h1>
-<p class="meta num">1 所实时对比 + 历史年化走势 · 每 10 分钟更新</p>
-<p class="lede">该合约当前仅此所上线，费率与年化走势持续跟踪。</p></div>
-<table>
-<tr><th style="text-align:left">交易所</th><th>当前费率/8h</th><th>折合年化</th><th>下次结算</th><th>直达</th></tr>
-<tr><td><span style='color:#3fb950'>●</span> Gate</td><td>+0.0100%</td><td style='color:#3fb950;font-weight:700'>+10.9% 年化</td><td>08:00</td><td><a href='https://www.gate.com/referral/invite/VFKSU11ZBA' rel='nofollow sponsored' style='color:#58a6ff'>开户/交易</a></td></tr></table>
-<div style='display:flex;gap:22px;flex-wrap:wrap;font-size:14px;margin:14px 0'><span>最高 <b style='color:#3fb950'>+10.9%</b></span><span>最低 <b style='color:#f85149'>+10.9%</b></span><span>均值 <b>+10.9%</b></span><span>正费率占比 <b>100%</b></span><span>已跟踪 <b>120 小时</b> · 111 个采样点</span></div>
-<div class="scroller" style="margin-top:16px"><div style="margin-top:10px"><svg viewBox="0 0 860 300" style="width:100%;background:#0d1117;border-radius:12px"><line x1="48" y1="48.0" x2="812" y2="48.0" stroke="#161b22"/><text x="42" y="52.0" fill="#8b949e" font-size="11" text-anchor="end">+11%</text><line x1="48" y1="150.0" x2="812" y2="150.0" stroke="#161b22"/><text x="42" y="154.0" fill="#8b949e" font-size="11" text-anchor="end">+11%</text><line x1="48" y1="252.0" x2="812" y2="252.0" stroke="#161b22"/><text x="42" y="256.0" fill="#8b949e" font-size="11" text-anchor="end">+10%</text><text x="48" y="288" fill="#8b949e" font-size="11">09-21 01:00</text><text x="812" y="288" fill="#8b949e" font-size="11" text-anchor="end">09-26 00:52</text><polyline points="48.0,150.0 51.2,150.0 53.8,150.0 56.4,150.0 59.1,150.0 61.7,150.0 64.4,150.0 67.1,150.0 69.7,150.0 72.4,150.0 75.0,150.0 77.7,150.0 80.3,150.0 83.0,150.0 85.6,150.0 88.3,150.0 91.0,150.0 93.6,150.0 96.3,150.0 99.0,150.0 101.6,150.0 104.2,150.0 106.9,150.0 109.7,150.0 112.3,150.0 115.1,150.0 117.6,150.0 120.3,150.0 123.0,150.0 125.5,150.0 128.3,150.0 131.4,150.0 137.1,150.0 140.0,150.0 142.6,150.0 145.3,150.0 148.5,150.0 151.2,150.0 153.8,150.0 156.9,150.0 159.5,150.0 162.2,150.0 164.9,150.0 167.6,150.0 170.0,150.0 172.9,150.0 175.6,150.0 178.5,150.0 181.4,150.0 184.0,150.0 186.9,150.0 189.8,150.0 192.5,150.0 195.0,150.0 657.9,150.0 660.6,150.0 663.1,150.0 665.7,150.0 668.4,150.0 671.1,150.0 674.2,150.0 676.8,150.0 679.6,150.0 682.2,150.0 684.8,150.0 687.5,150.0 690.1,150.0 692.8,150.0 695.4,150.0 698.3,150.0 700.8,150.0 703.5,150.0 706.1,150.0 708.7,150.0 711.5,150.0 714.6,150.0 717.2,150.0 719.9,150.0 723.1,150.0 725.7,150.0 728.3,150.0 731.0,150.0 733.7,150.0 736.4,150.0 739.6,150.0 742.2,150.0 744.9,150.0 748.1,150.0 750.8,150.0 753.4,150.0 756.6,150.0 759.3,150.0 761.9,150.0 764.6,150.0 767.4,150.0 769.8,150.0 772.5,150.0 775.1,150.0 778.1,150.0 782.0,150.0 784.9,150.0 787.7,150.0 790.0,150.0 792.9,150.0 795.7,150.0 798.6,150.0 801.3,150.0 803.9,150.0 806.6,150.0 809.4,150.0 812.0,150.0" fill="none" stroke="#3fb950" stroke-width="1.8"/></svg><div style="margin-top:8px"><span style="color:#3fb950;font-size:12px;margin-right:16px">— Gate</span></div></div></div>
-<div class="cardbox"><h2 style="color:#58a6ff">ACH 资金费率是什么？</h2>
-<p style="color:#c9d1d9;line-height:1.8">ACH 永续合约没有交割日，交易所通过<b>资金费率</b>(Funding Rate)让合约价锚定现货价：
-费率为正时多头付给空头，为负时空头付给多头，通常每8小时结算一次。本页聚合币安/Bybit/OKX/Gate
-四大交易所 ACH USDT 永续的<b>实时费率与历史走势</b>，每10分钟自动更新。</p>
-<p style="color:#c9d1d9;line-height:1.8">当 ACH 费率折合年化显著为正(如 &gt;20%)，经典玩法是 <b>Delta 中性套利</b>：
-买入 ACH 现货 + 做空等额永续，价格涨跌对冲掉，稳收资金费；费率持续为负时反向同理。
-跨所费率差也是信号--某所显著偏离均值往往伴随短期行情或资金流异动。</p>
-<p style="color:#8b949e;line-height:1.7">⚠️ 高费率常伴随高波动与流动性风险；本页为公开数据聚合，不构成投资建议。</p></div>
-<p style="font-size:12px;color:var(--ink-3);margin-top:20px">数据来源：各交易所公开 API · 自动维护 · 不构成投资建议</p>
+<div class="phead"><h1>AMZU 资金费率换算器</h1>
+<p class="meta num">免费在线 · 浏览器本地计算 · 与主站数据口径一致</p>
+<p class="lede">把 AMZU 每期资金费率换算成年化 APR 与复利 APY，支持 1/2/4/8 小时结算。</p></div>
+
+<div style="display:grid;grid-template-columns:1fr 1fr;gap:0 18px">
+  <div><p style="font-size:13px;color:#8b949e;margin:10px 0 4px">每期资金费率（%）</p><input style="width:100%;box-sizing:border-box;background:#0d1117;border:1px solid #30363d;border-radius:6px;color:#e6edf3;padding:8px 10px;font-size:15px" oninput="calcFunding()" onkeyup="calcFunding()" id="rate" type="number" step="any" value="0.01"></div>
+  <div><p style="font-size:13px;color:#8b949e;margin:10px 0 4px">结算间隔</p><select style="width:100%;background:#0d1117;border:1px solid #30363d;border-radius:6px;color:#e6edf3;padding:8px 6px;font-size:15px" id="interval" onchange="calcFunding()">
+    <option value="1">1 小时</option><option value="2">2 小时</option>
+    <option value="4">4 小时</option><option value="8" selected>8 小时</option></select></div>
+  <div><p style="font-size:13px;color:#8b949e;margin:10px 0 4px">名义本金（USDT，选填）</p><input style="width:100%;box-sizing:border-box;background:#0d1117;border:1px solid #30363d;border-radius:6px;color:#e6edf3;padding:8px 10px;font-size:15px" oninput="calcFunding()" onkeyup="calcFunding()" id="notional" type="number" step="any" value="1000"></div>
+</div>
+<button style="background:#238636;border:none;border-radius:6px;color:#fff;padding:9px 22px;font-size:15px;cursor:pointer" onclick="calcFunding()" style="margin-top:16px">计算</button>
+<div style="margin-top:14px;background:#0d1117;border:1px solid #30363d;border-radius:8px;padding:14px 16px;font-size:15px;line-height:2" id="out">填写上方数值自动计算</div>
+<script>
+function calcFunding(){
+  var r=parseFloat(document.getElementById('rate').value)/100;
+  var iv=parseFloat(document.getElementById('interval').value);
+  var n=parseFloat(document.getElementById('notional').value)||0;
+  if(isNaN(r)||isNaN(iv)||r<=0&&n<=0){document.getElementById('out').textContent='填写上方数值自动计算';return;}
+  var perDay=24/iv, apr=r*perDay*365*100;
+  var apy=(Math.pow(1+r,perDay*365)-1)*100;
+  var per=n*r, day=n*r*perDay;
+  var h=(t,v)=>'<div><span style="color:#8b949e">'+t+'</span>　<b style="font-size:17px;color:'+(v>=0?'#3fb950':'#f85149')+'">'+v+'</b></div>';
+  document.getElementById('out').innerHTML=
+    h('年化（单利 APR）', apr.toFixed(2)+'%')+h('年化（复利 APY）', apy.toFixed(2)+'%')
+    +(n>0?h('每期收益', per.toFixed(4)+' USDT')+h('每日收益', day.toFixed(4)+' USDT'):'');
+}
+calcFunding();
+</script>
+<div class="cardbox"><h3>公式与说明</h3><p><b>资金费率换算公式</b>：交易所展示的费率是「每期费率」，结算间隔可以是 1/2/4/8 小时。
+年化（单利 APR）= 每期费率 × 每天/间隔 × 每期间隔数 × 365；复利 APY 按每期滚仓计算：(1+每期费率)^每年期数 − 1。
+例：费率 0.01%/8h ≈ 年化 10.95%；而 0.01%/1h 的年化高达 87.6%——<b>同样是 0.01%，结算越快年化越高</b>，
+对比两个币种时务必换算到同一年化口径。本站<a href="/" style="color:#58a6ff">费率总排行</a>已自动折算成年化，可直接对比。</p></div>
+<div class="cardbox"><h3>AMZU 延伸</h3>
+<p><a href="/history/amzu.html">AMZU 费率历史走势</a> ·
+<a href="/tools/funding-converter.html">通用资金费率换算器</a> ·
+<a href="/tools/index.html">工具箱</a> ·
+<a href="/">实时费率看板</a></p>
+<p style="color:var(--ink-3);font-size:12px">公开数据与公开公式，仅供参考，不构成投资建议。</p></div>
 </div><footer><div class="wrap in">
   <div class="frow">
     <div class="fcol">
